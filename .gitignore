@@ -1,0 +1,36 @@
+# Python / Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+**/.venv/
+**/venv/
+**/ENV/
+**/env/
+__pycache__/
+/**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Node / Frontend
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+build/
+**/build/
+.vite/
+**/.vite/
+
+# Database / Caches / Logs
+*.db-journal
+*.log
+.DS_Store
+.vscode/
+.idea/
+
+# Environment / Secrets
+.env
+.env.*
+!.env.example
+

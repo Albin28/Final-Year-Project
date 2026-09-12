@@ -1,0 +1,22 @@
+NexusERP – Seminar Master Alignment Note
+Last Updated: 16 August 2026
+
+1. Seminar work remains aligned with the project theme of AI-assisted demand forecasting for small business ERP.
+2. Project implementation has progressed to a working prototype with Inventory + POS billing integration.
+3. Current coded baseline now produces transaction history suitable for future forecasting experiments.
+4. Next seminar-linked action is to map base paper forecasting concepts to the planned Prophet module and evaluation metrics (MAE/MAPE).
+5. Presentation/report references should use the updated implementation context: React + FastAPI + SQLite prototype, POS stock deduction, and bill Excel export.
+
+
+--command to run in terminal--
+
+--backend--
+c:/Projects/Final-Year-Project/.venv/Scripts/Activate.ps1   ---to activate venv
+cd 01_Project\backend                                       --- to get to backend
+uvicorn main:app --reload --port 8000                       --- to run backend
+
+--frontend--
+
+c:/Projects/Final-Year-Project/.venv/Scripts/Activate.ps1  --- activate venv
+Final-Year-Project\01_Project\frontend                     ---to get to frontend
+npm run dev                                                --- to 

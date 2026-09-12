@@ -1,0 +1,18 @@
+base paper 
+https://doi.org/10.1007/s00170-026-17483-1
+
+literature review papers.
+
+1.Predictive models for inventory
+optimization: a machine learning application
+for demand forecasting at a construction
+supplies distributor.
+link- https://doi.org/10.1186/s43093-026-00807-8
+
+2.Developing a demand planning strategy for joint forecasting
+and employing analytical tool in an empirical case study.
+link- https://doi.org/10.1007/s42452-025-06740-9
+
+3.Machine Learning and Deep Learning Models for Demand
+Forecasting in Supply Chain Management: A Critical Review
+link- https://doi.org/10.3390/asi7050093

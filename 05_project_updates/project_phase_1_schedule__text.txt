@@ -1,0 +1,75 @@
+
+================================================================================
+PAGE 1
+================================================================================
+Department of Computer Science and Engineering 
+23CSD415 PROJECT PHASE I Schedule 
+2023 – 2027 Batch CSE A, B, C Divisions: July 2026 to Nov 2026 
+ 
+Sr. 
+No 
+Date/Period Activities to be completed/ Evaluation 
+1 
+6.7.2026 to 
+7.7.2026 
+Discussion with guide and finalizing the topic 
+All students should discuss the topic with guide and finalize the topic. 
+Request for change of topic will not be allowed after this date. 
+Student’s Diary/ Daily Log to be maintained.  
+The students should keep the daily/weekly activity diary, the day to day 
+account of the observations, impressions, information gathered and 
+suggestions given, if any. The daily/weekly activity diary shall be signed 
+after every day/week by the guide. 
+Attendance (10 Marks) 
+2 
+8.7.2026 to 
+14.7.2026 
+Project Proposal presentation 
+Student should prepare a presentation on problem identification and 
+objective definition, and present it to the project guide. A folder will be 
+shared for each division by the project coordinator from that division. In 
+that folder each student should create a folder with name “Rollno_Name”. 
+PDF of the abstract and base paper should be submitted to individual folder 
+in the shared folder. Base papers should be SCI/ Scopus journal paper 
+published either in 2025 or 2026. 
+3 
+3.8.2026 to 
+14.8.2026 
+Interim Review 1- Evaluation by Guide and one Evaluator selected 
+by the guide (20 Marks) 
+Literature survey, requirement analysis, feasibility study, project planning, 
+system design and 20% implementation to be completed. Presentation to 
+be done and demonstration of the working of the modules to be shown. 
+PDF of presentation should be submitted to the shared folder.  
+4 
+14.9.2026 to 
+25.9.2026 
+Interim Review 2- Evaluation by Guide and one Evaluator selected 
+by the guide (20 Marks) 
+50% implementation to be completed. Demonstration of the working of 
+the modules to be shown. 
+5 
+27.10.2026 
+to 
+28.10.2026 
+Final Review - The Final evaluation committee comprises HoD or a 
+senior faculty member, Project coordinator and Guide (30 Marks) 
+80% of the implementation to be completed 
+10 Minutes presentation and 10 Minutes demo. 
+Any project selected in I2U or similar competitions will be given 
+appropriate weightage while awarding marks. 
+Project Phase - I Report (By evaluation committee) (10 Marks) 
+Soft binded report submission on 26.10.2026 
+PDF of the report and presentation to be submitted in the shared folder. 
+Project Coordinator (10 Marks) 
+Total 100 Marks 
+
+-------------------------------------------------------------------------------
+Implementation Tracking Note (Updated: 16 August 2026)
+-------------------------------------------------------------------------------
+- Milestone 3 (Interim Review 1) has been completed with working prototype demo.
+- Current prototype now includes Inventory + POS billing integration.
+- Billing transactions now reduce inventory stock automatically.
+- Recent bills can be exported to Excel by Bill ID.
+- Current focus: move toward Review 2 target (50% implementation) and start AI forecasting integration.
+ 

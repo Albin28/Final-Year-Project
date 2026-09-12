@@ -1,0 +1,161 @@
+
+================================================================================
+PAGE 1
+================================================================================
+ 
+Department of Computer Science and Engineering  
+AMAL JYOTHI COLLEGE OF ENGINEERING  
+GUIDELINES FOR SEMINAR and SEMINAR  PRESENTATION  
+ 
+1. Topic Selection 
+● Core Relevance: The selected topic must be within the core areas of Computer Science 
+and Engineering. Choose a current, broad-based topic rather than a very specific research 
+work. 
+● Project Linkage: The seminar topic should be closely linked to the final year project 
+area.  
+2. Source, Extended Abstract and Approval 
+● Reputed Sources: Base the seminar topic on reputed and indexed international journal 
+papers (years 2022-2026). 
+o Example Journal: Machine Learning, Impact Factor 3.641 (Web of Science)- H 
+index 155 (Google) -Impact Factor 7.105 (Scopus). 
+o IEEE Xplore Digital Library, ACM Digital Library, ScienceDirect,SpringerLink 
+● Extended abstract: Submit an extended abstract within 500-600 words. The abstract 
+should include:  
+(i) Relevance of the topic in the present scenario. 
+(ii) Works carried out. 
+(iii) Brief of the results. 
+● Abstract Submission: Submit hard copies of the abstract and base paper to the Guide for 
+approval immediately after topic finalization. Also upload the same in the drive shared 
+and paste the link to the file in the google sheet shared. 
+● PowerPoint Slides: Get the seminar PowerPoint slides approved by the Guide at least 
+three working days before the seminar. 
+● Base paper Submission: Submit a report to the panel at the time of presentation, which 
+includes the base paper and the front page of the PPT signed/verified by the guide. 
+3. Seminar Presentation 
+● Time Allocation: 
+o Presentation: 15 minutes. 
+o Q&A, Discussion: 10 minutes. 
+● Slide Limit: Presentation slides should be limited to 18-20 slides. 
+● Slide Order: 
+
+================================================================================
+PAGE 2
+================================================================================
+PPT Content Instructions 
+1. Title Slide 
+o 
+Title of the Seminar 
+o 
+Your Name 
+o 
+Roll Number 
+o 
+Department 
+o 
+Date 
+2. Contents Slide 
+o 
+List of sections/topics covered in the presentation 
+3. Introduction Slide 
+o 
+Brief introduction to the topic 
+o 
+Importance and relevance of the topic 
+4. Existing works/Literature Survey Slide 
+o 
+Summary of related works(Minimum 3) 
+o 
+Key findings from literature 
+5. Objectives Slide 
+o 
+Clear and concise objectives of the seminar 
+6. Methodology / Work Carried Out Slide/s 
+o 
+Steps taken in your base paper / related areas 
+o 
+Methods and techniques used 
+7. Results and Discussions Slide/s 
+o 
+Key results obtained 
+o 
+Interpretation and discussion of results 
+8. Conclusion and Future work Slide 
+o 
+Summary of findings 
+o 
+Implications of the results 
+o 
+Future work 
+9. References Slide 
+o 
+List of all references used 
+o 
+Format in a standard citation style 
+10. Acknowledgements Slide 
+o Thank individuals that helped in your work 
+11. Questions Slide 
+ 
+General Tips 
+● 
+Bullet Points: Use bullet points instead of paragraphs. 
+● 
+Visual Aids: Include charts, graphs, and images to illustrate points. 
+● 
+Font Size: Ensure the text is readable. 
+● 
+Consistency: Maintain a consistent style and format throughout the slides. 
+● 
+Clarity: Be clear and concise; avoid cluttering slides with too much information. 
+
+================================================================================
+PAGE 3
+================================================================================
+● 
+Timing: Practice to ensure you can cover all slides within the allotted time (15 minutes 
+presentation). 
+● 
+Numbering: Include slide nos., figure nos., table nos. etc 
+4. Post-Presentation 
+● Draft Report: Submit a hard copy of the draft seminar report in LaTeX format for 
+approval to Guide within seven days after the seminar. 
+● Final Report: Submit the completed seminar report and evaluated draft copy within two 
+weeks after the seminar to Guide and then to the Seminar coordinator. 
+5. Seminar Diary 
+● Maintain a detailed seminar log book that records all aspects of your seminar journey, 
+including topic selection, research progress, feedback, and questions asked during the 
+seminar(Template). 
+● Hold weekly meetings with your Guide to review and update your seminar diary. The 
+diary should be submitted to the seminar coordinator for verification when asked for.  
+6. Evaluation 
+● Panel: The seminar presentation will be evaluated by a panel(IEC) consisting of the 
+academic coordinator, seminar coordinators, guide, and subject expert. 
+● Knowledge Check: If the panel feels that the student lacks sufficient knowledge, they 
+may be asked to repeat the seminar. 
+● Questions: Students are encouraged to ask questions during the presentation. 
+● Language: The seminar should be conducted in English without the use of mobile 
+phones or paper/books. 
+● Uniform: Students must be in full uniform, including an ID card. 
+● Mark distribution: 
+Seminar Guide: 20 marks (Background Knowledge – 10 (The guide shall give deserving 
+marks for a candidate based on the candidate's background knowledge about the topic 
+selected), Relevance of the paper/topic selected – 10). 
+Seminar Coordinator: 20 marks (Seminar Diary – 10 (Each student shall maintain a 
+seminar diary and the guide shall monitor the progress of the seminar work on a weekly 
+basis and shall approve the entries in the seminar diary during the weekly meeting with the 
+student), Attendance – 10). 
+Presentation: 40 marks to be awarded by the IEC (Clarity of presentation – 10, 
+Interactions – 10 (to be based on the candidate's ability to answer questions during the 
+interactive session of her/his presentation), Overall participation – 10 (to be given based 
+on her/his involvement during interactive sessions of presentations by other students), 
+Quality of the slides – 10). 
+Report: 20 marks to be awarded by the IEC (check for technical content, overall quality, 
+templates followed, adequacy of references, etc.). 
+
+================================================================================
+PAGE 4
+================================================================================
+7. Additional Guidelines 
+● Question Documentation: Document all the questions asked by the panel and students, 
+along with their answers, in a separate sheet. Attach it to the seminar logbook and submit 
+it to the coordinator.  
+ 

@@ -1,0 +1,1853 @@
+
+================================================================================
+PAGE 1
+================================================================================
+Dornela Goulart et al. Future Business Journal           (2026) 12:92  
+https://doi.org/10.1186/s43093-026-00807-8
+RESEARCH
+Predictive models for inventory 
+optimization: a machine learning application 
+for demand forecasting at a construction 
+supplies distributor
+Diocélio Dornela Goulart1,2*, Rodrigo Baroni de Carvalho2*, Mariana Almeida Henriques2 and 
+Bárbara Kawany Gonçalves Nunes Carvalho2 
+Abstract 
+Inventory management is a critical task for distribution companies, as forecasting errors can lead to excess 
+inventory, higher storage costs, or stockouts. This practice and policy paper presents a single-case study describing 
+the development and deployment of a machine learning-based predictive model designed to optimize inventory 
+management for a medium-sized Brazilian construction supplies distributor. Using the Amazon Forecast and Amazon 
+SageMaker Canvas platforms, the study demonstrated how advanced demand forecasting techniques can potentially 
+reduce stockouts and enhance operational efficiency. The research compared various predictive algorithms 
+and assessed their performance using metrics such as RMSE, MAPE, MASE, and WAPE. The model achieved a weighted 
+absolute percentage error (WAPE) of approximately 0.69% during the evaluation period, with performance varying 
+across SKUs and demand patterns. The evaluation employed an 80/20 train-test split with a 60-day forecast horizon. 
+Rather than claiming algorithmic novelty, this study’s primary contribution is architectural and socio-technical since it 
+documents an end-to-end implementation blueprint for deploying cloud-based AutoML in an SME that previously 
+relied solely on descriptive analytics. The reliance on a single aggregate metric, the absence of baseline comparisons, 
+limited transparency into proprietary AutoML, and the lack of quantitative measurement of business impact 
+are discussed in the limitations of the study. The study details the technology architecture, data governance 
+workflow, and human–AI interaction protocols, providing technical and managerial recommendations for SMEs 
+seeking to transition from retrospective reporting to simplified predictive analysis, even with limited IT resources 
+and without specialized Data Science teams.
+Keywords  Predictive models, Artificial intelligence, Machine learning, Inventory management, Supply chain 
+management (SCM)
+Context
+Efficient inventory management is a vital challenge for 
+distribution companies, as it directly affects customer 
+satisfaction, operating costs, and overall business 
+profitability. In the construction supplies industry, which 
+features a diverse range of products and seasonal demand 
+fluctuations, forecasting is particularly challenging [20]. 
+Forecasting mistakes can result in excess inventory, 
+raising storage costs and the risk of obsolescence, or lead 
+Open Access
+© The Author(s) 2026. Open Access  This article is licensed under a Creative Commons Attribution 4.0 International License, which 
+permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the 
+original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or 
+other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line 
+to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory 
+regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this 
+licence, visit http://​creat​iveco​mmons.​org/​licen​ses/​by/4.​0/.
+Future Business Journal
+*Correspondence:
+Diocélio Dornela Goulart
+diocelio.associado@fdc.org.br
+Rodrigo Baroni de Carvalho
+baroni@pucminas.br
+1 Fundação Dom Cabral, Belo Horizonte, Brazil
+2 Pontifícia Universidade Católica de Minas Gerais, Belo Horizonte, Brazil
+
+================================================================================
+PAGE 2
+================================================================================
+Page 2 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+to stockouts (product shortages), causing lost sales and 
+customer dissatisfaction [8].
+In this context, the objective of this practice paper is 
+to develop and apply machine learning (ML) techniques 
+to improve inventory management. The focus was on 
+more accurate demand forecasting, cost reduction, and 
+resource utilization. The practical application occurred 
+in Casa Cardão, a medium-sized Brazilian distributor 
+operating in both wholesale and retail channels for 
+construction supplies. This business context highlights 
+logistical and operational challenges, justifying the 
+implementation of advanced predictive techniques to 
+reduce disruptions and lower inventory holding costs.
+As is typical in medium-sized organizations, the 
+company has a lean IT (Information Technology) 
+structure and lacks analysts with advanced expertise 
+in Data Science and AI (Artificial Intelligence). 
+Many available software solutions require significant 
+investment and specialized staff. Currently, there is a 
+shortage of these professionals in Brazil, so advanced 
+applications of technologies such as AI and data analytics 
+remain out of reach for many medium-sized Brazilian 
+companies.
+The inherent complexity of supply chain management 
+(SCM) and demand forecasting, especially in scenarios 
+with intermittent or irregular demand [21], justifies 
+exploring more advanced methods than traditional 
+ones, which are often limited in their ability to capture 
+nonlinear patterns and multiple influencing variables 
+[15]. The use of ML in SCM has emerged as a promising 
+approach, providing powerful tools for analyzing large 
+datasets and identifying complex patterns [22].
+This practice paper addresses the following research 
+question: How can cloud-based AutoML platforms 
+enable SMEs (Small and Medium Enterprises) without 
+specialized data science teams to implement effective 
+demand forecasting systems for inventory management?
+The study offers three contributions:
+(i) Practical contribution: A detailed implementation 
+blueprint documenting the end-to-end process of 
+deploying AutoML-based demand forecasting in an SME, 
+including data pipeline, model selection, and dashboard 
+integration;
+(ii) Methodological contribution: Documentation of 
+how AWS AutoML workflows can be applied to time-
+series forecasting without requiring deep machine 
+learning expertise;
+(iii) Contextual contribution: Empirical evidence from 
+a Brazilian SME operating in the construction supplies 
+distribution industry, addressing a gap in the literature 
+regarding AutoML adoption in emerging market SMEs.
+The 
+contribution 
+of 
+this 
+study 
+is 
+primarily 
+architectural, organizational, and pedagogical rather 
+than methodological or algorithmic. The originality lies 
+not in the algorithms used—which are standard and 
+proprietary—but in the contextualized documentation 
+of 
+feasibility, 
+governance, 
+and 
+implementation 
+constraints when transitioning an SME from purely 
+descriptive analytics (analyzing past data through 
+reports) to a simplified predictive analytics capability. 
+For organizations that have no forecasting tools beyond 
+historical ERP (Enterprise Resource Planning) reports, as 
+is the case studied in this paper, this leap may represent 
+a significant and pragmatic capability gain, enabling 
+autonomous 
+future 
+analyses 
+without 
+permanent 
+dependence on external research teams.
+Casa Cardão was selected as a representative case of 
+a medium-sized Brazilian distributor facing inventory 
+management challenges with limited IT resources. The 
+company’s characteristics—diverse product portfolio 
+(10,500 + SKUs), seasonal demand patterns, lean IT 
+structure, and regional market position—are typical 
+of many SMEs in the construction supplies industry. 
+The boundary conditions of this study include: (i) the 
+Brazilian economic and regulatory context; (ii) the 
+construction supplies industry with its specific demand 
+patterns; (iii) availability of 16 + months of historical 
+transactional data; and (iv) access to temporary AWS 
+cloud credits. The implementation blueprint and 
+governance workflow are expected to be generalizable 
+to similar SME contexts, while specific accuracy metrics 
+are context-dependent and should not be extrapolated 
+without validation.
+This practice paper outlines the process of developing, 
+implementing, and evaluating ML-based predictive 
+models using Amazon Web Services (AWS), specifically 
+Amazon Forecast and Amazon SageMaker Canvas. This 
+practical study demonstrates the feasibility and benefits 
+of using these cloud-based technologies to improve 
+inventory management decision-making, supporting 
+the digital transformation and operational efficiency of 
+an organization with a less structured IT department. 
+The study also offers a reproducible model for Small and 
+Medium-sized Enterprises (SMEs), enabling the use of 
+machine learning for inventory management at lower 
+costs.
+The study was designed to develop an ML-based 
+solution that integrates internal data from ERP 
+(Enterprise Resource Planning) and CRM (Customer 
+Relationship 
+Management) 
+business 
+systems 
+with 
+external data (public data and partner databases) in a 
+Data Lake environment. This practical application aims 
+to provide more accurate forecasts, support informed 
+decision-making, and reduce waste [16, 23].
+The project was selected and received support through 
+a specific innovation call for proposals from the National 
+
+================================================================================
+PAGE 3
+================================================================================
+Page 3 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+	
+Council for Scientific and Technological Development 
+(CNPq), an entity associated with the Brazilian Ministry 
+of Science, Technology, and Innovation (MCTI). The 
+purpose of the call for proposals was to promote 
+collaborations between organizations and universities 
+in postgraduate research. The research project team 
+included the project coordinator (a professor in 
+Management), a PhD researcher in Management, and 
+two undergraduate research scholarship students in 
+Software Engineering.
+Other partners were also involved in the project: i) a 
+Brazilian business school, which provided access to its 
+customer database to identify potential opportunities 
+for testing and proof of concept; ii) a Paraguayan-
+Brazilian technological park associated with one of the 
+largest hydroelectric power plants in the world, which 
+supported submitting the research project to the FINEP 
+(Brazilian Funding Agency for Studies and Projects, also 
+associated with MCTI) call for innovation proposals, 
+potentially enabling additional resources; iii) a cloud 
+computing company based in São Paulo, which hosted 
+the resources required for the project’s development and 
+infrastructure; iv) AWS—Amazon Web Services, which 
+supplied a testing environment for over 12 months, 
+enabling the execution of the POC—Proof of Concept; 
+and v) a consulting and development firm in Minas 
+Gerais, which provided access to and resources for AI 
+development tools such as ChatGPT Pro, Manus AI, and 
+Base44.
+The project’s overall goal was to research, identify, and 
+develop ML-based models and technological solutions 
+that can work as predictors and automate data collection 
+and analysis using Artificial Intelligence. The project 
+aimed to create an intuitive interface for managers that 
+enables accurate simulations and forecasts for inventory 
+management. A specific goal was to make application 
+development easy to duplicate at low cost, using open-
+source software or no-code or low-code platforms (with 
+little or no coding or development), enabling its adoption 
+by companies with reduced IT budgets and personnel.
+Beyond this introduction, the next section of this 
+report 
+presents 
+the 
+theoretical 
+background 
+that 
+support the scientific framework that guides the study’s 
+development. Sect.  "Application development" details 
+the application development, reports the experiment 
+conducted, presents the achieved results, and discusses 
+the application of the tools. Sect. "Analysis of the results" 
+evaluates the study across the following dimensions: 
+i) how well it aligns with related fields and areas of 
+Management; ii) the potential environmental and 
+stakeholder impacts of the project; iii) the feasibility of 
+applying the proposed technology and processes; iv) 
+the innovation and knowledge level involved in product 
+development; and v) the complexity of the network 
+and relationships necessary for the project design and 
+execution. Sect.  "Discussion of results" discusses the 
+results, while Sect.  "Conclusion" concludes the report 
+with recommendations for future work and addresses its 
+limitations.
+Theoretical background
+This section provides an overview of the theoretical 
+framework that guided the application development. 
+Inventory management is central to logistics and 
+operations management, balancing inventory costs 
+with the risk of product shortages. Accurate demand 
+forecasting is essential for effective inventory control 
+[9]. 
+Traditional 
+forecasting 
+techniques, 
+such 
+as 
+moving averages, exponential smoothing, and ARIMA 
+(Autoregressive integrated moving average) models, are 
+widely used but may have limitations when handling 
+complex, seasonal, or multivariate data [5].
+Demand in the retail and distribution industry, such as 
+construction supplies, often exhibits characteristics like 
+intermittency (periods without demand) and seasonality. 
+Traditional models may struggle to capture these 
+patterns accurately [20, 21]. Additionally, external factors 
+such as promotions, economic conditions, changes in 
+tax laws, political events, competitor activities, and even 
+weather can influence demand, requiring models that can 
+incorporate multiple sources of information.
+Predictive models using Artificial Intelligence (AI) for 
+inventory management offer significant advantages over 
+traditional methods. ML algorithms process many factors 
+and identify complex patterns that traditional techniques 
+overlook [3], resulting in more accurate demand 
+forecasts and enabling quick adaptation to changing 
+market conditions [12]. As a subfield of AI, ML provides 
+alternative and complementary methods to traditional 
+statistical forecasting techniques. ML algorithms can 
+identify complex patterns in historical data, including 
+nonlinear relationships and interactions among multiple 
+variables, without relying on strict statistical assumptions 
+[15].
+Product demand forecasting is an essential technique 
+for inventory management, enabling companies to 
+optimize stock levels, reduce costs, and enhance 
+customer service. One machine learning method that 
+has gained prominence in this field is random forest for 
+forecasting [24]. Other machine learning algorithms have 
+been used effectively for demand forecasting, including 
+artificial neural networks (ANNs), support vector 
+machines (SVMs), and decision tree-based methods such 
+as random forest and gradient boosting [22, 24]. These 
+approaches are especially valuable when large amounts of 
+
+================================================================================
+PAGE 4
+================================================================================
+Page 4 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+data (Big Data) are available and demand is driven by a 
+complex mix of factors [6].
+Multiple studies show that this technique (Random 
+Forest) is highly effective for inventory management. Van 
+Steenbergen and Mes [23] introduced DemandForest, an 
+innovative approach that combines K-means clustering, 
+random forests, and quantile regression forests to 
+forecast demand patterns for new products. The method 
+was tested on real datasets and outperformed several 
+reference methods, resulting in about 15% savings in 
+inventory [23]. Vairagade et  al. [24] compared various 
+demand forecasting models, including random forest and 
+artificial neural networks. They found that random forest 
+was more accurate, making it better suited for predicting 
+product demand in complex supply chains.
+On the other hand, Tian et  al. [21] addressed 
+intermittent demand forecasting, a common challenge 
+in retail, and proposed a combined approach that 
+incorporates current inventory and past sales. This 
+method, known as the Markov-combined method 
+(MCM), 
+proved 
+more 
+accurate 
+than 
+traditional 
+techniques, leading to significant improvements in 
+inventory management.
+Punia et  al. [17] introduced another combined 
+approach that uses long short-term memory (LSTM) 
+and random forest models to capture complex temporal 
+and regression relationships. This method significantly 
+outperformed other forecasting techniques in accuracy 
+and robustness in multichannel retail settings.
+Naik et al. [16] examined sales forecasting in the food 
+industry using random forest regression. This model 
+was notable for its high accuracy compared with other 
+machine learning methods, making it well suited for 
+predicting sales and optimizing inventory management.
+In summary, the reviewed literature highlights three 
+key pillars that guided the application design: (i) the 
+superiority of ML approaches over traditional statistical 
+methods in volatile demand scenarios, due to their 
+ability to capture nonlinear relationships and multiple 
+variables [9, 15],(ii) the need to combine algorithmic 
+forecasting with human judgment to enhance operational 
+decision-making, as supported by studies on managerial 
+adjustments in forecasting (Goodwin & Fildes, 2019); and 
+(iii) the importance of explainability mechanisms that 
+clarify the most influential factors behind the forecast, 
+thereby increasing managers’ confidence in the system’s 
+recommendations [19].
+It is important to emphasize that the majority of the 
+cited studies evaluate algorithmic performance (i.e., 
+forecasting accuracy of specific ML methods), whereas 
+relatively few studies examine the implementation 
+process, organizational adoption, or the integration of 
+ML-based forecasting into decision making in practice. 
+This distinction is critical for positioning the present 
+study, whose contribution lies primarily in the domain 
+of documenting the feasibility of implementation, 
+governance, and socio-technical integration, rather than 
+in advancing algorithmic performance per se.
+The deployment of automated forecasting systems 
+raises 
+important 
+data 
+governance 
+questions. 
+Organizations must weigh the benefits of automation 
+against the risks of over-reliance on algorithmic 
+recommendations [19]. Key governance considerations 
+include: 
+(i) 
+Transparency 
+and 
+explainability: 
+Understanding 
+how 
+forecasts 
+are 
+generated 
+and 
+which factors drive predictions; (ii) Monitoring and 
+accountability: Establishing responsibility for forecast 
+quality and decision outcomes; (iii) Data quality and bias: 
+Ensuring input data integrity and detecting potential 
+biases in historical patterns; (iv) Human oversight: 
+Defining appropriate levels of human intervention 
+and override capabilities; and (v) Vendor lock-in: 
+Managing dependencies on proprietary platforms and 
+ensuring auditability. These data governance aspects 
+are particularly critical for SMEs, which may lack 
+the technical capacity to audit complex ML systems 
+independently. While ML forecasting brings potential 
+benefits, a significant adoption gap exists for SMEs 
+since traditional ML implementation requires: (i) 
+data science expertise for algorithm selection, feature 
+engineering, and hyperparameter tuning; (ii) software 
+engineering capabilities for production deployment; (iii) 
+computational infrastructure; and (iv) ongoing model 
+monitoring and maintenance [7].
+AutoML platforms aim to democratize ML by 
+automating 
+algorithm 
+selection, 
+hyperparameter 
+optimization, and model evaluation [11]. Cloud-based 
+AutoML services (e.g., AWS SageMaker, Google AutoML, 
+and Azure ML) further reduce infrastructure barriers by 
+providing managed environments with prebuilt pipelines.
+However, research on AutoML adoption in SMEs 
+remains limited since most studies focus on algorithmic 
+performance rather than on organizational feasibility, 
+implementation 
+challenges, 
+or 
+data 
+governance 
+requirements. The socio-technical aspects of AutoML 
+adoption—including user trust, interpretability, and 
+integration 
+with 
+existing 
+decision 
+processes—are 
+particularly underexplored [19].
+These findings informed the selection of AutoML 
+platforms that integrate diverse algorithms (e.g., 
+DeepAR + and random forest) and robust evaluation 
+metrics. Although the literature recognizes the potential 
+benefits of ML for demand forecasting in complex 
+environments, several gaps remain. First, most empirical 
+studies focus on large enterprises with dedicated data 
+science teams, leaving limited evidence on AutoML 
+
+================================================================================
+PAGE 5
+================================================================================
+Page 5 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+	
+adoption in SMEs (particularly in emerging markets). 
+Second, there is uncertainty about the practical 
+implementation challenges, governance requirements, 
+and total cost of ownership for cloud-based ML 
+solutions 
+in 
+resource-constrained 
+organizations. 
+Third, the human–AI interaction protocols needed for 
+successful adoption in organizations lacking technical 
+expertise remain underexplored. This practice paper 
+addresses these gaps by documenting an end-to-end 
+implementation of cloud-based AutoML for demand 
+forecasting in a Brazilian SME, including the technology 
+architecture, data governance workflow, and lessons 
+learned.
+As detailed in the next section, these theoretical 
+guidelines were put into practice in the application 
+development, defining the data pipeline, model selection 
+criteria, and human–machine interaction protocol that 
+form the foundation of the implemented solution.
+Application development
+This section describes the application development 
+process, 
+covering 
+the 
+IT 
+tools, 
+the 
+underlying 
+architecture, and the performance assessment. The 
+application context is Casa Cardão, a hundred-year-old 
+Brazilian distributor operating in both wholesale and 
+retail channels for construction supplies. It employs 
+around 220 staff members and 200 sales representatives. 
+It operates two regional distribution centers covering 
+12,000 ­m2 of storage and markets a portfolio of over 
+10,500 SKUs (Stock Keeping Units), with strong demand 
+for 150 items from the ABC curve. In 2023, the company 
+generated R$310 million (about US$60 million) in 
+revenue and held a 4% market share in Minas Gerais state 
+within the cement, mortar, and ceramic tile segments 
+[18].
+Development tools
+Developing and deploying ML models can be complex 
+and require substantial computational resources. Cloud 
+platforms such as Amazon Web Services (AWS), Google 
+Cloud Platform (GCP), and Microsoft Azure offer 
+managed services that can simplify this process. In this 
+study, two AWS tools were used. Amazon Forecast is a 
+fully managed service that uses ML to deliver highly 
+accurate time-series forecasts. It automates much of the 
+ML process, from data loading to model training and 
+deployment, automatically testing various algorithms 
+(including ARIMA, ETS, Prophet, DeepAR +, and others) 
+and selecting the best one for the data provided [1]. In 
+July 2024, AWS closed new customer access to Amazon 
+Forecast, directing users to SageMaker Canvas as the 
+recommended alternative. Existing Amazon Forecast 
+customers can continue using the service, but AWS 
+recommends transitioning to SageMaker Canvas for 
+enhanced features and cost efficiency. The second tool, 
+Amazon SageMaker Canvas, is a no-code visual interface 
+that enables business analysts to build ML models 
+without writing code. It streamlines data preparation, 
+model training, and forecast generation, making ML 
+more accessible to non-expert users [2]. These platforms 
+facilitated efficient experimentation and implementation 
+of predictive models in the Casa Cardão environment.
+The project produced a dashboard or visual layer 
+that displays structured data collected through an ETL 
+(Extract, Transform, and Load) process using AWS 
+SageMaker Data Wrangler, covering both external and 
+internal data. The dashboard includes a series of graphs 
+showing inventory forecasts (Fig. 1). A prompt feature on 
+the generative AI-powered dashboard interface provides 
+detailed explanations of the methodology and graphs 
+used, making the tool more user-friendly for managers.
+Additionally, the interface enables managers to run 
+simulations as needed, combine data from multiple 
+sources, and leverage this information to enhance 
+inventory management. The project is delivered in a 
+tailored manner, using company-specific data along with 
+information from public sources. The conversational 
+management dashboard can be continuously improved 
+by adding new data sources to develop a more robust and 
+effective predictive model for inventory management.
+The developed product is a demand prediction 
+system that uses predictor results generated by AWS 
+SageMaker Canvas, featuring an interactive dashboard 
+that provides product demand forecasts across three 
+scenarios: optimistic, neutral, and pessimistic. In the 
+optimistic scenario, inventory levels are low, and the 
+forecast accounts for seasonality and promotions. In the 
+pessimistic scenario, inventories are high, and there is no 
+forecasted demand for the products. The neutral scenario 
+indicates no discernible trend in demand, with stock 
+levels remaining balanced. The system’s features include 
+time-series analysis, integration of internal and external 
+data, customized simulations, and a console that explains 
+the methodology and the graphs used.
+The project can help the company by lowering costs 
+related to excess inventory or product shortages and 
+by making inventory management more efficient, 
+enabling more confident decision-making. Specifically, 
+the goal was to create AI-based inventory management 
+software that could predict necessary inventory levels 
+with 90% accuracy, and the model achieved a WAPE of 
+approximately 0.69% during the evaluation period.
+However, this aggregate metric should be interpreted 
+with caution, as WAPE is volume-weighted and may be 
+disproportionately influenced by high-turnover SKUs, 
+potentially masking poorer performance on low-volume 
+
+================================================================================
+PAGE 6
+================================================================================
+Page 6 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+or intermittent demand items. Operational objectives 
+include reducing excess inventory by 20% and shortages 
+by 15% within 1 year of implementation. Preliminary 
+qualitative observations suggest positive trends, though 
+systematic measurement of business impact—including 
+quantitative assessment of inventory cost reduction, 
+service-level improvements, and return on investment—
+will require a longer post-deployment evaluation period 
+and was not conducted within the scope of this study.
+Several machine learning techniques were tested 
+and used to develop the project, including AWS’s 
+proprietary algorithm, DeepAR. It is based on recurrent 
+neural networks (RNNs), with an LSTM (Long Short-
+Term Memory) model, and is often used to generate 
+probabilistic forecasts for multiple series (across various 
+products). DeepAR demonstrated the best accuracy 
+among the models available on the AWS platform, 
+including DeepAR +, CNN-QR, Prophet, ARIMA, and 
+ETS.
+Technology architecture and phases
+Application development began in August 2024, and by 
+April 2025, the proof of concept (POC) and validation of 
+the results were complete. The initial POC was developed 
+using Amazon Forecast, but due to the AWS’s transition 
+announcement, the production deployment migrated 
+to SageMaker Canvas. The system was fully operational 
+within the organization by July 2025. Figure 2 illustrates 
+the application’s technology pipeline, organized into 
+four functional layers in the AWS environment. In the 
+ingestion layer, transactional data extracted from Casa 
+Cardão’s ERP and CRM systems, along with external 
+data such as weather, holidays, and macroeconomic 
+indices, are stored in a data lake on Amazon S3. The 
+preparation layer uses SageMaker Data Wrangler for 
+ETL, ensuring the cleaning, aggregation, and enrichment 
+of time-series data. Next, the modeling layer employs 
+Amazon SageMaker Canvas for exploratory AutoML 
+and the Forecast service (DeepAR +, CNN-QR, Prophet, 
+among others) for final training, automatically selecting 
+the algorithm with the lowest backtest error [1, 2]. The 
+generated forecasts are stored in a versioned S3 bucket, 
+and AWS Lambda functions manage daily model 
+updates, providing serverless scalability.
+At the application layer, the results are integrated 
+into an interactive dashboard developed in React on 
+the base44 platform. This dashboard displays P35 
+(pessimistic), P50 (neutral), P60, and P80 (optimistic) 
+scenarios, complemented by a conversational interface 
+powered by GPT O3-mini. This modular and fully 
+managed workflow facilitates rapid iteration, cost 
+efficiency, and seamless integration between algorithmic 
+output and human decision making.
+A set of technological, functional, and legal 
+requirements 
+was 
+considered 
+for 
+the 
+project 
+development. 
+Technologically, 
+an 
+adequate 
+IT 
+infrastructure was required to support the collection, 
+storage, and processing of large volumes of data. AWS 
+was selected for its resources, widespread availability, 
+and 
+ease 
+of 
+implementation. 
+Functionally, 
+the 
+Fig. 1  Inventory forecast graphs. Note: Screenshots of the dashboards provided by the demand forecast application
+
+================================================================================
+PAGE 7
+================================================================================
+Page 7 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+	
+developed interface—dashboard—is intuitive and user-
+friendly, integrates with results generated by AWS, and 
+provides scenario analysis features for users. Legally, 
+the project complies with data protection and privacy 
+regulations and does not handle any sensitive data.
+The stakeholders included both internal and external 
+parties. Internally, the research team and IT team at 
+Casa Cardão, along with the project manager at the 
+cloud computing company, were essential. Externally, 
+AWS served as a key technology provider.  AWS 
+provided the credits and resources needed for testing 
+through its cloud computing and AI infrastructure. 
+The Proof of Concept (POC) was conducted at Casa 
+Cardão, providing a real environment to test and 
+assess the technology’s effectiveness. The application 
+development was structured into five distinct phases: 
+planning, 
+development, 
+testing 
+and 
+validation, 
+implementation, and evaluation and improvement. The 
+planning phase included defining requirements and 
+scope, as well as a detailed project schedule to ensure 
+clarity regarding the overall objectives.
+In the development phase, the predictor and an 
+interactive dashboard were built. During the testing 
+and validation phase, software testing, predictive model 
+validation, and POCs were conducted. These first three 
+phases occurred between August 2024 and April 2025.
+Subsequent phases include implementation, which 
+comprises implementation itself, user training, and 
+initial support; and finally, evaluation and improvement, 
+which involves performance monitoring, collecting user 
+feedback, and continuous improvement. These last two 
+phases were completed by July 2025. Figure 3 details each 
+of these phases.
+The main challenge was to improve the accuracy of 
+demand forecasting at Casa Cardão to enhance inventory 
+management. The initial phase involved gathering 
+historical sales data from the company, covering a 
+relevant period (usually 3 to 5 years, depending on 
+Fig. 2  Technological Architecture for the Development of the Demand Forecast Application 
+
+================================================================================
+PAGE 8
+================================================================================
+Page 8 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+availability and detail) to identify seasonal patterns 
+and trends. The data included, at a minimum, product 
+identifiers (SKUs), transaction dates, and quantities sold. 
+Additional information, such as details on promotions, 
+holidays, or product characteristics (metadata), was also 
+considered to improve the models.
+The collected data were cleaned and preprocessed. This 
+procedure included handling missing values, aggregating 
+the data to the required forecast level (e.g., daily or 
+weekly sales per SKU), and identifying and addressing 
+outliers as needed. The target time series (sales per SKU 
+per period) and related datasets (item metadata and 
+related time series, such as promotion data) were created.
+The Amazon Forecast and Amazon SageMaker Canvas 
+platforms were used to develop and train the predictive 
+models. The prepared data were uploaded to the service. 
+Amazon Forecast automatically trained and evaluated 
+multiple time-series forecasting algorithms, including 
+DeepAR +, CNN-QR, Prophet, ARIMA, and ETS. The 
+service selected the best-performing algorithm based on 
+predefined evaluation metrics (backtesting). Predictors 
+(trained models) were generated for the SKU set. 
+However, in the second half of 2024, AWS discontinued 
+the platform. A complementary or alternative approach 
+was explored using SageMaker Canvas as a natural 
+replacement for Amazon Forecast. The data were 
+imported into the visual interface, and predictive 
+models focused on time-series forecasting were built 
+using the platform’s automated features, enabling users 
+with less coding expertise to quickly conduct feasibility 
+assessments.
+Methods and validation protocol
+Table  1 summarizes the dataset characteristics and 
+evaluation protocol, detailed as follows.
+Data Characteristics. For the exemplified SKU 
+("Amanco 6 m × 100 mm drain pipe"), the historical 
+data comprised 16 months of daily records (July 2023 – 
+November 2024), totaling 11,074 observations. Data were 
+aggregated to daily granularity. The dataset was split into 
+training and backtesting sets at an 80/20 ratio. Missing 
+Fig. 3  Phases for development of the demand forecasting application
+Table 1  Summary of Dataset Characteristics and Evaluation 
+Protocol
+Characteristic
+Description
+Time span
+July 2023—November 2024 (16 months)
+Observations
+11,074 daily records (exemplified SKU)
+Granularity
+Daily
+Train-test split
+80% training/20% backtesting
+Forecast horizon
+60 days
+Algorithms compared
+DeepAR +, CNN-QR, Prophet, ARIMA, ETS
+Selected model
+DeepAR + (lowest backtest error)
+Primary metric
+WAPE (Weighted Absolute Percentage Error)
+
+================================================================================
+PAGE 9
+================================================================================
+Page 9 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+	
+values were handled using SageMaker Data Wrangler’s 
+automated 
+imputation 
+procedures. 
+Outliers 
+were 
+identified using statistical thresholds but retained in the 
+training data to preserve demand variability.
+Features: 
+Internal 
+variables 
+included 
+historical 
+sales quantities from the ERP system and customer 
+information from the CRM. External variables included 
+weather data, holiday calendars, and macroeconomic 
+indices. Feature inclusion was informed by domain 
+expertise and the literature; however, a formal 
+ablation study comparing model performance with 
+and without external features was not conducted. A 
+feature importance analysis to isolate the contribution 
+of individual variables represents an avenue for future 
+research.
+Validation 
+Protocol: 
+AWS 
+AutoML 
+performed 
+backtesting by splitting the time series into training and 
+testing sets. The platform automatically trained and 
+evaluated multiple algorithms (DeepAR +, CNN-QR, 
+Prophet, ARIMA, and ETS) and selected the model with 
+the lowest backtest error. Hyperparameter tuning was 
+handled automatically by the AWS AutoML system; 
+specific hyperparameter values were not manually 
+configured. The forecast horizon was set to 60 days to 
+align with operational purchasing cycle requirements.
+Model Selection: DeepAR +, a recurrent neural 
+network algorithm developed by Amazon, was selected 
+by the AutoML process as the best-performing model 
+for the evaluated SKUs. The selection criterion was the 
+lowest WAPE on the backtest dataset. We acknowledge 
+that reliance on AWS AutoML automation offers 
+both practical benefits for SMEs lacking data science 
+expertise and methodological limitations regarding full 
+transparency and reproducibility.
+Evaluation was conducted on a set of 10 representative 
+SKUs selected from the company’s ABC classification. 
+A systematic comparison with simple baseline models 
+(naïve and seasonal naïve forecasts) was not performed 
+because the AWS AutoML platform operates as a “black 
+box” that does not expose its internal benchmarking 
+process or allow users to inject custom baseline 
+algorithms into its evaluation pipeline. The platform 
+automatically tests its own suite of algorithms (including 
+DeepAR +, CNN-QR, Prophet, ARIMA, and ETS) and 
+selects the best performer; however, it does not report 
+how these compare against elementary baselines such as 
+naïve persistence. Similarly, advanced hyperparameter 
+optimization (e.g., via grid search or genetic algorithms) 
+was not manually performed, as the AutoML platform 
+handles this process automatically. Indeed, this intrinsic 
+design limitation is the core value proposition of AutoML 
+services, representing a deliberate trade-off between 
+methodological control and implementation practicality 
+for resource-constrained SMEs. Error distribution 
+by SKU class (e.g., ABC classification or intermittent 
+vs. smooth demand) and by forecast horizon was not 
+analyzed, representing a limitation of this study and an 
+opportunity for future research.
+Performance evaluation
+The model’s performance was assessed using standard 
+time-series 
+forecasting 
+metrics, 
+with 
+backtesting 
+conducted on AWS. The following metrics were 
+considered:
+RMSE (Root Mean Squared Error), which gauges the 
+average size of errors and penalizes larger deviations [10]:
+where yt is the actual demand at time t and yt is the 
+predicted demand.
+MAPE (Mean Absolute Percentage Error), which 
+expresses errors in percentage terms relative to actual 
+demand and is sensitive to low values [10, 14]:
+MASE (Mean Absolute Scaled Error), which compares 
+the model’s performance against a naive model and is 
+especially useful for intermittent data [10]:
+MASE compares forecast error to a naïve baseline 
+(previous period’s value). MASE < 1 indicates better 
+performance than naïve forecasting [10].
+Weighted average percentage error (WAPE)
+where yt is the actual value and yt is the forecast. WAPE 
+weights errors by total demand, providing robustness for 
+items with varying sales volumes [13]. The WAPE metric 
+was chosen as the primary indicator because it reflects 
+the impact on total sales volume and is less sensitive to 
+outliers than RMSE. WAPE was selected as the primary 
+metric because it is less sensitive to low-volume periods 
+than MAPE [10] and provides an aggregate measure 
+of forecast accuracy that weights forecast accuracy by 
+demand volume [13].
+RMSE =
+
+
+
+1
+n
+n
+
+t=1
+(yt −yt)2
+MAPE = 100%
+n
+n
+
+t=1
+
+yt −yt
+yt
+
+MASE =
+1
+n
+n
+t=1 |yt −yt|
+1
+n−1
+n
+t=2 |yt −yt−1|
+WAPE =
+n
+t=1 |yt −yt|
+n
+t=1 yt
+× 100%
+
+================================================================================
+PAGE 10
+================================================================================
+Page 10 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+After selecting the best-performing model(s), demand 
+forecasts were generated for a relevant future period (e.g., 
+the next 4–12 weeks). These forecasts were then provided 
+to Casa Cardão’s Commercial Department via reports 
+and the dashboard to support inventory replenishment 
+and purchasing planning decisions, and to validate the 
+results.
+The implementation of predictive models using 
+Amazon Forecast and SageMaker Canvas at Casa Cardão 
+produced important results. A comparative analysis 
+of algorithms trained on AWS platforms showed that 
+ML-based models, such as DeepAR + (a recurrent neural 
+network from Amazon), often outperformed traditional 
+statistical models (e.g., ARIMA and ETS) for most SKUs 
+analyzed, particularly those with more complex or 
+seasonal demand patterns.
+To demonstrate the model’s performance on a high-
+turnover item, the SKU "Amanco 6 m × 100 mm drain 
+pipe" was selected, classified as "A" for value and "B" 
+for volume in the Casa Cardão portfolio. The historical 
+data comprised 16 months of daily records (July 2023 – 
+November 2024), totaling 11,074 observations, with 80% 
+used for training and 20% for backtesting. The forecast 
+horizon was set to 60 days. In the optimistic scenario 
+(P80), chosen because the factory delayed passing on 
+the exchange rate increase and kept prices stable despite 
+the US dollar’s appreciation, the DeepAR + algorithm 
+estimated 2,340 units for December 2023, while actual 
+sales were 2,255 units, resulting in a WAPE of 0.7%. 
+The deviation of less than 1% illustrates the model’s 
+performance for this specific high-volume item and 
+highlights the synergy between statistical forecasting 
+and managerial judgment in selecting the appropriate 
+quantile for market conditions.
+Developed through optimization and selection by 
+Amazon Forecast, the final predictive model achieved 
+a WAPE of approximately 0.69% during the evaluation 
+period. This metric represents the aggregate weighted 
+error across the evaluated SKUs. WAPE is volume-
+weighted, meaning that high-volume items contribute 
+proportionally more to the aggregate measure [13]. Per-
+SKU class breakdowns (e.g., by ABC classification) and 
+a separate analysis of intermittent demand items were 
+not conducted in this study; these represent avenues for 
+future analysis.
+The flowchart (Fig.  4) illustrates the entire cycle of 
+the predictive demand model, outlining seven macro-
+stages integrated within a cloud computing environment. 
+The process begins with the automated extraction of 
+transactional data from the company’s ERP and CRM 
+systems, along with external variables—macroeconomic 
+indicators, holiday calendars, and weather data—
+which are stored in a data lake on Amazon S3. The 
+seventh step involves continuous accuracy monitoring: 
+a daily verification process compares actual sales with 
+predictions; if the WAPE exceeds the 5% threshold, a 
+new retraining cycle is automatically initiated, ensuring 
+adaptive learning and predictive robustness over time. 
+We acknowledge that the cold-start problem for new 
+products (lacking sufficient historical data) has not yet 
+been addressed in this implementation and represents an 
+opportunity for future development.
+Next, using SageMaker Data Wrangler, the ETL 
+pipeline runs, responsible for cleaning, aggregating over 
+Fig. 4  Demand Predictor Model Flowchart. Note: Flowchart to be used during the inventory replenishment process
+
+================================================================================
+PAGE 11
+================================================================================
+Page 11 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+	
+time, and enriching historical data to ensure its quality 
+for modeling. In the third step, this structured data is 
+fed into SageMaker Canvas, where multiple time-series 
+algorithms are automatically trained and validated via 
+backtesting; the model with the lowest weighted absolute 
+error (WAPE) is then versioned as the active predictor.
+The next step involves periodically generating forecasts, 
+storing them in a separate S3 bucket, and simultaneously 
+sending them to a relational database via AWS Lambda 
+functions for real-time access. In the fifth step, these 
+forecasts are used by an interactive dashboard built with 
+React (an open-source JavaScript library for building 
+user interfaces), where the manager selects P50, P60, or 
+P80 scenarios and reviews the key factors influencing 
+each forecast horizon. The resulting decisions—such 
+as adjustments to orders, promotions, or inventory 
+policies—are fed back into the system in the sixth step by 
+recording the actions taken and their outcomes, thereby 
+forming an operational feedback database.
+The seventh step involves continuous accuracy 
+monitoring: a daily verification process compares 
+actual sales with predictions. If the WAPE exceeds the 
+5% threshold, a new retraining cycle is automatically 
+initiated, ensuring adaptive learning and predictive 
+robustness over time. This modular and coordinated 
+chain offers scalability, data governance, and alignment 
+between 
+algorithmic 
+intelligence 
+and 
+managerial 
+judgment, which are essential for the successful 
+adoption of demand models in small and medium-sized 
+enterprises.
+During 
+the 
+POC, 
+the 
+primary 
+results 
+from 
+implementing predictive models showed significant 
+potential benefits for the business, particularly a 
+reduction in stockouts, enabled by more accurate 
+forecasts 
+that 
+improved 
+replenishment 
+planning. 
+Additionally, inventory levels were optimized by 
+adjusting safety stocks and reorder points, leading 
+to better allocation of working capital by balancing 
+availability and excess inventory. Purchasing planning 
+also improved, with forecasts providing strategic support 
+for supplier negotiations and greater alignment among 
+procurement, inventory, and demand.
+The adoption of AWS platforms streamlined the 
+development and implementation of models, enabling 
+the team to focus on analyzing results and integrating 
+forecasts 
+into 
+business 
+processes, 
+despite 
+initial 
+limitations in deep machine learning.
+Analysis of the results
+This section provides detailed information on key 
+aspects of the application, including its compliance 
+with management areas, its impact on organizational 
+and social aspects, and its usefulness across different 
+business environments. Additionally, it examines the 
+advancements brought by integrating predictive models 
+with ML tools, emphasizing how these innovative 
+solutions can change decision making and improve 
+processes. Lastly, it discusses the complexity and 
+importance of these models for small and medium-sized 
+businesses.
+Adherence
+The application of predictive models and inventory 
+management is closely connected to various areas of 
+management and related disciplines, with a special focus 
+on the management of information systems. Predictive 
+models align with Theme 1 on decision making (theories, 
+modeling, support systems, and technologies), promoting 
+tools that support and facilitate decision making in 
+complex environments. Additionally, the application 
+relates to digital transformation and innovation, 
+enabling greater efficiency in inventory and operations 
+management. The application also engages with Big 
+Data, Data Science, and AI for Strategic Intelligence, as 
+ML applications require large volumes of data.  Beyond 
+technology and information, the application links to 
+other management fields, including operations and 
+logistics, innovation, marketing, and finance.
+Impact
+Developing a ML project to predict product demand 
+can significantly improve how companies manage 
+complex inventories. This influence extends across the 
+organization, community, and local area, helping to 
+improve operational efficiency, reduce costs, and boost 
+customer satisfaction.
+The application aimed to promote AI adoption among 
+small and medium-sized enterprises (SMEs) through 
+a range of strategies. First, the application focused on 
+providing user-friendly, pre-made AI tools tailored to 
+SMEs’ specific needs, which can be easily integrated into 
+existing systems and workflows. This feature reduces the 
+need for specialized AI technical expertise. Additionally, 
+the solution automates routine and repetitive tasks, 
+freeing companies to allocate time and resources to 
+activities of greater strategic importance, thereby 
+enhancing operational efficiency and reducing costs.
+The present application can benefit the environment 
+by preventing the loss of perishable items and reducing 
+unnecessary consumption in the food supply chain, 
+thereby making resource use more efficient and lowering 
+carbon emissions. For example, it can help companies 
+better manage their inventories and supply chains, 
+preventing material waste through demand forecasting, 
+delivery route optimization, and real-time inventory 
+monitoring. The application can also have a significant 
+
+================================================================================
+PAGE 12
+================================================================================
+Page 12 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+positive social impact by promoting greater efficiency 
+and growth for companies. The automation of routine 
+tasks and the improved decision making enabled by AI 
+can boost business productivity.
+Applicability
+The replicability of this type of project in other contexts 
+is high owing to the adaptability of ML algorithms. Small 
+and medium-sized (SMEs) businesses can also use cloud-
+based ML services, such as AWS, Google AI, and Azure, 
+which provide scalable and cost-effective solutions. 
+Especially for SMEs, considerable potential for applying 
+the proposed model is evident, as low-code platforms do 
+not require highly skilled machine learning teams.
+ML algorithms can be integrated with ERP systems 
+and other business management platforms, enabling 
+companies to use historical and real-time data to train 
+models and improve forecast accuracy. The scalability 
+of these models is a key benefit, as they can adapt to the 
+volume and complexity of inventory operations. ML’s 
+ability to detect intricate patterns and generate precise 
+predictions greatly reduces human error and streamlines 
+inventory and replenishment processes, especially in 
+business environments where demand is volatile and 
+unpredictable.
+ML algorithms are sufficiently adaptable to operate 
+across diverse settings and can be tailored to manage 
+inventory across industries such as retail, manufacturing, 
+and distribution. Thorough documentation of models, 
+training 
+procedures, 
+and 
+integrations 
+supports 
+replication in new environments without requiring a 
+restart.
+The proposed application is a modular solution that 
+enables specific components to be reused or adapted 
+for various applications, such as modifying a demand 
+forecasting model to predict sales across different 
+markets or products. The potential market for the project 
+is extensive, as any company with critical inventory 
+management needs can benefit from predictive models. 
+In the industrial sector, these models can forecast 
+demand for specific products, optimize production, and 
+reduce excess inventory. Additionally, they can identify 
+products at high risk of becoming obsolete, enabling 
+preventive measures, and predict equipment failures to 
+facilitate maintenance and avoid production downtime. 
+Distributors and wholesalers can use these models 
+to optimize inventory levels, prevent shortages, and 
+minimize storage costs. They can also forecast demand 
+for seasonal products to ensure adequate stock and 
+identify slow-moving items to inform discontinuation 
+decisions. In retail, predictive models help forecast 
+demand for particular products in specific stores, 
+preventing shortages and maximizing sales. They also 
+identify high-turnover products to optimize store 
+displays and predict the end of product life cycles, aiding 
+promotions and reducing waste.
+For service companies, predictive models help 
+forecast demand for specific services, optimize resource 
+allocation, and prevent overload. They can identify 
+customers at high risk of default, enabling preventive 
+measures and predict equipment maintenance needs to 
+avoid service interruptions.
+Innovation
+The innovation contribution of this application lies not in 
+algorithmic novelty but in a socio-technical integration 
+blueprint for SMEs. Specifically, the innovation involves: 
+(i) integrating a data pipeline (ERP/CRM data lake) with 
+AutoML platforms and interactive dashboards within 
+a coherent data governance workflow; (ii) a human–AI 
+decision support design that enables managers without 
+technical expertise to select appropriate quantile 
+scenarios (P50/P80) and understand forecast implications 
+through a conversational interface; and (iii) an empirical 
+demonstration of feasibility and practical constraints 
+when implementing cloud-based ML in an SME with 
+limited IT resources. The use of established cloud 
+services (AWS) means that the algorithmic components 
+themselves are not novel; rather, the contribution is the 
+accessible and reproducible implementation architecture.
+The application’s level of innovation is justified 
+by making it easier for SMEs to use ML to develop 
+predictive models that forecast product demand. In 
+demand forecasting, ML can analyze historical data on 
+sales, prices, promotions, and other factors to identify 
+patterns that help predict future demand.
+Using ML for demand forecasting offers several 
+advantages over traditional methods. First, it provides 
+greater accuracy by considering a wide range of factors 
+and identifying patterns that are invisible to the human 
+eye. Additionally, machine learning is faster, enabling 
+companies to make decisions quickly and respond 
+promptly to market changes.
+An analysis of predictive model functionality indicates 
+that this capability is absent from current enterprise 
+resource planning (ERP) systems, which generate reports 
+solely from historical data. Likewise, business intelligence 
+(BI) systems display only historical data, not data for 
+predictive analysis. Although specialized systems that 
+cross-reference data and offer predictive models exist, 
+their high development costs make this technology 
+inaccessible to small and medium-sized enterprises 
+(SMEs). Implementing such technologies requires 
+experts like data scientists, AI specialists, and cloud 
+computing professionals, highly paid professionals that 
+many SMEs do not have.
+
+================================================================================
+PAGE 13
+================================================================================
+Page 13 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+	
+Carvalho et  al. [7] highlight the challenge of finding 
+these IT professionals in Brazil and the shortage of 
+trainees. The application described in this practical 
+paper aims to address these gaps by offering a simple 
+and user-friendly interface that provides advanced 
+computational resources to SMEs. This feature will 
+enable these companies to leverage advanced AI to solve 
+major business problems, democratizing data analytics 
+and making it accessible to more companies that might 
+not be able to afford high implementation costs. The 
+solution’s intuitive and straightforward interface enables 
+managers without extensive technical knowledge to use 
+the tool effectively, conducting simulations and clearly 
+understanding forecasts.
+Another key benefit is the system’s customization and 
+flexibility, which can be tailored to company-specific data 
+and continuously improved as new data sources become 
+available. Combining data from various internal and 
+external sources through an ETL (Extract, Transform, 
+Load) process offers a comprehensive and precise view 
+for decision-making.
+Complexity
+Developing a ML product demand prediction project 
+is quite complex, needing close teamwork and diverse 
+expertise. It involves collaboration among data scientists, 
+software engineers, supply chain specialists, and project 
+managers. The involvement of external stakeholders 
+like suppliers and customers is essential for collecting 
+relevant data and verifying the predictive models, 
+offering insights beyond internal sources [25].
+The project requires advanced technical expertise in 
+ML, including supervised and unsupervised learning 
+algorithms, data preprocessing techniques, feature 
+engineering, and model validation [11]. Furthermore, 
+using collaboration and project management tools 
+can improve communication and cooperation among 
+participants, helping identify uncertainties, risks, and 
+critical factors for the project’s success [4].
+When implementing the project in other companies, 
+some risks should be considered, including poor 
+planning, a lack of technical skills, difficulties with 
+system integration, and employee resistance to change. 
+Integrating with existing systems can lead to problems 
+such as incompatibility, failures, and errors. Additionally, 
+employee resistance to adopting the new ML application 
+can lead to mistakes, misuse, and low adoption.
+Specific technological risks include data quality, 
+as incomplete, inaccurate, or biased data can lead to 
+inefficient or incorrect predictions. Information overload 
+can make data management and interpretation difficult. 
+Data security is essential to prevent breaches. The 
+performance of an AI model may not reach the desired 
+accuracy due to technical limitations or insufficient 
+data. Rapid technological advances can quickly render 
+the system obsolete, requiring continuous updates and 
+ongoing investments.
+Additionally, reliance on appropriate technological 
+infrastructure is necessary to support data processing 
+and storage. A dependence on IT vendors, such as 
+AWS, that can migrate to another platform or even 
+render their own platform obsolete, could increase costs 
+and pose a risk to the project. Regarding regulatory 
+risks, compliance with data protection laws such as the 
+Brazilian LGPD (General Data Protection Law) is critical 
+to avoid fines and reputational damage. There are also 
+specific regulations on AI use and industry standards that 
+must be followed to ensure security and compliance. To 
+address these risks, strategies such as proper planning, 
+training and capacity building, planned integration, 
+stakeholder engagement, data governance, technological 
+updates, and cybersecurity measures should be adopted.
+Discussion of results
+Theoretical implications
+The results provide preliminary evidence that using 
+machine 
+learning 
+techniques, 
+enabled 
+by 
+cloud 
+platforms, can enhance demand forecasting and 
+inventory management at a building materials distributor. 
+The achieved WAPE of approximately 0.69% represents 
+the aggregate error during the evaluation period, though 
+this should be interpreted with caution: (i) the metric 
+is volume-weighted and may be influenced by high-
+turnover items; (ii) a systematic comparison with classical 
+baselines (naïve, seasonal naïve) was not conducted; and 
+(iii) the error distribution across SKU classes and forecast 
+horizons was not analyzed.
+Accordingly, the primary value of this study should 
+not be assessed through the lens of forecasting accuracy 
+alone. The contribution is fundamentally architectural 
+and socio-technical since it demonstrates how an 
+SME that previously relied exclusively on descriptive 
+analytics—historical sales reports generated by its 
+ERP system—can transition to a simplified predictive 
+analytics 
+capability 
+using 
+cloud-based 
+AutoML 
+platforms. For Casa Cardão, this leap is analogous 
+to moving from a basic point-and-shoot camera to a 
+professional camera with guided settings. Analogously, 
+the solution does not represent the most sophisticated 
+approach in absolute terms, but it provides a relevant, 
+accessible, and “palatable” capability gain for the SME 
+context. Critically, the implemented architecture enables 
+the company to conduct future analyses autonomously, 
+without permanent dependence on the research team, 
+thereby contributing to organizational learning and 
+digital maturity. The novelty of the paper is associated 
+
+================================================================================
+PAGE 14
+================================================================================
+Page 14 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+with its demonstration of a feasible path for SMEs toward 
+predictive analysis.
+The absence of a systematic comparison with naïve or 
+seasonal naïve baselines constitutes a methodological 
+limitation. This omission is partly attributable to the 
+“black box” nature of the AWS AutoML platform, 
+which does not expose its internal benchmarking 
+against elementary baselines or allow users to inject 
+custom algorithms into the evaluation pipeline. AWS 
+platform employs its own proprietary algorithms (such 
+as DeepAR +, a variation of LSTM networks) and 
+performs automatic hyperparameter optimization. This 
+automation is constitutes a deliberate trade-off between 
+methodological control and implementation practicality. 
+Future research should address this gap by conducting 
+parallel evaluations using open-source frameworks 
+that allow full baseline comparisons under identical 
+evaluation protocols.
+This approach is expected to work best when: (i) 
+sufficient historical data (16 + months) is available; 
+(ii) demand patterns include seasonal or complex 
+components that traditional methods struggle to 
+capture; and (iii) the organization lacks specialized data 
+science staff but has basic IT capability to manage cloud 
+integrations. The approach may be less suitable for: (i) 
+highly intermittent demand with frequent zero-demand 
+periods; (ii) products with short life cycles or frequent 
+specification changes; (iii) contexts where data quality 
+is poor or historical records are incomplete; and (iv) 
+organizations requiring full algorithmic transparency for 
+regulatory or governance reasons.
+The 
+cloud-based 
+AutoML 
+approach 
+involves 
+several trade-offs that organizations should consider: 
+(i) Accuracy vs. Explainability: While AutoML can 
+achieve low error rates, the underlying model (e.g., 
+DeepAR + neural networks) functions as a "black box," 
+limiting the ability to explain individual predictions. The 
+conversational dashboard mitigates this by providing 
+scenario explanations, but full algorithmic transparency 
+is not achieved. (ii) Cost vs. In-house Capability: The 
+estimated monthly TCO of USD 500–1500/month1 
+avoids the higher cost of hiring specialized data scientists 
+but creates ongoing operational expenses and vendor 
+dependency. (iii) Convenience vs. Vendor Lock-in: AWS-
+managed services simplify implementation but create 
+dependency on a single vendor’s ecosystem, pricing, and 
+product lifecycle decisions (as illustrated by the Amazon 
+Forecast transition). (iv) Speed vs. Customization: 
+AutoML enables rapid deployment but limits fine-
+grained control over hyperparameters and model 
+architectures.
+This finding aligns with the literature highlighting 
+the benefits of ML for capturing complex patterns in 
+demand time series [15, 22]. The ability of the algorithms 
+used (such as DeepAR +) to automatically incorporate 
+features like seasonality, trends, and related metadata (if 
+provided) was crucial to the performance achieved.
+Using platforms such as Amazon Forecast and 
+SageMaker Canvas proved an effective way to overcome 
+barriers to ML adoption, especially for SMEs such 
+as Casa Cardão. Automating tasks such as algorithm 
+selection, hyperparameter tuning, and model evaluation 
+(AutoML) accelerated development and enabled strong 
+results without requiring a large team of data scientists 
+[1, 2].
+The 
+tangible 
+benefits 
+observed—reduction 
+in 
+stockouts, 
+inventory 
+optimization, 
+and 
+improved 
+planning—corroborate the positive impact of technology 
+on operational efficiency and potential cost savings [6, 8]. 
+By minimizing waste (associated with excess inventory) 
+and lost sales (due to disruptions), the solution directly 
+contributed to the company’s competitiveness.
+Managerial recommendations
+From a decision-making perspective, companies must 
+balance the trade-offs among processing costs, predictive 
+performance, and explainability when selecting cloud 
+platforms. Services like Amazon SageMaker Canvas 
+offer competitive pay-as-you-go pricing and require 
+minimal setup for data pipelines. In contrast, open-
+source solutions (e.g., Prophet) offer greater algorithmic 
+transparency but depend on an internal data science 
+team. For SMEs with limited IT resources, Casa Cardão’s 
+experience indicates that outsourcing infrastructure is 
+an efficient and replicable way to gradually adopt AI in 
+operations.
+Based 
+on 
+our 
+implementation 
+experience, 
+the 
+estimated monthly cost of maintaining the AWS 
+infrastructure (S3 storage, Lambda functions, SageMaker 
+Canvas training and inference) ranges from USD 500 
+to USD 1,500, depending on data volume, the number 
+of SKUs analyzed, and retraining frequency. This 
+budget compares favorably with hiring dedicated data 
+science personnel (annual salaries in Brazil for qualified 
+professionals exceed USD 60,000), though organizations 
+should factor in ongoing cloud costs when assessing 
+long-term sustainability beyond initial grant-funded or 
+credit-supported phases.
+1  Monthly operational costs (post-implementation):—Amazon S3 storage: 
+$50–100 (depending on data volume)—AWS Lambda functions: $20–50 
+(for automation and data processing)—SageMaker Canvas: $300–1,000 
+(based on training frequency and data volume)—Data Wrangler: $50–150 
+(for preprocessing)—CloudWatch monitoring: $20–50—Estimated total: 
+$500–1,500/month.
+
+================================================================================
+PAGE 15
+================================================================================
+Page 15 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+	
+The implemented solution includes several governance 
+mechanisms: (i) data governance: All data are stored in 
+versioned S3 buckets with access logging; (ii) access 
+control: role-based access within AWS IAM ensures 
+that only authorized personnel can modify models or 
+access sensitive data; (iii) model monitoring: The 5% 
+WAPE threshold triggers automatic retraining, with 
+monitoring logs retained for audit purposes; and (iv) 
+mitigation of over-reliance: The system presents multiple 
+quantile scenarios (P50, P60, ande P80) rather than 
+single-point forecasts, encouraging managers to exercise 
+judgment rather than blindly accepting algorithmic 
+recommendations. 
+Nevertheless, 
+a 
+comprehensive 
+organizational 
+change 
+assessment 
+(user 
+adoption, 
+learning curves, and impact on decision-making culture) 
+was not conducted and represents an avenue for future 
+research.
+However, some limitations and challenges arose. The 
+quality and availability of historical data were essential; 
+gaps or inconsistencies required significant effort during 
+preprocessing. Additionally, the interpretability of more 
+complex ML models, known as "black box" models, can 
+be difficult, though platforms like SageMaker Canvas 
+offer tools to help explain their predictions. Successful 
+implementation also depended on a cultural shift and on 
+adapting internal company processes to build trust and 
+effectively use the predictions generated by the system. 
+Despite these challenges, the experience demonstrates 
+that integrating AI into SCM processes is practical and 
+beneficial.
+Conclusion
+This practice and policy paper describes and analyzes the 
+development and deployment of a cloud-based AutoML 
+demand forecasting system at Casa Cardão, a medium-
+sized Brazilian distributor of building materials. The 
+study’s primary contribution is architectural and socio-
+technical rather than methodological or algorithmic. 
+The originality of the studies lies in providing a detailed 
+and reproducible implementation blueprint, showing 
+how an SME that previously relied solely on descriptive 
+analytics (historical ERP and BI reports) can transition to 
+a simplified predictive analytics capability using managed 
+cloud platforms (Amazon Forecast and SageMaker 
+Canvas). The implemented system achieved a WAPE 
+of approximately 0.69% during the evaluation period, 
+though this aggregate metric should be interpreted 
+cautiously given the limitations discussed below. 
+Preliminary qualitative observations suggest potential 
+benefits in reducing stockouts, optimizing inventory 
+levels, and improving purchasing planning, though 
+systematic pre- and post-measurement of quantitative 
+business KPIs was not conducted and requires longer 
+evaluation periods. The study illustrates how cloud-
+based AutoML platforms can lower barriers to entry for 
+SMEs that lack specialized Data Science teams, providing 
+a concrete and exploratory example of how AI-driven 
+demand forecasting can support digital transformation 
+in supply chain management. This case study may be 
+a motivator for similar SMEs willing to leverage their 
+analytic capabilities.
+From both theoretical and practical perspectives, 
+the study contributes by detailing an end-to-end ML 
+implementation in an SME supply chain, including the 
+technology architecture, data pipeline, and human–
+machine interaction protocols. It reinforces evidence that 
+advanced ML models, when combined with managerial 
+judgment and appropriate performance monitoring, can 
+capture nonlinear and seasonal patterns that traditional 
+statistical methods may miss, particularly in volatile 
+demand environments such as construction supply 
+distribution. The project also highlights the importance 
+of 
+governance 
+mechanisms—such 
+as 
+continuous 
+accuracy monitoring, retraining triggers, and feedback 
+loops between forecasts and operational decisions—to 
+sustain predictive performance over time.
+This study has several limitations that should be 
+acknowledged. First, as a single-case practice study, 
+the results are context-dependent and should not 
+be generalized without validation in other settings. 
+Second, only aggregate WAPE is reported; per-SKU 
+class breakdowns, intermittent demand analysis, and 
+multi-horizon error distributions were not conducted. 
+Third, a systematic comparison with naïve and seasonal 
+naïve baselines under identical evaluation protocols 
+was not performed. Fourth, business impact claims 
+(inventory reduction and stockout reduction) are 
+presented as expected benefits based on preliminary 
+qualitative observations rather than as empirically 
+confirmed achievements. Fifth,  reliance on AWS 
+AutoML limits methodological transparency, as specific 
+hyperparameters were neither manually configured 
+nor reported. Sixth, the cold-start problem for new 
+products without historical data remains unaddressed. 
+Seventh, user adoption and organizational change 
+dimensions were not systematically assessed. Eighth, data 
+cannot be made publicly available due to confidentiality 
+agreements, limiting reproducibility. Finally, the solution 
+benefited from temporary AWS credits, and long-term 
+financial sustainability at the estimated TCO of USD 
+500–1500/month requires validation.
+Several 
+of 
+these 
+limitations 
+merit 
+further 
+contextualization. The absence of baseline comparisons 
+(third limitation) stems primarily from the “black box” 
+nature of the AWS AutoML platform, which does not 
+allow users to inject custom algorithms into its evaluation 
+
+================================================================================
+PAGE 16
+================================================================================
+Page 16 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+pipeline or expose how the selected model compares 
+against elementary baselines such as naïve persistence. 
+This opacity is an inherent feature of proprietary 
+AutoML services and represents a trade-off that the 
+study consciously accepted in exchange for the feasibility 
+of rapid implementation in a resource-constrained SME. 
+Similarly, the limited hyperparameter transparency (fifth 
+limitation) reflects the design philosophy of AutoML 
+platforms, which automate hyperparameter optimization 
+as their core value proposition. The evaluation scope 
+(second limitation) was constrained to 10 representative 
+SKUs from the company’s portfolio of over 10,500 items; 
+while these SKUs were selected to represent different 
+ABC classification categories, a comprehensive evaluation 
+across all demand profiles was beyond the scope of this 
+exploratory study. The absence of quantitative business 
+impact measurement (fourth limitation) reflects the 
+study’s focus on technical feasibility and implementation 
+architecture rather than on a full cost–benefit analysis, 
+which would require multiple years of post-deployment 
+data collection. While significant, these limitations do 
+not undermine the study’s core contribution, which is the 
+description and analysis of an accessible and reproducible 
+implementation blueprint for SME contexts.
+Further limitations stem from the technology choices. 
+The solution relied primarily on AWS-managed services 
+(Amazon Forecast and SageMaker Canvas) and benefited 
+from temporary cloud credits, which may not reflect the 
+long-term cost structure faced by all SMEs. There is also 
+vendor lock-in and opacity associated with proprietary 
+algorithms, which can limit transparency, reproducibility, 
+and portability to other environments. Additionally, the 
+evaluation period for business outcomes was relatively 
+short and focused mainly on forecasting metrics and 
+qualitative managerial perceptions, rather than on 
+a full cost–benefit analysis that included financial 
+indicators such as return on investment, working capital 
+reduction, or service-level improvements over multiple 
+years. Finally, the study did not systematically assess 
+organizational change dimensions, such as user adoption, 
+learning curves, and the impact of the system on roles, 
+routines, and decision-making culture.
+These limitations open several opportunities for future 
+studies. One important direction is to design, implement, 
+and evaluate an open-source reference model that 
+replicates the solution’s core functionalities at even lower 
+marginal costs and greater transparency. Such a model 
+could be built with open-source libraries and frameworks 
+and released under a permissive license, enabling 
+replication, adaptation, and peer review by researchers, 
+practitioners, and policymakers. Comparative studies 
+could then benchmark proprietary cloud services against 
+fully open-source stacks—considering not only predictive 
+accuracy but also total cost of ownership, explainability, 
+maintainability, and ease of integration with existing ERP 
+and CRM systems.
+Future research should also extend the empirical scope 
+beyond a single company and sector. Multi-case or cross-
+industry studies—including food retail, pharmaceuticals, 
+automotive parts, and other sectors with complex, 
+intermittent 
+demand—could 
+test 
+the 
+proposed 
+architecture’s robustness and identify contingencies that 
+moderate its effectiveness (e.g., product variety, demand 
+volatility, lead times, or data availability). Longitudinal 
+designs could assess the long-term financial impact of 
+ML-based demand forecasting on inventory turnover, 
+stockout rates, service levels, and profitability, ideally 
+using quasi-experimental designs or A/B tests comparing 
+business units with and without the predictive system.
+Another promising line of work integrates demand 
+forecasting with optimization models and prescriptive 
+analytics. 
+Rather 
+than 
+stopping 
+at 
+forecasting, 
+future applications could combine predictions with 
+optimization routines for order quantities, safety stocks, 
+and replenishment policies, forming closed-loop decision 
+support systems. Research could also delve more deeply 
+into socio-technical aspects, including user trust in 
+algorithmic recommendations, the design of explainable 
+interfaces, 
+training 
+programs 
+for 
+managers, 
+and 
+governance frameworks for AI in SMEs. Finally, policy-
+oriented studies could examine how public agencies, 
+development banks, and innovation programs might 
+support the diffusion of low-cost, open, and responsible 
+AI solutions for inventory management among small and 
+medium-sized firms.
+This study concludes that advanced cloud-based 
+ML techniques can substantially improve demand 
+forecasting and inventory management for a medium-
+sized construction supplies distributor, but it also warns 
+that such solutions are not off-the-shelf panaceas. 
+Their success depends on data availability and quality, 
+careful technology choices, sustained organizational 
+engagement, and appropriate governance. Recognizing 
+these limitations and exploring the proposed possibilities 
+for future work may help researchers, practitioners, 
+and policymakers design more robust, transparent, 
+and accessible predictive systems—contributing to the 
+broader goal of democratizing AI-enabled supply chain 
+optimization for SMEs.
+Acknowledgements
+We want to thank the Brazilian Ministry of Science and Technology, primarily 
+through CNPq and the MAI/DAI 68 call for proposals in 2022, for providing 
+funding for the development of this research.
+Author contributions
+The research group’s coordination and the primary manuscript’s composition 
+were undertaken by D.D.G. R.B.C. served as the doctoral supervisor and 
+
+================================================================================
+PAGE 17
+================================================================================
+Page 17 of 17
+Dornela Goulart et al. Future Business Journal           (2026) 12:92 
+	
+performed a comprehensive review of the document. M.A.H., in conjunction 
+with B.K.G.N.C., bore responsibility for the application’s development and 
+ongoing support during the Proof of Concept phase, in addition to authoring 
+the front-end interface.
+Funding
+This research was supported by the MAI/DAI Call No. 68/2022, funded by the 
+Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq), 
+under the Ministry of Science, Technology and Innovation of Brazil.
+Data availability
+The transactional data used in this study cannot be made publicly 
+available due to confidentiality agreements with the partner company. The 
+methodology, technological architecture, and implementation procedures 
+are fully described in this manuscript to enable methodological replication. 
+Researchers seeking to validate or extend this work may develop synthetic 
+datasets based on the described characteristics or apply the documented 
+architecture to their own organizational data.
+Declarations
+Ethics approval and consent to participate
+This study did not involve human participants, personal data, or interventions 
+requiring ethical approval. The research used organizational and operational 
+data provided by a private company under a confidentiality agreement. 
+Therefore, ethical approval and consent to participate are not applicable.
+Consent for publication
+All authors have reviewed and approved the final version of the manuscript 
+and consent to its publication.
+Competing interests
+The authors declare no competing interests.
+Received: 2 January 2026   Accepted: 7 March 2026
+References
+	1.	
+Amazon Web Services. (2025a). Amazon forecast: developer guide. https://​
+docs.​aws.​amazon.​com/​forec​ast/
+	2.	
+Amazon Web Services. (2025b). Amazon SageMaker canvas: user guide. 
+https://​docs.​aws.​amazon.​com/​sagem​aker/​latest/​dg/​canvas.​html
+	3.	
+Ampazis N (2015) Forecasting demand in supply chain using machine 
+learning algorithms. Int J Artif Life Res 5(1):56–73
+	4.	
+Book, M., Riedel, M., Neukirchen, H., & Erlingsson, E. (2022). Facilitating 
+collaboration in machine learning and high-performance computing 
+projects with an interaction room. In: 2022 IEEE 18th International 
+Conference on e-Science (e-Science) (pp. 529–538). IEEE. https://​doi.​org/​10.​
+1109/​eScie​nce55​777.​2022.​00093 ResearchGate+1
+	5.	
+Bowerman, B. L., O’Connell, R. T., & Koehler, A. B. (2005). Forecasting, time 
+series, and regression: an applied approach. Cengage Learning.
+	6.	
+Carbonneau R, Laframboise K, Vahidov R (2009) Application of machine 
+learning techniques for supply chain demand forecasting. Eur J Oper Res 
+184(3):1140–1154. https://​doi.​org/​10.​1016/j.​ejor.​2006.​12.​004
+	7.	
+Carvalho FP, dos Santos RC, Nascimento SM, da Silva Coutinho JC, de 
+Sousa RR (2023) Investigating the relationship between academia and 
+the information technology industry: a systematic literature review. 
+Concilium 23(21):11–35
+	8.	
+Fildes R, Goodwin P, Lawrence M, Nikolopoulos K (2009) Effective 
+forecasting and judgmental adjustments: an empirical evaluation and 
+strategies for improvement in supply-chain planning. Int J Forecast 
+25(1):3–23. https://​doi.​org/​10.​1016/j.​ijfor​ecast.​2008.​11.​010
+	9.	
+Hyndman, R. J., & Athanasopoulos, G. (2021). Forecasting: principles and 
+practice (3rd ed.). OTexts. https://​otexts.​com/​fpp3/
+	10.	 Hyndman RJ, Koehler AB (2006) Another look at measures of forecast 
+accuracy. Int J Forecast 22(4):679–688. https://​doi.​org/​10.​1016/j.​ijfor​ecast.​
+2006.​03.​001
+	11.	 Ko, H., Witherell, P., Ndiaye, N. Y., & Lu, Y. (2019). Machine learning based 
+continuous knowledge engineering for additive manufacturing. In: 2019 
+IEEE 15th International Conference on Automation Science and Engineering 
+(CASE) (pp. 648–654). IEEE. https://​doi.​org/​10.​1109/​COASE.​2019.​88433​16 
+ACM Digital Library+1
+	12.	 Likhar, P. K, Jha, A, Tiwari, S, Sunar, A, Shahu, S, Thate, S. (2023) Machine 
+learning-based sales prediction and inventory management for grocery 
+stores. Inter J Adv Res Sci, Commun Technol. https://​doi.​org/​10.​48175/​ijars​
+ct-​13605
+	13.	 Kolassa S, Schütz W (2007) Advantages of the MAD/Mean ratio over the 
+MAPE. Foresight: The Inter J Appl Forecasting 6:40–43
+	14.	 Makridakis, S., Wheelwright, S. C., & Hyndman, R. J. (1998). Forecasting: 
+methods and applications (3rd ed.). John Wiley & Sons.
+	15.	 Makridakis S, Spiliotis E, Assimakopoulos V (2018) Statistical and machine 
+learning forecasting methods: concerns and ways forward. PLoS ONE 
+13(3):e0194889. https://​doi.​org/​10.​1371/​journ​al.​pone.​01948​89
+	16.	 Naik, H., Yashwanth, K., Suraj, P., & Jayapandian, N. (2022). Machine 
+learning based food sales prediction using random forest regression. 
+In: 2022 6th International Conference on Electronics, Communication and 
+Aerospace Technology (pp. 998–1004).
+	17.	 Punia S, Nikolopoulos K, Singh SP, Madaan JK, Litsiou K (2020) Deep 
+learning with long short-term memory networks and random 
+forests for demand forecasting in multi-channel retail. Int J Prod Res 
+58(16):4964–4979
+	18.	 Sinduscon-MG. (2024). Sector report on the construction industry in Minas 
+Gerais 2023–2024: market for cement, mortar, and ceramic tiles. Minas 
+Gerais Construction Industry Union.
+	19.	 Sokol K, Flach P (2020) One explanation does not fit all: the promise 
+of interactive explanations for machine learning transparency. 
+KI Kuenstliche Intell 34(2):235–250. https://​doi.​org/​10.​1007/​
+s13218-​020-​00637-y
+	20.	 Syntetos AA, Babai Z, Boylan JE, Kolassa S, Nikolopoulos K (2016) Supply 
+chain forecasting: theory, practice, their gap and the future. Eur J Oper 
+Res 252(1):1–26. https://​doi.​org/​10.​1016/j.​ejor.​2015.​11.​010
+	21.	 Tian X, Wang H, Erjiang E (2021) Forecasting intermittent demand for 
+inventory management by retailers: a new approach. J Retail Consum 
+Serv 62:102662. https://​doi.​org/​10.​1016/j.​jretc​onser.​2021.​102662
+	22.	 Tirkolaee EB, Sadeghi S, Mooseloo FM, Vandchali HR, Aeini S (2021) 
+Application of machine learning in supply chain management: 
+A comprehensive overview of the main areas. Math Probl Eng 
+2021:5566842. https://​doi.​org/​10.​1155/​2021/​55668​42
+	23.	 Van Steenbergen RM, Mes MRK (2020) Forecasting demand profiles of 
+new products. Decis Support Syst 139:113401. https://​doi.​org/​10.​1016/j.​
+dss.​2020.​113401
+	24.	 Vairagade, N., Logofatu, D., Leon, F., & Muharemi, F. (2019). Demand 
+forecasting using random forest and artificial neural network for supply 
+chain management. In: Computational Collective Intelligence: 11th 
+International Conference, ICCCI 2019, Proceedings, Part I (pp. 328–339). 
+Springer. https://​doi.​org/​10.​1007/​978-3-​030-​28374-0_​27
+	25.	 Zhang X, Thomson V (2019) Modelling the development of complex 
+products using a knowledge perspective. Res Eng Des 30:203–226
+Publisher’s Note
+Springer Nature remains neutral with regard to jurisdictional claims in 
+published maps and institutional affiliations.

@@ -1,0 +1,1930 @@
+# Master Project Specification
+
+## Section 1 â€“ Project Identity
+
+### Project Name
+
+**AI-Based Inventory & Sales Forecasting System for Small Business ERP Management**
+
+---
+
+### Internal Project Name
+
+**NexusERP**
+
+This name will be used throughout development, documentation, reports, presentations, and source code.
+
+---
+
+### Version
+
+**v1.0**
+
+---
+
+### Project Type
+
+* B.Tech Final Year Project
+* **Amal Jyothi College of Engineering (Autonomous), Kanjirappally, Kerala**
+* Department of Computer Science & Engineering
+* Solo Development Project
+
+
+---
+
+### Current Status
+
+**AI Forecasting & Multi-Model Tournament Integrated (Review 2 Ready)**
+
+Core implementation is fully active. Completed the integration of historical daily sales database seeding (18 months), demand pattern classifier (using ADI and $CV^2$ criteria), and the multi-model forecasting tournament engine (Facebook Prophet, Holt-Winters, Simple Exponential Smoothing). The interactive dashboard has been fully updated to display live accuracy scores (MAE, RMSE, MAPE) and automated safety stock restocking suggestions per product.
+
+---
+
+### Elevator Pitch
+
+NexusERP is a lightweight ERP system designed for small grocery and retail businesses that combines inventory management, sales management, and AI-based sales forecasting into a single platform. By analyzing historical sales data, the system predicts future demand and helps business owners make informed inventory decisions, reducing stock shortages and excess inventory.
+
+---
+
+### Vision
+
+To develop a practical, affordable, and intelligent ERP solution that enables small businesses to make data-driven inventory decisions using machine learning without the complexity of large enterprise ERP systems.
+
+---
+
+### Target Users
+
+Primary users include:
+
+* Small grocery stores
+* Small retail shops
+* Local supermarkets
+* Small businesses requiring inventory tracking and demand forecasting
+
+---
+
+### Core Innovation
+
+Unlike a traditional inventory management system that only records stock movements, NexusERP integrates AI-based demand forecasting using historical sales data to estimate future product demand and assist business owners in planning inventory more effectively.
+
+---
+
+### Project Philosophy
+
+The objective is **not** to build a full-scale enterprise ERP comparable to SAP or Oracle.
+
+Instead, the project focuses on developing a realistic, research-backed prototype that demonstrates how AI-assisted demand forecasting can be integrated into a lightweight ERP system for small businesses.
+
+The AI component is intended to support business decisions by providing forecasting recommendations. Final inventory decisions remain under the control of the business owner.
+
+---
+
+### Development Principle
+
+The project prioritizes:
+
+* Practical implementation over excessive feature count
+* Research-backed methodology
+* Modular and maintainable architecture
+* A working end-to-end system suitable for academic evaluation
+* Scope that is achievable by a single developer within the project timeline
+
+---
+
+### Scope Statement
+
+The current project focuses on implementing selected ERP functionalities together with an AI-based forecasting module. Additional enterprise modules may be considered as future enhancements but are intentionally excluded from Version 1.0 to maintain a realistic and achievable development scope.
+
+---
+
+**Status:** Approved as the identity section for **Master Project Specification v1.0**.
+
+
+# Section 2 â€“ Problem Statement
+
+## 2.1 Background
+
+Small businesses such as grocery stores and retail shops play a significant role in the economy. However, many of these businesses continue to rely on manual methods, spreadsheets, or basic billing software for inventory and sales management. These approaches make it difficult to monitor stock levels accurately and respond effectively to changes in customer demand.
+
+As a result, inventory planning often depends on the experience and intuition of the business owner rather than data-driven decision-making.
+
+---
+
+## 2.2 Problem Statement
+
+Traditional inventory management systems primarily focus on recording stock transactions without providing intelligent insights into future demand. This can lead to several operational challenges, including:
+
+* Overstocking of products, increasing storage costs and wastage.
+* Stock shortages, resulting in lost sales and dissatisfied customers.
+* Difficulty in identifying future demand trends.
+* Time-consuming manual analysis of historical sales records.
+* Limited decision support for inventory planning and replenishment.
+
+Although large enterprise ERP systems provide advanced forecasting capabilities, they are often expensive and overly complex for small businesses.
+
+---
+
+## 2.3 Proposed Solution
+
+The proposed system, **AI-Based Inventory & Sales Forecasting System for Small Business ERP Management**, addresses these challenges by integrating essential ERP functionalities with an AI-based demand forecasting module.
+
+The system records inventory and sales information, analyses historical sales data, predicts future product demand, and provides forecasting results that support inventory planning. The forecasting module is intended to assist business owners in making informed decisions rather than replacing human judgment.
+
+---
+
+## 2.4 Expected Benefits
+
+The proposed solution aims to:
+
+* Improve inventory planning.
+* Reduce stock shortages and overstocking.
+* Support data-driven business decisions.
+* Simplify inventory management for small businesses.
+* Demonstrate the practical integration of Artificial Intelligence into a lightweight ERP system suitable for academic and real-world applications.
+
+---
+
+## 2.5 Scope Limitation
+
+Version 1.0 of the project focuses on selected ERP functionalities together with AI-based sales forecasting. Advanced enterprise modules such as Human Resource Management, Payroll, Supplier Management, and comprehensive accounting are intentionally excluded to maintain a realistic scope for a single-developer undergraduate project.
+
+# Section 3 â€“ Project Objectives
+
+## 3.1 Primary Objective
+
+To design and develop an AI-based inventory and sales forecasting system for small businesses by integrating essential ERP functionalities with a machine learning-based demand forecasting module that supports inventory planning and decision-making.
+
+---
+
+## 3.2 Specific Objectives
+
+The project aims to achieve the following objectives:
+
+1. Develop a secure system for managing products and inventory.
+
+2. Record and manage daily sales transactions efficiently.
+
+3. Maintain a centralized database for inventory and historical sales information.
+
+4. Develop an AI-based demand forecasting module that predicts future product demand using historical sales data.
+
+5. Provide forecasting results that assist business owners in planning inventory and reducing stock-related issues.
+
+6. Integrate inventory management and forecasting into a single lightweight ERP platform.
+
+7. Demonstrate how Artificial Intelligence can be practically applied to inventory management in small businesses.
+
+---
+
+## 3.3 Academic Objectives
+
+The project also aims to:
+
+* Apply concepts from Machine Learning and Software Engineering in a real-world application.
+* Implement a research-backed forecasting methodology based on recent literature.
+* Develop a modular web application following modern software development practices.
+* Evaluate the forecasting model using appropriate performance metrics such as MAE and MAPE.
+* Produce a complete academic project suitable for undergraduate evaluation.
+
+---
+
+## 3.4 Success Criteria
+
+The project will be considered successful if it can:
+
+* Manage inventory records effectively.
+* Record and update sales transactions.
+* Generate meaningful demand forecasts using historical sales data.
+* Present forecasting results through an easy-to-understand user interface.
+* Demonstrate a working integration between ERP functionalities and the forecasting module.
+* Operate as a complete prototype suitable for demonstration during the final project evaluation.
+# Section 4 â€“ Final Project Scope
+
+## 4.1 Scope Overview
+
+The AI-Based Inventory & Sales Forecasting System for Small Business ERP Management is designed as a lightweight ERP solution that combines essential inventory management functionalities with an AI-based demand forecasting module.
+
+The project focuses on solving inventory planning challenges faced by small grocery stores and retail businesses by providing inventory tracking, sales management, forecasting, and reporting within a single web-based platform.
+
+The scope of Version 1.0 has been intentionally limited to ensure successful implementation by a single developer while maintaining technical quality and research relevance.
+
+---
+
+## 4.2 Features Included in Version 1.0
+
+The following modules are included in the initial implementation:
+
+### User Authentication
+
+* Secure user registration
+* Secure login
+* Password authentication
+* Session management
+
+---
+
+### Inventory Management
+
+* Add new products
+* Update product information
+* Delete products
+* Manage product categories
+* Track available stock
+* Low-stock alerts
+
+---
+
+### Sales Management
+
+* Record daily sales
+* Update inventory after each sale
+* Maintain sales history
+* View sales records
+* Export bill data in Excel format by bill ID
+
+---
+
+### Dashboard
+
+* Inventory overview
+* Sales overview
+* Low-stock products
+* Forecast summary
+* Business insights through charts and graphs
+
+---
+
+### Invoice Management
+
+* Generate customer invoices
+* View invoice history
+* Printable invoice format (planned enhancement)
+* Current MVP supports bill-wise Excel export
+
+---
+
+### AI-Based Demand Forecasting
+
+* Analyse historical sales data
+* Predict future product demand
+* Display demand forecast
+* Assist inventory planning
+* Support business decision-making
+
+---
+
+## 4.3 Features Excluded from Version 1.0
+
+The following modules are intentionally excluded from the first version:
+
+* Human Resource Management (HR)
+* Payroll Management
+* Supplier Management
+* Purchase Order Management
+* Customer Relationship Management (CRM)
+* Accounting Module
+* Barcode Scanner Integration
+* Mobile Application
+* Multi-branch Management
+* Role-Based Access Control (Advanced)
+* Chatbot Integration
+* Retrieval-Augmented Generation (RAG)
+* OCR-based Invoice Processing
+* Real-time IoT Integration
+
+These features are considered future enhancements and are outside the scope of the current academic project.
+
+---
+
+## 4.4 Project Boundaries
+
+The project will:
+
+* Demonstrate a functional ERP prototype.
+* Integrate AI-based forecasting into inventory management.
+* Use historical sales data for forecasting.
+* Focus on small business use cases.
+* Operate as a web application.
+
+The project will not:
+
+* Replace enterprise ERP systems.
+* Automate every business operation.
+* Perform autonomous purchasing decisions.
+* Replace human decision-making.
+
+The forecasting module serves as a recommendation system that supports business owners during inventory planning.
+
+---
+
+## 4.5 Scope Justification
+
+The project scope has been deliberately restricted to balance innovation, implementation complexity, and available development time.
+
+Rather than attempting to replicate the capabilities of enterprise ERP systems, Version 1.0 focuses on delivering a complete and functional prototype that demonstrates the practical integration of Artificial Intelligence into inventory and sales management.
+
+This approach improves the likelihood of successful project completion while maintaining academic quality and technical depth.
+
+---
+
+## 4.6 Expected Deliverables
+
+At the completion of Version 1.0, the project is expected to deliver:
+
+* Working web application
+* Inventory management module
+* Sales management module
+* AI forecasting module
+* Dashboard
+* Invoice generation
+* Database integration
+* Forecast visualisation
+* Project report
+* Seminar presentation
+* Source code repository
+* Project documentation
+
+# Section 5 â€“ Functional Modules
+
+## 5.1 Module Overview
+
+The system is designed using a modular architecture, where each module performs a specific business function while interacting with the central database. This approach improves maintainability, scalability, and future expansion.
+
+The major functional modules of the system are described below.
+
+---
+
+# 5.2 User Authentication Module
+
+## Purpose
+
+The User Authentication Module provides secure access to the system by ensuring that only authorized users can log in and access business data.
+
+## Functionalities
+
+* User Registration
+* User Login
+* Password Authentication
+* Session Management
+* Logout
+
+## Inputs
+
+* Username
+* Email
+* Password
+
+## Outputs
+
+* Successful Login
+* Authentication Failure
+* User Session
+
+---
+
+# 5.3 Inventory Management Module
+
+## Purpose
+
+The Inventory Management Module maintains product information and monitors available stock levels.
+
+## Functionalities
+
+* Add Product
+* Edit Product
+* Delete Product
+* Product Categorization
+* Stock Quantity Management
+* Low Stock Notification
+
+## Inputs
+
+* Product Name
+* Product Category
+* Product Price
+* Quantity
+* Reorder Level
+
+## Outputs
+
+* Updated Inventory
+* Current Stock Status
+* Low Stock Alert
+
+---
+
+# 5.4 Sales Management Module
+
+## Purpose
+
+The Sales Management Module records daily sales transactions and automatically updates inventory.
+
+## Functionalities
+
+* Record Sales
+* Update Inventory
+* Store Sales History
+* View Sales Records
+
+## Inputs
+
+* Product Sold
+* Quantity Sold
+* Selling Price
+* Date
+
+## Outputs
+
+* Sales Record
+* Updated Inventory
+* Sales History
+
+---
+
+# 5.5 Dashboard Module
+
+## Purpose
+
+The Dashboard presents important business information through visual summaries and charts.
+
+## Functionalities
+
+* Inventory Summary
+* Sales Summary
+* Low Stock Products
+* Forecast Summary
+* Business Analytics
+
+## Outputs
+
+* Dashboard Charts
+* Summary Cards
+* Inventory Insights
+
+---
+
+# 5.6 Invoice Management Module
+
+## Purpose
+
+The Invoice Module generates invoices for completed sales transactions.
+
+## Functionalities
+
+* Generate Invoice
+* View Invoice
+* Print Invoice
+
+## Outputs
+
+* Invoice
+* Invoice History
+
+---
+
+# 5.7 AI-Based Demand Forecasting Module
+
+## Purpose
+
+The forecasting module analyses historical sales data to estimate future product demand and support inventory planning.
+
+## Functionalities
+
+* Read Historical Sales Data
+* Prepare Forecast Dataset
+* Generate Demand Forecast
+* Display Forecast Results
+* Support Inventory Planning
+
+## Inputs
+
+* Historical Sales Data
+* Product Information
+* Forecast Period
+
+## Outputs
+
+* Predicted Demand
+* Forecast Graph
+* Forecast Report
+* Inventory Recommendation
+
+---
+
+# 5.8 Database Module
+
+## Purpose
+
+The Database Module stores all operational and forecasting data required by the application.
+
+## Stores
+
+* User Information
+* Product Information
+* Inventory Records
+* Sales History
+* Forecast Results
+* Invoice Records
+
+---
+
+# 5.9 Module Interaction
+
+The interaction between modules follows the sequence below:
+
+User Login
+
+â†“
+
+Inventory Management
+
+â†“
+
+Sales Management
+
+â†“
+
+Sales Data Stored
+
+â†“
+
+AI Forecasting Module
+
+â†“
+
+Forecast Results Stored
+
+â†“
+
+Dashboard Displays Results
+
+â†“
+
+Invoice Generation (When Required)
+
+This modular workflow ensures that inventory records, sales transactions, forecasting, and reporting operate together as a unified ERP system.
+
+---
+
+# 5.10 Design Principles
+
+The functional modules are designed according to the following principles:
+
+* High cohesion within each module.
+* Low coupling between modules.
+* Modular implementation.
+* Easy maintenance.
+* Future scalability.
+* Reusability of components.
+
+# Section 6 â€“ Non-Functional Requirements
+
+## 6.1 Overview
+
+In addition to functional requirements, the proposed system must satisfy several non-functional requirements to ensure that it is reliable, secure, maintainable, and suitable for real-world usage. These requirements define the overall quality attributes of the system rather than specific business functions.
+
+---
+
+## 6.2 Performance Requirements
+
+The system shall:
+
+* Respond to user requests with minimal delay under normal operating conditions.
+* Process inventory and sales transactions efficiently.
+* Generate demand forecasts within a reasonable time based on the available historical sales data.
+* Support simultaneous execution of inventory operations and forecasting without affecting overall system performance.
+
+---
+
+## 6.3 Reliability Requirements
+
+The system shall:
+
+* Maintain data consistency during inventory and sales operations.
+* Prevent data loss through proper database management.
+* Continue normal operation after minor system failures or interruptions.
+* Produce consistent forecasting results when the same input data and forecasting parameters are used.
+
+---
+
+## 6.4 Security Requirements
+
+The system shall:
+
+* Authenticate users before granting access.
+* Store passwords securely using industry-standard hashing techniques.
+* Restrict access to authorized users only.
+* Protect business information from unauthorized access.
+* Validate user inputs to reduce security risks.
+
+---
+
+## 6.5 Usability Requirements
+
+The system shall:
+
+* Provide a simple and intuitive user interface.
+* Require minimal training for users.
+* Present forecasting results in an easily understandable format using tables and charts.
+* Display important business information through a centralized dashboard.
+
+---
+
+## 6.6 Scalability Requirements
+
+The system shall be designed to support future expansion, including:
+
+* Additional ERP modules.
+* Increased product inventory.
+* Larger sales datasets.
+* Multiple forecasting models.
+* Additional business features in future versions.
+
+---
+
+## 6.7 Maintainability Requirements
+
+The system shall:
+
+* Follow a modular software architecture.
+* Separate frontend, backend, database, and AI components.
+* Use clean and well-documented code.
+* Allow future feature additions with minimal impact on existing modules.
+
+---
+
+## 6.8 Availability Requirements
+
+The application should be available whenever required by authorized users during normal business operations. The system architecture should minimize downtime and support reliable day-to-day usage.
+
+---
+
+## 6.9 Compatibility Requirements
+
+The system shall:
+
+* Operate as a web-based application.
+* Support modern web browsers.
+* Be deployable on cloud platforms such as AWS.
+* Allow future integration with additional services if required.
+
+---
+
+## 6.10 AI-Specific Quality Requirements
+
+The forecasting module shall:
+
+* Generate forecasts using historical sales data.
+* Produce repeatable results for identical input data and forecasting settings.
+* Support model evaluation using historical backtesting.
+* Report forecasting performance using evaluation metrics such as Mean Absolute Error (MAE) and Mean Absolute Percentage Error (MAPE).
+* Present prediction results together with visual comparisons between predicted and actual historical values to assist users in understanding model performance.
+
+---
+
+## 6.11 Design Goals
+
+The overall system is designed to achieve:
+
+* Simplicity
+* Reliability
+* Maintainability
+* Scalability
+* Security
+* Research-backed AI integration
+* Practical usability for small businesses
+# Section 7 â€“ Technology Stack
+
+## 7.1 Overview
+
+The project adopts a modern full-stack web development architecture integrated with a machine learning-based forecasting module. The selected technologies prioritize simplicity, scalability, maintainability, and ease of deployment while remaining suitable for a final-year undergraduate project.
+
+---
+
+## 7.2 Frontend Technologies
+
+### React.js
+
+The frontend of the application will be developed using React.js to provide a responsive and interactive user interface.
+
+**Purpose**
+
+* Build Single Page Application (SPA)
+* Create reusable UI components
+* Manage application state
+* Display dashboards and forecasting results
+
+---
+
+### HTML5
+
+Used for page structure.
+
+---
+
+### CSS3
+
+Used for responsive styling and layout.
+
+---
+
+### JavaScript (ES6+)
+
+Used for frontend logic and communication with backend APIs.
+
+---
+
+## 7.3 Backend Technologies
+
+### FastAPI
+
+FastAPI will serve as the backend framework.
+
+**Purpose**
+
+* REST API Development
+* Business Logic
+* User Authentication
+* Database Communication
+* AI Model Integration
+
+**Reason for Selection**
+
+* High performance
+* Native Python support
+* Easy integration with Machine Learning libraries
+* Automatic API documentation
+* Lightweight architecture
+
+---
+
+## 7.4 Database
+
+### SQLite
+
+SQLite will store all application data.
+
+**Purpose**
+
+* User Accounts
+* Product Information
+* Inventory Records
+* Sales History
+* Invoice Information
+* Forecast Results
+
+**Reason for Selection**
+
+* Reliable
+* ACID compliant
+* Scalable
+* Open Source
+* Excellent FastAPI support
+
+---
+
+## 7.5 Machine Learning Technologies
+
+### Prophet
+
+Prophet will be used for time-series forecasting.
+
+**Purpose**
+
+* Forecast future product demand
+* Analyse historical sales patterns
+* Generate inventory planning recommendations
+
+**Reason for Selection**
+
+* Designed for time-series forecasting
+* Handles seasonality and trends effectively
+* Easy implementation
+* Suitable for academic projects
+* Performs well on moderate-sized datasets
+
+---
+
+### Python
+
+Used for:
+
+* Data preprocessing
+* Model development
+* Forecast generation
+* Performance evaluation
+
+---
+
+## 7.6 Data Analysis Libraries
+
+* Pandas
+* NumPy
+
+Purpose:
+
+* Data Cleaning
+* Data Manipulation
+* Feature Preparation
+
+---
+
+## 7.7 Data Visualization
+
+* Matplotlib
+* Plotly
+
+Purpose:
+
+* Forecast Graphs
+* Sales Trends
+* Dashboard Charts
+* Prediction vs Actual Comparison
+
+---
+
+## 7.8 API Communication
+
+REST APIs will enable communication between the React frontend and FastAPI backend.
+
+Data will be exchanged using JSON.
+
+---
+
+## 7.9 Development Tools
+
+* Visual Studio Code
+* Git
+* GitHub
+* Postman
+* pgAdmin
+
+---
+
+## 7.10 Deployment
+
+The application is intended to be deployed on AWS for demonstration purposes.
+
+---
+
+## 7.11 Technology Selection Summary
+
+| Layer                | Technology         |
+| -------------------- | ------------------ |
+| Frontend             | React.js           |
+| Backend              | FastAPI            |
+| Programming Language | Python             |
+| Database             | SQLite         |
+| Machine Learning     | Prophet            |
+| Data Processing      | Pandas, NumPy      |
+| Visualization        | Matplotlib, Plotly |
+| API                  | REST API           |
+| Version Control      | Git & GitHub       |
+| Deployment           | AWS                |
+
+# Section 8 â€“ System Architecture
+
+## 8.1 Architecture Overview
+
+The system follows a three-tier architecture consisting of the Presentation Layer, Application Layer, and Data Layer. An AI Forecasting Layer is integrated into the application layer to analyse historical sales data and generate demand forecasts.
+
+This modular architecture ensures separation of concerns, making the system easier to maintain, test, and extend.
+
+---
+
+## 8.2 Architecture Layers
+
+### Presentation Layer
+
+Responsible for user interaction.
+
+Components include:
+
+* Login Page
+* Dashboard
+* Inventory Management Interface
+* Sales Interface
+* Invoice Interface
+* Forecast Dashboard
+
+Technology:
+React.js
+
+---
+
+### Application Layer
+
+Responsible for business logic.
+
+Functions include:
+
+* User Authentication
+* Inventory Operations
+* Sales Processing
+* Forecast Requests
+* Report Generation
+* API Services
+
+Technology:
+FastAPI
+
+---
+
+### AI Forecasting Layer
+
+Responsible for demand prediction.
+
+Functions include:
+
+* Data Extraction
+* Data Preprocessing
+* Forecast Generation
+* Model Evaluation
+* Prediction Storage
+
+Technology:
+Python + Prophet
+
+---
+
+### Data Layer
+
+Responsible for persistent storage.
+
+Stores:
+
+* Users
+* Products
+* Inventory
+* Sales
+* Forecasts
+* Invoices
+
+Technology:
+SQLite (current prototype)
+
+---
+
+## 8.3 Data Flow
+
+The overall system operates according to the following workflow:
+
+1. User logs into the application.
+2. Inventory and sales data are recorded through the web interface.
+3. The backend validates and stores the data in SQLite.
+4. Historical sales data is supplied to the forecasting module.
+5. Prophet generates demand forecasts.
+6. Forecast results are stored in the database.
+7. The dashboard displays inventory statistics, sales information, and forecasting results.
+8. The user uses these insights to support inventory planning decisions.
+
+---
+
+## 8.4 Architecture Principles
+
+* Separation of Concerns
+* Modular Design
+* Scalability
+* Maintainability
+* API-Based Communication
+* AI Integration
+
+---
+
+## 8.5 Benefits
+
+* Easier maintenance
+* Independent module development
+* Better scalability
+* Efficient AI integration
+* Simplified testing
+* Support for future enhancements
+
+# Section 9 â€“ Database Overview
+
+## 9.1 Overview
+
+The system uses SQLite as its relational database management system to store all operational and forecasting data. The database is designed to maintain data consistency, support efficient querying, and enable seamless integration with the forecasting module.
+
+---
+
+## 9.2 Main Database Entities
+
+The primary entities include:
+
+* Users
+* Products
+* Categories
+* Inventory
+* Sales
+* Sales Items
+* Forecast Results
+* Invoices
+
+---
+
+## 9.3 Entity Descriptions
+
+### Users
+
+Stores authentication and profile information for system users.
+
+---
+
+### Products
+
+Stores product details including:
+
+* Product ID
+* Product Name
+* Category
+* Selling Price
+* Current Stock
+* Reorder Level
+
+---
+
+### Categories
+
+Stores product category information.
+
+---
+
+### Inventory
+
+Maintains current stock information for each product.
+
+---
+
+### Sales
+
+Stores overall sales transaction details including:
+
+* Invoice Number
+* Date
+* Total Amount
+
+---
+
+### Sales Items
+
+Stores individual products associated with each sales transaction.
+
+---
+
+### Forecast Results
+
+Stores forecasting outputs generated by the AI model.
+
+Information includes:
+
+* Product ID
+* Forecast Date
+* Predicted Quantity
+* Forecast Horizon
+* Model Version
+* Evaluation Metrics (where applicable)
+
+---
+
+### Invoices
+
+Stores invoice details generated after successful sales.
+
+---
+
+## 9.4 Database Relationships
+
+The database follows a relational design.
+
+Examples include:
+
+* One User can manage many Products.
+* One Category contains many Products.
+* One Sale contains multiple Sales Items.
+* One Product appears in multiple Sales records.
+* One Product may have multiple Forecast records over time.
+
+---
+
+## 9.5 Database Design Principles
+
+* Data Normalization
+* Referential Integrity
+* Reduced Data Redundancy
+* Efficient Query Performance
+* Support for Future Expansion
+
+---
+
+## 9.6 Future Expansion
+
+The database design allows future integration of:
+
+* Supplier Management
+* Purchase Orders
+* Customer Management
+* Multi-Branch Support
+* Advanced Analytics
+# Section 10 â€“ AI Forecasting Module
+
+## 10.1 Overview
+
+The AI Forecasting Module is the core intelligent component of the system. It analyses historical sales data to predict future product demand, helping business owners make informed inventory decisions. Rather than replacing human decision-making, the module functions as a decision-support tool by providing data-driven forecasts.
+
+---
+
+## 10.2 Objectives
+
+The module is designed to:
+
+* Analyse historical sales patterns.
+* Forecast future product demand.
+* Support inventory planning.
+* Reduce stock shortages and overstocking.
+* Improve decision-making through predictive analytics.
+
+---
+
+## 10.3 Input Data
+
+The forecasting model uses historical sales records stored in the system database.
+
+Typical input features include:
+
+* Product ID
+* Date of Sale
+* Quantity Sold
+* Historical Sales Trend
+* Forecast Horizon
+
+---
+
+## 10.4 Forecasting Workflow
+
+The forecasting process consists of the following stages:
+
+1. Retrieve historical sales data from the SQLite database.
+2. Preprocess and format the data for time-series analysis.
+3. Train the Prophet forecasting model.
+4. Generate demand forecasts for the selected forecast period.
+5. Store forecast results in the database.
+6. Display predictions and visualizations on the dashboard.
+
+---
+
+## 10.5 Selected Forecasting Model
+
+The project uses the **Prophet** time-series forecasting model.
+
+### Reasons for Selection
+
+* Designed specifically for time-series forecasting.
+* Handles trend and seasonality effectively.
+* Easy integration with Python.
+* Suitable for moderate-sized business datasets.
+* Well-suited for undergraduate implementation and evaluation.
+
+---
+
+## 10.6 Forecast Output
+
+The module produces:
+
+* Predicted product demand.
+* Forecast graphs.
+* Historical vs. predicted comparison charts.
+* Inventory planning recommendations.
+
+---
+
+## 10.7 Decision Support
+
+The AI module provides recommendations to assist business owners in inventory planning. Final purchasing and stocking decisions remain under user control.
+
+---
+
+## 10.8 Limitations
+
+The quality of forecasts depends on:
+
+* Availability of sufficient historical sales data.
+* Accuracy of recorded sales transactions.
+* Changes in market conditions or unexpected events.
+
+These limitations are acknowledged as part of the forecasting process and will be considered during model evaluation.
+
+# Section 11 â€“ Dataset Strategy
+
+## 11.1 Overview
+
+The forecasting module requires historical sales data to learn demand patterns. During development and evaluation, publicly available retail datasets will be used to train and validate the forecasting model. After deployment, the system will generate forecasts using the sales data collected through the application.
+
+---
+
+## 11.2 Dataset Sources
+
+Potential data sources include:
+
+* Public retail sales datasets from Kaggle.
+* Academic datasets used in forecasting research.
+* Sample business datasets for demonstration purposes.
+
+No manually fabricated data will be used for model evaluation.
+
+---
+
+## 11.3 Data Requirements
+
+The dataset should contain information such as:
+
+* Date
+* Product Identifier
+* Quantity Sold
+* Sales Transaction Details
+
+Additional attributes may be included if available.
+
+---
+
+## 11.4 Data Preparation
+
+Before training, the data will undergo:
+
+* Missing value handling.
+* Data cleaning.
+* Date formatting.
+* Aggregation where necessary.
+* Transformation into the format required by Prophet.
+
+---
+
+## 11.5 Operational Data Flow
+
+During normal system operation:
+
+1. Sales transactions are recorded.
+2. Sales history is stored in SQLite.
+3. Historical data is supplied to the forecasting module.
+4. New forecasts are generated using accumulated sales records.
+
+This enables the forecasting model to use the business's own historical data as the system grows.
+
+---
+
+## 11.6 Ethical Considerations
+
+The project avoids manipulating datasets to artificially improve forecasting performance. Model evaluation will be conducted using genuine historical data and standard forecasting validation techniques to ensure transparency and academic integrity.
+
+# Section 12 â€“ Model Evaluation Strategy
+
+## 12.1 Overview
+
+To ensure that the forecasting module provides reliable predictions, the model will be evaluated using historical backtesting and standard forecasting performance metrics. This evaluation demonstrates the model's predictive capability using real historical data rather than subjective judgement.
+
+---
+
+## 12.2 Backtesting Methodology
+
+The forecasting model will be validated using **historical backtesting**.
+
+The historical sales dataset will be divided into two parts:
+
+* **Training Data:** Used to train the forecasting model.
+* **Validation Data:** Historical records withheld during training and later used to compare predicted values with actual sales.
+
+For example, if sales data is available from January to December, the model may be trained using January to September data and then used to predict October to December. These predictions are compared against the actual recorded sales for those months.
+
+---
+
+## 12.3 Evaluation Metrics
+
+The forecasting performance will be assessed using:
+
+### Mean Absolute Error (MAE)
+
+Measures the average absolute difference between predicted and actual values.
+
+Lower MAE indicates better forecasting performance.
+
+---
+
+### Mean Absolute Percentage Error (MAPE)
+
+Measures the average percentage error between predictions and actual observations.
+
+Lower MAPE indicates higher prediction accuracy.
+
+---
+
+### Root Mean Squared Error (RMSE) *(Optional)*
+
+May be included as an additional evaluation metric to measure larger prediction errors.
+
+---
+
+## 12.4 Visual Evaluation
+
+Model performance will also be demonstrated using graphical comparisons, including:
+
+* Actual Sales vs Predicted Sales
+* Historical Sales Trend
+* Forecast Visualization
+
+These graphs provide an intuitive understanding of forecasting performance.
+
+---
+
+## 12.5 Interpretation
+
+The objective of the forecasting model is not to predict every future value perfectly. Instead, the goal is to generate sufficiently accurate forecasts that improve inventory planning and support business decision-making.
+
+Forecast accuracy will therefore be evaluated using recognised forecasting metrics rather than expecting exact matches between predicted and actual sales.
+
+---
+
+## 12.6 Academic Justification
+
+The use of historical backtesting together with MAE and MAPE follows widely accepted practices in demand forecasting research and provides an objective method for validating the forecasting model.
+
+
+# Section 13 â€“ Development Roadmap
+
+## 13.1 Overview
+
+The project will be developed using a phased and modular approach. Each phase focuses on implementing specific functionalities while ensuring that the system remains stable, testable, and aligned with the project objectives.
+
+---
+
+## 13.2 Development Phases
+
+### Phase 1 â€“ Planning and Requirement Analysis
+
+Objectives:
+
+* Finalize project scope.
+* Study research papers.
+* Define system requirements.
+* Select technology stack.
+* Design overall architecture.
+
+Deliverables:
+
+* Project proposal
+* Literature review
+* System specification
+* Seminar presentation
+
+---
+
+### Phase 2 â€“ System Design
+
+Objectives:
+
+* Design database schema.
+* Design system architecture.
+* Design user interface.
+* Plan API endpoints.
+* Design forecasting workflow.
+
+Deliverables:
+
+* Database ER Diagram
+* System Architecture Diagram
+* UI Wireframes
+* API Design
+
+---
+
+### Phase 3 â€“ Core Application Development
+
+Objectives:
+
+Develop the core ERP functionalities.
+
+Modules include:
+
+* User Authentication
+* Inventory Management
+* Sales Management
+* Dashboard
+* Invoice Management
+
+Deliverables:
+
+* Working backend
+* Working frontend
+* Database integration
+
+---
+
+### Phase 4 â€“ AI Forecasting Integration
+
+Objectives:
+
+* Prepare historical sales dataset.
+* Train Prophet forecasting model.
+* Integrate forecasting module with backend.
+* Store forecasting results.
+* Display forecasts in dashboard.
+
+Deliverables:
+
+* Working AI forecasting module
+* Forecast visualizations
+* Prediction reports
+
+---
+
+### Phase 5 â€“ Testing and Validation
+
+Objectives:
+
+* Test system modules.
+* Validate forecasting model using historical backtesting.
+* Calculate MAE and MAPE.
+* Perform bug fixing.
+
+Deliverables:
+
+* Test report
+* Model evaluation report
+* Improved system stability
+
+---
+
+### Phase 6 â€“ Deployment and Documentation
+
+Objectives:
+
+* Deploy application on AWS.
+* Prepare final documentation.
+* Complete project report.
+* Prepare final demonstration.
+
+Deliverables:
+
+* Deployed application
+* Final report
+* Presentation
+* Source code repository
+
+---
+
+## 13.3 Expected Timeline
+
+The project will progress sequentially through the six phases while allowing minor iterations whenever improvements are required.
+
+# Section 14 â€“ Research Foundation
+
+## 14.1 Overview
+
+The proposed project is research-driven and has been designed by adapting concepts from recent literature on demand forecasting, inventory optimization, and Artificial Intelligence. Rather than directly replicating an existing research paper, the project applies relevant methodologies within the context of a lightweight ERP system for small businesses.
+
+---
+
+## 14.2 Base Research Paper
+
+The primary research paper provides the core forecasting methodology that inspired the AI component of this project.
+
+The forecasting concepts and evaluation methodology presented in the paper serve as the foundation for the AI-based demand forecasting module implemented within NexusERP.
+
+---
+
+## 14.3 Supporting Literature
+
+Additional literature contributes to:
+
+* Demand forecasting techniques.
+* Inventory optimization strategies.
+* Machine Learning applications in supply chain management.
+* Evaluation methodologies for forecasting models.
+* Integration of AI into business decision support systems.
+
+---
+
+## 14.4 Research Contributions to the Project
+
+The research papers collectively support:
+
+* Forecasting methodology.
+* Model evaluation techniques.
+* Inventory planning concepts.
+* Decision-support strategies.
+* AI integration into inventory management.
+
+---
+
+## 14.5 Project Contribution
+
+While inspired by existing research, this project contributes by integrating demand forecasting into a lightweight ERP system designed specifically for small grocery stores and retail businesses.
+
+The project demonstrates the practical application of research concepts within an academic software engineering project rather than proposing a new forecasting algorithm.
+
+---
+
+## 14.6 Research Integrity
+
+All research papers used throughout the project will be properly cited in accordance with academic standards. The project implementation remains an original software engineering effort that adapts published methodologies without reproducing proprietary work.
+
+# Section 15 â€“ Risks and Mitigation
+
+## 15.1 Overview
+
+Every software project involves technical and implementation risks. This section identifies potential risks associated with NexusERP and outlines strategies to minimize their impact.
+
+---
+
+## 15.2 Risk Assessment
+
+| Risk                          | Possible Impact                  | Mitigation Strategy                                                                                         |
+| ----------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Limited historical sales data | Reduced forecasting accuracy     | Use public datasets during development and transition to application-generated sales data after deployment. |
+| Poor data quality             | Incorrect forecasts              | Validate and clean input data before training.                                                              |
+| Forecasts are not exact       | User may question model accuracy | Validate using historical backtesting and report MAE and MAPE instead of relying on subjective judgement.   |
+| Increased project complexity  | Development delays               | Maintain Version 1.0 scope and avoid unnecessary feature additions.                                         |
+| Integration challenges        | System instability               | Develop and test modules independently before integration.                                                  |
+| Time constraints              | Incomplete implementation        | Follow the phased development roadmap and prioritize core modules.                                          |
+| Deployment issues             | Delayed demonstration            | Test locally before deploying to AWS.                                                                       |
+
+---
+
+## 15.3 AI-Specific Risks
+
+The forecasting module may be affected by:
+
+* Seasonal demand changes.
+* Unexpected market events.
+* Limited historical records.
+* Data entry errors.
+
+These limitations are acknowledged and considered during evaluation.
+
+---
+
+## 15.4 General Mitigation Strategy
+
+The project adopts the following practices to reduce overall risk:
+
+* Modular development.
+* Frequent testing.
+* Research-backed implementation.
+* Standard evaluation metrics.
+* Proper documentation.
+* Incremental feature integration.
+
+
+# Section 16 â€“ Future Scope
+
+## 16.1 Overview
+
+Version 1.0 focuses on delivering a lightweight ERP system integrated with AI-based demand forecasting. The modular architecture allows future expansion without requiring major modifications to the existing system.
+
+---
+
+## 16.2 Functional Enhancements
+
+Potential future improvements include:
+
+* Supplier Management
+* Purchase Order Management
+* Customer Relationship Management (CRM)
+* Human Resource Management (HR)
+* Payroll Management
+* Accounting Module
+* Multi-user Role Management
+* Multi-branch Business Support
+* Barcode Scanner Integration
+* QR Code Inventory Tracking
+
+---
+
+## 16.3 AI Enhancements
+
+Future AI improvements may include:
+
+* Multiple forecasting algorithms (XGBoost, LSTM, Temporal Fusion Transformer)
+* Automatic model selection
+* Real-time forecasting
+* Seasonal demand detection
+* Product recommendation
+* Inventory optimization
+* Price prediction
+* Explainable AI (XAI)
+
+---
+
+## 16.4 Cloud Enhancements
+
+Future versions may support:
+
+* AWS cloud deployment
+* Automated scheduled forecasting
+* Cloud database synchronization
+* Backup and disaster recovery
+
+---
+
+## 16.5 Business Intelligence
+
+Future analytical features may include:
+
+* Profit Analysis
+* Sales Performance Dashboard
+* Customer Analytics
+* ABC Inventory Analysis
+* Business KPI Dashboard
+
+---
+
+## 16.6 Research Opportunities
+
+The project can be extended for future academic work involving:
+
+* Deep Learning forecasting
+* Hybrid forecasting models
+* Reinforcement learning for inventory optimization
+* Supply chain optimization
+* AI-driven ERP systems
+
+---
+
+## 16.7 Conclusion
+
+The proposed architecture has been intentionally designed to support future growth while maintaining a manageable scope for Version 1.0.
+
+
+# Section 17 â€“ Locked Decisions
+
+## Purpose
+
+This section records project decisions that have been finalized. These decisions should not be changed unless formally approved by the project guide.
+
+---
+
+## Administrative Decisions
+
+| Item            | Status    |
+| --------------- | --------- |
+| Project Title   | ðŸ”’ Locked |
+| Institution     | ðŸ”’ Locked |
+| Solo Project    | ðŸ”’ Locked |
+| Project Version | v1.0      |
+
+---
+
+## Technical Decisions
+
+| Decision               | Selected   |
+| ---------------------- | ---------- |
+| Frontend               | React.js   |
+| Backend                | FastAPI    |
+| Programming Language   | Python     |
+| Database               | SQLite |
+| Machine Learning Model | Prophet    |
+| Deployment             | AWS        |
+| API Style              | REST API   |
+
+---
+
+## AI Decisions
+
+| Decision           | Selected                                     |
+| ------------------ | -------------------------------------------- |
+| Forecasting Type   | Time-Series Forecasting                      |
+| Validation Method  | Historical Backtesting                       |
+| Evaluation Metrics | MAE, MAPE (RMSE Optional)                    |
+| Dataset Strategy   | Public Dataset + System Generated Sales Data |
+
+---
+
+## Scope Decisions
+
+Included:
+
+* Inventory Management
+* Sales Management
+* Dashboard
+* Invoice Generation
+* AI Demand Forecasting
+
+Excluded:
+
+* HR
+* Payroll
+* CRM
+* Supplier Management
+* IoT
+* RAG
+* Advanced ERP Modules
+
+---
+
+## Change Policy
+
+Future modifications should be documented in the Change Log before implementation to maintain consistency across reports, presentations, documentation, and software development.
+
+
+# Section 18 â€“ Change Log
+
+## Purpose
+
+The Change Log records significant modifications made throughout the project lifecycle. Maintaining this log helps ensure consistency between documentation, implementation, and presentations.
+
+| Version | Date    | Change                            | Reason                               |
+| ------- | ------- | --------------------------------- | ------------------------------------ |
+| v1.0    | Initial | Project specification created     | Initial documentation                |
+| v1.0    | Initial | Finalized technology stack        | Standardize implementation           |
+| v1.0    | Initial | Prophet selected                  | Suitable for time-series forecasting |
+| v1.0    | Initial | FastAPI selected                  | Better Python integration            |
+| v1.0    | Initial | SQLite selected               | Reliable relational database         |
+| v1.0    | Initial | Scope limited to core ERP modules | Achievable within project timeline   |
+
+---
+
+## Future Updates
+
+Every major modification should include:
+
+* Version Number
+* Date
+* Description of Change
+* Reason for Change
+* Approval Status (if applicable)
+
+This ensures that all project documents remain synchronized throughout development.
+
+# Section 19 â€“ AI Prompt Context
+
+## Purpose
+
+This section serves as the official context document for AI assistants such as ChatGPT, Claude, Gemini, or future AI tools. It ensures every AI session begins with the same understanding of the project and reduces inconsistencies across conversations.
+
+---
+
+## Project Summary
+
+Project Title:
+AI-Based Inventory & Sales Forecasting System for Small Business ERP Management
+
+Internal Name:
+NexusERP
+
+Type:
+B.Tech Final Year Project
+
+Institution:
+Amal Jyothi College of Engineering (Autonomous)
+
+Developer:
+Solo Student Project
+
+Current Version:
+v1.0
+
+---
+
+## Project Goal
+
+Develop a lightweight ERP system for small grocery stores and retail businesses that integrates inventory management, sales management, invoice generation, dashboard reporting, and AI-based demand forecasting using historical sales data.
+
+---
+
+## Core Technologies
+
+Frontend:
+React.js
+
+Backend:
+FastAPI
+
+Database:
+SQLite
+
+Machine Learning:
+Prophet
+
+Programming Language:
+Python
+
+Deployment:
+AWS
+
+---
+
+## AI Workflow
+
+1. Record sales.
+2. Store historical sales.
+3. Train Prophet model.
+4. Generate forecasts.
+5. Validate using historical backtesting.
+6. Evaluate using MAE and MAPE.
+7. Display prediction results and charts.
+
+---
+
+## Important Constraints
+
+* Do not change the project title.
+* Do not replace Prophet unless explicitly instructed.
+* Do not add HR, Payroll, CRM, Supplier Management, or IoT to Version 1.0.
+* AI is a decision-support system, not an autonomous decision-maker.
+* Recommendations should remain consistent with the approved project scope.
+
+---
+
+## Instructions for AI Assistants
+
+Treat this document as the primary source of truth. If a future suggestion conflicts with these specifications, explain the conflict before recommending any changes. Avoid introducing additional technologies, features, or architectural changes unless explicitly requested.
+# Section 20 â€“ Quick Project Summary
+
+## Project
+
+**AI-Based Inventory & Sales Forecasting System for Small Business ERP Management**
+
+---
+
+## Internal Name
+
+NexusERP
+
+---
+
+## Project Type
+
+* B.Tech Final Year Project
+* Amal Jyothi College of Engineering (Autonomous)
+* Solo Project
+
+---
+
+## Objective
+
+Develop a lightweight ERP solution for small grocery stores and retail businesses that integrates inventory management, sales management, invoice generation, dashboard reporting, and AI-based demand forecasting.
+
+---
+
+## Major Modules
+
+* User Authentication
+* Inventory Management
+* Sales Management
+* Dashboard
+* Invoice Generation
+* AI Demand Forecasting
+
+---
+
+## Technology Stack
+
+* React.js
+* FastAPI
+* SQLite
+* Python
+* Prophet
+* Pandas
+* NumPy
+* Matplotlib
+* Plotly
+* AWS
+
+---
+
+## AI Module
+
+* Time-series forecasting using Prophet
+* Historical sales data
+* Historical backtesting
+* MAE and MAPE evaluation
+* Forecast visualization
+
+---
+
+## Expected Deliverables
+
+* Working Web Application
+* AI Forecasting Module
+* SQLite Database
+* REST API Backend
+* React Frontend
+* AWS Deployment
+* Final Report
+* Seminar Presentation
+* Source Code Repository
+
+---
+
+## Version
+
+v1.0
+
+---
+
+## Current Status
+
+Planning and Review 1 baseline are completed. Current implementation includes inventory management and POS billing with stock synchronization and Excel bill export. Next milestones focus on advanced reporting and AI forecasting integration.
+
+
+
+

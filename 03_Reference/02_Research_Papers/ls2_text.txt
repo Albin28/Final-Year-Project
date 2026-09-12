@@ -1,0 +1,1037 @@
+
+================================================================================
+PAGE 1
+================================================================================
+Vol.:(0123456789)
+ Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9
+Discover Applied Sciences
+Research
+Developing a demand planning strategy for joint forecasting 
+and employing analytical tool in an empirical case study
+Kiran Basavaraju1 · Omid Fatahi Valilai1
+Received: 10 August 2024 / Accepted: 17 March 2025
+© The Author(s) 2025 
+ 
+OPEN
+Abstract
+Product demand prediction is highly important as levels of inventory, customers forecast accuracy and overall 
+performance are directly impacted by this demand planning. As the main problem of this research, accurate forecasting 
+as a crucial challenge for achieving high performance is targeted. This paper has developed a demand planning 
+framework with analytical capabilities of sales and consumer patterns, historical sales, and seasonality data to maximize 
+the company’s ability to satisfy consumer demand. The framework has been implemented in an empirical business 
+environment and has been analyzed from a practical viewpoint. A comprehensive picture of all factors is acquired from 
+this viewpoint for successful implementation. The primary objective of the framework is to enhance the demand planning 
+process in joint forecast project and how these improvements will help other business units, a crucial component of the 
+supply chain, to achieve greater performance levels. As a result, the process of demand planning is examined from a 
+system viewpoint for its integration with the supply chain E2E process, performance, forecasting methods, and logistical 
+structure which serve as the foundation for assessment of the current condition and context of the new system. A 
+deeper focus is placed on the analysis of the demand planning processes and forecasting techniques. Several root 
+causes are found based on the customer forecast inputs like forecast horizon, forecasting methods, standard process 
+with customers, performance measurement and communication with customers. Integration of JDA, ERP, and other data 
+sources, combined with flexible forecasting tools, greatly refines the demand planning while enhancing overall decision 
+making. By blending statistical models with real-time customer insights, the firms maintain an agile, efficient supply chain 
+that can quickly adapt to market disruptions.
+Article Highlights
+•	 Demand planning can be improved by integrating customer inputs into forecasting models.
+•	 A robust analytical framework for consolidating JDA, ERP, and customer data to refine supply chain performance.
+•	 Investigating through an empirical study the enhancement of automated forecasting tool accuracy, inventory 
+alignment, and decision-making.
+•	 Offering insights into refining joint forecasting by emphasizing flexible time fences.
+Keywords  Demand forecasting · Predictive analytics · Supply and demand · Supply chain management
+ *  Omid Fatahi Valilai, OFatahiValilai@Constructor.University; Kiran Basavaraju, KBasavaraj@Constructor.University | 1School of Business, 
+Social and Decision Sciences, Constructor University Bremen, Campus Ring 1, 28759 Bremen, Bremen, Germany.
+
+================================================================================
+PAGE 2
+================================================================================
+Vol:.(1234567890)
+Research	
+ 
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9
+1  Introduction
+Customer satisfaction and reliability are important elements in every aspect of business [1]. Demand planning examined 
+as a part of the broader Sales and Operations Planning (S&OP) process is a vital part of the supply chain because it enables 
+companies to satisfy consumer needs with sufficient inventory levels while keeping costs in check [2, 3]. Organizations 
+may also improve customer satisfaction by including consumers in the process and considering their opinions [4]. 
+However, while demand planning is a crucial component of every business strategy, it has faced challenges for its 
+efficiency in empowering businesses in foreseeing and planning for future demand [5, 6]. This is due to reasons like 
+the methods and systems that store the necessary information may not have all the features, which might make the 
+job of demand planners challenging [7]. Planning systems may become the next problem impeding the S&OP process 
+improvement after it has been successfully deployed in a corporation [8]. Demand planning methods usually must adapt 
+to the limitations of information systems [9, 10]. Demand planning is challenging because of market uncertainty, but 
+Artificial Intelligence (AI) can make it more effective [11]. These services are provided by a variety of solutions available 
+on the market, but AI may be superior to them because it allows for better prediction at scale without bias or human 
+mistakes. By forecasting future requests based on historical data and existing trends, AI can assist with demand planning 
+[12, 13].
+Moreover, today’s dynamic business environment necessitates agile strategies to approach the complexities of supply 
+chain [14], rapid market demand shifts [15] and environmental sustainability requirements [16]. Companies and their 
+supply chain stakeholders have to face diverse product portfolios and geographically dispersed operations, which require 
+sophisticated forecasting methods to remain competitive [17]. Emerging technological trends, such as AI-driven analytics 
+for rapid product development [18], distributed ledger technologies for supply chain configuration [19] and effective 
+production and inventory planning [20] hold the potential to strengthen supply chain resilience. Inaccurate forecasts lead 
+to misaligned inventory levels and result in escalation of warehouse costs and customer dissatisfaction [8]. Consequently, 
+improving the forecasting capabilities is inevitable for reducing risks and supporting the proper resource allocation 
+and sustaining a competitive edge [3]. By integrating emerging technologies and more effective customer insights, 
+this research aims to offer improved strategies for managing the complex challenges in demand planning and focused 
+challenges like: 
+1.	 Poor visibility: Inability to perceive the big picture as demand planners cannot see everything. They can not take a 
+big difference in market to foresee future trends because they can only observe what is occurring in their product 
+sector [21, 22].
+2.	 Poor forecasting: Forecasting mistakes by demand planners frequently lack precise knowledge of production capacity, 
+or the amount of inventory required in the approaching seasons [6, 23].
+3.	 Poor Consistency: Inconsistency of demand planners are unable to adhere to a standard demand planning procedure. 
+Each business has its own set of procedures, which causes inconsistent data inputs and outputs along with complex 
+analytics models [24, 25].
+To fulfill the mentioned difficulties, the research studies suggest that the demand fulfillment must be data-driven and 
+use big data technologies to be effective [3, 11, 13, 26]. The use of big data for demand fulfillment is one of the most 
+current developments, which has been used in a variety of sectors [27]. Large volumes of consumer data may be analyzed 
+using AI to produce insights that improve fulfillment. Moreover, S&OP and, more specifically, demand planning, are the 
+challenges that many companies face [28]. The choice of information sources presents a typical problem to demand 
+planning in a complex and global context where many businesses operate [29]. The planning process frequently involves 
+a significant number of people, which poses difficulties for information flow, supporting procedures, and systems, as 
+well as for the importance, accuracy, and applicability of the information, especially when it comes to a practical and 
+operational business environment [30].
+The evolving customer demands and the increasingly complex supply chain environment necessitate enhancements 
+in forecasting processes [31]. This can be targeted by proposing a joint forecasting initiative that considers real-time 
+customer inputs with automated predictive tools to reduce both the risk of overstock and stockouts while strengthening 
+customer service levels. This requires improved data consolidation, heightened forecast accuracy, and scalable demand 
+planning for improving the supply chain agility and long term competitiveness [32]. Standardizing forecast submission 
+
+================================================================================
+PAGE 3
+================================================================================
+Vol.:(0123456789)
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9 
+	
+Research
+timelines further streamlines operations, enabling demand planners to quickly identify and address deviations, thereby 
+fostering greater collaboration and transparency with customers.
+1.1  Problem description and research aims
+The business case focused on in this paper has a structure for demand planning that uses a collaborative customer fore-
+cast with a time horizon of 3–6 months to increase the forecast accuracy. However, it is challenging to attain a higher fill 
+rate due to the difference between forecast values and order quantities produced by the customers. The company must 
+adhere to the customer-provided forecast numbers if the risks are greater, which eventually leads to a lower fill rate. In 
+this case, responding to the customer demand will be a challenging task. Customers whose forecasted demand is too low 
+but place high orders will cause the business to experience poor fill rates and excessive cuts, which will ultimately result 
+in losses for both the company and the customer. Similarly, forecasting high demand and ordering low amounts leads 
+to inventory costs [33]. The process of demand planning is meant to be the focus of this structure’s perspective, while 
+the Supply Chain and logistical organization are also considered. Technical, organizational, economic, and social factors 
+will all be taken into consideration. In consideration of this, the following main question for this research is formulated:
+•	 Examining the Root cause of the customer’s orders that differs from what was forecasted, What is the impact of these 
+root-causes?
+•	 How the demand planning process can be improved to prevent the mentioned problems and enhance performance?
+2  Literature review
+2.1  Strategic planning and decision making
+Strategic planning and decision-making are widely mentioned as some of the most crucial responsibilities of a company’s 
+board and management, but it has been discovered that senior management frequently lacks these skills. Some of these 
+decisions might be related to long-term goals, while others might be related to short-term goals. These choices could be 
+tied to short-term objectives in some cases and long-term objectives in others. The board must ensure that while making 
+decisions, they are considering every aspect of the company. They must consider what is beneficial to the company as 
+a whole and not just for one division or department [34].
+Strategic decisions can be accomplished in a variety of ways and contexts. It consists of:
+•	 Analytical method
+•	 An intuitive strategy
+•	 Participatory methodology
+•	 Hierarchical methodology
+Demand forecasters create predictions about future consumer demand, keep tabs on historical demand and inventory 
+levels, examine sales orders and marketing strategies to anticipate customer needs, spot potential production bottle-
+necks, and suggest operational adjustments to boost efficiency. Demand planners frequently must strike a compromise 
+between short-term needs and long-term resource allocation estimates. A company’s decision-making will also be 
+influenced by the kinds of items it sells. For instance, a company’s decision-making would be more centered on lowering 
+expenses than increasing profit margins if it had a large mix of low-margin and high-margin products.
+Along with handling international risks like currency fluctuations or political unpredictability, demand planners need 
+to find new markets and chances to increase sales. Software for demand planning may be employed as a strong decision-
+making tool in this situation since it can not only improve forecast accuracy but also provide information on potential 
+external influences on future activities like revenue growth or customer satisfaction. The use of AI technology in demand 
+planning is becoming more common due to its precise forecasts that assist businesses in making decisions devoid of 
+human bias. AI employs data analytics algorithms that can accurately and precisely anticipate future events based on 
+historical trends, something that is impossible for humans to achieve [33].
+
+================================================================================
+PAGE 4
+================================================================================
+Vol:.(1234567890)
+Research	
+ 
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9
+2.2  Demand planning as a component of strategic planning
+Companies estimate the demand for their products using the demand planning process. It is based on market information 
+that is currently accessible and previous data [17]. Demand management is a practical strategy for adapting to shifting 
+market conditions. The ability to estimate product demand and production gives managers the knowledge they need 
+to make more informed decisions in the future. Customers and businesses may both benefit from demand planning, 
+which has a range of advantages such as increased profitability, customer happiness, and corporate efficiency [21]. The 
+warehouse’s inventory levels will be influenced by the organization’s demand strategy, which will also have an impact 
+on service levels [35]. This can be an issue since it becomes challenging to make precise estimates for future demand 
+when demand levels are changing quickly. There are five primary parts:
+•	 Prediction
+•	 Improvement
+•	 Sourcing
+•	 Selection
+•	 Review
+Demand planning forecasting involves making decisions now as well as in the future to determine what adjustments are 
+necessary to make the operations and capital expenditures for future production [36]. The cost of sourcing and select-
+ing operations, along with how much inventory should be created or bought at certain points in time, as well as when 
+production capacity will become available, are all factors that are considered when forecasting. The level of optimization 
+might be global or item-level, and it may also entail modifying either external sources (like suppliers) or internal processes 
+(e.g., R&D). Finding possible suppliers that can fulfill the requirements from among those considered suitable based on 
+certain criteria is considered sourcing [37].
+2.3  Sales and operations planning (S&OP)
+S&OP has been developed to meet the requirement of bringing strategy to the everyday life of businesses and to allow 
+cross-organizational collaboration as the topic of strategic decision making has shown to be a frequent topic in organiza-
+tional study. S&OP’s primary goals are to balance supply and demand as well as create connections between a company’s 
+strategic and operational initiatives. The dedication of the participants is one of the crucial success factors of effective 
+S&OP. By improving the process for giving stakeholders the essential information, this type of commitment can be 
+formed [38]. The key emphasis for businesses that prioritize service differentiation is the relationship between customer 
+demands, customer centrality, innovation, and service differentiation. Customer demands are not a significant predic-
+tor; however, customer centrality is a strong predictor of service differentiation and innovation. Additionally, it has been 
+discovered that the complexity of consumer wants is favorably correlated with service distinctiveness but negatively 
+correlated with innovation [39].
+The traditional view of S&OP is that it’s a process which is completed monthly. It is important to do this to review the 
+company’s performance and make any necessary adjustments. However, there are many ways to complete this pro-
+cess, and it should be tailored to fit the needs of the company. The demand S&OP puts a strong emphasis on customer 
+demand and aids in matching the supply chain to it. The sales and operations teams collaborate in this process to esti-
+mate demand, schedule production, and adjust inventory levels as necessary. The major objective of this procedure is to 
+reduce lead times and costs while maintaining customer service standards to optimize inventory levels [40]. The process 
+of S&OP is often seen as a five-step process, as illustrated in Fig. 1: 
+Fig. 1   S&OP Process
+
+================================================================================
+PAGE 5
+================================================================================
+Vol.:(0123456789)
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9 
+	
+Research
+1.	 Data gathering: The data that is obtained in S&OP is essential in demand planning. The information should be gath-
+ered from many sources and used to spot patterns and trends throughout time. It is crucial that this data not only be 
+gathered but also properly exploited to impact the plan. Numerous methods, including as market research, consumer 
+feedback, data analytics, and competitor analysis, can be used to collect the data [33].
+2.	 Demand Planning: The process includes cross-functional cooperation. It is regarded as one of the S&OP process most 
+unpleasant elements. One technique employed by senior management to comprehend the effects of supply chain-
+side volatility and demand uncertainty is scenario analysis [41].
+3.	 Supply Planning: The capacity aspect of any company is assessed through supply planning. Supply planners must 
+consider many aspects to make efficient plans. This involves planning for operations, materials, and manufacture. It 
+is up to supply planners to decide how much product to produce, when to produce it, and where to store it [42].
+4.	 Pre-S&OP: During the pre-S&OP meeting, all department heads come together to assess the planning and, where 
+possible, execute. During this conference, the financial effects of demand and supply chain planning are being 
+considered. The traditional strategy is an event-driven, reactive procedure. The more contemporary technique is a 
+proactive procedure that is planned and carried out to foresee opportunities and act on them [5].
+5.	 Executive meeting: In some cases, the pre-S&OP meeting cannot resolve all the difficulties. To approve final decisions 
+and the overall S&OP plan, executives consider the department heads’ proposals during this meeting [43].
+2.4  Conclusion from literature review
+One of the essential components of an effective planning process is the demand planning strategy. Although earlier 
+industries frequently worked more in a supply-driven manner, the market is shifting to become more customer-
+oriented. Customers are in the driving seat because the forecast of the products is determined to meet their 
+demands. This is accurate across many sectors that had an impact on how business operations are structured. 
+To be able to meet the market’s ever-shifting demands and to take advantage of its opportunities, planning and 
+forecasting future demand is essential. Highly accurate predictions and plans may aid businesses in overcoming 
+difficulties such as longer lead times for materials to be procured, planning the product range, capacity planning, 
+and providing suppliers with more precise estimates to prevent the supply chain bullwhip effect. Due to this, each 
+process should be designed exclusively to meet the company’s demand. Along with the degree of plans and the 
+frequency of planning, the schedule for the plan should also be considered. The planning schedule is frequently 
+determined by the companies. The timescale must be close to two years or more to take strategic decisions into 
+account along with tactical ones. This aids in planning the demand for goods by considering the technological 
+product frameworks. It is usually not practical to formulate demand plans at the Stock Keeping Unit (SKU) level 
+since product portfolios are getting complicated and the portfolio will be changing. A statistical forecast based on 
+historical data is helpful to aggregate and disaggregate at multiple levels to forecast the future demand. This can 
+involve financial controllers reviewing the sales of a specific business unit or product managers considering global 
+data per product line, sales managers finding the sales of a specific region, operations managers reviewing the 
+planned demand for a specific factory. This allows an area manager, for instance, to modify the plan at the country 
+level and have it implemented at all levels where the business is booming. This enables those engaged to see the 
+wider picture and lessens the need for highly developed analytical abilities throughout the forecasting process.
+The changes in consumer behavior, the changing nature of the market, the expansion of market share, and vari-
+ous types of project information are among the potential judgment adjustments that cannot be observed from 
+historical data. Most of the research studies have discovered that judgment modifications made to data baselines 
+frequently boost prediction accuracy, particularly when the adjustment is larger and not simply a minor adjust-
+ment based. The projections are frequently biased by the judgmental modifications, and the projected statistics 
+frequently exceed the actual. The preconception is reduced to determine the change in plan. The planning process 
+should be in place before deploying planning systems. To facilitate the sharing of data and the development of the 
+plans, the demand planning process and systems should be developed. Some of these systems are straightforward 
+databases or software applications. These software make a forecast of future demand based on current data from 
+markets and consumers using analytics technologies. Companies frequently commit the mistake of failing to have 
+the proper kind of system in place that will facilitate this process. This may cause inefficiencies in forecasting the 
+demand, which would fail to meet the customer’s demand.
+
+================================================================================
+PAGE 6
+================================================================================
+Vol:.(1234567890)
+Research	
+ 
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9
+3  Demand planning strategy for joint forecasting and employing analytical tool
+3.1  Business demand planning and logistical structure
+The Business domain in this study includes a multinational company. It manufactures and develops  products, and sells & 
+distributes Fast-Moving Consumer Goods (FMCG) products in beauty industry. It has customers in numerous industry sec-
+tors. Its regional commercial business units serve as the foundation for the corporate global market reporting structure. 
+It offers products to Business-to Business (B2B). The business is growing to the position of market leader. The business 
+units focus on two categories of consumer beauty and luxury products.   The production of business firm products and 
+regular business activities are achieved through their supply chain. For the benefit of consumers, they produce, market, 
+sell, and distribute a variety of products. They still rely on a global network of Third-party Manufacturer (TPM), who cre-
+ate about one fifth of the final products.  Additionally, they buy packaging parts that are produced in accordance with 
+their design requirements. Raw materials include a higher risk of labor and human rights abuses, and it is considered to 
+enable reduction of this risk. As a large international company, it also engages in marketing, offices, retail locations, and 
+internet, among other supply chain activities. Based on supplier documentation pertaining to the following four major 
+categories and evaluating the environmental and social performance of their suppliers: Sustainable Procurement, Labor 
+and Human Rights, Ethics, and Environment.
+3.1.1  Application of Tools for demand planning
+1.	 JDA: James Donald Armstrong (JDA) is a statistical forecast-based system. Everything which is forecasted by the 
+demand planners will be in this system. JDA is linked to the production system but not an end-to-end system. With 
+a few exclusions, the studied company will position its forecast in JDA globally. The statistical recommendations 
+will be used to compute the regular products. Statistical forecast is calculated based on at least 12 months history. 
+The forecast will be more precise as there is more historical data. However, it can have a negative effect in specific 
+situations, such as Covid. Every initiative must be placed in JDA. Whatever is placed in JDA, it is subsequently used 
+by other side of supply chain such as factory planners for production. The data input aggregates data from vari-
+ous sources, including JDA for forecasting and ERP for inventory management. It consolidates historical sales data, 
+customer forecasts, and relevant market data to create a comprehensive dataset. In the processing layer, the data 
+undergoes transformation and cleansing to ensure quality and consistency. This process involves standardizing 
+formats, addressing missing values, and applying relevant business rules.
+2.	 MFR: Manugistics Forecast Reporting (MFR) is a reporting system. Demand planners can extract the data from JDA and 
+from ERP. The latest Forecast Performance updates in a MFR system. The analytical tool is designed with a modular 
+architecture. The data input aggregates data from various sources, including JDA for forecasting and ERP for inventory 
+management. It consolidates historical sales data, customer forecasts, and relevant market data to create a com-
+prehensive dataset. In the processing layer, the data undergoes transformation and cleansing to ensure quality and 
+consistency. This process involves standardizing formats, addressing missing values, and applying relevant business 
+rules. The core of the tool, this engine utilizes various forecasting algorithms, including: Statistical Models which are 
+traditional time series analysis methods, such as the Lewandowski model, which consider trends, seasonality, and 
+historical patterns. The results are presented in an intuitive dashboard format, allowing users to visualize forecast 
+accuracy, track performance metrics (such as Mean Absolute Percentage Error 90 (MAPE90)), and assess deviations 
+in real-time.
+3.	 Prometheus©: The tool for producing content is called Prometheus©. It employs AI technology to create material 
+for themes, and in areas where it falls short, it may use an automated bidding mechanism to select the best-fitting 
+freelancer. In the studied company, ­Prometheus© is an ordering system for all initiatives for luxury brands. It provides 
+offerings through Electronic Marketing Book (eMB).
+4.	 ERP: It is a connecting tool to a company as well as to the Customers. The demand planners and customers can enter 
+their inputs in this system.
+
+================================================================================
+PAGE 7
+================================================================================
+Vol.:(0123456789)
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9 
+	
+Research
+3.1.2  Markets and logistical model in EMEA region
+The studied company operates in markets with intense rivalry and high customer demand. There is competition in 
+the market and variable customer demand because of the nature of the generic products which are manufactured. 
+The EMEA region includes several locations. The company has a strong regional focus. Therefore, only the European 
+distributor market is focused. A monthly local planning process is used for this forecasting, and several stakeholders 
+participate by contributing to the demand plan individually. Every business unit has different tools depending on the 
+requirement. While European Distributor Market (EDM) and Germany, Austria, and Switzerland (DACH) markets both 
+have unique tools, they are both part of the EMEA region. Because EDM works with distributors and the distributors 
+then sell the products to retailers, whereas in DACH and the UK, it directly sells the products to retailers. It is always 
+necessary to find the match for the system requirements.
+The logistics model can be characterized as improving forecasts using the appropriate methods. Reduced expenses, 
+increased margins, and improved cash flow are all part of the corporate plan. In this business sector, cost reduction 
+and improved customer satisfaction are the main objectives of logistics. Flexibility and a shorter lead time are usu-
+ally secondary objectives. Deliverability dependability is a key objective. This shows that cutting costs and uphold-
+ing service levels are at odds. The demand planning procedure involves collecting joint forecasts from preferred 
+customers and determining if every customer is abiding by the studied company’s rules and regulations to sell their 
+goods in the authorized area. Demand planning is based on forecasts and is divided into planning and execution 
+parts. Historical sales data, market hypotheses, and statistical predictions are all employed as data sources. Demand 
+planning (EMEA and corporate) and monthly S&OP are responsible for reviewing. Through ERP systems, information 
+is communicated in EDM.
+The geographical location of the logistics system includes north of Europe for the central team and marketplaces 
+for the regional teams. The global Distribution Center (DC) network for the studied company is huge worldwide. Main 
+factories in Europe where the items are made are in EU and UK. The flow of goods occurs from Suppliers to factories 
+and DC, and then to Customers and Direct to Consumer (DTC). Resale Price Maintenance (RPM) and marketing 
+suppliers are one of the suppliers, and the goods movements occur straight from the manufacturers to the DCs, TPM 
+External Operation Planning (EXO), and ultimately the customers. The flow of products from DCs to various business 
+units and suppliers and the product flow within the studied company as internal flow of are illustrated in Fig. 2.
+3.2  Proposed demand planing process
+Demand Planning can be defined as the art and science of planning customer demand to drive holistic execution of such 
+demand by corporate supply chain and business management. Starting with a reliable statistical prediction, demand plan-
+ning adds intelligence through consensus management of the demand information process. Demand Planners are subjected 
+to forecast several things, including: 
+Fig. 2   The studied company 
+internal and external Product 
+flows through the global 
+supply chain
+
+================================================================================
+PAGE 8
+================================================================================
+Vol:.(1234567890)
+Research	
+ 
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9
+1.	 Shipments to Customers where returns are not included in the forecast or shipments.
+2.	 Units which are converted to a corresponding output of gross sales.
+3.	 A forecast horizon of minimum 18 months.
+4.	 Unconstrained demand unless there is a supply issue communicated through hubs/division.
+Forecast is done to meet the need of Supply chain which involves deployment to DC, production at Factory, and capacity 
+planning at DC/factory. It also includes commercial partners which involve S&OP and financial Planning. The forecast is done 
+by creating a baseline forecast using historical shipments and then adding market intelligence from sales and marketing 
+plans, promotional plans, and feedback & discussion from the S&OP. Demand forecasters don’t use the forecast for: 
+1.	 Managing stock levels
+2.	 Using the forecast as a contingency plan
+3.	 Forced to equal target or objective
+4.	 Manipulation (i.e., no change or intentionally high or low)
+5.	 Negotiation (i.e., low forecast until more funding provided)
+The role of the demand planner is to minimize the inaccuracy with a focus on continuous improvement. They balance the 
+customer’s requirements with the capabilities of the supply chain, enabling them to match supply with demand proactively 
+and execute the plan with minimal disruptions and cost. A forecast is created from the bottom up at Demand Forecasting 
+Unit (DFU) level. A DFU is a combination of Demand Location (Market) and Demand Group (subset if required). The forecast is 
+built using statistical methods incorporating business intelligence assumptions collected from Marketing and Sales. Demand 
+planners comprehend macro market trends within a market. They are noticing significant changes in consumer behavior 
+and major changes in market size. Through cooperation with the business partners, they can comprehend the connection 
+between market size, shipments, and share. They understand that the biggest causes of forecast bias in businesses are internal 
+work procedures and macro events.
+3.2.1  End to End (E2E) Supply chain
+From product creation through distribution, the studied company’s worldwide supply chain oversees the production and 
+sale of  FMCG in more than 100 countries. The studied company has changed every aspect of its end-to-end supply chain to 
+provide consumers with innovation. It has employed end-to-end efforts such as big data platforms, data analytics models, 
+and product design optimization techniques to satisfy customers’ requests. Data analytics, robots, data science, and other 
+technologies are being used by the corporation to develop across the whole lifespan of its goods. The E2E supply chain 
+includes two main divisions, such as business units and hubs. The master data includes DRP calculations considering demand 
+and existing stock, such as the requirement by location based on parameters. The Site Integrated Planning (SIP) includes 
+MSP/EXO/MSP for the generation of production and materials supply plans for the plants, including forward forecast and 
+Fig. 3   The studied company 
+Supply Chain structure across 
+the business
+
+================================================================================
+PAGE 9
+================================================================================
+Vol.:(0123456789)
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9 
+	
+Research
+capacity plan (in-house and supplier) as in Fig. 3. Deployment is a constrained plan for execution of what to supply, based 
+on available stock. Life cycle management team is the upstream representative of Planning who influences the business. 
+Life cycle management integrates people, data, processes, and business systems to create value at the different stages of 
+the life cycle.
+3.2.2  The studied company’s master data architecture
+Master data must reflect business strategies agreed upon with internal and external stakeholders, as well as ERP system 
+functionality. On a regular basis, Master Data must be reviewed for accuracy and any changes in business strategy, includ-
+ing Phase In-Phase Out decisions. The master data is stored in different tools: 
+1.	 Master data is maintained in ERP and daily transfer occurs from it to JDA. The master data transfer is: 
+(a)	 Finish products: Demand units/International Article Number (IRC)
+(b)	 Global materials Master (GMM) Hierarchies: Brand Hierarchy & Product Hierarchy
+(c)	 Product Attributes: Size, Article Type, Gender, etc.
+2.	 Master data is maintained directly in JDA, DFU with effective and discontinuation dates and other master data fields 
+that can be populated in JDA (Base Price, PIPO dates)
+3.	 Other master data (considered as configuration) maintained in JDA by the support team
+The JDA tool consists of Demand Unit, Demand group, Location, and Model to adjust the forecast. The DFU is the basic 
+unit of demand, and it is at the lowest level in JDA. DFU is the level at which a forecast is created and stored (for example: 
+statistical forecast, promotion). DFUs are typically generated automatically following the GMM interface; if not, Demand 
+Planner (DP) can create. Demand Unit is the material code or IRC. They are interfaced from GMM and visible in the Demand 
+unit table. Brand hierarchy, Product hierarchy, and attributes are assigned to this object, also via GMM interface.
+3.2.3  Hierarchies of demand planning
+There are three different hierarchies for IRC. 
+1.	 Product hierarchy occurs at 3 levels: It represents to which line, brand, house or division the product belongs to
+2.	 Market category happens in 4 levels: Core category, subcategory, market category, and product segment. It represents 
+the category of products
+3.	 Article type occurs at 2 levels: Article type and article sub type. It represents how the products are sold ( i.e., one shot/
+Promo, shopping bag etc.) and the type of product (i.e., Merchandising, sample etc.)
+3.2.4  Distribution requirements planning (DRP)
+DRP is a systematic process to determine which goods are required, in what quantity, at which location, and when they 
+are required. The purpose is to meet demand within the distribution network according to desired coverage parameters. 
+The process takes place in JDA. For each location in the distribution network, the DRP calculation takes into account the 
+inventory, demand, and parameters to determine the quantities required to be received from the upstream locations, 
+and the quantities required to be sent to any downstream locations. This is the Unconstrained Distribution Plan as 
+Fig. 4   The studied company’s 
+Distribution requirements 
+planning process
+
+================================================================================
+PAGE 10
+================================================================================
+Vol:.(1234567890)
+Research	
+ 
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9
+illustrated in Fig. 4. To ensure that the DRP calculation is as accurate as possible, and delivers the required business 
+outcomes, parameters must be regularly reviewed and maintained. Network Parameters represent real-world aspects 
+such as loading and transport times, so these are compared vs actual times and adjusted as required. SKU Parameters 
+are reviewed in relation to desired business performance, to optimize service and inventory. This is supported by ABC 
+review, the process of segmenting the product portfolio by importance (sales value) and defining parameters to reflect 
+this. The Deployment process in Fig. 4 describes the generation and execution of a constrained distribution plan to supply 
+the whole distribution network. The aim is to ensure product availability for sales in all markets to maximize service, and 
+to optimize inventory and distribution costs. The outcome of the deployment calculation is a feasible distribution plan 
+to be analyzed and executed.
+3.2.5  MPS and MSP
+The MPS process describes the generation of an executable constrained production/supply plan at a production plant, 
+with the aim of achieving customer service objectives while optimizing cost and inventory performance. The main prin-
+ciples of MPS as illustrated in Fig. 5 are:
+•	 Resolve material constraints by prioritization.
+•	 Give visibility and optimize availability to meet downstream needs.
+•	 Provide capacity figures to allow resource planning.
+•	 Use of Planned Time Fence: firmed production
+MSP is considered as the process to ensure the availability for externally procured materials for use in the production 
+of finished goods, to support service to the customers, while optimizing cost and inventory performance as illustrated in 
+Fig. 6. Material Requirements Planning is the system calculation of a recommended material supply plan and the dates 
+on which the purchased items should be received. The main principles of MPS are:
+•	 Acting immediately on constraints and abnormal situations: solve, collaborate, escalate, prioritize.
+•	 Data in the system must be up-to-date and realistic, for use by downstream processes.
+•	 Collaborate with suppliers. Work to understand their operation and their supply chain; understand and analyze their 
+capacity; set service level agreements targeting responsiveness; challenge them to be responsive.
+•	 Drive manual work out of Material Supply Planning. Engage the principle “silence is approval” with suppliers. Use 
+collaboration platforms such as e2open, targeting vendor managed inventory.
+Fig. 5   The Master Production 
+Schedule (MPS) process
+
+================================================================================
+PAGE 11
+================================================================================
+Vol.:(0123456789)
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9 
+	
+Research
+3.2.6  External operation planning (EXO)
+EXO is considered for the planning of finished goods manufactured externally at TPMs, as opposed to factories owned 
+and operated. The use of a TPM relates to a strategic choice not to manufacture in-house, usually related to: A niche 
+technology with specific manufacturing technologies which does not make sense to invest in yet, A technology which 
+the company has chosen not to be a specialist in manufacturing, An area where the studied company is not cost com-
+petitive vs TPMs, or where there is no tendency for managing the complexity, and a formula or product design owned 
+by a TPM, which the company wishes to bring to market.
+3.3  S&OP process at the studied company
+The proposed S&OP cycle as illustrated in Fig. 7 consists of five steps: 
+Fig. 6   The studied company’s 
+Material Supply Planning 
+(MSP) process
+Fig. 7   The studied company’s Sales and Operations Planning (S&OP) process and outline of the global S&OP Governance
+
+================================================================================
+PAGE 12
+================================================================================
+Vol:.(1234567890)
+Research	
+ 
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9
+1.	 Baseline: Establishing company targets and comparing projected results to those targets.
+2.	 Initiatives and assumptions: Initiative master plan is created by agreeing on, validating, and sizing/phasing new tasks. 
+It is important to connect assumptions about market mechanics, such as distribution routes and market dynamics, 
+with promotions and other events and establishment of forecast and execute plan.
+3.	 Demand review: The first step in the demand evaluation process is to provide a precise prediction of the goods and 
+services that consumers may require. Knowing what resources will be required to produce these products or services 
+is crucial. When both of those items are there, planning can begin on how to swiftly put them together for what 
+consumers will need in the present and the future.
+4.	 Supply review consisting: review of critical resources, deploying alignment of sales and resources, analyzing supply 
+chain performance- cash, cost, service
+5.	 Integrated reconciliation: Gaps that need to be filled with action should be identified and emphasized. Scenarios are 
+developed to be utilized in S&OP decision-making.
+6.	 S&OP: Reviewing potential critical gaps scenarios and deciding on a course of action. Deciding on sign-offs and Send 
+the approved decisions back for implementation.
+3.4  Integrating demand forecasting
+The forecasting techniques employed for the product groupings in this research are examined to increase forecast 
+accuracy and create a better demand plan. It is helpful to get an understanding of the impact of a forecast adjustment 
+before assessing the impact of other forecasting techniques. If the prediction is more accurate, it will be easier to deter-
+mine the proper number of items. A forecast’s total number of products and degree of inaccuracy are connected. The 
+forecasted quantity of goods will increase if the inaccuracy diminishes, as it should. The primary focus of this study is on 
+strengthening the brand-new project process and strategy that was just launched in the studied company in the project 
+named joint forecast with the assistance of consumers. This section will focus on the enhancements made to the joint 
+forecast project process. The section will be elongated in the forecasting methods called Joint forecast with customer 
+collaboration. It will also cover the difficulties the demand planners first encountered and how those challenges were 
+resolved. In the next section, it will also include what other improvements can be made to make the process even better.
+The complete root cause is depicted in Fig. 8. Both the organization and technique, as well as the planning quality, are 
+considered. The elements in this graphic that directly affect forecast accuracy are included. These so-called root causes 
+are connected to both the organizational element and the standard of the planning. The flow diagram is at a generic 
+level, and it is difficult to understand the precise linkages. A so-called issue tree can be used to describe the situation and 
+help address it more effectively. An entire solution will emerge by addressing the root causes, which are the problems 
+at the base of the issue tree. It is explained where the procedure’s primary uncertainties are and what their primary 
+causes are involved in the joint forecast project process. The forecast accuracy is the main element utilized in this aspect. 
+Performance can be improved by looking at the uncertainties and enhancements for this indicator.
+Several forecast techniques are used in the studied company, and some of them are discussed in this section.
+Fig. 8   The flow diagram 
+model for overall root cause
+
+================================================================================
+PAGE 13
+================================================================================
+Vol.:(0123456789)
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9 
+	
+Research
+Benchmarking - No Historical data for new product launches: Currently, qualitative methodologies are gener-
+ally used in the forecasting process for new launches of products. Product launches may be utilized to advertise the 
+newest and best products in the range and genuinely put the business on the map. Before developing a new product, 
+it is commonly recognized practice to consider what has been successful in the past. To inform next launches, there is 
+not any information about previous launches, nevertheless. Because of this, it is challenging for businesses to predict 
+what will succeed or fail before introducing a new product. Demand planners discuss the anticipated demand for a 
+future time through local meetings at various stages of the forecasting process. To develop calculations to support 
+these operations, no historical information about product demand is used. The benefit of using this kind of forecast-
+ing for new product releases is that it works well.
+Statistical forecasting based on historical data: Over the past decades, significant progress has been achieved 
+in creating sales forecasting methods that take market factors into account. In assessments of sales forecasting proce-
+dures, however, only slight improvements in sales forecasting performance have been noted. Time series techniques 
+are one method to use historical data as a forecasting input. In order to create a forecast, Open model Time Series 
+(OMTS) algorithms evaluate the sales history and locate existing trends. The four data patterns that may be identified 
+in the historical data are level, trend, seasonality, and noise. The forecast is based on how these patterns interact.
+•	 Level is the pattern of sales that would occur in the absence of trends, seasonality, and noise.
+•	 A trend is a recurring pattern of sales that might be upward or downward, linear or curved.
+•	 A recurring pattern of sales growth or decline is known as seasonality.
+•	 Noise is the random fluctuation that the time series approach cannot explain in the sales history.
+Due to the complexity and low incremental accuracy, open time series approaches have not found widespread usage 
+in industry. In contrast to open approaches, fixed time series techniques are employed by the studied company which 
+is simpler since they make a priority assumption about the patterns present in the data (level, trend, seasonality, and 
+noise). The demand planners will forecast the demand of the product considering historical data, trends, etc. But the 
+quality of the data is one of the most important considerations in statistical forecasting.
+iii. Joint forecast with customer collaboration: An essential component of the supply chain is the customer’s par-
+ticipation in the demand planning process. Making a demand strategy and keeping track of it both assist. Data from 
+a variety of sources, including social media, e-commerce analytics, and weather forecasts, are used in the consumer 
+cooperation in the demand planning process. Considering this, a project named Joint forecast has been launched 
+in the studied company with consumer involvement. The main objective of the project is customers providing their 
+forecast inputs for the following three to six months. This will enable demand planners to adjust the forecast accu-
+rately and achieve a better supply fill rate. So, the demand planners can plan the production to ensure that there 
+will be enough inventory to meet the demand of the customers by receiving forecast inputs for the future months 
+and achieving the target of the company. This initiative stems from the realization that relying solely on historical 
+data through statistical models is often insufficient, especially in cases where trends fluctuate or product histories 
+are limited. By incorporating real-time customer inputs, demand planners can send timely signals to the supply and 
+production teams to ensure enough inventory is available to meet future demand.
+The Joint forecasting initiative also helps address external influences indirectly. By gathering real-time forecast 
+inputs from customers, demand planners can adapt more quickly to external disruptions. For example:
+•	 Customers may signal expected shifts in demand due to market disruptions or price changes.
+•	 Their forecasts reflect the reality on the ground, allowing the company to adjust supply levels more accurately, even 
+if external factors are at play.
+Where external influences are known or expected (e.g., anticipated price hikes or major disruptions), demand planners 
+are required to document assumptions upon which they base their adjustments. These assumptions provide a qualitative 
+understanding of how external factors might affect future demand, complementing the statistical forecast.
+
+================================================================================
+PAGE 14
+================================================================================
+Vol:.(1234567890)
+Research	
+ 
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9
+4  Improvement and implementation outlines
+The accountability, communication, and governance of the planning process have been highlighted as the main reasons 
+that relate to this component of demand planning. Based on this, suggestions for prospective enhancements that empha-
+size market intelligence, conducting challenge-based consensus meetings, and utilizing direct input on the procedure 
+might be developed. The expectations of the customers and the roles and duties of the associated stakeholders are 
+made clearer. There is immediate information feedback on the approach during these sessions because of the process 
+of analyzing and commenting on the prediction.
+4.1  Forecast quality
+Planning horizon, forecasting techniques, and product differentiation are significant fundamental factors that com-
+promise prediction accuracy when it comes to forecast quality. To handle possible supply crisis, customers provide a 
+six-month forecast horizon. The forecast, however, is subject to change each month, and the most recent forecast is 
+considered. As a result, demand planners will find it simpler to plan production, ensure that there will be adequate 
+stock in the inventory, and fulfill customer demand. Not all products should get equal forecasting attention. A distinc-
+tion between product classes should be created since the profitability and revenue contribution of each product vary. 
+The ABC classification of the products will be aided by the Pareto analysis. This strategy should be systemic, though. 
+Additionally, it must be expanded upon and transformed into a proactive strategy. Where active forecasting based on 
+product categories is used in addition to considering the past successes of these items.
+The current circumstances of the joint forecast project are impacted by the prospective enhancements. The underlying 
+factors causing the poor performance levels are within control, and uncertainty may be reduced. Each enhancement’s 
+impact on the demand planning process is shown in Table 1. The advantages and possible performance increase are 
+shown in the last column. The contribution of an improvement to the primary objectives of the redesign will improve 
+processes and reduce adverse forecast effects by eliminating uncertainty. Although this objective won’t immediately 
+improve forecast accuracy, it will lead to a more efficient process where uncertainty in the final demand plan is reduced 
+in the long run.
+4.2  Implementation in empirical domain
+The implementation plan to get the best outcome for the prospective improvements is covered in this section. The larg-
+est impact on performance enhancements and higher fill rates appears to be the introduction of new implementations. 
+Higher performances will result from these enhancements when coupled with additional organizational and procedural 
+initiatives. One common template has been created and introduced to the customers where all customers must fill in 
+their forecast inputs in this template and submit the forecast files to the demand planner via shared ­SharePoint© folders 
+which are independent and limited to each customer. As soon as the customer enters the product’s European Article 
+Number (EAN) code, all additional details about that product will automatically fill in. The forecast months to choose from 
+in the drop-down list (just one month) will automatically change beginning with the following months as the customer 
+inputs the input date in the template.
+Customers must therefore provide input for at least six months as required by the demand planners, but they can also 
+provide input for a longer time horizon. The template is also designed to be safeguarded so that customers cannot alter 
+any of the elements other than the area where they must submit their input. This is essential to prevent customers from 
+making accidental errors/mistakes. To fill up the template, customers must choose their market name, enter the input 
+date, choose the forecast months from the drop-down list which will automatically show the next month, and finally 
+enter the list of EANs and quantities. The customers’ focus will be only on the green colored cells/columns in the template.
+Figure 9 provides an illustration of how the folders’ connection is set up for the customers. The customers’ names are 
+not revealed in the figure and are just displayed as numbers due to privacy regulations. Customers must upload the 
+forecast files in these folders each month; for instance, if they are submitting a forecast for the month of June, they must 
+upload the file in the June folder. Demand planners can quickly and automatically trace who has submitted forecast 
+inputs due to this method of submission. The entire process is automated with the aid of the Power Automate tool, 
+and a flow is created so that whenever a file is uploaded in one of these ­SharePoint© folders, the tool can identify who 
+uploaded it. For instance, if a file is uploaded in the December subfolder inside the folder 2, the tool can identify and 
+
+================================================================================
+PAGE 15
+================================================================================
+Vol.:(0123456789)
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9 
+	
+Research
+Table 1   Effects of improvements for joint forecast project
+Improvements
+Direct effect
+Benefits
+Standard template
+Clarity of information
+Time consuming
+Better information alignment and management
+Pro-active approach towards Demand Planning process
+Less time consuming
+More efficient process via the decrease of uncertainty
+Tracking the customers who submitted the forecast 
+inputs every month
+Enhanced steering and controlling abilities
+Completely automated and no work for demand planners
+Less time consuming
+More efficient process via the decrease of uncertainty
+Creation of macro for consolidation process
+Easy to consolidate large amount of data
+Less time consuming
+More efficient process via the decrease of uncertainty
+Dashboard creation for finding root cause
+Less bias
+More flexibility
+Better concentrate on product groupings
+Added knowledge of the product life cycle
+Improved judgment on more important matters
+Better forecasting
+More efficient process via the decrease of uncertainty
+
+================================================================================
+PAGE 16
+================================================================================
+Vol:.(1234567890)
+Research	
+ 
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9
+gives the information such as "customer 2 has submitted the file for December month", "date and time of the submission", 
+and it extracts the information from the uploaded file and returns "which months the forecast is submitted for" in the 
+excel tracker sheet.
+To improve forecast accuracy, MAPE90 is a key indicator. The supply chain team and the sales department both use 
+this indicator. The forecast is significant in the studied company organization because of the key and crucial function that 
+demand planning plays. The production and distribution of the products are determined by the demand forecast. This 
+indicator provides information on how well the product groups are performing. When forecasting is ineffective, it can 
+substantially impair the system’s performance, leading to large inventory levels, lower sales, expensive transportation, 
+and uneven production levels. Forecast accuracy is a crucial factor in maintaining control in these scenarios. How closely 
+the forecast matches the actual sales volumes is expressed by the forecast accuracy. This is accomplished by dividing the 
+variation between the actual and anticipated sales levels by the latter. Once the forecast inputs and the actual orders 
+are received, the demand planner need to find the deviation between forecast and actuals which gives MAPE90 results. 
+Finding the MAPE90 is essential to find the root cause for the deviation. MAPE90 can be found at SKU level, house level, 
+and subdivision level etc as defined at Eq. 1. The MAPE90 data will help demand planners identify which SKUs or houses 
+have the highest deviations, which will help them increase forecast accuracy going forward. Dashboard can be used to 
+find the top deviations caused at SKU or the house level.
+A dashboard is created to find the root cause for the MAPE90 and visualize the data by graphs and charts. The dashboard 
+contains calculating sheets, pivots, and charts. The actuals can be obtained from ERP system through Online Analytical 
+Processing (OLAP) server which is directly connected to the Excel and forecast data can be obtained from customers’ fore-
+cast input files located at ­SharePoint© folders. Based on the deviations, the root cause can be described by the demand 
+planners, Root cause 1, Root cause 2, and Root cause 3 as illustrated in Table 2 are provided. The analytical tool is built 
+on a foundation of both statistical and machine learning techniques. Key aspects include:
+•	 Time Series Analysis: Algorithms identify patterns over time, which is essential for predictions based on historical data. 
+The models consider trend and long-term movements in data and also seasonality as regular fluctuations occurring 
+at specific intervals.
+•	 Error Metrics: Metrics like MAPE90 are employed to evaluate forecast accuracy, helping identify biases and enabling 
+continuous improvement.
+(1)
+MAPE90
+=
+∑n
+EAN=0([last3 −MonthActuals] −[last3 −MonthForecast])
+∑n
+EAN=0[last3 −MonthActuals]
+Fig. 9   The designed 
+Customer’s folder pattern 
+joint prediction model
+
+================================================================================
+PAGE 17
+================================================================================
+Vol.:(0123456789)
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9 
+	
+Research
+The integration of data from JDA, ERP, and other systems into forecasting and supply chain management processes 
+is a multifaceted effort. Through tools like MFR, OLAP, SQL databases, and automated Excel templates, the studied 
+company not only streamlines its forecasting processes but also enhances decision-making capabilities. By effectively 
+consolidating customer inputs and monitoring forecast accuracy, the supply chain efficiency and responsiveness to 
+market demands can be improved.
+4.2.1  Overall implementation roadmap
+The overall plan for implementation consists of a 5-month plan. The main task can be proposed as: 
+1.	 Planning: The initial phase where project goals, scope, and deliverables are defined. This task likely spans the begin-
+ning of Month 1, indicating a foundational step in project development.
+2.	 Research: Conducting necessary background research to inform subsequent steps. This task is also part of Month 1, 
+suggesting its importance in setting the stage for effective implementation.
+3.	 Iterations 1 and 2: These tasks represent phases of development and refinement. Iteration 1 occurs in Months 1 and 
+2, while Iteration 2 extends into Month 3, reflecting a cycle of testing, feedback, and adjustment.
+4.	 Testing: An essential step where the developed components are evaluated for functionality and effectiveness. Testing 
+is concentrated in Month 2, ensuring that any issues are identified early in the process.
+5.	 Internal Discussions: This task, which occurs in Month 2, allows for team alignment and sharing of insights. Having 
+two dedicated slots for discussion indicates an emphasis on communication within the team.
+6.	 Internal Discussion & Training: A focused effort in Month 4 to ensure team members are well-equipped with knowledge 
+and skills relevant to the project.
+7.	 Final Implementation: The transition into the practical application of the project’s outcomes. This task takes place in 
+Month 4, showing that all preparatory steps are aligned towards execution.
+8.	 Documentation: A critical task that ensures all aspects of the project are recorded for future reference. It is scheduled 
+towards the end of Month 4, indicating a systematic approach to knowledge transfer.
+9.	 Introducing Standard Template to the Customer: The final phase, taking place in Month 5, emphasizes the delivery of 
+outcomes to the end user, which is crucial for stakeholder engagement and satisfaction.
+These findings underscore the practical value of leveraging multiple data systems and automated tools to streamline 
+demand planning and improve forecast accuracy. By consolidating customer inputs, firms can more reliably adjust pro-
+duction and inventory levels, thus reducing the risk of stockouts or excess stock. Demand planners become strategic 
+enablers, using real-time analytics to refine models that might otherwise falter when historical patterns shift or become 
+Table 2   Root cause for MAPE90 schema
+Root Cause 1
+Root Cause 2
+Root Cause 3
+Initiatives
+Launch phasing
+Launch wrong sizing
+Promo phasing
+Promo wrong sizing
+Promo cancelled
+Spring Sets incorrect phasing
+Delayed or anticipated launch shipment for all or some customers
+Lower or higher launch volumes
+Delayed or anticipated promotion shipment for all or some customers
+Lower or higher promotions volumes
+Cancelled by customerWrong phasing / calendarization - gift sets only
+Retailer
+Assortment issues
+Market conditions
+Event date changed
+Event volume changed
+Unusual order accepted
+Discontinuation/assortment changes not reflected in retailer assortment
+Price change, weather, negotiations, market share change
+Delayed or anticipated event (ex : roll out implantation)
+Lower or higher event volumes (ex : roll out implantation)
+Retailer ordering more or less than its usual pattern
+Forecasting
+Stat Forecast not accurate
+Cannibalization
+Phase-in/Phase-out
+Discontinuation
+Manual forecast/Business Intelligence 
+not accurate
+Wrong forecast calculation or Wrong seasonal model
+Wrong cannibalization impact
+Same EAN forecast already on the new IRC while old IRC still ships
+Discontinued IRC-no forecasts but actuals
+Wrong manual forecast/business intelligence input
+Supply
+Out of Stock (OOS)
+Out of stock in local warehouse not enough stock to cover retailer orders
+
+================================================================================
+PAGE 18
+================================================================================
+Vol:.(1234567890)
+Research	
+ 
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9
+insufficient. The chosen forecasting approach strikes a balance between predictive power and interpretability, ensuring 
+that organizational stakeholders can both trust and act on the results. Ultimately, this integrated strategy supports greater 
+responsiveness to fluctuating market demands, fostering a more resilient and competitive supply chain.
+4.3  Discussions regarding the numerical analysis
+In analyzing the research outcomes, it is imperative to acknowledge that they originate from numerical exemplifications 
+anchored in explicit assumptions concerning market conditions and historical data patterns. External perturbations, 
+encompassing a spectrum from geopolitical disturbances to fluctuations in raw material prices, may extend beyond 
+the purview of purely statistical or time-series models unless they recur with sufficient frequency to be encapsulated 
+within the underlying data. Consequently, certain potential inaccuracies or biases may emerge, particularly when atypi-
+cal events or disruptions transpire that markedly deviate from established trends. To mitigate these risks, forecasting 
+framework integrates human insights and real-time customer input alongside automated tools. This dual approach not 
+only helps address the limitations inherent in purely data driven models but also enables faster adaptation to sudden 
+market shifts or emerging disruptions. The Joint Forecasting Initiative, for example, provides immediate feedback from 
+customers on expected demand changes, while business intelligence allows planners to manually adjust forecasts in 
+response to external factors such as major supply chain issues or price hikes. Despite these mitigating measures, reliance 
+on assumptions underscores the importance of ongoing model refinement and robust data collection, ensuring that 
+forecasting processes remain agile, accurate, and resilient in the face of evolving market complexities.
+4.4  Implications for research and practice
+The results can be considered for exploring more robust frameworks that can seamlessly integrate both quantitative and 
+qualitative insights, particularly for capturing unpredictable external factors. This includes refining hybrid or ensemble 
+modeling techniques to incorporate sudden market shifts, while still leveraging manual intelligence to interpret unique 
+or one-off disruptions. In practice, the evolution of automated tools and real-time data sharing should be used together 
+with the development of flexible protocols, enabling continuous adjustments to plans as more sophisticated indicators 
+become available.
+5  Conclusion
+This research findings provide potential information sources for demand planning as well as details on how to set up 
+the process itself. The primary objective of this research is to enhance the current demand planning process in the Joint 
+forecast project executed with customer participation. The ability to produce an acceptable degree of customer partici-
+pation and customer service are examples of how a company performs. This dual goal is strongly related to inventory 
+levels. Both excess and insufficient stock have an impact on these goals. Receiving customer forecast inputs and analyz-
+ing them to actually are the main issues with the Joint Forecast Project. This analysis will make it easier for the demand 
+planners to create an accurate demand and properly establish the production level. Therefore, improving the demand 
+planning process/tools boosts both organizational performance and customer forecast accuracy. Having a standard 
+time horizon for submitting the forecast inputs for all the customers makes the process even better. By leveraging joint 
+forecasting initiatives and implementing automated tools, managers can reduce operational risks through precise inven-
+tory alignment and support their strategic decision-making with accurate, real-time data. So, organizations not only 
+improve supply chain agility and responsiveness but also create a sustainable framework for long term competitiveness 
+and scalability. The analytical tool designed as a part of the Joint Forecasting Initiative represents an effective system 
+that can integrate various forecasting methodologies and data sources, such as JDA and ERP systems. Through its robust 
+architecture, algorithmic foundation, and seamless integration processes, the tool enhances the studied business case 
+for forecasting capabilities, ultimately improving supply chain efficiency and responsiveness to market demands. The 
+results of the implementation in the studied company have created potentials for the demand planning process with 
+significant qualitative benefits like:
+•	 Increased Efficiency: The automation of forecasting processes has substantially reduced the time and effort required 
+from demand planners. By streamlining tasks such as data consolidation, analysis, and report generation, planners can 
+
+================================================================================
+PAGE 19
+================================================================================
+Vol.:(0123456789)
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9 
+	
+Research
+allocate their time more effectively to strategic activities, such as analyzing market trends and developing proactive 
+supply chain strategies.
+•	 Enhanced Accuracy: With automated tools minimizing manual errors, the forecasting process is expected to yield 
+more accurate predictions. This improvement in forecast accuracy helps align inventory levels with actual demand, 
+reducing the risk of overstocking or stock outs.
+•	 Better Decision-Making: Automation facilitates real-time access to data and insights, empowering demand planners 
+to make informed decisions more quickly. This responsiveness is crucial in a dynamic market environment, enabling 
+company to adapt to changing consumer preferences and external market conditions.
+•	 Employee Satisfaction: By reducing the manual workload and automating repetitive tasks, demand planners can 
+focus on more meaningful and strategic aspects of their roles, potentially leading to increased job satisfaction and 
+retention.
+The demand planners may be able to identify the root cause of each deviation by determining the difference between 
+the forecast inputs from the consumers and what the customers ordered. Demand planners may help customers by 
+informing them of deviations, which will help them enhance the accuracy of their forecasts. Even the accuracy of the 
+customer’s forecast might be increased in this way. Potential oversimplifications or incomplete data attributes under-
+score the necessity for more robust data integration and interoperability of supply chain level systems besides the model 
+sensitivity analysis to ensure any biases are minimized in forecasting initiatives.
+Considering customer expectations plays a major role in creating a better demand strategy. Although this research 
+demonstrates considerable advancements in customer input collection, the total impact of these advancements is still 
+not entirely clear. Along with the process’s direct consequences, there are other variables and influences that affect how 
+accurately consumers can provide forecasts and how well they will respond to advancements already achieved. To have 
+a more reasonable estimate of the possible organizational progress, it is advised to keep these additional elements in 
+mind. It is helpful to extend the planning window or time fence. Therefore, it is advised that more study on this topic to 
+assess the viability and usefulness of such a strategy will be conducted and to see whether the supply chain flexibility 
+may be enhanced. Future studies could delve into advanced data analytics for unstructured data sources over supply 
+chain operational systems, extended planning horizons, and collaborative forecasting platforms through supply chain 
+stakeholders using emerging technologies like AI-driven modeling to improve the accuracy and agility of demand plan-
+ning processes. Future research may also benefit from systematically tracking the impact of these integrated forecasting 
+practices-through metrics such as cost savings, service-level improvements, and overall supply chain resilience-ultimately 
+paving the way for more agile, data-driven decision-making processes.
+Author contributions  Kiran Basavaraju: Investigation, Data Curation, Writing-Original draft, Editing, Visualization Omid Fatahi Valilai: Review 
+& Editing, Methodology, Formal Analysis, Conceptualization, Supervision, Project administration.
+Funding  Open Access funding enabled and organized by Projekt DEAL.
+Data availability  The data that support the findings of this study are available from the corresponding author upon reasonable request.
+Declarations 
+Ethics approval and Consent to participate  Not applicable.
+Consent for publications  Not applicable.
+Competing interests  The authors declare no Conflict of interest.
+Open Access  This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adapta-
+tion, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, 
+provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this article 
+are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in 
+the article’s Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will 
+need to obtain permission directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by/4.0/.
+
+================================================================================
+PAGE 20
+================================================================================
+Vol:.(1234567890)
+Research	
+ 
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9
+References
+	 1.	 Elufioye OA, Ike CU, Odeyemi O, Usman FO, Mhlongo NZ. AI-driven predictive analytics in agricultural supply chains: a review: assessing 
+the benefits and challenges of ai in forecasting demand and optimizing supply in agriculture. Comput Sci IT Res J. 2024;5(2):473–97. 
+https://​doi.​org/​10.​51594/​csitrj.​v5i2.​817.
+	 2.	 Yuan X, Shen L, Ashayeri J. Dynamic simulation assessment of collaboration strategies to manage demand gap in high-tech product 
+diffusion. Robot Comput-Integr Manuf. 2010;26(6):647–57. https://​doi.​org/​10.​1016/j.​rcim.​2010.​06.​020.
+	 3.	 Panda SK, Mohanty SN. Time series forecasting and modeling of food demand supply chain based on regressors analysis. IEEE Access. 
+2023;11:42679–700. https://​doi.​org/​10.​1109/​ACCESS.​2023.​32662​75.
+	 4.	 Rezapour Niari M, Eshgi K, Fatahi Valilai O. Topology analysis of manufacturing service supply-demand hyper-network considering QoS 
+properties in the cloud manufacturing system. Robot Comput-Integr Manuf. 2021;72: 102205. https://​doi.​org/​10.​1016/j.​rcim.​2021.​102205.
+	 5.	 Nguyen TTH, Le TM, Bekrar A, Abed M. Some insights into effective demand planning. IEEE Eng Manag Rev. 2022;50(3):141–8. https://​
+doi.​org/​10.​1109/​emr.​2022.​31890​28.
+	 6.	 Bai B. Acquiring supply chain agility through information technology capability: the role of demand forecasting in retail industry. 
+Kybernetes. 2023;52(10):4712–30. https://​doi.​org/​10.​1108/K-​09-​2021-​0853.
+	 7.	 Arguelles P Jr, Polkowski Z. Impact of big data on supply chain performance through demand forecasting. Int J Comput Inf Manuf IJCIM. 
+2023;3(1):19–26. https://​doi.​org/​10.​54489/​ijcim.​v3i1.​232.
+	 8.	 Tadayonrad Y, Ndiaye AB. A new key performance indicator model for demand forecasting in inventory management considering supply 
+chain reliability and seasonality. Supply Chain Anal. 2023;3: 100026. https://​doi.​org/​10.​1016/j.​sca.​2023.​100026.
+	 9.	 Stadtler H. Supply chain management and advanced planning-basics, overview and challenges. Eur J Oper Res. 2005;163(3):575–88. 
+https://​doi.​org/​10.​1016/j.​ejor.​2004.​03.​001.
+	10.	 Delaram J, Houshamand M, Ashtiani F, Fatahi Valilai O. Development of public cloud manufacturing markets: a mechanism design 
+approach. Int J Syst Sci Oper Logist. 2023;10(1):2079751. https://​doi.​org/​10.​1080/​23302​674.​2022.​20797​51.
+	11.	 Cannas VG, Ciano MP, Saltalamacchia M, Secchi R. Artificial intelligence in supply chain and operations management: a multiple case 
+study research. Int J Prod Res. 2024;62(9):3333–60. https://​doi.​org/​10.​1080/​00207​543.​2023.​22320​50.
+	12.	 Dowie U, Grothmann R. Using AI to advance factory planning: a case study to identify success factors of implementing an AI-based 
+demand planning solution. Lect Not Bus Inf Process. 2021. https://​doi.​org/​10.​1007/​978-3-​030-​73976-8_​10.
+	13.	 Mohsen BM. Impact of artificial intelligence on supply chain management performance. J Serv Sci Manag. 2023;16(1):44–58. https://​doi.​
+org/​10.​4236/​jssm.​2023.​161004.
+	14.	 Hendalianpour A, Hamzehlou M, Feylizadeh MR, Xie N, Shakerizadeh MH. Coordination and competition in two-echelon supply chain 
+using grey revenue-sharing contracts. Grey Syst Theory Appl. 2020;11(4):681–706. https://​doi.​org/​10.​1108/​GS-​04-​2020-​0056.
+	15.	 Hendalianpour A. Optimal lot-size and price of perishable goods: a novel game-theoretic model using double interval grey numbers. 
+Comput Ind Eng. 2020;149: 106780. https://​doi.​org/​10.​1016/j.​cie.​2020.​106780.
+	16.	 Valilai OF, Sodachi M. Inspiration of industry 4.0 to enable a proactive sustainability assessment model through the supply chain. Procedia 
+Manuf. 2020;52:356–62. https://​doi.​org/​10.​1016/j.​promfg.​2020.​11.​059.
+	17.	 Shahab E, Kazemisaboor A, Khaleghparast S, Fatahi Valilai O. A production bounce-back approach in the Cloud manufacturing network: 
+case study of COVID-19 pandemic. Int J Manag Sci Eng Manag. 2023;18(4):305–17. https://​doi.​org/​10.​1080/​17509​653.​2022.​21127​81.
+	18.	 Olad AA, Fatahi Valilai O. Using of Social Media Data Analytics for Applying Digital Twins in Product Development. In: 2020 IEEE 
+International Conference on Industrial Engineering and Engineering Management (IEEM) (2020), pp. 319–323. https://​doi.​org/​10.​1109/​
+IEEM4​5057.​2020.​93098​34. URL https://​ieeex​plore.​ieee.​org/​abstr​act/​docum​ent/​93098​34
+	19.	 Radmanesh SA, Haji A, Valilai OF. Blockchain-based cloud manufacturing platforms: a novel idea for service composition in XaaS paradigm. 
+PeerJ Comput Sci. 2021;7: e743. https://​doi.​org/​10.​7717/​peerj-​cs.​743.
+	20.	 Liu P, Hendalianpour A, Razmi J, Sangari MS. A solution algorithm for integrated production-inventory-routing of perishable goods with 
+transshipment and uncertain demand. Comp Intell Syst. 2021;7(3):1349–65. https://​doi.​org/​10.​1007/​s40747-​020-​00264-y.
+	21.	 Waraga OA, Talib MA, Bettayeb M, Ghenai C, Nasir QS. A framework application for improving energy demand forecasting using digital 
+twining (Institution of Engineering and Technology, 2021). https://​doi.​org/​10.​1049/​icp.​2021.​2666.
+	22.	 Hu M, Jiang S, Huo B. The impacts of supply visibility and demand visibility on product innovation: the mediating role of supply chain 
+integration. Int J Logist Manag. 2024;35(2):456–82. https://​doi.​org/​10.​1108/​IJLM-​01-​2021-​0033.
+	23.	 Ren S, Chan HL, Siqin T. Demand forecasting in retail operations for fashionable products: methods, practices, and real case study. Ann 
+Oper Res. 2019;291(1–2):761–77. https://​doi.​org/​10.​1007/​s10479-​019-​03148-8.
+	24.	 Jordan S, Messner M. The use of forecast accuracy indicators to improve planning quality: insights from a case study. Eur Acc Rev. 
+2019;29(2):337–59. https://​doi.​org/​10.​1080/​09638​180.​2019.​15771​50.
+	25.	 Kalaiarasan R, Agrawal TK, Olhager J, Wiktorsson M, Hauge JB. Supply chain visibility for improving inbound logistics: a design science 
+approach. International Journal of Production Research. 2023;61(15):5228–43. https://​doi.​org/​10.​1080/​00207​543.​2022.​20993​21.
+	26.	 Tang L, Li J, Du H, Li L, Wu J, Wang S. Big data in forecasting research: a literature review. Big Data Res. 2022;27:100289. https://​doi.​org/​
+10.​1016/j.​bdr.​2021.​100289.
+	27.	 Wang W, Lin W, Cai J, Chen M. Impact of demand forecast information sharing on the decision of a green supply chain with government 
+subsidy. Ann Oper Res. 2023;329(1):953–78. https://​doi.​org/​10.​1007/​s10479-​021-​04233-7.
+	28.	 Babaveisi V, Teimoury E, Gholamian MR, Rostami-Tabar B. Integrated demand forecasting and planning model for repairable spare part: 
+an empirical investigation. Int J Prod Res. 2023. https://​doi.​org/​10.​1080/​00207​543.​2022.​21375​96.
+	29.	 Jeyaraman J, Krishnamoorthy G, Konidena BK, Sistla SMK. Machine learning for demand forecasting in manufacturing. Int J Multidiscip 
+Res. 2024;6(1):1–115.
+	30.	 Radmanesh SA, Haji A, Fatahi Valilai O. Blockchain-based architecture for a sustainable supply chain in cloud architecture. Sustainability. 
+2023;15(11):9072. https://​doi.​org/​10.​3390/​su151​19072.
+
+================================================================================
+PAGE 21
+================================================================================
+Vol.:(0123456789)
+Discover Applied Sciences           (2025) 7:345  
+| https://doi.org/10.1007/s42452-025-06740-9 
+	
+Research
+	31.	 Liu P, Hendalianpour A, Hamzehlou M, Feylizadeh M. Cost reduction of inventory-production-system in multi-echelon supply chain using 
+game theory and fuzzy demand forecasting. Int J Fuzzy Syst. 2022;24(4):1793–813. https://​doi.​org/​10.​1007/​s40815-​021-​01240-5.
+	32.	 Liu P, Hendalianpour A, Feylizadeh M, Pedrycz W. Mathematical modeling of vehicle routing problem in omni-channel retailing. Appl Soft 
+Comput. 2022;131: 109791. https://​doi.​org/​10.​1016/j.​asoc.​2022.​109791.
+	33.	 Song D. A literature review, container shipping supply chain: planning problems and research opportunities. Logistics. 2021;5(2):41. 
+https://​doi.​org/​10.​3390/​logis​tics5​020041.
+	34.	 Ocasio W, Joseph J. Rise and fall - or transformation? Long Range Plan. 2008;41(3):248–72. https://​doi.​org/​10.​1016/j.​lrp.​2008.​02.​010.
+	35.	 Ghasemi R, Akhavan P, Abbasi M, Valilai OF. A novel supplier-managed inventory order assignment platform enabled by blockchain 
+technology. IEEE Access. 2023;11:140763–73. https://​doi.​org/​10.​1109/​ACCESS.​2023.​33413​61.
+	36.	 Roesch M, Bauer D, Haupt L, Keller R, Bauernhansl T, Fridgen G, Reinhart G, Sauer A. Harnessing the full potential of industrial demand-side 
+flexibility: an end-to-end approach connecting machines with markets through service-oriented it platforms. Appl Sci. 2019;9(18):3796. 
+https://​doi.​org/​10.​3390/​app91​83796.
+	37.	 Gunasekaran A, Patel C, McGaughey RE. A framework for supply chain performance measurement. Int J Prod Econ. 2004;87(3):333–47. 
+https://​doi.​org/​10.​1016/j.​ijpe.​2003.​08.​003.
+	38.	 Noroozi S, Wikner J. Sales and operations planning in the process industry: a literature review. Int J Prod Econ. 2017;188:139–55. https://​
+doi.​org/​10.​1016/j.​ijpe.​2017.​03.​006.
+	39.	 Gebauer H, Gustafsson A, Witell L. Competitive advantage through service differentiation by manufacturing companies. J Bus Res. 
+2011;64(12):1270–80. https://​doi.​org/​10.​1016/j.​jbusr​es.​2011.​01.​015.
+	40.	 Bozutti D, Esposto K. Sales and Operations Planning: a comparison between the demand-driven and traditional approaches. Int J Prod 
+Manag Eng. 2019;7(1):23. https://​doi.​org/​10.​4995/​ijpme.​2019.​9469.
+	41.	 Kreuter T, Scavarda LF, Thomé AMT, Hellingrath B, Seeling MX. Empirical and theoretical perspectives in sales and operations planning. 
+Rev Manag Sci. 2021;16(2):319–54. https://​doi.​org/​10.​1007/​s11846-​021-​00455-y.
+	42.	 Sagaert YR, Kourentzes N, De Vuyst S, Aghezzaf EH, Desmet B. Incorporating macroeconomic leading indicators in tactical capacity 
+planning. Int J Prod Econ. 2019;209:12–9. https://​doi.​org/​10.​1016/j.​ijpe.​2018.​06.​016.
+	43.	 Nabil L, El Barkany A, El Khalfi A. Sales and operations planning (S &OP) concepts and models under constraints: literature review. Int J 
+Eng Res Africa. 2018;34:171–88. https://​doi.​org/​10.​4028/​www.​scien​tific.​net/​jera.​34.​171.
+Publisher’s Note  Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.

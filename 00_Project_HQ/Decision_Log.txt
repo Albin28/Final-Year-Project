@@ -1,0 +1,153 @@
+# NexusERP – Decision Log
+# AI-Based Inventory & Sales Forecasting System for Small Business ERP Management
+# Last Updated: 18 August 2026
+
+---
+
+## Decision #1 – Project Topic Finalization
+- **Date:** 6 July 2026 – 7 July 2026 (Completed)
+- **Decision:** Project topic finalized as "AI-Based Inventory & Sales Forecasting System for Small Business ERP Management" (NexusERP)
+- **Rationale:** Selected to combine ERP functionality with AI-based forecasting in a realistic final-year scope.
+- **Status:** 🔒 LOCKED
+
+---
+
+## Decision #2 – Technology Stack
+- **Date:** Planning Phase
+- **Decision:** React.js (Frontend), FastAPI (Backend), SQLite (Prototype Database), Python, Prophet (planned ML layer)
+- **Rationale:** A lightweight local stack accelerates prototype validation and review readiness while preserving the final architecture direction.
+- **Status:** ✅ ACTIVE PROTOTYPE
+
+---
+
+## Decision #3 – Project Scope (Version 1.0)
+- **Date:** Planning Phase
+- **Decision:** Prioritize a working ERP prototype including Dashboard, Inventory CRUD, Auth UI flow, and future Sales + Forecasting modules.
+- **Excluded for now:** Full HR, payroll, supplier management, mobile app, and advanced enterprise modules.
+- **Rationale:** Maintain realistic academic scope and complete the working prototype before expanding to advanced features.
+- **Status:** 🔄 IN PROGRESS
+
+---
+
+## Decision #4 – Database Strategy for Prototype
+- **Date:** 16 August 2026
+- **Decision:** Use SQLite for the current prototype instead of Firebase for the active inventory demo.
+- **Rationale:** SQLite is simpler, dependable for local review, and aligns with a working CRUD proof-of-concept without delaying delivery.
+- **Status:** ✅ ADOPTED FOR CURRENT DEMO
+
+---
+
+## Decision #5 – AI Model Selection
+- **Date:** Planning Phase
+- **Decision:** Prophet remains the intended forecasting model for demand prediction.
+- **Validation:** Backtesting with MAE/MAPE and historical sales data.
+- **Rationale:** Suitable for time-series operations and aligned with the project goal of AI-based stock planning.
+- **Status:** 🔒 PLANNED FOR NEXT PHASE
+
+---
+
+## Decision #6 – Project Proposal Presentation
+- **Date:** 8 July 2026 – 14 July 2026 (Completed)
+- **Decision:** Project proposal presented to the guide and supporting literature was assembled for the project baseline.
+- **Status:** ✅ COMPLETED
+
+---
+
+## Decision #7 – Development Approach
+- **Date:** Planning Phase
+- **Decision:** Phase-based implementation: Planning → Design → Core Prototype → AI Integration → Testing → Deployment.
+- **Rationale:** Allows iterative delivery and keeps the review schedule realistic.
+- **Status:** ✅ APPROVED
+
+---
+
+## Decision #8 – Interim Review 1 Implementation Strategy
+- **Date:** 29 July 2026
+- **Decision:** Focus current efforts on delivering a stable working prototype with inventory management and dashboard demo capability.
+- **Required Deliverables:** Literature review, requirement analysis, feasibility study, design, 20% implementation, working demo, presentation.
+- **Status:** ✅ COMPLETED
+
+---
+
+## Decision #9 – Current Prototype Direction
+- **Date:** 16 August 2026
+- **Decision:** Continue with the implemented inventory-driven prototype and postpone broader auth/backend migration until the next phase.
+- **Rationale:** The codebase is stable and demonstrably working, which is the priority for the immediate review and project progression.
+- **Status:** ✅ ACTIVE
+
+---
+
+## Decision #10 – Database Consistency Strategy
+- **Date:** 16 August 2026
+- **Decision:** Standardize all backend database access to a single canonical SQLite file path (`01_Project/nexuserp.db`) with optional environment override.
+- **Rationale:** Relative SQLite paths created multiple `.db` files depending on startup location; canonical path removes ambiguity and data split risk.
+- **Status:** ✅ ADOPTED
+
+---
+
+## Decision #11 – POS MVP for Billing and Stock Sync
+- **Date:** 16 August 2026
+- **Decision:** Implement a simple POS module for bill creation, automatic stock deduction, recent bill listing, and bill-wise Excel export by ID.
+- **Rationale:** Delivers a measurable transition from inventory-only prototype to sales-integrated ERP workflow while staying within academic scope.
+- **Status:** ✅ IMPLEMENTED
+
+## Decision #12 – Invoice Print Optimization
+- **Date:** 18 August 2026
+- **Decision:** Remove unsupported `min-height: auto` from POS print stylesheet and replace it with cross-browser compatible `min-height: 0`.
+- **Rationale:** Ensures that the printed bills don't break across older versions of browsers and correctly resets minimum constraints during physical/PDF printing.
+- **Status:** ✅ IMPLEMENTED
+
+---
+
+## Decision #13 – Forecasting Multi-Model Tournament & Classification Seeding
+- **Date:** 18 August 2026
+- **Decision:** Implement Syntetos-Boylan Classification (SBC) using ADI and $CV^2$ to categorize demand patterns, and execute a tournament between Prophet, Holt-Winters, and Exponential Smoothing. Seed the database with 18 months of mock history to test the pattern classes.
+- **Rationale:** Aligns with findings from the Springer 2026 base paper that different patterns require different forecasting methods to achieve optimal accuracy.
+- **Status:** ✅ IMPLEMENTED
+
+---
+
+## Decision #14 – Kaggle Real Retail Dataset Integration & Product Name Mapping
+- **Date:** 3 September 2026
+- **Decision:** Ingest 18,260 real daily transactions from the Kaggle Store Item Demand dataset into SQLite and map numeric IDs to realistic grocery catalog items (Milk, Bread, Rice, Eggs, Olive Oil, Coffee, etc.).
+- **Validation:** Prophet outperformed Holt-Winters and Exponential Smoothing on real data (e.g. Milk MAE: Prophet 5.08 vs HW 5.75 vs SES 6.64).
+- **Rationale:** Resolves dataset availability concerns while preserving the exact ERP project scope and architecture.
+- **Status:** ✅ IMPLEMENTED & VERIFIED
+
+---
+
+## Decision #15 – Master Unified Top 30 Grocery Dataset Creation
+- **Date:** 3 September 2026
+- **Decision:** Build a single unified master dataset (`master_grocery_top30.xlsx`) containing 54,780 daily transaction records across 30 top grocery products, and seed `nexuserp.db` for clean review demonstrations.
+- **Rationale:** Unifies fragmented datasets into a clean 30-product retail inventory catalog, balancing speed (<1s per Prophet model fit) with realistic 5-year demand forecasting.
+- **Status:** ✅ IMPLEMENTED & SEEDED
+
+---
+
+## Decision #16 – Small Store Restocking Math & Master Top 30 Self-Train Endpoint Sync
+- **Date:** 3 September 2026
+- **Decision:** Updated inventory restock formula to a realistic 7-day store planning cycle (`target_inventory = 7 * avg_daily_demand + safety_stock`), yielding realistic 2-to-3 digit restocking order volumes (e.g. 105 to 398 units instead of 5,740 units). Synced `/api/forecasting/train` endpoint to load `master_grocery_top30.xlsx` on retrain events.
+- **Rationale:** Ensures website self-train actions preserve the 30 Top Grocery Catalog items and generate realistic retail order volumes for review demos.
+- **Status:** ✅ IMPLEMENTED & VERIFIED
+
+---
+
+## Decision #17 – Interactive Odoo-Style Top Navigation Modules (Apps, Discussions, Calendar)
+- **Date:** 3 September 2026
+- **Decision:** Transformed header text placeholders into 3 fully functional Odoo-style ERP features:
+  1. **📱 Apps Switcher:** Module launcher grid to navigate across Forecasting, Inventory, POS, Bills, Purchase Orders, and Financial Analytics.
+  2. **💬 Discussions Drawer:** Real-time team message board with automated AI Prophet low-stock alerts.
+  3. **📅 Operations Calendar:** Interactive delivery schedule & sales peak event calendar.
+- **Rationale:** Delivers true Odoo-inspired ERP usability while giving store teams actionable operational tools.
+- **Status:** ✅ IMPLEMENTED & VERIFIED
+
+---
+
+# Notes
+- Project decisions are tracked to keep the implementation aligned with the final-year review milestones.
+- The architecture remains intended for future AI forecasting expansion, and the current codebase is now validated around inventory + POS integration.
+
+
+
+
+

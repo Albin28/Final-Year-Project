@@ -1,0 +1,1442 @@
+
+================================================================================
+PAGE 1
+================================================================================
+Citation: Douaioui, K.; Oucheikh, R.;
+Benmoussa, O.; Mabrouki, C. Machine
+Learning and Deep Learning Models
+for Demand Forecasting in Supply
+Chain Management: A Critical
+Review. Appl. Syst. Innov. 2024, 7, 93.
+https://doi.org/10.3390/asi7050093
+Academic Editors: Patrícia Ramos and
+Jose Manuel Oliveira
+Received: 6 June 2024
+Revised: 25 August 2024
+Accepted: 23 September 2024
+Published: 26 September 2024
+Copyright: © 2024 by the authors.
+Published
+by
+MDPI
+on
+behalf
+of
+the
+International
+Institute
+of
+Knowledge Innovation and Invention.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under the terms and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+Review
+Machine Learning and Deep Learning Models for Demand
+Forecasting in Supply Chain Management: A Critical Review
+Kaoutar Douaioui 1,*
+, Rachid Oucheikh 2,*
+, Othmane Benmoussa 3
+and Charif Mabrouki 1
+1
+Laboratory of Engineering, Industrial Management and Innovation, Faculty of Sciences and Techniques,
+Hassan 1st University, Settat 26000, Morocco; charif.mabrouki@uhp.ac.ma
+2
+Physical Geography and Ecosystem Science, Lund University, Sölvegatan 12, 223 62 Lund, Sweden
+3
+Euromed Polytechnic School, Euromed University of Fes, Fez 30030, Morocco; o.benmoussa@ueuromed.org
+*
+Correspondence: kaoutar.douaioui@gmail.com (K.D.); rachid.oucheikh@nateko.lu.se (R.O.)
+Abstract: This paper presents a comprehensive review of machine learning (ML) and deep learning
+(DL) models used for demand forecasting in supply chain management. By analyzing 119 papers
+from the Scopus database covering the period from 2015 to 2024, this study provides both macro-
+and micro-level insights into the effectiveness of AI-based methodologies. The macro-level analysis
+illustrates the overall trajectory and trends in ML and DL applications, while the micro-level analysis
+explores the specific distinctions and advantages of these models. This review aims to serve as a
+valuable resource for improving demand forecasting in supply chain management using ML and
+DL techniques.
+Keywords: AI-driven demand forecasting; supply chain; Scopus; literature review; macro-level
+analysis; micro-level evaluation
+1. Introduction
+In an era of widespread global supply chain disruptions and acute volatility, demand
+forecasting has become more crucial than ever for any competitive business seeking to gain
+a firm foothold in the market [1] (Ivanov, 2022). This is primarily because traditional meth-
+ods for forecasting demand are not sufficiently effective in capturing drastically shifting
+consumer patterns [2]. Artificial intelligence (AI) provides a revolutionary alternative that
+offers the most accurate and agile forecasting models [2]. Compared to reliance on conven-
+tional methods, AI-based forecasting is far more accurate, as it transcends the limitations
+of even the most sophisticated traditional models [3]. Importantly, AI-based forecast-
+ing strategies are dynamic, with models that continuously adjust to market fluctuations,
+making them an ideal tool for ensuring the alignment of strategies with actual consumer
+behavior [4,5]. Thus, AI not only enhances demand prediction but also introduces a new
+paradigm for developing forecasting strategies [6].
+This paper aims to advance existing research by addressing the following key ques-
+tions: How does AI-driven automation enhance demand forecasting efficiency in supply
+chains? Which AI projects apply to demand forecasting in supply chains? What are the
+future research gaps, and how should these be addressed? This paper provides a compre-
+hensive review of the literature on AI-driven demand forecasting in supply chains. The
+literature review for this study is thorough, integrating the foundations of AI used in the
+demand forecasting supply chain (DFSC) framework to propose an analytical framework
+that provides a comprehensive perspective on the AI-DFSC challenges. The paper utilizes
+both macroscopic visual analysis and micro-level content analysis for clarity. At a macro-
+level, it presents descriptive visual research findings related to topics, thematic progress,
+and thematic evolution in the general literature. At a micro-level, this paper focuses on
+conducting a detailed content analysis of the literature. Equally important, this study
+identifies promising future research trends and addresses the gaps that need attention in
+Appl. Syst. Innov. 2024, 7, 93. https://doi.org/10.3390/asi7050093
+https://www.mdpi.com/journal/asi
+
+================================================================================
+PAGE 2
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+2 of 24
+future studies. The remainder of this paper is structured as follows: the background of
+the research on AI-DFSC is presented in this section to establish the importance of this
+study. The data sources and the methods used in data processing are described in detail
+in Section 3. Section 4 presents a macroscopic structural analysis of AI-DFSC using visual
+analytics. Section 5 provides a thematic discussion of AI-DFSC in detail.
+2. Theoretical Background
+Demand forecasting is an essential aspect of supply chain management because it
+helps businesses anticipate and meet consumer demands, especially in retail and the food
+industry. It enables businesses to optimize inventory levels, pricing, and promotions.
+Traditional regression models are commonly used for demand forecasting, but they often
+provide unstable estimations [7]. However, recent studies have shown that machine
+learning techniques, such as long short-term memory (LSTM) networks, can improve
+the accuracy of demand forecasting by learning non-linear relationships and time-series-
+specific information [8]. Despite the limited empirical data available, some mathematical
+models, like seasonal ARIMA, ARIMA with Fourier terms, ETS, and TBATS, have proven
+to be efficient in forecasting demand [9].
+Additionally, demand forecasting in the automotive sector has greatly benefited from
+artificial intelligence algorithms, such as random forest, multiple linear regression, k-nearest
+neighbors, extreme gradient boosting, and support vector machines [10]. Notably, another
+study proposed a SARIMA–LSTM–BP model combination to predict new energy vehicle
+demand, demonstrating better predictions than traditional econometric and deep learning
+models [11]. Another article developed an improved model using deep learning methods
+aimed at enhancing supply chain management, thereby increasing accuracy in product
+delivery [12].
+In the context of blood supply chain management, a smart-platform-based approach
+was proposed using machine learning and time-series forecasting models to reduce un-
+certainty around blood requirements, balancing collection and distribution [13]. The
+effectiveness of different machine learning methods, such as random forest, gradient boost-
+ing, and XGBoost, was analyzed to forecast demand, with XGBoost proving to be the most
+accurate in predictions [14]. Lastly, a study explored how artificial intelligence (AI) and
+machine learning (ML) can be integrated to manage and respond to energy demand in
+real time, emphasizing their potential to improve energy usage and balance power supply
+across different consumers [15].
+3. Materials and Methods
+The search methodology involved a detailed examination of the pertinent literature,
+incorporating both broad and detailed perspectives. Broad analysis was conducted visually,
+whereas detailed analysis concentrated on the document content, employing an in-depth
+review of general documents to confirm the accuracy of key documents [16] (see Figure 1).
+To be more specific, this procedure was divided into two different phases: the first aimed
+to acquire a huge number of exceptional documents on the target research topics while
+exploring the literature, and the second focused on these documents’ selection based not
+only on the target research topics but also on the significance of the sources.
+3.1. Data Preparation
+The quality of data decides on the depth and on the precision of the results. Thus,
+the problem of choosing a suitable database for the needs of this particular study is ongo-
+ing [17]. In this particular research, the main source of data was SCOPUS. The claim is fully
+justified in the literature. The currently analyzed database can be seen as a good choice to
+perform a vast analysis. This is because SCOPUS is among the biggest bases of literature
+references [18]. SCOPUS has been used in many different studies, which indicates that the
+quality of data is good [19,20]. The following search tags for the database were included:
+the level of digital advancement of business, articles available in the index, authors, issues,
+
+================================================================================
+PAGE 3
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+3 of 24
+document types, areas of science, and key words. Employing descriptive and analytical
+methods, the study was conducted. It is an inductive–deductive study with many tags
+ignored in order to achieve complete outcomes. The focus was solely on the goals of specific
+documents selected based on the threshold due to the goal of the study. According to the
+set parameters, a SCOPUS search was performed to find useful information. The data
+selected for analysis were significant publications from 2015 to 2024.
+ 
+Figure 1. Flow chart of the bibliometric analysis.
+Table 1 describes the search methodology employed for conducting a literature review.
+The present search created a corpus of document sets of papers compatible with the search
+strategy’s criteria of the document’s titles, abstract, or list of keywords. The existing research
+on the application of artificial intelligence and machine learning specifically within supply
+chain management for forecasting demand is vast. The application has increased since
+2010, resulting in several successful examples and controversies for future employment
+and business management [21,22]. Nowadays, various corporations employing AI invest
+heavily in this technology to optimize their supply chain’s full operation scope [23], further
+leading to redirecting academic attention to update their core research to modern AI.
+On such a note, the exploration of academic directions with focus on AI for supply chain
+demand forecasting commences and becomes regular. Applying this selection, the literature
+
+================================================================================
+PAGE 4
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+4 of 24
+review was limited to 2014–2024. Under these conditions and criteria, the research garnered
+in this project reached a total of 119 articles within recent research until 13 August 2024.
+Table 1. The search strategy.
+Category
+Keywords
+Demand forecasting
+(“demand forecasting” OR “demand prediction”) AND
+Artificial intelligence
+(“artificial intelligence” OR “machine learning” OR “deep
+learning”) AND
+Supply chain management
+(“supply chain management “ OR “supply chain “)
+3.2. Data Filtering
+The evaluation of potential research literature is based on a structured four-step process:
+•
+Stage 1: Removal of duplicate literature;
+•
+Stage 2: Selection of articles that are relevant to the research topic;
+•
+Stage 3: Specific identification of articles that are most relevant to the research topic;
+•
+Stage 4: Identification of articles that are important.
+In this study’s literature review process, a four-stage selection process was used. With
+each stage, the precision was further refined, and consequently, a total of 119 papers
+relevant to this study were reviewed and evaluated. While a large number of papers were
+found to be accessible, many were extensive, and the proposal in the literature is to read
+all of them with care and accuracy. Therefore, the literature overall was utilized with
+maximum care and was expansive across this study. It can be considered that some recently
+published papers of higher quality have shown high preference and reference. See Figure 2
+and Table 2 for a summary of the categories of the selected papers.
+ 
+Figure 2. The distribution of paper types.
+Table 2. The number of paper types.
+Type of Paper
+Numbers
+Article
+45
+Conference paper
+60
+Book chapter
+11
+Conference review
+3
+
+================================================================================
+PAGE 5
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+5 of 24
+3.3. Visual Representation Techniques
+Utilizing visualization methods in the literature review is important because it allows
+researchers to gain a deeper, more comprehensive understanding of the literature that must
+be examined. Knowledge mapping is a novel approach developed within the fields of scien-
+tometrics and information metrology. This method illustrates the emergence and evolution
+of knowledge and reveals the structure of the knowledge landscape. CiteSpace version
+(6.2.6) is a prominent tool for visualizing citation networks. It is used to generate keyword
+atlases and time zone views of co-citation maps and to cluster citations, identifying nodes
+and their interconnections. Bibliometrix R Package (R 4.3.2) and VOSviewer software
+(1.6.20) are reliable tools commonly used to create co-occurrence maps for authors, citations,
+and keywords. These maps spatially show how nodes cluster together and are connected
+based on their proximity and density, clearly demonstrating the connections between au-
+thors and institutions. Additionally, CiteSpace allows for contrasting and comparing the
+strengths and weaknesses of relationships among different themes using trees and lines,
+enabling an extensive analysis of theme relations. Meanwhile, VOSviewer is particularly
+helpful in understanding connections within each cluster, providing complementary infor-
+mation. Furthermore, the Biblioshiny interface utilizes trend analysis, allowing researchers
+to track research trends over time and examine how interest in particular areas or topic
+keywords evolves. Similarly, virtual online platforms have been used to advance inves-
+tigations by analyzing more complex data handling methods, making the analysis more
+in-depth than ever before.
+4. Findings Results
+The data used in this study were up to date as of October 2023. The first phase of the
+subsequent steps involved an initial descriptive analysis to gain a better understanding
+of the reviewed articles. This analysis examined the papers across several dimensions to
+uncover various aspects of the literature. Key components of this examination included
+the words used in titles, key terms in abstracts, years of publication, citation counts,
+bursts of interest for specific topics, centrality measures indicating the importance of
+papers within a citation network, and sigma values representing the overall impact of
+the publications. Additionally, specific terminology and thematic clusters were identified
+through this analysis. Each paper’s disciplinary field was assessed, and distinctions were
+made between article types (e.g., research articles versus reviews), as well as tracking their
+distribution across different academic journals. This approach provided the researchers
+with a multifaceted understanding of the literature, revealing important patterns, themes,
+and focal points within the discipline.
+4.1. Descriptive Findings
+4.1.1. Keyword, Title, and Abstract of Publication
+This research focused on “supply chain management” and “demand forecasting”,
+using SCOPUS as the primary source database; consequently, 119 representative articles
+were selected. Using VOSviewer, a bibliometric analysis tool, keywords that appeared
+at least ten times were identified, and a keyword co-occurrence network diagram was
+constructed. The network diagram highlights frequently mentioned phrases, such as
+“supply chain management”, “machine learning”, “forecasting”, “artificial intelligence”,
+and “deep learning”. These phrases summarize the content of the articles and illustrate the
+composition of research within this field.
+The prevalence of these keywords see Figure 3 suggests that there are numerous
+demand forecasting methods based on machine learning (ML) and deep learning (DL)
+solutions for supply chain management, as frequently discussed in the literature. This study
+highlights a significant emphasis on machine learning (ML) and deep learning (DL) tools
+to enhance the accuracy and efficiency of demand forecasting. This trend reflects a broader
+effort by researchers and industry professionals to integrate cutting-edge AI systems for
+
+================================================================================
+PAGE 6
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+6 of 24
+improved supply chain management. The repeated appearance of these keywords indicates
+their growing importance in addressing complex prediction problems.
+Figure 3. Network diagram illustrating keyword co-occurrence.
+A closer examination of these keywords provides valuable insights into the key re-
+search issues and themes in the field. The analysis underscores the importance of advanced
+AI methods in contemporary supply chain demand forecasting, demonstrating the in-
+creasing adoption of such technologies for enhanced performance. This comprehensive
+investigation lays the foundation for further exploration of the use and impact of ma-
+chine learning (ML) and deep learning (DL) technologies in supply chain management,
+emphasizing their potential to transform demand forecasting practices.
+4.1.2. The Total Volume of Publications over Time
+In the broader context, it is important to monitor the progress in the overall number of
+publications over time. From the analysis of Figure 4, we can identify several phases in the
+development of research output. In the emerging phase (2014–2017), very few articles were
+published each year—specifically, not more than 1 to 3 publications per year. The year 2018
+saw no publications at all, indicating an early stage of limited interest or exploration in
+this field. This phase suggests either a lack of interest or merely tentative engagement with
+the topic.
+Next, there was a transitional phase (2018–2020). In 2019, a noticeable increase oc-
+curred, with eight articles being published. During this period, the volume of publications
+remained small but consistent, with seven to eight articles published each year in 2019
+and 2020. This phase marks the beginning of growing interest in the research area, as the
+community started to gain momentum.
+
+================================================================================
+PAGE 7
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+7 of 24
+Figure 4. The fluctuation in publication counts over the years.
+A remarkable surge in publications is evident during the acceleration phase (2021–
+2024). The number of published papers increased sharply, rising from 17 in 2021 to 30 in
+2024. In both 2023 and 2024, a total of 30 articles were published, indicating high research
+activity. This sudden rise suggests that the topic is becoming very popular within scientific
+circles, demonstrating its relevance and significance.
+Overall, the data show remarkably rapid progress in this area, especially between 2021
+and 2024, when nearly 73% of all 119 publications were produced. This trend indicates
+the growing importance and interest in the field, which has now become a major focus of
+academic research. The exponential growth in the volume of publications suggests that
+the subject has moved beyond its niche status to become mainstream within the scientific
+community. The sharp increase in publications during the acceleration phase may be due to
+a combination of factors, such as technological advances, increased funding opportunities,
+and greater societal recognition of the subject’s relevance.
+Based on the information presented in this article, it is evident that, despite being
+relatively young, this research area has gained significant momentum in recent years. There
+are still possibilities for further growth as new challenges and opportunities arise. The
+rapid increase in scientific output suggests that this field will likely continue to evolve,
+with ongoing contributions expected from an increasingly diverse group of academics
+and organizations.
+4.1.3. The Distribution of Publications by Field, Type, and Journal
+The number of publications by area, type, and journal provides important insights
+into the evolution of this domain over time. According to Figure 5, the most published
+articles are in the fields of computer science, engineering, decision sciences, business man-
+agement, and accounting. This suggests that the application of AI in demand forecasting is
+interdisciplinary, impacting multiple areas. The high volume of publications in computer
+science and engineering indicates that AI and machine learning models require a strong
+technical foundation, which is essential for advancements in algorithms, computational
+techniques, and system designs for effective demand forecasting.
+
+================================================================================
+PAGE 8
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+8 of 24
+Figure 5. Literature statistics of research directions.
+On the other hand, publications in decision sciences, business, and management focus
+on the practical applications of these technologies to enhance decision-making processes,
+optimize operations, and improve overall supply chain efficiency. This interdisciplinary
+approach ensures that artificial intelligence solutions are not only technically robust but
+also aligned with business goals and management practices.
+Moreover, demand prediction challenges have been addressed using various methods,
+such as machine learning, deep learning, blockchain, and time series forecasting, in these
+studies. Machine learning and deep learning are particularly noteworthy because they can
+process large amounts of data and recognize complex patterns, enabling more accurate
+and dynamic predictions. Although less widely adopted, blockchain technology holds
+significant potential to improve demand forecasting accuracy by enhancing transparency
+and traceability in supply chains. Time series forecasting remains a classic methodology
+that is often integrated into sophisticated AI models to enhance prediction quality.
+Overall, the diversity of publications in these areas reflects the complex nature of
+AI research in anticipating supply chain needs, highlighting the collaborative effort to
+synchronize technological innovations with practical applications. This trend indicates
+an ongoing and extensive effort to leverage AI for solving complex prediction problems,
+ultimately making supply chains more resilient and efficient.
+4.1.4. The Different Methodological Approaches and Article Proportion
+Annotations regarding the titles and abstracts of the 119 reviewed publications will
+guide the reader toward identifying the methodological focus (see Figure 6). Among
+these articles, modeling as a system of symbols used to obtain reproducible results or data
+falls under various categories: 44 papers focus on modeling, 43 on case studies, 25 on
+surveys, and 7 on conceptual discussions. For instance, “modeling” accounts for around
+37 percent, while “case study” encompasses about 36 percent of the entire literature on
+demand forecasting. This is significant because it suggests that these approaches are
+crucial in identifying the most reliable demand estimation techniques based on numerous
+performance metrics, with a substantial body of literature supporting them.
+
+================================================================================
+PAGE 9
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+9 of 24
+35%
+21%
+37%
+7%
+Case of study
+conceptual study
+Modeling
+survey
+Figure 6. Different methodological approaches and article proportion.
+The prominence of modeling and case studies indicates that researchers are particularly
+interested in assessing the realism of models by testing their theories against real-world
+scenarios, thereby enhancing their reliability. As mentioned in the previous section, as
+of October 2023, the data utilized in this study from various articles constitutes 21%.
+Surveys are among these documents, providing a general overview of many modern
+trends, challenges, and improvements related to AI-driven demand prediction, thus offering
+informative perspectives on how users understand and apply these technologies.
+Although limited in number, conceptual discussions play an important role in identi-
+fying new research ideas, frameworks, and theoretical foundations for future studies. This
+methodological diversity reaffirms that researchers adopt a holistic approach to tackling the
+issue of demand forecasting in supply chain management, combining theoretical exposition,
+empirical assessment, and comprehensive examination to advance this field.
+4.1.5. The Distribution of Publications among Countries, and Collaborative Efforts
+between Them
+As depicted in Figure 7, the distribution of publications by the countries of the authors
+and their contributions to the field provides insightful perspectives on the global nature
+of this research area and its interconnections with other fields. The collaboration network
+covers a wide range of countries from various continents, such as Asia, Europe, North
+America, and Africa. This broad range indicates diverse interests in the research topic,
+originating not only from developed countries but also from underdeveloped ones. The
+involvement of countries like China, the USA, Germany, and India suggests that the scope
+of the research area is not confined to a single region but represents a cumulative scientific
+endeavor of worldwide concern.
+The figure shows that certain countries have formed multiple collaborations, indicating
+strong academic links and shared research agendas. For example, the USA collaborates
+with countries like Bangladesh, while Japan has agreements with both China and Indonesia,
+demonstrating a leading role in research within this field. Collaborations are not limited to
+neighboring nations but also include those geographically distant, such as Germany–South
+Africa and India–Morocco, effectively erasing socio-economic and technological barriers to
+knowledge sharing.
+Moreover, partnerships involve countries that were not previously considered sig-
+nificant players in international scientific research, such as Bangladesh, Iraq, and Jordan,
+highlighting an increasing interest in these regions. This growing recognition indicates a
+trend toward mainstreaming research efforts across different regions, informed by diverse
+global developments. The relatively high frequency of collaborations in countries like
+China and the USA has established these nations as hubs for multinational networks,
+facilitating academic endeavors due to their enhanced resources and infrastructure.
+
+================================================================================
+PAGE 10
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+10 of 24
+ 
+Figure 7. World map visualization of country collaborations using RStudio.
+Global collaborations showcase a diverse and vibrant research sector, fostering creativ-
+ity and encouraging growth. The integration of previously separate research avenues could
+lead to groundbreaking breakthroughs. The international scope of this work suggests that
+the findings are relevant globally and continuously.
+In conclusion, the collaboration data reveal a sprawling and well-integrated interna-
+tional network in this research area, with numerous countries actively involved, under-
+scoring its global significance. The findings demonstrate that cooperation among research
+teams from various regions is essential for collective progress.
+4.1.6. The Analysis of Scientific Output by Country
+In this context, the distribution of scientific works across numerous nations, as shown
+in Figure 8, provides a clear picture of the global research landscape. India stands out as
+the leading contributor, with 35 publications. This demonstrates not only a strong presence
+in academic circles but also indicates that significant importance is placed on this research
+area in India. This prominence can be attributed to substantial funding driven by evolving
+academic and industrial interests in the country.
+China’s holistic policy of promoting innovative research and development in modern
+technologies and Morocco’s focus on national interests, such as Technological Industrial
+Revolution 4.0 and logistics, support their roles in these fields, with each contributing
+12 publications. Although the number of contributors from these regions is relatively
+small, their focus aligns with strategic national priorities. Germany and the United States
+are also key players in the global research ecosystem, contributing 10 and 9 publications,
+respectively, highlighting their strong research foundation compared to their partners
+known for major technological innovations.
+France, Bangladesh, and the United Kingdom follow, with 7 and 4 publications, re-
+spectively. While France and the UK have traditionally been strong in scientific research,
+Bangladesh reflects academic growth driven by collaborations with more established re-
+search nations. Several other countries, including Austria, Iran, Australia, Brazil, Canada,
+Italy, Japan, and Saudi Arabia, have contributed one or two publications, indicating emerg-
+ing research communities or specialized interest areas, suggesting the presence of extensive
+research networks.
+
+================================================================================
+PAGE 11
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+11 of 24
+Figure 8. Different countries with high publication rates.
+Additionally, countries like Argentina, Bahrain, Belgium, Colombia, Denmark, Ecuador,
+Finland, Hong Kong, Indonesia, Iraq, Jordan, Malaysia, the Netherlands, New Zealand,
+Pakistan, Peru, Poland, Portugal, Romania, Rwanda, Slovenia, South Korea, Sri Lanka,
+Thailand, Ukraine, the United Arab Emirates, and Uzbekistan each contributed at least
+one publication. This widespread participation shows that there is substantial potential for
+growth and increasing involvement in these regions as research infrastructure develops
+and international collaborations expand.
+Four documents are categorized as “Undefined”, which may include international
+collaborations or multidisciplinary studies. This broad distribution of contributions from
+both developed and developing nations indicates a global research effort with opportunities
+for increased participation in the future. The presence of countries like India, China, and
+Morocco suggests that these nations could shape future research trends and innovations,
+while countries with moderate to emerging contributions could increase their output,
+leading to a more balanced global research pattern.
+The wide spectrum of country participation shows that the research subject is increas-
+ingly recognized as important globally. This acknowledgment emphasizes the need for
+unity in promoting knowledge and innovation through global partnerships, ensuring that
+significant findings are achieved and substantial developments occur within this discipline.
+4.1.7. Insights from the Most Globally Cited Documents
+Key insights from the results can be obtained from the analysis of the most globally
+cited documents on the impact and trends in the field of demand forecasting using AI
+and ML techniques see Figure 9 and Table 3. Seyedan [24] is the most cited paper, with
+117 citations, demonstrating its strong influence and consistent interest within the research
+community due to a high total citation (TC) per year of 23.40 and a normalized TC of
+3.60. Although published more recently, Hu [25] already has 34 citations, with a maximum
+normalized TC of 17.38, indicating a potentially emerging impactful area. Papers such as
+those by Aamer [26] and SARDAR [27] show extremely high TC per year rates of 10.25
+and 9.50, respectively; therefore, their influence is rapidly growing within the commu-
+nity. Meanwhile, Chien [28] presents a strong citation rate, with a TC per year of 14.20,
+highlighting its current relevance in discussions.
+
+================================================================================
+PAGE 12
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+12 of 24
+The heavy citation of papers, such as Hu [29], in a very short period may serve as an
+indicator of sources that are likely to be important for those interested in fast-moving and
+emerging topics. The more specialized interest in clean logistics and sustainable supply
+chains is reflected in Shokouhifar [30], with a normalized TC of 4.64. On the other hand,
+Nikolopoulos [31] has an average TC per year of 4.11 with 37 citations, suggesting more
+enduring research that remains relevant for influencing the field over time.
+For those aiming to research studies that will have a significant impact, papers with
+a high normalized TC, such as Seyedan and Hu, should be prioritized, as they are highly
+likely to introduce new methodologies or insights. For a more historical perspective or
+foundational knowledge, Nikolopoulos could significantly contribute to understanding
+long-standing theories or practices. Some recommendations for future research include
+focusing on high-impact papers like Seyedan and Hu, as they have contributed massively,
+monitoring emerging trends observed in recent high-citation papers, balancing these with
+long-term impactful studies such as Nikolopoulos, and covering a diversity of journals to
+tap into the interdisciplinarity of the research area.
+Regarding research goals and methods, papers like Seyedan integrated different ML
+models, such as random forest, SVM, and neural networks, to enhance the accuracy of
+demand forecasting using large-scale retail datasets. Chien [28] formed hybrid models that
+combine regression and neural networks to decrease forecasting errors related to data from
+industrial production and sales. Aamer et al. explored deep learning models, including
+CNN and LSTM, in detail for application to optimizing demand forecasting in operations
+management. Other notable papers include Sardar, Sarkar, and Kim, who worked on
+process optimization within supply chains using AI-driven models, showing improved
+efficiency in inventory management. Nikolopoulos, Babai, and Bozos (2016) compared
+traditional versus ML-based forecasting methods, highlighting the competitiveness of ML
+models in terms of accuracy and scalability.
+Gonçalves [32] employed ensemble learning methods in decision-support systems,
+demonstrating improved robustness and accuracy in supply chain datasets. Hu presented
+several state-of-the-art DL models like transformers and demonstrated their applicability
+to dynamic supply chains, achieving high accuracy for real-time applications despite
+implementation complexity and computational costs. Leung [33] analyzed data-driven
+demand forecasting using clustering and decision trees to improve the management of large
+datasets. Abolghasemi [34] assessed the impact of AI on demand forecasting in production
+economies and highlighted timely and accurate predictions across various industries.
+Shokouhifar [29] discussed the sustainability dimensions of demand forecasting using
+DL models, considering environmental factors to balance economic and environmental
+practices in green supply chains.
+This comprehensive analysis underscores the progress from traditional methods to
+sophisticated AI/ML techniques and the growing importance of sustainability in supply
+chain management. Each paper has its strengths but also faces challenges, such as com-
+putational costs, complexity, and data requirements, which provide strategic direction
+for both researchers and practitioners keen to stay at the forefront of developments in
+demand forecasting.
+Table 3. Overview of AI/ML techniques in supply chain demand forecasting.
+Author(s) and
+Year
+Research Goals
+ML/DL Models
+Used
+Dataset
+Characteristics
+Key Findings
+Advantages
+Limitations
+Seyedan [24]
+To integrate demand
+forecasting with AI and
+ML for enhanced
+accuracy in supply chain
+management
+Various ML models
+like random forest,
+SVM, and neural
+networks
+Large-scale retail
+dataset with diverse
+product categories
+AI/ML models
+significantly
+outperform
+traditional
+forecasting methods
+Improved accuracy
+and adaptability
+High computational
+cost and complexity
+Chien [28]
+To apply ML models to
+predictive analytics in
+supply chain demand
+forecasting
+Hybrid models
+combining
+regression and
+neural networks
+Industrial
+production and
+sales data
+Hybrid models
+reduce forecasting
+errors up to 20%
+compared to
+standard methods
+Effective in
+capturing complex
+patterns
+Requires extensive
+data preprocessing
+
+================================================================================
+PAGE 13
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+13 of 24
+Table 3. Cont.
+Author(s) and
+Year
+Research Goals
+ML/DL Models
+Used
+Dataset
+Characteristics
+Key Findings
+Advantages
+Limitations
+Aamer [26]
+To explore the role of AI
+in optimizing demand
+forecasting in operations
+management
+Deep learning
+models (CNN,
+LSTM)
+Supply chain
+operations data
+DL models enhance
+demand prediction
+accuracy, especially
+for volatile demand
+patterns
+Handles large
+datasets effectively
+Long training times
+and potential
+overfitting
+Sardar [27]
+To investigate process
+optimization in supply
+chains through AI-driven
+demand forecasting
+Gradient boosting,
+decision trees
+Manufacturing and
+logistics datasets
+AI-driven models
+increase efficiency in
+supply chain
+management by
+optimizing
+inventory levels
+Reduces human
+intervention in
+forecasting
+Model
+interpretability can
+be challenging
+Nikolopou [31]
+To evaluate traditional
+and ML-based demand
+forecasting methods
+Traditional methods
+vs. ML models (e.g.,
+ARIMA, SVM)
+Historical sales and
+demand data
+ML models provide
+competitive
+accuracy with better
+scalability
+Balances traditional
+and modern
+approaches
+ML models require
+more data and
+fine-tuning
+Gonçalves [32]
+To implement ML
+techniques in
+decision-support systems
+for supply chain demand
+forecasting
+Ensemble learning
+methods (e.g.,
+bagging, boosting)
+Diverse supply
+chain datasets
+Ensemble methods
+outperform single
+models in demand
+prediction
+Enhances robustness
+and accuracy
+Requires more
+computational
+resources
+Hu H, 2023 [25]
+To explore cutting-edge
+AI/ML techniques in
+demand forecasting for
+dynamic supply chains
+Advanced DL
+models (e.g.,
+transformers)
+Real-time and
+historical data
+integration
+Transformer models
+capture temporal
+dependencies better
+than traditional
+methods
+High accuracy in
+real-time
+applications
+Complex
+implementation and
+high computational
+cost
+Leung [33]
+To analyze data-driven
+demand forecasting
+using AI in supply chains
+Clustering, decision
+trees
+Retail and
+distribution data
+Data-driven
+approaches improve
+demand forecasting
+by identifying
+underlying patterns
+Effective in
+managing large
+datasets
+May require
+domain-specific
+tuning
+Abolghase [34]
+To assess the impact of
+AI on demand
+forecasting in production
+economies
+Neural networks,
+regression models
+Production and
+demand datasets
+from various
+industries
+AI models lead to
+more accurate and
+timely predictions in
+production planning
+Scalable across
+industries
+Requires continuous
+model updating
+Shokouhif [29]
+To incorporate
+sustainability into
+demand forecasting
+using AI
+DL models with
+environmental
+factors
+Supply chain data
+with sustainability
+metrics
+Sustainable AI
+models align
+demand forecasting
+with green supply
+chain practices
+Balances economic
+and environmental
+goals
+May face trade-offs
+between accuracy
+and sustainability
+objectives
+ 
+Figure 9. The most globally cited documents [24–29,31–34].
+4.1.8. Keywords and Subject Clusters within the Publications
+At a micro-level, one can observe the changes in a subject over time, which reveal
+temporary landmarks in the development of this discipline and highlight important tempo-
+ral trends. The keyword co-occurrence map, arranged in a time-series fashion, illustrates
+
+================================================================================
+PAGE 14
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+14 of 24
+which research hotspots were at the forefront during each period. Researchers can trace
+these hotspots by sequentially examining keyword clusters, from 0 to 7, reflecting increased
+scholarly attention on forecasting demand using machine learning (ML) technologies (clus-
+ters 1 to 5). A cluster analysis revealed a variety of patterns within the field (see Table 4
+and Figure 10).
+Table 4. Summary of the 5 largest clusters.
+#
+Size
+Silhouette
+Label (lsi)
+Label (llr)
+Label (mi)
+Average Year
+1
+18
+0.988
+Supply chain management
+Exploring application (6.19, 0.05)
+Review (0.4)
+2019
+2
+18
+0.967
+Intelligent system
+Vaccine supply chain
+management (6.19, 0.05)
+Using deep learning
+technique (0.4)
+2020
+3
+15
+0.924
+Machine learning
+technique
+Machine learning technique
+(6.62, 0.05)
+Learning approach (0.34)
+2016
+4
+14
+1
+Predictive big data
+analytics for supply chain
+demand forecasting:
+methods, applications, and
+research opportunities
+Supply chain demand
+forecasting (5.22, 0.05)
+Supply chain demand
+forecasting (0.11)
+2020
+5
+7
+1
+Modeling wholesale
+distribution operations: an
+artificial intelligence
+framework
+Modeling wholesale distribution
+operations (6.95, 0.01)
+Modeling wholesale
+distribution operations
+(0.08)
+2021
+Figure 10. The 5-subject cluster diagram.
+Cluster 1 is mainly devoted to supply chain management and review articles, which
+mostly appeared after 2019, indicating that foundational scholarship and critical evaluations
+were being enhanced during this period. Cluster 2 focuses on smart systems, covering
+vaccine supply chain management and the use of deep learning in other domains, with
+a strong emphasis on developing AI models for practical applications, particularly in
+response to global issues like vaccine allocation, which became prominent between 2020
+
+================================================================================
+PAGE 15
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+15 of 24
+and 2022. Cluster 3 explores different machine learning techniques and innovative learning
+methods, yet it still aligns with the themes discussed in Cluster 2, thereby showing an
+expanding yet deepening understanding of various ML types during this period.
+In addition, Cluster 4 is primarily about forecasting using big data analytics for
+predicting demand within a supply chain, reaching its peak in 2016. This suggests that big
+data should be increasingly utilized for making predictions through improved techniques.
+This cluster also includes findings related to the creation and use of everyday prediction
+systems based on artificial neural networks for supermarket sales floors around 2012,
+implying early experimentation with neural networks in real-world forecasting scenarios
+during that time.
+Cluster 5 focuses on modeling wholesale distribution activities using intelligent ar-
+tificial neural computer systems, with notable developments recorded in 2021. These
+developments highlight continued advancements in neural computing to improve complex
+distribution networks. All these clusters consistently show very high silhouette values,
+demonstrating coherence and high research quality.
+This comprehensive analysis of different research patterns, techniques, and time
+trajectories in thematic areas like supply chain management, intelligent systems, and
+advanced analytics provides valuable insights; thus, further study into what each distinct
+cluster uniquely contributes is necessary. The evolution from ML applications in demand
+forecasting to data-driven methodologies reflects how much this field has developed over
+time. Future research should build on existing frameworks to enhance methods and
+broaden their applications for anticipating demand.
+An analysis of keyword-rich content and the relationships between various topics
+generally shows how knowledge production has changed over time, the focus of studies,
+and the development of the field. By considering these clusters, scholars can identify key
+topics or new developments that can direct future research while also helping them better
+understand the historical growth of the discipline. This ongoing journey will continue to
+generate more robust and adaptable prediction models, contributing to higher efficiency
+and stability of supply chains worldwide.
+4.2. Trajectory and Trends in ML and DL Applications
+4.2.1. Thematic Trends and Patterns
+Thematic clustering and a trend analysis have revealed several key patterns illustrat-
+ing how demand forecasting for supply chain management is evolving through artificial
+intelligence (AI) applications (Figure 11). There is a clear and consistent trend toward
+the greater adoption of AI technologies in supply chain management, driven by the need
+for more accurate and agile demand forecasting mechanisms. This shift enables better
+anticipation of demand changes, stock level optimization, and overall operational perfor-
+mance improvement for firms. Traditional forecasting practices are being reassessed with
+the integration of AI-driven models, which show significant accuracy advancements, as
+highlighted by Ivanov [1].
+The literature also indicates a noticeable shift towards deep learning models, such as
+long short-term memory (LSTM) networks, due to their unique ability to manage complex
+temporal patterns and non-linear relationships embedded within demand data. Advanced
+forecasting systems increasingly rely on deep learning models like LSTM as a foundational
+element. For example, according to Phyu and Khine [8], these models are more accurate and
+adaptable, allowing supply chains to adjust their strategies to real-time market conditions.
+This adaptability results in reduced forecast errors and improved customer service levels.
+Additionally, traditional statistical methods are being combined with advanced AI
+techniques to create hybrid models, leveraging the strengths of both approaches to develop
+more robust and accurate forecasting solutions. One example is the SARIMA–LSTM–BP
+model, which combines the seasonal pattern detection of SARIMA with the temporal
+pattern learning capabilities of LSTMs and the optimization features of backpropagation.
+Falatouri et al. [11] demonstrated that these hybrid models significantly outperform con-
+
+================================================================================
+PAGE 16
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+16 of 24
+ventional standalone AI algorithms, offering greater precision and reliability across various
+prediction scenarios.
+ 
+Figure 11. Thematic clustering and trend.
+There is also a significant emphasis on implementing AI in decision-support sys-
+tems in real-time within supply chain management. This approach allows for quick and
+accurate forecasting, even under changing conditions typical of fast-paced global value
+chains. Real-time AI-based decision-support systems enhance agile response capabilities,
+enabling supply chains to adapt quickly to shifts while making intelligent decisions within
+constrained time frames. Specifically, Al-Musaylh et al. [35] documented how SVM-based
+real-time forecasting systems have greatly improved decision-making, resulting in more
+agile and responsive supply chains.
+By examining how different keywords interrelate in the field of supply chain man-
+agement through this thematic map, one can understand the terms clustered according
+to their frequencies and relevance in the existing literature. “Supply chain management”,
+“demand forecasting”, “machine learning”, and “big data” are central topics in Cluster
+1, reflecting core interests in the discipline. Terms like “machine learning techniques”,
+“neural networks”, and “long short-term memory” suggest a focus on advanced predictive
+and analytical methods. Cluster 2 includes keywords such as “blockchain”, “life cycle”,
+and “behavioral research”, indicating an emerging interest in integrating blockchain tech-
+nology into supply chain management and addressing global issues like COVID-19 and
+vaccine distribution.
+Cluster 3 covers methodological aspects, such as “design/methodology/approach”,
+“fuzzy neural networks”, and “outsourcing”, which emphasize the design and optimization
+of supply chain processes. Cluster 4 highlights the role of AI in optimizing inventory man-
+agement, focusing on themes like “inventory control”, “decision-making”, and “artificial
+intelligence”. Terms such as “predictive analytics” and “cost reduction” reflect the ongoing
+need for efficiency and sustainability.
+
+================================================================================
+PAGE 17
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+17 of 24
+By analyzing these clusters in detail, we gain insights into the evolving priorities
+and areas that require critical attention, particularly the interrelationship between AI and
+advanced analytics driving contemporary supply chain management (SCM). As a result,
+we are likely to see more sophisticated and flexible forecasting models emerging from this
+ongoing research, ultimately leading to improved global logistics.
+4.2.2. Thematic Evolution
+From the thematic evolution analysis, we gather significant insights that demonstrate
+how dynamic this area of research is (Figure 12). Notably, artificial intelligence (AI) shifted
+its focus from risk assessment to supply chain management from 2014 to 2024, marking
+a significant turning point. This transformation indicates a strong association with risk
+assessment (inclusion index score of 0.50) while also showing a moderate connection to
+inventory control and optimization. This suggests an increased emphasis on reducing risks
+and improving operational efficiency.
+Figure 12. Thematic evolution of AI applications in supply chain management.
+Deep learning has maintained continuity, particularly in its application to supply
+chain management and commerce, despite having a high stability index. This indicates
+that while it may not be the most prominent theme in the research landscape, it remains
+consistent and integral within the domain. Supply chain management continues to be
+a key topic across all time periods, increasingly interacting with emerging technologies,
+such as deep learning and learning algorithms. This ongoing integration demonstrates
+strong thematic growth, with supply chain management maintaining its original focus on
+predictive methods and machine learning while also incorporating a variety of emerging
+technologies and approaches.
+The steady growth trend, initially present from 2014 to 2023, began to be associated
+with deeper learning by 2024. Although this relationship is still developing, it suggests a
+growing integration of sustainable practices with advanced AI technologies. A nearest-
+neighbor search and production control highlight the thematic dynamics of marketing and
+supply chain processes in later temporal periods. Although these correlations are not very
+stable, they indicate areas that may require further investigation and stabilization.
+Overall, this study shows that artificial intelligence, deep learning, and supply chain
+management are interconnected. New applications and methodologies, particularly those
+related to risk assessment and optimization, are emerging, driving the future of supply
+chain management toward more efficient, streamlined, and sustainable practices. This
+continuous improvement underscores the importance of flexible predictive models and
+innovative approaches to addressing today’s supply chain challenges.
+
+================================================================================
+PAGE 18
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+18 of 24
+5. Discussion
+This section aims to provide comprehensive insights that address the following key
+questions: How does the integration of AI-powered automation contribute to enhanced
+demand forecasting in the supply chain? What specific AI techniques are closely associated
+with demand forecasting in supply chain management? Additionally, what gaps exist in
+the current research environment that necessitate further investigation?
+5.1. Comprehensive Insights from AI-Driven Automation in Supply Chain Management
+This study shows that artificial intelligence (AI) significantly impacts demand forecast-
+ing in supply chain management. While some researchers focus on the specific applications
+of machine learning (ML), others agree that AI is revolutionary in addressing existing chal-
+lenges. Table 5 presents various methods and trends in demand forecasting, highlighting
+successful strategies and associated probabilities.
+Table 5. Supply chain applications and corresponding AI methods.
+#
+Supply Chain Application
+AI Methods
+1
+Blood supply chain management
+Machine learning, time series forecasting
+2
+Automated blood bank management
+Automated machine learning, forecasting
+3
+Blockchain-enabled demand forecasting
+Blockchain integration, machine learning
+4
+Supply chain optimization
+Evolutionary algorithms, support vector regression (SVR)
+5
+AI in small- and medium-sized enterprises (SMEs)
+Artificial intelligence (AI), machine learning, deep learning
+6
+Supplier selection and order allocation
+Machine learning, optimization models
+7
+E-healthcare supply chain management
+Deep learning, reinforcement learning
+8
+Predictive analysis in supply chain management
+Machine learning, predictive analytics
+9
+Retail demand prediction with machine learning
+Tree-based ensembles, long short-term memory (LSTM)
+10
+AI-based time-series forecasting for inventory
+AI-based time-series forecasting, anomaly detection
+For example, machine learning and scheduling prediction show tremendous potential
+in blood donation management (BSC) by predicting blood product demand and improving
+automated blood bank scheduling through proper sampling. Blockchain-enabled demand
+forecasting optimizes supply chain management, while combining machine learning and
+evolutionary algorithms with support vector regression (SVR) enhances demand forecasting
+and optimizes supply chain processes. AI also assists small- and medium-sized enterprises
+(SMEs) in automating supply chain planning and decision-making, particularly in supplier
+selection and order allocation.
+Additionally, AI addresses anomalies in e-healthcare supply chain management (e-
+HSCM) by integrating predictive analytics to enhance deep learning and reinforcement
+learning processes. Furthermore, AI-based time series forecasting enables anomaly detec-
+tion, leading to more accurate demand forecasts.
+5.2. Technical Analysis and Comparative Effectiveness of ML and DL Models
+To deepen the understanding of the application of machine learning (ML) and deep
+learning (DL) models in demand forecasting, the findings of previous studies were analyzed
+through technical and comparative analyses.
+5.2.1. Long Short-Term Memory (LSTM) Networks
+Technical Details: An LSTM network is a type of recurrent neural network (RNN)
+that uses memory cells to learn and retain long-term dependencies across broad sequences.
+This design enables LSTM networks to handle sequences of varying lengths and capture
+complex time series, making them more efficient for sequential time forecasting.
+
+================================================================================
+PAGE 19
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+19 of 24
+Performance: Studies, such as those by Phyu and Khine, have shown that LSTM
+networks outperform traditional models in capturing nonlinear relationships in demand
+data, resulting in higher prediction accuracy. LSTM models reduce forecast errors by
+15–20% compared to ARIMA models in terms of retail demand forecasts.
+5.2.2. Random Forest (RF)
+Technical Details: Random forest is an ensemble learning method that constructs
+multiple decision trees during training. It makes predictions based on the majority class for
+classification tasks or the average prediction of individual trees for regression tasks.
+Performance: According to Ji et al. (2019) [14], random forest (RF) models are robust
+against overfitting and provide high accuracy for demand forecasting. In vehicle demand
+forecasting, the RF model showed a 10% improvement in accuracy compared to traditional
+regression models.
+5.2.3. Support Vector Machine (SVM)
+Technical Details: Support vector machines (SVMs) are supervised learning mod-
+els used for classification and regression analysis. They work by finding the optimal
+hyperplane that maximizes the margin between different classes. SVMs are particularly
+effective at handling high-dimensional data and can manage nonlinear relationships using
+kernel functions.
+Performance: As highlighted by Al-Musaylh et al. [35], support vector machines
+(SVMs) perform well in demand prediction by finding the optimal hyperplane that maxi-
+mizes the separation between groups. In electricity demand forecasting, the SVM model
+achieved approximately a 12% reduction in the forecast error rate compared to conventional
+linear models.
+5.2.4. Extreme Gradient Boosting (XGBoost)
+Technical Details: XGBoost is a highly efficient and scalable implementation of the
+gradient-boosting framework. It supports parallel tree development, allowing it to solve
+many data science problems quickly and accurately by optimizing both the loss function
+and model complexity.
+Performance: According to Ji et al. [14], XGBoost models consistently achieve higher
+accuracy and faster computation times compared to other ensemble methods in demand
+forecasting tasks. For instance, in sales forecasting for e-commerce platforms, XGBoost
+models outperformed traditional boosting methods by 8–10% in terms of accuracy and
+reduced training times by 30%.
+5.2.5. SARIMA–LSTM–BP Combination Model
+Technical Details: This new model combines the strengths of SARIMA, LSTM, and
+backpropagation. SARIMA captures seasonal trends, LSTM learns and predicts temporal
+patterns, and backpropagation (BP) adjusts the model to improve its reliability and accuracy.
+Performance: The SARIMA–LSTM–BP model, as discussed by Falatouri et al. [11],
+surpasses traditional econometric models and standalone LSTM models in predicting new
+energy vehicle demand, offering higher reliability. The performance of this hybrid model
+in prediction is also improved, with an 18% reduction in error compared to standalone
+LSTM models.
+5.2.6. Comparative Effectiveness
+Accuracy: Generally, models using LSTM and XGBoost significantly improve accuracy
+over traditional methods like SARIMA. For example, LSTM models reduce forecast errors
+by 15–20%, while XGBoost models improve accuracy by 8–10% [8,14].
+Computation Time: XGBoost has proven to be faster in both training and prediction,
+making it highly useful for real-time forecasting applications [14]. Additionally, XGBoost’s
+
+================================================================================
+PAGE 20
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+20 of 24
+support for parallel computing significantly shortens calculation times, enhancing its utility
+in dynamic environments.
+Complexity: On the other hand, support vector machines (SVMs) and random forest
+classifiers are comparatively easier to implement and interpret than LSTM networks, which
+are more computationally expensive. This was affirmed by Al-Musaylh [35], who reported
+that Ji et al. [14] noted the complexity of the architecture and training of LSTM models,
+which require specialized knowledge and significant computational power.
+Robustness: Random forest models resist overfitting and perform exceptionally well
+when there are a large number of predictors involved, whereas LSTM networks excel when
+the dataset exhibits temporal dependencies. The ensemble nature of random forest models
+makes them highly resilient to changes in data.
+5.3. Refined Impact Assessment of AI on Supply Chain Demand Forecasting
+Artificial intelligence in demand forecasting has ushered in a new era of precision
+and speed, particularly in the healthcare and retail sectors. Advancements in machine
+learning (ML) and deep learning (DL) have brought significant improvements in predictive
+analytics, leading to refined operational strategies. However, these developments are not
+without challenges: data quality issues, algorithmic biases, and integration with existing
+systems demand a balanced view on the impact of AI on core systems.
+The demand forecasting process can be significantly enhanced by various AI tech-
+niques and tools. Long short-term memory (LSTM) networks are well-suited for handling
+complex time-series data, while support vector machines (SVMs) excel in both classifi-
+cation and regression tasks. Additionally, deep learning tools like convolutional neural
+networks (CNNs) and generative adversarial networks (GANs) fine-tune estimation pro-
+cesses, improving the depth and accuracy of training datasets and enhancing the analysis
+of sequential data. Furthermore, blockchain technology offers robust and transparent
+record-keeping, which enhances reliability in demand forecasts across complex supply
+chains. AutoML democratizes the use of AI and scales solution availability by simplifying
+model selection and deployment for advanced forecasting, making these tools accessible to
+non-experts.
+This detailed perspective not only highlights the role of AI in improving supply chain
+efficiency but also connects specific AI technologies to their practical applications. It offers
+valuable insights for stakeholders who seek to make informed decisions regarding the
+strategic implementation of AI in supply chain management.
+5.4. Addressing the Research Gaps and Future Directions
+Although there has been significant growth in AI-based demand forecasting, some
+gaps still remain. Future studies should focus on the development and implementation
+of models that integrate more classical forecasting methods with AI applications across
+various industries. Additionally, research is needed to evaluate the efficiency of AI in
+geologically underexplored areas. Future research should also aim to establish standards
+for compatibility and to identify the benefits of incorporating AI into forecasting models.
+Improving algorithm sensitivity to more complex and unstructured data in supply chains,
+often considered “noisy”, is another area that requires attention [25,36].
+5.4.1. Strategic Implications and Practical Applications
+The findings reveal various ways in which AI has been utilized in supply chain
+management. For example, AI is used in the blood supply chain for time-series-based
+demand forecasting to improve inventory management of blood products [7,8]. Other
+AI methodologies, such as LSTM networks, are employed in the retail sector to predict
+consumer demand, enhance inventory levels, and meet customer expectations. Many
+applications also benefit from blockchain technology, which provides higher levels of trust
+and transparency. This trend has enabled many firms to gain new strategic advantages
+through post-implementation improvements.
+
+================================================================================
+PAGE 21
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+21 of 24
+5.4.2. Challenges and Future Directions
+Machine learning (ML) techniques and deep learning (DL) have emerged as some
+of the most pervasive tools in demand forecasting across various industries. However,
+their use presents several challenges. Firstly, handling time series data is a significant issue
+because traditional machine learning algorithms, such as random forest regressor and
+support vector regressor, often fail to capture complex temporal dependencies within the
+data. This limitation has driven the development of novel methodologies, including the
+integration of K-means clustering, LASSO regression, and LSTM deep learning models, to
+more effectively address the complexities of demand forecasting.
+Moreover, many sources of demand forecasting data are unreliable, either due to a lack
+of historical data, intrinsic biases, or both, which greatly hinders their adoption in business
+scenarios [37]. Despite these challenges, the potential of combining machine learning and
+deep learning techniques to enhance the accuracy of demand forecasting is promising.
+This potential is further realized when these techniques are synergistically integrated with
+complementary methods, such as time series analysis, data transformation, imputation
+of missing data, and feature extraction and selection, all of which leverage advances in
+technology and data processing [25].
+Expanding from the microcosm of machine learning applications to the broader land-
+scape of supply chains, numerous challenges impede the seamless adoption and effective
+implementation of these technologies. Chief among these challenges is the pivotal role of
+data quality and accessibility, with issues related to real-time data quality posing significant
+obstacles to the success of machine learning models [36,38]. Integrating machine learning
+and deep learning solutions into existing supply chain frameworks is a complex endeavor,
+often complicated by interoperability issues and the challenge of seamless integration [37].
+Furthermore, the interpretability of complex machine learning and deep learning
+models remains a persistent challenge, especially in industries governed by stringent
+regulatory compliance, where it is crucial to explain the rationale behind predictions [39].
+Additionally, implementing machine learning and deep learning solutions can be costly,
+posing a significant barrier for smaller enterprises that must balance the anticipated benefits
+against the financial investment required [40].
+The dynamic nature of supply chains, which are prone to unexpected shocks and
+disruptions, adds further complexity. This requires continuous improvements and adjust-
+ments to machine learning models in response to rapidly evolving situations and sudden
+events. Looking forward, some emerging trends pose additional challenges for machine
+learning and deep learning in demand forecasting for supply chains. Explainable AI (XAI)
+is becoming increasingly important to address the challenge of interpretability by em-
+phasizing transparency in decision-making processes alongside model accuracy [41,42].
+Additionally, integrating machine learning and deep learning models with edge computing
+technologies is crucial for real-time decision-making. Future challenges will continue to
+revolve around optimizing efficiency and scalability [43].
+This underscores the importance of cross-sector collaboration among academia, in-
+dustry, and policymakers, necessitating interdisciplinary partnerships to bridge the gap
+between theoretical innovation and practical, scalable implementation. Moreover, future
+research needs to focus on sharpening ethical scrutiny regarding how automated decision-
+making systems function, striving for greater accuracy and resilience in forecasting.
+6. Conclusions
+In conclusion, this comprehensive literature review elaborates on how artificial intelli-
+gence is revolutionizing supply chain management through meticulous demand forecasting.
+The review analyzed 119 papers published over a decade, from 2015 to 2024, identifying
+important trends, emerging methodologies, and potential future challenges. The main
+findings from the analysis suggest a paradigm shift in supply chain dynamics driven by the
+exponential growth of AI-driven solutions. Notably, the increased research interest after
+2021 indicates a recognition of the transformative potential of AI in demand forecasting
+
+================================================================================
+PAGE 22
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+22 of 24
+within the supply chain. Various methodologies, ranging from machine learning to integra-
+tion with blockchain, have been adopted, each offering specific advantages in enhancing
+predictive accuracy and operational efficiency.
+Additionally, this paper emphasizes that AI research in supply chain management
+(SCM) should extend beyond the traditional domains of computer science, engineering, and
+business. Interdisciplinary cooperation is crucial to addressing the numerous challenges
+related to data quality, model interpretability, and ethical considerations associated with
+AI adoption.
+However, several challenges remain to be addressed to fully realize these potential
+benefits. Issues related to data access, model transparency, and scalability will continue to be
+pressing and require coordinated efforts from researchers, practitioners, and policymakers
+to effectively integrate AI into supply chains. Moreover, increasing attention must be
+directed toward the ethical implications of AI-driven decision-making in supply chain
+contexts to ensure responsible and fair deployment of advanced technologies.
+Looking ahead, the accomplishments identified in this review pave the way for future
+research endeavors that could unlock the full potential of AI in supply chain management.
+By addressing the challenges outlined and fostering collaborative innovation, the field can
+drive substantial improvements in efficiency, resilience, and sustainability within global
+supply chain operations.
+Author Contributions: Conceptualization, K.D.; methodology, K.D., O.B., R.O. and C.M.; software,
+K.D., O.B., R.O. and C.M.; validation, K.D., O.B., R.O. and C.M.; formal analysis, K.D., O.B., R.O. and
+C.M.; investigation, K.D., O.B., R.O. and C.M.; resources, K.D., O.B., R.O. and C.M.; data curation,
+K.D., O.B., R.O. and C.M.; writing—original draft preparation, K.D., O.B., R.O. and C.M.; writing—
+review and editing, K.D., O.B., R.O. and C.M.; funding acquisition, K.D., O.B., R.O. and C.M. All
+authors have read and agreed to the published version of the manuscript.
+Funding: This research received no external funding.
+Data Availability Statement: No additional data available.
+Acknowledgments: We extend our most heartfelt thanks to all the researchers, scholars, and practi-
+tioners who have contributed invaluable knowledge to the fields of supply chain management and
+artificial intelligence. This literature review would not have been possible without their dedication to
+research and the sharing of insights. We also wish to thank the authors of the 83 papers we have cited
+in this study, as well as all the other authors referenced in this work, whose pioneering efforts have
+laid the foundation for our review. Their innovative research, rigorous methodologies, and insightful
+findings have highlighted the key trends and challenges in AI-driven demand forecasting across
+supply chains.
+Conflicts of Interest: The authors declare no conflicts of interest.
+References
+1.
+Ivanov, D. Viable Supply Chain Model: Integrating Agility, Resilience and Sustainability Perspectives—Lessons from and
+Thinking beyond the COVID-19 Pandemic. Ann. Oper. Res. 2022, 319, 1411–1431. [CrossRef]
+2.
+Petropoulos, F.; Apiletti, D.; Assimakopoulos, V.; Babai, M.Z.; Barrow, D.K.; Ben Taieb, S.; Bergmeir, C.; Bessa, R.J.; Bijak, J.;
+Boylan, J.E.; et al. Forecasting: Theory and Practice. Int. J. Forecast. 2022, 38, 705–871. [CrossRef]
+3.
+Wang, Y.; Han, W.; Pan, L.; Wang, C.; Liu, Y.; Hu, W.; Zhou, H.; Zheng, X. Impact of COVID-19 on Blood Centres in Zhejiang
+Province China. Vox Sang. 2020, 115, 502–506. [CrossRef]
+4.
+Choi, Y.; Lee, H.; Irani, Z. Big Data-Driven Fuzzy Cognitive Map for Prioritising IT Service Procurement in the Public Sector. Ann.
+Oper. Res. 2018, 270, 75–104. [CrossRef]
+5.
+Choi, T.; Wallace, S.W.; Wang, Y. Big Data Analytics in Operations Management. Prod. Oper. Manag. 2018, 27, 1868–1883.
+[CrossRef]
+6.
+Benzidia, S.; Makaoui, N.; Bentahar, O. The Impact of Big Data Analytics and Artificial Intelligence on Green Supply Chain
+Process Integration and Hospital Environmental Performance. Technol. Forecast. Soc. Chang. 2021, 165, 120557. [CrossRef]
+7.
+Kamal, E.; Abdel-Gawad, A.F.; Ibraheem, B.; Zaki, S. Machine Learning Fusion and Data Analytics Models for Demand
+Forecasting in the Automotive Industry: A Comparative Study. Fusion Pract. Appl. 2023, 12, 24–37. [CrossRef]
+
+================================================================================
+PAGE 23
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+23 of 24
+8.
+Phyu, M.M.; Khine, M.T. Retail Demand Forecasting Using Sequence to Sequence Long Short-Term Memory Networks.
+In Proceedings of the 2023 IEEE Conference on Computer Applications (ICCA), Yangon, Myanmar, 27–28 February 2023;
+pp. 208–213.
+9.
+Park, Y.-J.; Kim, D.; Odermatt, F.; Lee, J.; Kim, K.-M. A Large-Scale Ensemble Learning Framework for Demand Forecasting.
+In Proceedings of the 2022 IEEE International Conference on Data Mining (ICDM), Orlando, FL, USA, 28 November 2022–1
+December 2022; pp. 378–387.
+10.
+Latha, K.G.; Manjunatha, H.T. Food Requirement Analysis in an Area. IJSREM 2023, 7. [CrossRef]
+11.
+Falatouri, T.; Darbanian, F.; Brandtner, P.; Udokwu, C. Predictive Analytics for Demand Forecasting—A Comparison of SARIMA
+and LSTM in Retail SCM. Procedia Comput. Sci. 2022, 200, 993–1003. [CrossRef]
+12.
+Praveenadevi, D.; Sreekala, S.P.; Girimurugan, B.; Krishna Teja, K.V.R.; Naga Kamal, G.; Chandra, A.C. An Enhanced Method
+on Using Deep Learning Techniques in Supply Chain Management. In Proceedings of the 2023 International Conference on
+Disruptive Technologies (ICDT), Greater Noida, India, 11–12 May 2023; pp. 210–213.
+13.
+Ben Elmir, W.; Hemmak, A.; Senouci, B. Smart Platform for Data Blood Bank Management: Forecasting Demand in Blood Supply
+Chain Using Machine Learning. Information 2023, 14, 31. [CrossRef]
+14.
+Ji, S.; Wang, X.; Zhao, W.; Guo, D. An Application of a Three-Stage XGboost-Based Model to Sales Forecasting of a Cross-Border
+e-Commerce Enterprise. Math. Probl. Eng. 2019, 2019, 8503252. [CrossRef]
+15.
+Matino, I.; Dettori, S.; Colla, V.; Weber, V.; Salame, S. Forecasting Blast Furnace Gas Production and Demand through Echo State
+Neural Network-Based Models: Pave the Way to off-Gas Optimized Management. Appl. Energy 2019, 253, 113578. [CrossRef]
+16.
+Al-qaness, M.A.A.; Saba, A.I.; Elsheikh, A.H.; Elaziz, M.A.; Ibrahim, R.A.; Lu, S.; Hemedan, A.A.; Shanmugan, S.; Ewees, A.A.
+Efficient Artificial Intelligence Forecasting Models for COVID-19 Outbreak in Russia and Brazil. Process Saf. Environ. Prot. 2021,
+149, 399–409. [CrossRef]
+17.
+Pereira, M.M.; Machado, R.L.; Ignacio Pires, S.R.; Pereira Dantas, M.J.; Zaluski, P.R.; Frazzon, E.M. Forecasting Scrap Tires Returns
+in Closed-Loop Supply Chains in Brazil. J. Clean. Prod. 2018, 188, 741–750. [CrossRef]
+18.
+Paez-Quinde, C.; Molina-Mora, D.P.; Reyes-Bedoya, D.; Carrera-Calderon, F. Quantitative Big Data Analytics for Scientific and
+Bibliometric Mapping with Industry 4.0 Technologies. In Proceedings of the 2022 International Conference on Augmented
+Intelligence and Sustainable Systems (ICAISS), Trichy, India, 24–26 November 2022; pp. 787–793.
+19.
+Hamidova, L.F. The analysis of existing experience for the ethnobotanical information system. EUREKA Life Sci. 2019, 3, 15–24.
+[CrossRef]
+20.
+Wilder, E.I.; Walters, W.H. Using Conventional Bibliographic Databases for Social Science Research: Web of Science and Scopus
+Are Not the Only Options. Sch. Assess. Rep. 2021, 3, 4. [CrossRef]
+21.
+Das, A.; Ajila, S.A.; Lung, C.-H. A Comprehensive Analysis of Accuracies of Machine Learning Algorithms for Network Intrusion
+Detection. In Machine Learning for Networking; Boumerdassi, S., Renault, É., Mühlethaler, P., Eds.; Lecture Notes in Computer
+Science; Springer International Publishing: Cham, Switzerland, 2020; Volume 12081, pp. 40–57. ISBN 978-3-030-45777-8.
+22.
+Manyika, J.; Chui, M.; Bisson, P.; Woetzel, J.; Dobbs, R.; Bughin, J.; Aharon, D. The Internet of Things: Mapping the Value beyond the
+Hype; McKinsey & Company: Chicago, IL, USA, 2015.
+23.
+Hartmann, J.; Moeller, S. Chain Liability in Multitier Supply Chains? Responsibility Attributions for Unsustainable Supplier
+Behavior. J. Ops. Manag. 2014, 32, 281–294. [CrossRef]
+24.
+Seyedan, M.; Mafakheri, F. Predictive Big Data Analytics for Supply Chain Demand Forecasting: Methods, Applications, and
+Research Opportunities. J. Big Data 2020, 7, 53. [CrossRef]
+25.
+Yoon, D.; Park, S.; Song, Y.; Chae, J.; Chung, D. Methodology for Improving the Performance of Demand Forecasting Through
+Machine Learning. Res. Sq. 2023. [CrossRef]
+26.
+Aamer, A.M.; Yani, L.P.E.; Priyatna, I.M.A. Data Analytics in the Supply Chain Management: Review of Machine Learning
+Applications in Demand Forecasting. Oper. Supply Chain Manag. 2021, 14, 1–13. [CrossRef]
+27.
+Sardar, S.K.; Sarkar, B.; Kim, B. Integrating Machine Learning, Radio Frequency Identification, and Consignment Policy for
+Reducing Unreliability in Smart Supply Chain Management. Process. 2021, 9, 247. [CrossRef]
+28.
+Chien, C.-F.; Lin, Y.-S.; Lin, S.-K. Deep Reinforcement Learning for Selecting Demand Forecast Models to Empower Industry 3.5
+and an Empirical Study for a Semiconductor Component Distributor. Int. J. Prod. Res. 2020, 58, 2784–2804. [CrossRef]
+29.
+Hu, H.; Xu, J.; Liu, M.; Lim, M.K. Vaccine Supply Chain Management: An Intelligent System Utilizing Blockchain, IoT and
+Machine Learning. J. Bus. Res. 2023, 156, 113480. [CrossRef]
+30.
+Shokouhifar, M.; Ranjbarimesan, M. Multivariate Time-Series Blood Donation/Demand Forecasting for Resilient Supply Chain
+Management during COVID-19 Pandemic. Clean. Logist. Supply Chain 2022, 5, 100078. [CrossRef]
+31.
+Nikolopoulos, K.I.; Babai, M.Z.; Bozos, K. Forecasting Supply Chain Sporadic Demand with Nearest Neighbor Approaches. Int. J.
+Prod. Econ. 2016, 177, 139–148. [CrossRef]
+32.
+Gonçalves, J.N.C.; Cortez, P.; Carvalho, M.S.; Frazão, N.M. A Multivariate Approach for Multi-Step Demand Forecasting in
+Assembly Industries: Empirical Evidence from an Automotive Supply Chain. Decis. Support Syst. 2021, 142, 113452. [CrossRef]
+33.
+Leung, K.H.; Mo, D.Y.; Ho, G.T.S.; Wu, C.H.; Huang, G.Q. Modelling Near-Real-Time Order Arrival Demand in e-Commerce
+Context: A Machine Learning Predictive Methodology. Ind. Manag. Data Sys. 2020, 120, 1149–1174. [CrossRef]
+34.
+Abolghasemi, M.; Hurley, J.; Eshragh, A.; Fahimnia, B. Demand Forecasting in the Presence of Systematic Events: Cases in
+Capturing Sales Promotions. Int. J. Prod. Econ. 2020, 230, 107892. [CrossRef]
+
+================================================================================
+PAGE 24
+================================================================================
+Appl. Syst. Innov. 2024, 7, 93
+24 of 24
+35.
+Al-Musaylh, M.S.; Deo, R.C.; Adamowski, J.F.; Li, Y. Short-Term Electricity Demand Forecasting with MARS, SVR and ARIMA
+Models Using Aggregated Demand Data in Queensland, Australia. Adv. Eng. Inf. 2018, 35, 1–16. [CrossRef]
+36.
+Ali, S.; Abuhmed, T.; El-Sappagh, S.; Muhammad, K.; Alonso-Moral, J.M.; Confalonieri, R.; Guidotti, R.; Del Ser, J.; Díaz-
+Rodríguez, N.; Herrera, F. Explainable Artificial Intelligence (XAI): What We Know and What Is Left to Attain Trustworthy
+Artificial Intelligence. Inf. Fusion 2023, 99, 101805. [CrossRef]
+37.
+Saeed, W.; Omlin, C. Explainable AI (XAI): A Systematic Meta-Survey of Current Challenges and Future Opportunities. Knowl.
+Based Syst. 2023, 263, 110273. [CrossRef]
+38.
+Benjdiya, O.; Rouky, N.; Benmoussa, O.; Fri, M. On the Use of Machine Learning Techniques and Discrete Choice Models in Mode
+Choice Analysis. Logforum 2023, 19, 331–345. [CrossRef]
+39.
+Bourechak, A.; Zedadra, O.; Kouahla, M.N.; Guerrieri, A.; Seridi, H.; Fortino, G. At the Confluence of Artificial Intelligence and
+Edge Computing in IoT-Based Applications: A Review and New Perspectives. Sensors 2023, 23, 1639. [CrossRef] [PubMed]
+40.
+Hellwig, P.; Buchholz, V.; Kopp, S.; Maier, G.W. Let the User Have a Say—Voice in Automated Decision-Making. Comput. Hum.
+Behav. 2023, 138, 107446. [CrossRef]
+41.
+Chamola, V.; Hassija, V.; Sulthana, A.R.; Ghosh, D.; Dhingra, D.; Sikdar, B. A Review of Trustworthy and Explainable Artificial
+Intelligence (Xai). IEEE Access 2023, 11, 78994–79015. [CrossRef]
+42.
+Dwivedi, A.; Chowdhury, P.; Agrawal, D.; Paul, S.K.; Shi, Y. Antecedents of Digital Supply Chains for a Circular Economy: A
+Sustainability Perspective. Ind. Manag. Data Syst. 2023, 123, 1690–1716. [CrossRef]
+43.
+Alnaim, A.K.; Alwakeel, A.M. Machine-Learning-Based IoT–Edge Computing Healthcare Solutions. Electronics 2023, 12, 1027.
+[CrossRef]
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.

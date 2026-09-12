@@ -1,0 +1,1205 @@
+
+================================================================================
+PAGE 1
+================================================================================
+ORIGINAL ARTICLE
+The International Journal of Advanced Manufacturing Technology (2026) 144:355–366
+https://doi.org/10.1007/s00170-026-17483-1
+1  Introduction
+Industries are going through a changing scenario, in which 
+they need to constantly seek to improve their processes 
+and increase productivity to ensure the maintenance of 
+operations. The rapid globalization of the world economy 
+requires companies to constantly seek to increase the com­
+petitiveness of their operations. The growth of technologi­
+cal development allows companies to participate in global 
+markets in the same way, making it possible for companies 
+from other countries to participate in markets that were pre­
+viously regional [1].
+Companies need to adapt to deal with complex factors 
+such as trade protectionism and growing trends in political 
+risks. This adaptation is an urgent and vital issue for orga­
+nizations [2].
+	
+ Leandro Fernandes da Silva
+leandro.fern.silva@gmail.com
+Eliane da Silva Christo
+elianechristo@id.uff.br
+Kelly Alonso Costa
+kellyalonso@id.uff.br
+Hugo Pimentel Tavares
+hugot@id.uff.br
+1	
+Postgraduate Program in Production Engineering, Federal 
+Fluminense University (UFF), Volta Redonda, RJ 
+27255-125, Brazil
+Abstract
+Industries are going through a changing scenario, in which they need to constantly seek to improve their processes and 
+increase productivity. One of the factors that contribute to improving the performance of companies is inventory man­
+agement, which starts with forecasting demand. This research aimed to compare the Machine Learning models, Random 
+Forest and XGBoost, and the classic Exponential Smoothing prediction models, Holt, Holt-Winters and SARIMA Seasonal 
+Autoregressive Integrated Moving Average. Identify which model generates the best forecasts for the items of a company 
+in the energy sector in southeastern Brazil. The database consisted of 2,244 items. The process of classifying the demand 
+was carried out in four types: Irregular, Intermittent, Erratic and Regular. The process of adding financial value was 
+applied in three groups: A, B and C. The prediction models were implemented using Spyder (Python 3.11), performing 
+13,464 iterations. To measure the performance of the prediction models, it was, the Criteria Importance Through Inter­
+criteria Correlation (CRITIC) multicriteria analysis method was used to determine the score of the models based on the 
+error measures. The Augmented Dickey-Fuller tests were performed (ADF), Kwiatkowski-Phillips-Schmidt-Shin (KPSS), 
+Akaike Information Criterion (AIC) and the Bayesian Information Criterion (BIC). The result of the analysis identified 
+that, in general, the model that presented the best predictions was Random Forest, followed by ExpSmoothing. The model 
+Random Forest presented better forecasts for items with irregular and intermittent demand, Holt-Winters performed better 
+for regular items, while items with erratic demand did not present models with significant prominence. It also identified 
+that the 82 items with value classification A are subject to a more detailed analysis, due to the high representativeness of 
+the value.
+Keywords  Forecasting · Machine learning · Holt-Winters · SARIMA · Demand classification · Spare parts
+Received: 4 August 2025 / Accepted: 12 January 2026 / Published online: 28 March 2026
+© The Author(s) 2026
+Combining demand classification and forecasting models in spare 
+parts inventory management for the energy sector
+Leandro Fernandes da Silva1
+ · Eliane da Silva Christo1
+ · Kelly Alonso Costa1
+ · Hugo Pimentel Tavares1
+1 3
+
+================================================================================
+PAGE 2
+================================================================================
+The International Journal of Advanced Manufacturing Technology (2026) 144:355–366
+Through the use of various computing technologies, 
+companies can optimize their business decisions by using 
+computing to analyze a large amount of available data [3].
+Inventory management is one of the factors that helps 
+improve the performance of companies, since inventory hold­
+ing costs represent between 20 and 40% of their value [1].
+They investigate the application of demand forecasting 
+models for time series, more specifically the ARIMA, expo­
+nential smoothing and Holt-winters models. To predict the 
+demand for spare items of a steel company located in the 
+state of Rio de Janeiro, RJ, Brazil, a process of classifica­
+tion of the historical series was carried out and a sample 
+of the research base of 40 historical series was used. The 
+feasibility of using demand forecasting models based on the 
+accuracy of the models was studied [1].
+This work aims to analyze and propose the best forecast­
+ing models for each of the two types of demand classification 
+addressed in this research, using the exponential smoothing 
+forecasting models, Holt, holt-winters and SARIMA. Two 
+types of classification will be carried out, one by ABC clas­
+sification of the value and by classification according to the 
+type of demand. The research was developed in an energy 
+company located in the state of Minas Gerais, MG, Brazil, 
+using a total base of 2,244 historical series of consumption 
+of spare items.
+Both contributed significantly to time series forecasts. 
+They differ in their specific objectives, the volume of data 
+analyzed, market segment, regional focus, and methodolog­
+ical approach. The first article emphasizes the feasibility 
+analysis of the use of demand forecasting models, using a 
+sample of 40 historical series, the research developed in a 
+steel company in the state of Rio de Janeiro, while the sec­
+ond proposes the most suitable forecasting models based on 
+the accuracy of the models, does not use a sample base, but 
+the total base of 2,244 historical series. and developed the 
+research in an energy company located in the state of Minas 
+Gerais [1].
+The novelty of this research lies in the methodology and 
+objective: the total population of the historical series was 
+used to process the forecasts and not a sample base, avoid­
+ing sample selection bias and generating greater precision 
+and reliability of the results. The SARIMA model was also 
+used to make the predictions and an ABC classification 
+by value was made according to the Pareto principle. As a 
+result, this study has the potential to propose more assertive 
+models, reducing forecasting errors and indicating a spe­
+cific model for each type of demand: irregular, intermittent, 
+erratic and regular.
+One of the challenges to carry out material planning is 
+the correct sizing of inventory levels, that is, achieving the 
+lowest possible value of fixed capital cost that meets the 
+needs of customers, without the risk of shortage or excess 
+inventory.
+There are some factors that make it difficult to make deci­
+sions in inventory management: absence of data, presence of 
+exceptions, dispersion in consumption history, high delivery 
+times, delays and slowness in the purchase process, lack of 
+information about maintenance plans, among other factors.
+Based on this scenario, in which organizations need 
+to constantly improve their performance and taking into 
+account the high complexity of inventory planning for 
+energy companies, this research aims to analyze and pro­
+pose the best demand forecasting models according to the 
+behavior of the historical series.
+2  Fundamentals
+2.1  Criteria importance through intercriteria 
+correlation
+The Criteria Importance Through Intercriteria Correlation 
+(CRITIC) method is an analytical approach designed to 
+determine objective weights of importance in multicriteria 
+decision problem (MCDM) [4].
+Unlike other methods that require subjective expert 
+judgments, CRITIC draws these weights directly from the 
+intrinsic information in the data, based on the variability of 
+each criterion and its independence or conflict with the other 
+criteria [5].
+In addition, it avoids subjective interventions by not 
+requiring the analyst to set arbitrary cut-off values to deal 
+with highly correlated criteria [4].
+2.2  Model selection measures
+Error measures are statistical metrics that quantify the dif­
+ference between the values projected by a model and the 
+actual observed data [6, 7]. They serve to validate the accu­
+racy and reliability of forecasts, allowing different methods 
+to be compared and the most rigorous model to support 
+decision-making [5, 6].
+Mean Absolute Error (MAE) is a metric that calculates 
+the average magnitude of the absolute differences between 
+the values predicted by a model and the actual observed data 
+[6–8]. It serves to validate the accuracy and performance 
+of forecasting models, allowing you to compare different 
+methods to select the projection that is technically more 
+faithful to reality [6, 9, 10].
+MAPE expresses the average of absolute errors in per­
+centage terms in relation to the actual observed values [7, 
+8]. Measures the accuracy of forecasting models, making it 
+1 3
+356
+
+================================================================================
+PAGE 3
+================================================================================
+The International Journal of Advanced Manufacturing Technology (2026) 144:355–366
+easier to compare performance between different statistical 
+methods [6, 10, 11].
+The sMAPE evaluates the accuracy of forecasts by inte­
+grating actual and projected values to balance the calcula­
+tion of deviations. Compares the performance of different 
+models, ensuring a more robust technical validation that is 
+less biased by the scale of the data analyzed [5].
+The RMSE is the square root of the mean of the quadratic 
+deviations between the predicted values and the actual data, 
+quantifying statistical accuracy. It serves to validate the 
+accuracy of models, emphasizing larger errors (outliers) to 
+ensure more technically reliable and rigorous projections [1, 
+2].
+They explain that the Akaike Information Criterion (AIC) 
+and Bayesian Information Criterion (BIC) are fundamental 
+statistical criteria for the selection and comparison of mod­
+els, balancing fit to data with technical simplicity [8].
+They serve to identify the best parameter configuration, 
+penalizing excessive complexity to avoid overfitting error 
+[11].
+In practice, the aim is to minimize these values in order to 
+find the model that explains the data with the least possible 
+number of variables. In this way, they ensure the choice of 
+the most efficient and statistically valid architecture to sup­
+port predictions and decision-making [5].
+2.3  Machine learning
+Machine Learning is a set of techniques and algorithms that 
+allow systems to automatically learn patterns and represen­
+tations from raw data [6, 11]. It stands out for its ability to 
+self-learn and generalize, surpassing traditional statistical 
+models when dealing with nonlinear and complex relation­
+ships [5].
+Its function is to perform tasks such as demand fore­
+casting, item classification and pattern detection, ensuring 
+greater accuracy in large volumes of information [7, 9, 12]. 
+In short, it serves to transform Big Data processing into 
+valuable insights, optimizing industrial and commercial 
+processes, and strategic decision-making [6, 9, 13].
+2.4  XGBoost
+Extreme Gradient Boosting (XGBoost) is an advanced and 
+efficient implementation of gradient boosting algorithms 
+that uses decision tree-based models [7, 9].
+It employs sophisticated regularization techniques to pre­
+vent overfitting and process large volumes of data in a scal­
+able manner, ensuring high technical accuracy [9].
+Its purpose is to make robust forecasts in various sec­
+tors, such as B2B commercial demand, seasonal time series, 
+and industrial processes, surpassing traditional statistical 
+models. Due to its fast training and low processing time, it 
+serves as an essential tool for real-time control systems and 
+strategic decision-making support [7]. 
+2.5  Random forest
+Random Forest is an ensemble learning algorithm that com­
+bines predictions from multiple decision trees to increase 
+accuracy and technical robustness [9].
+It uses the bootstrapping method to train independent 
+trees on different subsets of data, which reduces variance 
+and prevents overfitting. Its primary purpose is to process 
+high-dimensional data and identify complex patterns [13].
+2.6  Exponential smoothing
+Exponential time series smoothing methods have two types, 
+with trend and/or seasonal pattern and without them. These 
+predictions are the weighted averages of previous observa­
+tions, with weights decaying exponentially as observations 
+age [14].
+Simple exponential smoothing is one of the easiest mod­
+els to apply to forecasting problems [14].
+2.7  Holt model
+Charles C. Holt adapted simple exponential smoothing 
+to enable forecasting of trended data [15]. Holt’s method 
+assumes that datasets have a trend and do not have seasonal­
+ity, so it uses two components, level and trend. This method 
+is mainly used for linear trends with short to medium fore­
+cast periods.
+2.8  Holt-Winters model
+Holt-Winters is an extension of Holt’s method developed 
+by Holt’s student Peter Winters that assumes the existence 
+of seasonal and trend variations for data observation [16]. 
+Considers level, trend and seasonality with the correspond­
+ing parameters alfa (x), beta (B) e gama (y).
+The Holt-Winters model is one of the most widely used 
+methods for analyzing time series with seasonal and trend 
+patterns [14].
+2.9  SARIMA and ARIMA model
+The Seasonal Autoregressive Integrated Moving Average 
+(SARIMA) model can handle non-stationary time series and 
+capture trends, seasonality, and other linear information in 
+the data, thus enabling modeling and forecasting [17]. 
+The seasonal autoregressive integrated moving aver­
+age (SARIMA) is a model for forecasting time-series data, 
+1 3
+357
+
+================================================================================
+PAGE 4
+================================================================================
+The International Journal of Advanced Manufacturing Technology (2026) 144:355–366
+The most applied method to aggregate products is rank­
+ing ABC, that determines the importance of the product 
+[27].
+2.11  Methodology
+Regarding the methodology, this study is applied, explor­
+atory, and quantitative in nature, as it aims to apply acquired 
+knowledge to compare demand forecasting models for time 
+series, ultimately contributing to improved demand forecast­
+ing performance in the energy company. In addition, a bib­
+liographic review and database extraction were conducted.
+3  Research development
+The stages of development of this study, from the literature 
+review to the final conclusions, are illustrated in Fig. 1.
+The eight stages of the research development process can 
+be observed in Fig. 1 The process begins with data extrac­
+tion, followed by data processing, and concludes with the 
+performance analysis of the models and identification of the 
+best-performing model.
+3.1  Data collection
+This research was conducted in a large energy company 
+located in the southeastern region of Brazil. The data were 
+including seasonal components [18]. Different experiments 
+have concluded that SARIMA is the most suitable method 
+for time series forecasting, estimates can be used for long-
+term forecasts by modifying and adding new values [19, 
+20].
+The seasonal autoregressive integrated moving average 
+(SARIMA) model, proposed by Box and Jenkins, has been 
+one of the most popular approaches in seasonal time series 
+forecasting [21]. 
+The 
+Autoregressive 
+Integrated 
+Moving 
+Average 
+(ARIMA) or Seasonal ARIMA (SARIMA) models were 
+used by [22], And they commented that it is a model that 
+considers the uncertainty of production demand and the 
+condition of production equipment to increase the efficiency 
+of the system and minimize maintenance costs according to 
+specific characteristics.
+Regression models are often the simplest approach and 
+require less data pre-processing [23].
+The 
+Autoregressive 
+Integrated 
+Moving 
+Average 
+(ARIMA) model was introduced by Box and Jenkins in the 
+1970s. In addition, they comment that it is a more popular 
+technique and of wide application in time series forecasting 
+[1].
+They tested fourteen demand forecasting methods for 
+Time Series in their research and reported that the Autore­
+gressive Integrated Mobile (ARIMA) method achieved 
+good results in forecasting [24].
+The ARIMA model has a versatility in handling vari­
+ous components of a time series, including autoregressive 
+behavior (AR), differential effects (I) and moving averages 
+(MA) being particularly suitable for data from the ARIMA 
+[25].
+They used time series forecasting methods for energy 
+forecasting in IoT environments and big data, enabling con­
+tinuous monitoring of an organization’s energy consump­
+tion in real time [26]. Prediction models have one thing in 
+common, they require a large database to achieve represen­
+tative results [23].
+2.10  Classification ABC
+ABC analysis is based on the Pareto Principle, defined by 
+the Italian economist Vilfredo Pareto, which says that the 
+majority values (80% of its value) of a given group come 
+from a relatively small portion of its constituents (20% of 
+your quantity).
+The fundamental inventory management technique used 
+to categorize items according to their importance, value, 
+and financial impact, it allows organizations to focus their 
+resources and control efforts on the most critical items, 
+rather than treating all products uniformly, which would be 
+economically unfeasible [12].
+Fig. 1  Work development flowchart. Source Authorship (2025)
+ 
+1 3
+358
+
+================================================================================
+PAGE 5
+================================================================================
+The International Journal of Advanced Manufacturing Technology (2026) 144:355–366
+the sizes of the demands. The cutoff points for classifica­
+tion ADI = 1,32 and CV 2 = 0,49. The Fig. 2 presents the 
+result of the classification process.
+3.3  Classification ABC
+Subsequently, the 2,244 items were aggregated using ABC 
+ranking. Which determined the importance of items by con­
+sumption value. The materials were grouped into three cat­
+egories, as shown in the Fig. 3.
+We can observe in Fig. 3 that the aggregation by category 
+A represents most of the financial value, 80% of the con­
+sumption value, which corresponds to 82 items 4% of the 
+materials. It may be the manager’s decision in this case to 
+make a more detailed analysis of the forecasts. Based on 
+the information in Fig. 2, we observed that more than half 
+of the items analyzed have a demand classified as erratic, 
+which makes the demand forecasting process difficult, since 
+these items with this classification have a great variability 
+in demand.
+This grouping enables decision-makers to direct their 
+efforts, if necessary, on the most financially important items.
+Since the ABC classification makes it possible to aggre­
+gate the highest consumption values for smaller quantities 
+of items.
+Figure 3 shows that items B represents 15% of the con­
+sumption value and 213 items corresponding to 10% of the 
+products, this category concentrates a less significant part 
+of the consumption value. The items C represent 5% of the 
+consumption value and 1.949 Items 87% of materials.
+3.4  Comparison of classification models
+Comparing the two classification models used in this 
+research, classification by behavior of the historical series 
+and classification by ABC value, we can see that the two 
+extracted from the system Enterprise Resource Planning 
+(ERP) software of the SAP R/3 materials management 
+module.
+This company has a database of 2.244 registered stock­
+able items. The consumption history of the 60 months, start­
+ing from January/20 to December/24.
+3.2  Data classification
+Demand classification models of [28] are intensively dis­
+cussed in the literature, being the two main models.
+The methodology proposed by [28] It classifies the 
+demand of items into soft, slow and sporadic categories, 
+based on the variance partition, whose purpose was to iden­
+tify the most appropriate forecasting and inventory control 
+methods for the resulting categories.
+The classification method was adapted to four catego­
+ries erratic, irregular, intermittent and regular, based on the 
+average inter-demand interval (ADI) and the square coef­
+ficient of variation of demand sizes 
+(
+CV 2)
+where the stan­
+dard deviation of the item’s demand divided by the average 
+demand [29].
+The average range between demands and the square coef­
+ficient of variation of the demand sizes are represented as 
+follows Eq. 1 and Eq. 2.
+ADI =
+∑Npi
+n=1tn
+i
+Npi
+
+(1)
+CV i =
+∑Npi
+n=1 (dn
+i −di)2
+Npi
+∑Npi
+n=1dn
+i
+Npi
+
+(2)
+Consider tn
+i period interval without demand for the item i, 
+Npi number of non-zero demands in the time interval dn
+i , 
+Item demand value i in the period n and di average of the 
+item’s non-null demands i. The cutoff points for this clas­
+sification ADI = 1,32 e CV 2 = 0,49..
+This classification shows four regions, in which regular 
+items have high turnover and low variation, the intermit­
+tent classification presents several periods without demand, 
+low turnover and low randomness in the size of demand, 
+the erratic classification presents a high turnover with high 
+variation in the size of demand, while irregular materials are 
+of low turnover with high variation in demand.
+During the development of this work, a classification 
+process was conducted and the items were segmented into 
+four categories: Erratic, Irregular, Intermittent and Regu­
+lar. The premise for classification was the average interval 
+between the demands and the coefficient of the variation of 
+Fig. 2  Demand Classification fo items. Source Authorship (2025)
+ 
+1 3
+359
+
+================================================================================
+PAGE 6
+================================================================================
+The International Journal of Advanced Manufacturing Technology (2026) 144:355–366
+But both used the ABC Classification and identified that the 
+ABC grouping can add value to demand forecasts.
+Considering the functionality and the different forms 
+of contribution of the two classification models, it is con­
+cluded that the joint use of these two forms of classifi­
+cation can contribute to improve the quality of demand 
+forecasts.
+3.5  Demand forecasting
+The objective of this research was to compare demand fore­
+casting models for spare parts; the primary evaluation met­
+ric was forecasting accuracy. For this reason, the forecasted 
+values themselves were not presented in detail; instead, the 
+step-by-step execution of the forecasting procedures was 
+reported to enable replication and future studies by other 
+researchers.
+The model comparison process was carried out for the 
+entire dataset of 2,244 items. Using Spyder (Python 3.11), 
+demand forecasts were generated for each item employing 
+the six forecasting models addressed in this research: two 
+machine learning models (Random Forest and XGBoost) 
+and four traditional models (Exponential Smoothing, Holt, 
+Holt–Winters, and SARIMA).
+Subsequently, forecast errors were calculated to deter­
+mine the most robust models.
+In total, 13,464 iterations were performed in Spyder 
+(Python 3.11), corresponding to six forecasts for each of the 
+2,244 items analyzed.
+The historical series was divided into training bases 
+(Jan/2020 to Dec/2023), test base (Jan/2024 to Dec/2024) 
+and the forecast period was set at 12 steps ahead.
+He characteristics of the behavior of the historical series 
+were analyzed: seasonality, trend and autocorrelation. The 
+Akaike Information Criterion (AIC) and Bayesian Infor­
+mation Criterion (BIC) tests were performed, and the 
+classification models can contribute to the optimization of 
+demand forecasts. Although they have different approaches.
+The Classification by behavior of the historical series 
+addresses the issue of dispersion and variability of the series.
+Enabling a grouping of the items into four groups, irregu­
+lar, erratic, intermittent and regular. This grouping makes it 
+possible to identify a model that generates more assertive 
+forecasts and that is more suitable for use in each group.
+The ABC grouping aims to classify the items according 
+to the representativeness of value. This approach enables 
+decision-makers to perform analysis more assertively, in 
+those with the greatest financial impact. Another relevant 
+point is the reduction of operational workload.
+Because directing the analyses to more critical items 
+eliminates many deals with low-value materials, which is 
+usually the majority in the database.
+They used the ABC Classification in their research. They 
+comment that among all the products in category A, the 
+first two products in the ranking, together represent 27% 
+of the company’s sales in the period considered and were 
+chosen for analysis, with a focus on improving the qual­
+ity of demand forecasts [27]. Table 1 shows a comparison 
+between this work and what was developed by [27].
+Table 1 shows that the studies have different approaches 
+about the sector of activity of the companies that participated 
+in the research, software used, and the form of methodology. 
+Table 1  Survey comparison
+Author
+Sector
+Materials 
+Feature
+Demand Classifica­
+tion Type
+Barbosa et 
+al.,. (2015)
+Alimentary
+Perishable 
+products
+Classification of 
+value aggregation 
+ABC by type of 
+demand behavior
+Author (2025) Energetic
+Spare materials
+ABC Value Adding 
+Classification
+Source Authorship (2025).
+Fig. 3  Aggregation of materi­
+als by categories ABC. Source 
+Authorship (2025)
+ 
+1 3
+360
+
+================================================================================
+PAGE 7
+================================================================================
+The International Journal of Advanced Manufacturing Technology (2026) 144:355–366
+total base of the 2.244 items to analyze stationarity, as 
+shown in Table 2.
+Table  2 shows how2.244 time series behaved in rela­
+tion to two classical stationarity tests; 61,8% of the codes 
+have series considered stationary by both tests, presenting 
+a high reliability, 19,7% of the items did not pass either of 
+the two tests, possibly must be non-stationary series, 9,4% 
+were indicated as stationary only by the ADF method and 
+the KPSS method alone indicated that 210 as stationary.
+Two other tests performed were the Akaike Information 
+Criterion (AIC) and the Bayesian Information Criterion 
+Augmented Dickey-Fuller (ADF), Kwiatkowski-Phillips-
+Schmidt-Shin (KPSS) results were performed.
+The four error measures used wereMean Absolute Error 
+(MAE), Mean Absolute Percentage Error (MAPE), Sym­
+metric MAPE (sMAPE), Root Mean Squared Error (RMSE).
+Next, the score of each prediction model was calculated 
+based on the measures of prediction error using the Crite­
+ria Importance Through Intercriteria Correlation (CRITIC) 
+method. The selection of the best model was made by com­
+paring the Scores of the models, and the model chosen was 
+the one with the highest score.
+4  Results
+From data processing, analysis of the behavior of the his­
+torical series, generation of forecasts, calculations of errors 
+of the predicted and actual value, definition of the Score of 
+the forecast models.
+The behavior of the historical series of the Sku code 
+386,227 was shown in Fig. 4. This same analysis was per­
+formed for all items in the database.
+Figure 4 shows the behavior of the historical series in the 
+period of the 60 months analyzed, relating the demand in 
+relation to the historical period, separating the training peri­
+ods from the test periods of the models. Next, the seasonal 
+behavior was analyzed Fig. 5.
+We observe the decomposition of the historical series and 
+the presentation of the seasonality of the historical series in 
+Fig. 5.
+The next step was to consolidate the results of the Aug­
+mented Dickey-Fuller (ADF) and Kwiatkowski-Phillips-
+Schmidt-Shin (KPSS) tests of the historical series of the 
+Table 2  Stationarity test resulte
+Test type
+Qtd sku´s
+Percentage
+Both Tests
+1.386
+61,8%
+Neither
+442
+19,7%
+KPSS Only
+210
+9,4%
+ADF Only
+206
+9,2%
+Total
+2.244
+Source: Authorship (2025)
+Fig. 5  Seasonal code behavior386227. Source Authorship (2025)
+ 
+Fig. 4  Code historical series 
+behavior386227. Source Author­
+ship (2025)
+ 
+1 3
+361
+
+================================================================================
+PAGE 8
+================================================================================
+The International Journal of Advanced Manufacturing Technology (2026) 144:355–366
+the model’s damping contributes to generating more asser­
+tive predictions.
+Based on Table 2, it is observed that the XGBoost model 
+was the model that presented the worst performance in rela­
+tion to the other models, presenting better predictions for 
+only 8.78% of the codes analyzed.
+The comparative analysis between classic forecasting 
+models and machine learning models provides important 
+information for the process of choosing the demand fore­
+casting model for items in the energy sector. A model choice 
+that provides forecasts with greater accuracy contributes to 
+better levels of customer service and more balanced inven­
+tory levels.
+Considering a total of 2.044 items in the survey, and that 
+12.264 iterations were made to be able to generate all the 
+error measures of the six models surveyed, we can say that 
+we have a very significant population to generate reliable 
+results.
+The MAE, MAPE, MASE, and RMSE error measures 
+were calculated for each of the 2.244 historical series, and 
+it was analyzed which model had the lowest error in the 
+predictions. Figure 7. It shows a consolidation of the result 
+of this analysis.
+Figure 7 shows a comparison of the frequency with which 
+the prediction models had fewer errors in the predictions, 
+that is, each metric shows how many items each model was 
+able to predict with the least error.
+RandomForest stood out by having higher amounts of 
+predictions with lower MAE and RMSE, which makes it 
+ideal for applications where minimizing absolute error and 
+large deviations.
+ExpSmoothing, on the other hand, presented the lowest 
+MAPE for forecasting 586 series, followed by the SARIMA 
+model, which presented better forecasts for 476 histori­
+cal series. The SARIMA model stood out for generating a 
+higher volume of predictions with smaller MASE. Being 
+useful in scenarios with large percentage variance between 
+data.
+Classic models, such as Holt and HoltWinters, have 
+lower performance, which indicates that more modern or 
+hybrid models may be more effective.
+(BIC), Fig. 6 shows the comparison of the values of the two 
+theses.
+We identified in Fig. 6, that the points are diagonally­
+aligned, indicating a strong correlation, the strong correla­
+tion suggests that models with good AIC also tend to have 
+good BIC, which facilitates the choice. The consistency 
+between AIC and BIC reinforces the robustness of the 
+model selection. We have identified an extreme outlier with 
+AIC around − 750, which may indicate an extremely good 
+model or a possible miscalculation.
+Based on the calculation of the score of the prediction 
+models, it was possible to compare the models as shown in 
+Table 3.
+Based on Table 3, the model that presented the best per­
+formance score was RandomForest, which generated bet­
+ter forecasts for 691 SKUs out of a total of 2.244, that is 
+30,79% of the analyzed base.
+Followed by the exponential smoothing model, predic­
+tions with greater assertiveness in relation to the other mod­
+els, as it presented for 26,52% of the items in the database.
+The SARIMA model appeared in the third position in 
+performance compared to the other models. Generated 
+forecasts with fewer errors for 294 total items and 2.044 
+items analyzed, that is, 13.10% of the forecasts with the best 
+accuracy.
+The Holt model and holt-winters had lower performance 
+compared to the other models. Presenting only 10,65 and 
+10,16% of the forecasts with the least error. One factor that 
+contributed to this low performance is that this model was 
+parameterized to make forecasts that gave greater weight 
+to consumption trends, but the largest volume in the time 
+series does not show this type of behavior.
+Table 2 shows that the Hot Winter model performed bet­
+ter than the Holt model. This model generated a lower error 
+value for 22% of the predictions. This is due to the fact that 
+Table 3  Prediction models with the highest score
+Modelo
+Quantidade_SKUs
+Percentual
+RandomForest
+691
+30,79%
+ExpSmoothing
+595
+26,52%
+SARIMA
+294
+13,10%
+HoltWinters
+239
+10,65%
+Holt
+228
+10,16%
+XGBoost
+197
+8,78%
+Total
+2.244
+Source: Authorship (2025)
+Fig. 6  Comparison of AIC and BIC of models.  Source Authorship 
+(2025)
+ 
+1 3
+362
+
+================================================================================
+PAGE 9
+================================================================================
+The International Journal of Advanced Manufacturing Technology (2026) 144:355–366
+The EspSmoothing prediction model was the second best 
+model with predictions for intermittent and erratic type 
+demands. In the case of items with regular demand, the best 
+model was Holt-Winters, which presented better forecasts, 
+standing out from the other forecast models.
+Different perspectives of analysis contribute to more 
+accurate inferences, so Table 4 also shows the classification 
+of the percentage of models by type of demand classification.
+Based on Table 4, it can be observed that the Random 
+Forest model presented 41% of the best predictions for 
+intermittent items and 45% for irregular items. These per­
+centages indicate that, as a general rule, it can be used for 
+items with this type of demand behavior. For items with 
+regular behavior, Holt-Winters is the most indicated, as it 
+generated better predictions in 25% of cases.
+In the case of erratic items, the Exp forecast models 
+Smoothing and Random Forest perform similarly, and there 
+is no model that stands out significantly.
+A deeper analysis of the items of greater financial value 
+is important in the case of materials that can have a great 
+impact on the cost of fixed capital. Comparison of the per­
+formance of the models by ABC aggregation can be useful 
+in these cases and has been demonstrated in Fig. 9.
+Based on Fig. 9 we can see that we have only 82 items 
+with classification A, which represents 80% of the value, 
+and the model that presented the best result for this type of 
+grouping was Holt-Winters. It is up to decision makers to 
+opt for a more in-depth analysis in these cases, as they are 
+the most financially relevant items and more assertive fore­
+casts can generate financial gains for organizations.
+However, it did not identify an ideal model that would 
+generate forecasts with smaller errors for all types of histori­
+cal series; In some cases, certain models are less wrong than 
+others. Therefore, it is important to use model comparisons 
+to evaluate the demand forecast, whenever there is new data 
+and new scenarios.
+The complexity of inventory planning, in view of fac­
+tors such as the dispersion in the consumption history, the 
+lack of information on maintenance plans and the presence 
+of exceptions in the data, was evidenced by the fact that 
+52% of the 2.244 items analyzed have a demand classified 
+as irregular, which significantly hinders the assertiveness of 
+traditional projections.
+To mitigate these technical risks, the methodology 
+employs a classification based on demand behavior (ADI 
+and CV) and financial representativeness (ABC Curve), 
+allowing the identification of Class A items, which repre­
+sent 80% of the consumption value and require much more 
+rigorous monitoring and analysis.
+The application of Machine Learning models, such as 
+Random Forest, has proven to be technically superior to deal 
+with this variability in intermittent and irregular demands, 
+We can observe that it does not provide conclusive infor­
+mation about the effectiveness of the models, as some mod­
+els stand out in one of the measures, but not in all.
+One way to choose demand forecasting models can be 
+according to the behavior of the historical series. Each his­
+torical series usually presents a different behavior, but it 
+is possible to group them according to the characteristics 
+of the data dispersion and the average intervals between 
+demands. The performance of the models, according to the 
+demand classification, is shown in Fig. 4.
+Figure 8 shows that the Random Forest prediction model 
+performed better than the other models for predicting items 
+with intermittent, erratic, and irregular type classification. 
+Fig. 8  Forecasting models that showed the highest score by type of 
+demand. Source Authorship (2025)
+ 
+Fig. 7  Number of times the prediction models performed best by type 
+of error measure. Source Authorship (2025)
+ 
+1 3
+363
+
+================================================================================
+PAGE 10
+================================================================================
+The International Journal of Advanced Manufacturing Technology (2026) 144:355–366
+error in these SKUs has a disproportionate impact on the 
+cost of capital fixed in inventory.
+Technical sectors should replace subjective model choices 
+with multicriteria analysis methods such as CRITIC. This 
+ensures that the selection of the prediction model is based 
+on the variability and intrinsic conflict of metrics such as 
+MAE, MAPE, sMAPE, and RMSE resulting in a statisti­
+cally robust choice.
+Sectoral practices must evolve from the use of small sam­
+ples to the processing of the total population of data (Big 
+Data). The use of tools such as Python allows thousands of 
+iterations (such as the 13.464 mentioned), eliminating selec­
+tion biases and increasing strategic reliability.
+As a limitation, it is noteworthy that the application of 
+the survey results in inventory management requires the 
+performance of additional calculations related to specific 
+parameters of inventory planning, with safety stock, order 
+point. For future studies, it is suggested to explore the use of 
+forecasts as a support for inventory sizing and management.
+And finally, it is recommended to constantly reevaluate 
+the models whenever new scenarios or data emerge, since no 
+model is ideal for all types of historical series permanently.
+5  Conclusions
+It was possible to achieve the objective of this work, which 
+was to compare Machine learning models and classical 
+models for forecasting demand for spare items of a com­
+pany in the energy sector. The Machine Learning models 
+used were Random Forest, XGBoost, and the classic models 
+Exponential Smoothing, Holt, Holt-Winters, and SARIMA.
+To achieve this objective, it was necessary to establish 
+two types of classification. Classification of demand for 
+while the use of statistical criteria such as AIC and BIC 
+ensures the choice of the most efficient model architecture, 
+avoiding excessive complexity and overfitting error.
+It is recommended that companies adopt the practice of 
+classifying their inventories simultaneously by the behav­
+ior of demand (ADI and CV) and by financial importance 
+(ABC Curve). This approach allows you to target efforts 
+surgically, the ABC curve prioritizes where accuracy is 
+financially vital.
+Instead of using a single template for all inventory, it is 
+recommended to use Random Forest for items with irregu­
+lar and intermittent demand. For items of regular and sea­
+sonal demand, the use of the Holt-Winters model should be 
+expanded, as it has demonstrated greater technical adher­
+ence in these cases.
+Detailed and timely analysis practices must be mandato­
+rily applied to Class A items. Since only 82 items (4% of the 
+total) represent 80% of the consumption value, any forecast 
+Table 4  Ranking of models by demand classification
+Holt
+Winters
+Holt
+SARIMA
+Exp
+Smoothing
+Random
+Forest
+XG
+Boost
+Total
+Intermittent
+16
+62
+26
+228
+265
+42
+639
+%
+3%
+10%
+4%
+36%
+41%
+7%
+Tipo
+Holt
+Winters
+Holt
+SARIMA
+Exp
+Smoothing
+Random
+Forest
+XG
+Boost
+Total
+Erratic
+151
+116
+219
+265
+283
+128
+1162
+%
+13%
+10%
+19%
+23%
+24%
+11%
+Tipo
+Holt
+Winters
+Holt
+SARIMA
+Exp
+Smoothing
+Random
+Forest
+XG
+Boost
+Total
+Irregular
+8
+18
+14
+49
+83
+13
+185
+%
+4%
+10%
+8%
+26%
+45%
+7%
+100%
+Tipo
+Holt
+Winters
+Holt
+SARIMA
+Exp
+Smoothing
+Random
+Forest
+XG
+Boost
+Total
+Regular
+64
+32
+35
+53
+60
+14
+258
+%
+25%
+12%
+14%
+21%
+23%
+5%
+Total
+239
+228
+294
+595
+691
+197
+2244
+Source: Authorship (2025)
+Fig. 9  Models with lower Score by classification ABC. Source Author­
+ship (2025)
+ 
+1 3
+364
+
+================================================================================
+PAGE 11
+================================================================================
+The International Journal of Advanced Manufacturing Technology (2026) 144:355–366
+Data availability  The data that support the findings of this study are 
+available from the corresponding author upon reasonable request.
+Declarations
+Institutional review board statement   Not applicable.
+Informed consent  Not applicable.
+Conflict of interest  The authors declare no conflict of interest.
+Open Access  This article is licensed under a Creative Commons 
+Attribution 4.0 International License, which permits use, sharing, 
+adaptation, distribution and reproduction in any medium or format, 
+as long as you give appropriate credit to the original author(s) and the 
+source, provide a link to the Creative Commons licence, and indicate 
+if changes were made. The images or other third party material in this 
+article are included in the article’s Creative Commons licence, unless 
+indicated otherwise in a credit line to the material. If material is not 
+included in the article’s Creative Commons licence and your intended 
+use is not permitted by statutory regulation or exceeds the permitted 
+use, you will need to obtain permission directly from the copyright 
+holder. To view a copy of this licence, visit ​h​t​t​p​:​/​/​c​r​e​a​t​i​v​e​c​o​m​m​o​n​s​.​o​
+r​g​/​l​i​c​e​n​s​e​s​/​b​y​/​4​.​0​/.
+5 References
+1.	
+Da LF et al (2024) Silva Demand Forecasting for Steel Company 
+Spare Items with Time Series Templates, Procedia Computer Sci­
+ence, Elsevier B.V., pp. 57–64. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​p​r​o​c​s​.​2​0​
+2​4​.​0​8​.​2​3​0
+2.	
+Sui X, Jiao S, Wang Y, Wang H (2024) Digital transformation 
+and manufacturing company competitiveness. Financ Res Lett 
+59:104683. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​J​.​F​R​L​.​2​0​2​3​.​1​0​4​6​8​3
+3.	
+Wang F, Aviles J (2023) Enhancing operational efficiency: inte­
+grating machine learning predictive capabilities in business 
+intellgence for informed decision-making. Frontiers in Business, 
+Economics and Management 9(1):282–286. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​5​4​
+0​9​7​/​F​B​E​M​.​V​9​I​1​.​8​6​9​4
+4.	
+Diakoulaki D, Mavrotas G, Papayannakis eL (1995) Determining 
+objective weights in multiple criteria problems: the critic method
+5.	
+Tavares HP et al (2025) Complementarity of renewable energy 
+sources in Brazil using qualitative comparative analysis of causal 
+configurations for SDG 7.2 achievement. Discover Sustain. ​h​t​t​p​s​
+:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​0​7​/​s​4​3​6​2​1​-​0​2​5​-​0​2​4​8​0​-​3
+6.	
+Peng ZJ, Zhang C, Tian E (2023) Crude oil price time series 
+forecasting: a novel approach based on variational mode 
+decomposition, time-series imaging, and deep learning. IEEE 
+Access 11:82216–82231. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​1​0​9​/​A​C​C​E​S​S​.​2​0​2​
+3​.​3​3​0​1​5​7​6
+7.	
+Kramar V, Alchakov V (2023) Time-series forecasting of sea­
+sonal data using machine learning methods. Algorithms. ​h​t​t​p​s​:​/​/​d​
+o​i​.​o​r​g​/​1​0​.​3​3​9​0​/​a​1​6​0​5​0​2​4​8
+8.	
+Boukrouh I, Idiri S, Tayalati F, Azmani A, Bouhsaien L (2025) A 
+hybrid approach for sales forecasting: combining deep learning 
+and time series analysis. Int J Eng 38(4):859–870. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​
+/​1​0​.​5​8​2​9​/​i​j​e​.​2​0​2​5​.​3​8​.​0​4​a​.​1​6
+9.	
+Lim PY, Chin WY, Kong and YH, Exploring the Effectiveness 
+of Ensemble Learning for Business-to-Business (B2B) Demand 
+Forecasting: An Empirical Analysis, em (2024) - Conference Pro­
+ceedings: 2024 3rd International Conference on Digital Transfor­
+mation and Applications, Institute of Electrical and Electronics 
+items as erratic, irregular, intermittent and regular. The 
+result of the classification process showed that 52% of the 
+items have irregular demand, which makes the demand 
+forecasting process difficult.
+Another classification process used was value aggrega­
+tion, in which the items were grouped into ABC categories.
+In total, the demand forecast for 2,244 spare items was 
+analyzed. In general, the model that presented the score in 
+the demand forecasts was Random Forest and the second 
+best model was ExpSmoothing.
+Analyzing the accuracy of the models based on the 
+demand classification, it was identified that the most 
+appropriate model for items with irregular and intermit­
+tent demand was the Random Forest; for regular items, the 
+most adherent model was Holt-Winters, while for items 
+with erratic demand there was no model with significant 
+prominence.
+It concludes that Random Forest is superior for irregular 
+and intermittent demands, in line with similar research [7, 9, 
+11], that validate the primacy of ensemble and deep learning 
+methods in complex scenarios.
+This research confirms that the traditional SARIMA and 
+Holt-Winters models have limited utility to regular series 
+and stable seasonalities, corroborating the findings of other 
+researchers [10].
+The classification approach by grouping of values showed 
+that, of the total items analyzed, only 82 items were grouped 
+in category A, with greater representativeness of value. And 
+for these items, a more punctual analysis is recommended, 
+as they are items that can cause a great financial impact on 
+the cost of fixed capital.
+Finally, it was possible to meet the objective of this work 
+by comparing the demand forecasting models based on the 
+extracted data and on the measures of accuracy of the fore­
+casts and to identify the best model.
+Author contributions  Conceptualization, L.F.S., E.S.C., and K.L.C.,; 
+data curation, L.F.S., E.S.C., H.P.T., and K.L.C.,; formal analysis, 
+L.F.S., E.S.C., H.P.T., and K.L.C.,; funding acquisition, L.F.S., E.S.C., 
+H.P.T., and K.L.C.,; methodology, L.F.S., E.S.C., and K.L.C.,; project 
+administration, L.F.S., E.S.C., and K.L.C.,; resources, L.F.S., E.S.C., 
+and K.L.C.,; software, L.F.S., E.S.C., H.P.T., and K.L.C.,; supervision, 
+L.F.S., E.S.C., and K.L.C.,; validation, L.F.S., E.S.C., and K.L.C.,; 
+writing—original draft, L.F.S., E.S.C., and K.L.C.,; writing—review 
+and editing, L.F.S., E.S.C., and K.L.C.,. All authors have read and 
+agreed to the published version of the manuscript.
+Funding  The Article Processing Charge (APC) for the publication 
+of this research was funded by the Coordenação de Aperfeiçoamen­
+to de Pessoal de Nível Superior - Brasil (CAPES) (ROR identifier: 
+00x0ma614). The authors acknowledge the support of the Produc­
+tion Engineering Program at Fluminense Federal University (PPGEP/
+UFF). The Brazilian funding agencies CNPq -Conselho Nacional de 
+Desenvolvimento Científico e Tecnológico and CAPES - Coordenação 
+de Aperfeiçoamento de Pessoal de Nível Superior. Research group De­
+cision Support Systems.
+1 3
+365
+
+================================================================================
+PAGE 12
+================================================================================
+The International Journal of Advanced Manufacturing Technology (2026) 144:355–366
+Manuf Technol 138(1):193–223. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​0​7​/​S​0​0​1​7​0​-​
+0​2​4​-​1​4​5​0​5​-​8​/​M​E​T​R​I​C​S
+20.	 Shahin M, Maghanaki M, Hosseinzadeh A, Chen FF (2024) 
+Improving operations through a lean AI paradigm: a view to an 
+AI-aided lean manufacturing via versatile convolutional neural 
+network. The International Journal of Advanced Manufacturing 
+Technology 2024 133:11 133(11):5343–5419. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​
+.​1​0​0​7​/​S​0​0​1​7​0​-​0​2​4​-​1​3​8​7​4​-​4
+21.	 Pai PF, Lin CS (2005) Using support vector machines to forecast 
+the production values of the machinery industry in Taiwan. Int J 
+Adv Manuf Technol 27(1–2):205–210. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​0​7​/​S​
+0​0​1​7​0​-​0​0​4​-​2​1​3​9​-​Y​/​M​E​T​R​I​C​S
+22.	 Bahou Z, Lemnaouar MR, Krimi I (2024) Integrated non-cyclical 
+preventive maintenance scheduling and production planning for 
+multi-parallel component production systems with interdepen­
+dencies-induced degradation. Int J Adv Manuf Technol 130(9–
+10):4723–4749. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​0​7​/​S​0​0​1​7​0​-​0​2​4​-​1​2​9​7​5​-​4​/​M​
+E​T​R​I​C​S
+23.	 Martin M, Gneiting S, Benfer M, Lanza G (2024) Incentive sys­
+tem to smooth out fluctuations in demand. Prod Eng 19(1):157–
+171. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​0​7​/​S​1​1​7​4​0​-​0​2​4​-​0​1​3​0​0​-​3​/​F​I​G​U​R​E​S​/​5
+24.	 Effrosynidis D, Spiliotis E, Sylaios G, Arampatzis A (2023) Time 
+series and regression methods for univariate environmental fore­
+casting: an empirical evaluation. Sci Total Environ 875:162580. ​h​
+t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​J​.​S​C​I​T​O​T​E​N​V​.​2​0​2​3​.​1​6​2​5​8​0
+25.	 Bindel LJ, Seifert eR Long-term forecast for antibacterial 
+drug consumption in Germany using ARIMA models. Naunyn 
+Schmiedebergs Arch Pharmacol 1–20. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​0​7​/​S​
+0​0​2​1​0​-​0​2​4​-​0​3​7​2​1​-​4​/​T​A​B​L​E​S​/​9
+26.	 Kim M, Lee S, Jeong T (2023) Time series prediction method­
+ology and ensemble model using real-world data. Electronics 
+12(13):2811. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​3​3​9​0​/​E​L​E​C​T​R​O​N​I​C​S​1​2​1​3​2​8​1​1
+27.	 Barbosa N, Christo E da S, Costa KA (2015) Demand forecast­
+ing for production planning in a food company, 10, 16, [Online]. 
+Disponível em: www.arpnjournals.com
+28.	 Williams TM (1984) Stock control with sporadic and slow-mov­
+ing demand. J Oper Res Soc 35(10):939. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​2​3​0​7​/​
+2​5​8​2​1​3​7
+29.	 Syntetos AA, Boylan JE (2001) On the bias of intermittent 
+demand estimates. Int J Prod Econ 71(1–3):457–466. ​h​t​t​p​s​:​/​/​d​o​i​.​
+o​r​g​/​1​0​.​1​0​1​6​/​S​0​9​2​5​-​5​2​7​3​(​0​0​)​0​0​1​4​3​-​2
+Publisher’s note  Springer Nature remains neutral with regard to juris­
+dictional claims in published maps and institutional affiliations.
+Engineers Inc., 2024, pp. 226–230. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​1​0​9​/​I​C​D​X​
+A​6​1​0​0​7​.​2​0​2​4​.​1​0​4​7​0​8​7​0
+10.	 Munim ZH, Fiskin CS, Nepal B, Chowdhury MMH (2023) 
+Forecasting container throughput of major Asian ports using 
+the Prophet and hybrid time series models. The Asian Journal of 
+Shipping and Logistics 39(2):67–77. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​a​j​s​
+l​.​2​0​2​3​.​0​2​.​0​0​4
+11.	 Cao Z, Han X, Lyons W, and O’Rourke F (2021) Energy manage­
+ment optimisation using a combined Long Short-Term Memory 
+recurrent neural network – Particle Swarm Optimisation model, J 
+Clean Prod, vol. 326, dez. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​j​c​l​e​p​r​o​.​2​0​2​1​.​
+1​2​9​2​4​6
+12.	 Abdolazimi O, Shishebori D, Goodarzian F, Ghasemi P, Appol­
+loni A (2021) Designing a new mathematical model based on 
+ABC analysis for inventory control problem: a real case study. 
+RAIRO - Operations Research 55(4):2309–2335. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​
+/​1​0​.​1​0​5​1​/​r​o​/​2​0​2​1​1​0​4
+13.	 Costa VBF, Scianni L, Miranda RC, Bonatto B (2023) Assess­
+ment of the status and trends of photovoltaic distributed genera­
+tion in Brazil: an in-depth approach based on big data processing. 
+Solar Energy 249:694–711. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​j​.​s​o​l​e​n​e​r​.​2​0​2​
+2​.​1​2​.​0​1​8
+14.	 Kumar V, Unal S, Bhagat SK, Tiyasha T (2024) A data-driven 
+approach to river discharge forecasting in the Himalayan region: 
+insights from Aglar and Paligaad rivers. Results Eng 22:102044. ​
+h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​J​.​R​I​N​E​N​G​.​2​0​2​4​.​1​0​2​0​4​4
+15.	 Holt CC (2004) Forecasting seasonals and trends by exponen­
+tially weighted moving averages. Int J Forecast 20(1):5–10. ​h​t​t​p​s​
+:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​1​6​/​J​.​I​J​F​O​R​E​C​A​S​T​.​2​0​0​3​.​0​9​.​0​1​5
+16.	 Winters PR Forecasting sales by exponentially weighted moving 
+averages on JSTOR. Accessed on May 5, 2025. [Online]. Avail­
+able at: ​h​t​t​p​s​:​/​/​w​w​w​.​j​s​t​o​r​.​o​r​g​/​s​t​a​b​l​e​/​2​6​2​7​3​4​6
+17.	 Lu L, Yang T, Chen Z, Ge Q, Yang J, Sen G (2025) Prediction 
+analysis of human brucellosis cases in Ili Kazakh Autonomous 
+Prefecture Xinjiang China based on time series. Sci Rep 15(1):1–
+13. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​3​8​/​S​4​1​5​9​8​-​0​2​4​-​8​0​5​1​3​-​Z
+18.	 Schuh G, Schultze W, Schiffer M, Rieger A, Rudolf S, Lehbrink 
+H (2014) Scenario-based determination of product feature uncer­
+tainties for robust product architectures. Prod Eng Res Devel 
+8(3):383–395. ​h​t​t​p​s​:​/​/​d​o​i​.​o​r​g​/​1​0​.​1​0​0​7​/​S​1​1​7​4​0​-​0​1​4​-​0​5​3​2​-​4​/​F​I​G​U​
+R​E​S​/​1​1
+19.	 Shahin M, Chen FF, Maghanaki M, Firouzranjbar S, Hosseinza­
+deh A (2025) Evaluating the fidelity of statistical forecasting and 
+predictive intelligence by utilizing a stochastic dataset. Int J Adv 
+1 3
+366
