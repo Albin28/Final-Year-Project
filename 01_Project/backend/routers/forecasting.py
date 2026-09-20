@@ -35,7 +35,7 @@ def get_forecasting_status(db: Session = Depends(get_db)):
 @router.get("/metrics/{product_id}")
 def get_product_metrics(product_id: int, db: Session = Depends(get_db)):
     """
-    Get demand pattern parameters and historical error metrics for the models.
+    Get demand pattern parameters, model error metrics, and Explainable AI feature importance.
     """
     product = db.query(models.Product).filter(models.Product.id == product_id).first()
     if not product:
@@ -46,26 +46,52 @@ def get_product_metrics(product_id: int, db: Session = Depends(get_db)):
         "product_name": product.name,
         "classification": plan["classification"],
         "metrics": plan["metrics"],
-        "best_model": plan["best_model"]
+        "best_model": plan["best_model"],
+        "feature_importance": plan.get("feature_importance", [])
     }
 
 
 @router.get("/predictions/{product_id}")
-def get_product_predictions(product_id: int, db: Session = Depends(get_db)):
+def get_product_predictions(
+    product_id: int, 
+    lead_time: int = 3, 
+    z_score: float = 1.65, 
+    db: Session = Depends(get_db)
+):
     """
-    Get 30-day demand forecast and restocking inventory recommendations.
+    Get 30-day demand forecast and restocking inventory recommendations with dynamic lead time & safety stock.
     """
     product = db.query(models.Product).filter(models.Product.id == product_id).first()
     if not product:
         raise HTTPException(status_code=404, detail="Product not found")
 
-    plan = forecasting_engine.generate_forecast_and_inventory_plan(db, product_id)
+    plan = forecasting_engine.generate_forecast_and_inventory_plan(
+        db, product_id, lead_time=lead_time, z_score=z_score
+    )
     return {
         "product_name": product.name,
         "best_model": plan["best_model"],
+        "feature_importance": plan.get("feature_importance", []),
         "predictions": plan["predictions"],
         "recommendation": plan["recommendation"]
     }
+
+
+
+@router.get("/analytics/abc-xyz")
+def get_abc_xyz_matrix(db: Session = Depends(get_db)):
+    """
+    Get 3x3 ABC-XYZ Portfolio Classification Matrix.
+    """
+    return forecasting_engine.get_abc_xyz_analysis(db)
+
+
+@router.get("/analytics/anomalies/{product_id}")
+def get_product_anomalies(product_id: int, db: Session = Depends(get_db)):
+    """
+    Get sales spike anomalies using Isolation Forest.
+    """
+    return forecasting_engine.detect_sales_anomalies(db, product_id)
 
 
 import pandas as pd
@@ -96,3 +122,4 @@ def self_train_model(db: Session = Depends(get_db)):
             status_code=500, 
             detail=f"Failed to execute self-training on Top 30 dataset: {str(e)}"
         )
+

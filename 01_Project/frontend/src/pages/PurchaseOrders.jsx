@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import api from '../api/axios';
 
 const PurchaseOrders = () => {
+  const location = useLocation();
   const [products, setProducts] = useState([]);
-  const [selectedProduct, setSelectedProduct] = useState('');
-  const [quantity, setQuantity] = useState(100);
+  const [selectedProduct, setSelectedProduct] = useState(location.state?.targetProduct || '');
+  const [quantity, setQuantity] = useState(location.state?.recommendedQty || 100);
   const [vendorName, setVendorName] = useState('Fresh Farm Wholesale Co.');
   const [poList, setPoList] = useState([
     { id: 'PO-2026-001', vendor: 'Fresh Farm Wholesale Co.', product: 'Extra Virgin Olive Oil (1L)', qty: 105, total: '$1,564.50', status: 'Approved', date: '2026-09-02' },
@@ -16,7 +18,7 @@ const PurchaseOrders = () => {
       try {
         const res = await api.get('/products/');
         setProducts(res.data);
-        if (res.data.length > 0) {
+        if (res.data.length > 0 && !location.state?.targetProduct) {
           setSelectedProduct(res.data[0].name);
         }
       } catch (err) {
@@ -24,7 +26,7 @@ const PurchaseOrders = () => {
       }
     };
     fetchProducts();
-  }, []);
+  }, [location.state]);
 
   const handleCreatePO = (e) => {
     e.preventDefault();

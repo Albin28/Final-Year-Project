@@ -43,26 +43,22 @@
 - ✅ AI demand forecasting module with Prophet, Holt-Winters, and SES model tournament
 - ✅ Syntetos-Boylan Demand Pattern Classification (ADI & CV^2 for Regular, Erratic, Intermittent, Lumpy demand)
 - ✅ Multi-dataset support & automated dataset importer tool (`import_dataset.py`)
-- ✅ Integrated 4 datasets (bill.xlsx, Kaggle Store Item Demand, UCI Online Retail II, PNRao Sales) totaling 1,444,461 records
-- ✅ Built **Master Unified Top 30 Grocery Dataset** (`master_grocery_top30.xlsx` with 54,780 daily records across 30 products)
-- ✅ Automated product ID mapping to real grocery names (Milk, Bread, Rice, Eggs, Olive Oil, Coffee, etc.)
-- ✅ Validated Prophet performance on real data (Prophet achieved lowest MAE across regular/erratic grocery items)
+- ✅ **COMPLETED (ML & Explainability Upgrade):** Integrated Random Forest and Gradient Boosting Regressors with lag features (`t-1`, `t-7`, 30-day rolling mean/std), Explainable AI (XAI) feature importance visualization, ML Leaderboard dashboard ($R^2$, MAE, RMSE, MAPE), Portfolio ABC-XYZ demand & revenue matrix, and Isolation Forest anomaly detection.
+- ✅ **COMPLETED (Dynamic Simulation & PO Workflow):** Added real-time Lead Time & Safety Stock simulator, One-Click Restock to Purchase Order conversion, and printable AI Benchmark Report export.
+- ✅ **COMPLETED (System Testing):** 100% test pass across all 6 core backend modules and Vite frontend build.
 
 ---
 
 ## What Is Left To Do (Final Review Roadmap)
 
-1. 📄 **Project Report & Documentation (High Priority):**
+1. 📄 **Project Report & Documentation:**
    - Assemble final soft-bound report (Literature survey, Requirements Analysis, Feasibility Study, System Design / ER Diagrams).
-   - Prepare final 10-minute presentation slides (PPT) featuring Prophet vs Holt-Winters/SES comparison graphs and demand classification matrices.
-
-2. 🎨 **UI Polish & Print Invoice Refinement:**
-   - Add company logo/header option to POS print invoice layout.
-   - Refine interactive chart widgets in the React forecasting dashboard.
+   - Prepare final presentation slides featuring Prophet vs Random Forest / Gradient Boosting vs Holt-Winters model comparison graphs and feature importance charts.
 
 3. 🎬 **End-to-End Demo Rehearsal:**
    - Rehearse the live review presentation flow:
-     `Login -> View Inventory -> Create POS Bill -> Auto Stock Deduction -> Low Stock Alert -> Run Prophet Forecast -> View Restock Recommendation`.
+     `Login -> Inventory -> POS Billing -> AI Model Leaderboard & Feature Importance -> Restock Recommendation`.
+
 
 ---
 

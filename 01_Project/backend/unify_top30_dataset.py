@@ -4,6 +4,7 @@ import pandas as pd
 from datetime import datetime
 from pathlib import Path
 from sqlalchemy.orm import Session
+from sqlalchemy import func
 
 sys.path.append(str(Path(__file__).resolve().parent))
 from database import SessionLocal, engine, Base
@@ -37,7 +38,7 @@ UNIFIED_TOP30_CATALOG = [
     (21, "Unsalted Butter (250g)", "Dairy", 3.10, 85, 20),
     (22, "Organic Green Tea (100 bags)", "Beverages", 6.40, 50, 10),
     (23, "Italian Tomato Pasta Sauce", "Pantry", 2.90, 110, 25),
-    (24, "Penne Rigate Pasta (1kg)", "Pantry", 2.30, 130, 30),
+    (24, "test-1", "Test Category", 5.20, 80, 20),
     (25, "Raw Wildflower Honey (500g)", "Pantry", 8.70, 40, 10),
     (26, "Fresh Orange Juice (1L)", "Beverages", 3.80, 75, 20),
     (27, "70% Dark Chocolate Bar", "Snacks", 2.50, 120, 30),
@@ -76,6 +77,16 @@ def unify_datasets():
         df_k['category'] = df_k['item'].map(c_map)
         df_k['unit_price'] = df_k['item'].map(pr_map)
         df_k['quantity'] = df_k['sales']
+        
+        # Custom distribution for test-1 (item 24) to place it in Class B-Y (CV2 ~ 0.28, Rev ~ $360k)
+        mask_24 = df_k['item'] == 24
+        n_24 = int(mask_24.sum())
+        if n_24 > 0:
+            import numpy as np
+            np.random.seed(42)
+            t_24 = np.arange(n_24)
+            df_k.loc[mask_24, 'quantity'] = np.maximum(2, (38 + 24 * np.sin(2 * np.pi * t_24 / 7) + np.random.normal(0, 12, size=n_24))).astype(int)
+
         df_k['date'] = pd.to_datetime(df_k['date'])
         df_k['line_total'] = (df_k['quantity'] * df_k['unit_price']).round(2)
         
@@ -132,38 +143,46 @@ def unify_datasets():
         db.add(u)
     db.commit()
 
-    print("Importing sales records into Bills & BillItems...")
-    bill_count = 0
-    for row in master_df.itertuples():
-        dt = pd.to_datetime(row.date)
-        qty = int(row.quantity)
-        if qty <= 0:
-            continue
+    print("Importing sales records into Bills & BillItems (bulk insert)...")
+    # Filter valid rows once
+    valid_rows = [
+        row for row in master_df.itertuples()
+        if int(row.quantity) > 0
+    ]
+    bill_count = len(valid_rows)
 
-        p_id = int(row.product_id)
-        p_name = str(row.product_name)
-        price = float(row.unit_price)
-        total = float(row.line_total)
+    BATCH = 5000
+    for batch_start in range(0, bill_count, BATCH):
+        batch = valid_rows[batch_start: batch_start + BATCH]
 
-        bill = models.Bill(total_amount=total, created_at=dt)
-        db.add(bill)
+        # Bulk-insert Bills, get back auto-generated IDs
+        bill_mappings = [
+            {"total_amount": float(row.line_total), "created_at": pd.to_datetime(row.date).to_pydatetime()}
+            for row in batch
+        ]
+        db.bulk_insert_mappings(models.Bill, bill_mappings)
         db.flush()
 
-        item = models.BillItem(
-            bill_id=bill.id,
-            product_id=p_id,
-            product_name=p_name,
-            quantity=qty,
-            unit_price=price,
-            line_total=total
-        )
-        db.add(item)
-        bill_count += 1
+        # Fetch the IDs just inserted (they are sequential, last N rows)
+        last_id = db.query(func.max(models.Bill.id)).scalar()
+        first_id = last_id - len(batch) + 1
+        bill_ids = range(first_id, last_id + 1)
 
-        if bill_count % 5000 == 0:
-            db.commit()
+        item_mappings = [
+            {
+                "bill_id": bid,
+                "product_id": int(row.product_id),
+                "product_name": str(row.product_name),
+                "quantity": int(row.quantity),
+                "unit_price": float(row.unit_price),
+                "line_total": float(row.line_total)
+            }
+            for bid, row in zip(bill_ids, batch)
+        ]
+        db.bulk_insert_mappings(models.BillItem, item_mappings)
+        db.commit()
+        print(f"  Inserted {min(batch_start + BATCH, bill_count):,}/{bill_count:,} records...")
 
-    db.commit()
     db.close()
     print(f"[OK] Master Unified Top 30 Dataset successfully loaded ({bill_count:,} records across 30 products)!")
 

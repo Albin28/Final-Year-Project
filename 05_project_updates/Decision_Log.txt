@@ -135,7 +135,20 @@
 
 ---
 
+## Decision #18 – Advanced ML Benchmarking (Tree Regressors), Feature Importance & ABC-XYZ Inventory Matrix
+- **Date:** 18 September 2026 – 19 September 2026
+- **Decision:** Elevate the AI core beyond basic time-series models by introducing:
+  1. **Tree-Based ML Regressors (Random Forest & Gradient Boosting)** with engineered lag features (`t-1`, `t-7`, 30-day rolling mean/std, day-of-week, seasonality).
+  2. **Explainable AI (XAI) & Feature Importance**: Quantify and chart feature contributions for model explainability during academic evaluation.
+  3. **Dedicated ML Model Leaderboard Dashboard**: Live model comparison (Random Forest vs Gradient Boosting vs Prophet vs Holt-Winters vs SES) with $R^2$, MAE, RMSE, MAPE metrics.
+  4. **ABC-XYZ Inventory Matrix & Anomaly Detection**: K-Means clustering for inventory velocity/predictability categorization + Isolation Forest for stock anomaly detection.
+- **Rationale:** Addresses academic evaluation requirements for model explainability, feature engineering rigor, and defensible ML methodologies while reinforcing ERP supply chain intelligence.
+- **Status:** ✅ IMPLEMENTED & VERIFIED
+
+---
+
 # Notes
 - Core architecture remains locked, but implementation details are now aligned to a SQLite-based prototype and phased POS-first sales workflow.
 - Future decisions will be appended below with sequential numbering.
+
 

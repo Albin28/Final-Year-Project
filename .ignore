@@ -1,0 +1,15 @@
+.venv/
+venv/
+ENV/
+env/
+node_modules/
+dist/
+build/
+.vite/
+__pycache__/
+*.pyc
+*.db
+*.sqlite3
+02_Datasets/
+dataset/
+.git/
