@@ -4,6 +4,58 @@ from datetime import datetime, timedelta
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 import models
+import time
+
+# ---------------------------------------------------------------------------
+# TTL Cache: avoids re-training ML models on repeated requests within 5 mins
+# ---------------------------------------------------------------------------
+_forecast_cache: dict = {}
+_CACHE_TTL_SECONDS = 300  # 5 minutes
+
+
+def _cache_key(product_id: int, lead_time: int, z_score: float) -> str:
+    return f"{product_id}:{lead_time}:{z_score}"
+
+
+def clear_forecast_cache():
+    """Invalidates all cached forecasts (called after self-train)."""
+    _forecast_cache.clear()
+
+
+def get_cached_forecast(db: Session, product_id: int, lead_time: int = 3, z_score: float = 1.65):
+    """
+    Returns a cached forecast plan if available and fresh, otherwise
+    computes and caches a new one.
+    Always updates recommendation with real-time inventory from the database.
+    """
+    key = _cache_key(product_id, lead_time, z_score)
+    now = time.monotonic()
+    if key in _forecast_cache:
+        ts, plan = _forecast_cache[key]
+        if now - ts < _CACHE_TTL_SECONDS:
+            # Refresh live stock recommendation from DB so changes appear immediately
+            product = db.query(models.Product).filter(models.Product.id == product_id).first()
+            current_stock = product.quantity_in_stock if product else 0
+            product_reorder_level = product.reorder_level if product else 0
+
+            rec = plan["recommendation"]
+            target_inventory = rec["target_inventory"]
+            reorder_point = rec["reorder_point"]
+
+            restock_needed = (current_stock < target_inventory) and (current_stock <= max(reorder_point, product_reorder_level))
+            restock_volume = max(0, target_inventory - current_stock) if restock_needed else 0
+
+            fresh_plan = dict(plan)
+            fresh_rec = dict(rec)
+            fresh_rec["current_stock"] = current_stock
+            fresh_rec["restock_needed"] = bool(restock_needed)
+            fresh_rec["recommended_volume"] = int(np.ceil(restock_volume))
+            fresh_plan["recommendation"] = fresh_rec
+            return fresh_plan
+
+    plan = generate_forecast_and_inventory_plan(db, product_id, lead_time, z_score)
+    _forecast_cache[key] = (now, plan)
+    return plan
 
 # Try imports, fallback gracefully if packages are still installing
 try:

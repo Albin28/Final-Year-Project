@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Package, AlertCircle, TrendingUp, BarChart3, Activity, ArrowRight, ShieldCheck, CheckCircle2, Cpu, Sliders, ShoppingCart, Printer } from 'lucide-react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import { Package, AlertCircle, TrendingUp, Activity, ShieldCheck, CheckCircle2, Sliders, ShoppingCart, Printer } from 'lucide-react';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { motion, AnimatePresence } from 'framer-motion';
 import api from '../api/axios';
-import ABCXYZMatrix from '../components/ABCXYZMatrix';
 import FeatureImportanceChart from '../components/FeatureImportanceChart';
+import ModelStatusLED from '../components/ModelStatusLED';
+import AccuracyTrendChart from '../components/AccuracyTrendChart';
+import TodaySummaryWidgets from '../components/TodaySummaryWidgets';
+import RecentFeedsPanel from '../components/RecentFeedsPanel';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -17,42 +20,75 @@ const Dashboard = () => {
   const [leadTime, setLeadTime] = useState(3);
   const [zScore, setZScore] = useState(1.65);
 
+  // Debounced values to avoid firing API on every slider tick
+  const [debouncedLeadTime, setDebouncedLeadTime] = useState(3);
+  const [debouncedZScore, setDebouncedZScore] = useState(1.65);
+  const debounceRef = useRef(null);
+
+  const updateSimParams = useCallback((lt, z) => {
+    setLeadTime(lt);
+    setZScore(z);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      setDebouncedLeadTime(lt);
+      setDebouncedZScore(z);
+    }, 400);
+  }, []);
+
   // Selected product forecast details
   const [loadingForecast, setLoadingForecast] = useState(false);
   const [forecastDetails, setForecastDetails] = useState(null);
 
-  // Self-training status states
+  const [modelStatus, setModelStatus] = useState('untrained');
   const [training, setTraining] = useState(false);
-  const [trainStatus, setTrainStatus] = useState('');
 
   const handleSelfTrain = async () => {
+    if (training || modelStatus === 'training') return;
     setTraining(true);
-    setTrainStatus('Training ML Models...');
     try {
-      const res = await api.post('/forecasting/train');
-      const { products_imported, bills_created, items_imported } = res.data;
-      alert(`Self-training complete!\n\nImported Products: ${products_imported}\nImported Bills: ${bills_created}\nTotal Sales Records: ${items_imported}`);
-      
-      const [productsRes, lowStockRes, statusRes] = await Promise.all([
-        api.get('/products'),
-        api.get('/products/low-stock'),
-        api.get('/forecasting/status')
-      ]);
+      await api.post('/forecasting/train');
+      // Status now goes orange via LED polling; refresh product list
+      const productsRes = await api.get('/products');
       setProducts(productsRes.data);
-      setOverallStats({
-        total: productsRes.data.length,
-        lowStock: lowStockRes.data.length,
-        categories: statusRes.data.categories || {}
-      });
+      setOverallStats(prev => ({ ...prev, total: productsRes.data.length }));
       setSelectedProductId('');
     } catch (err) {
       console.error(err);
       alert(`Self-training failed: ${err.response?.data?.detail || err.message}`);
-    } finally {
       setTraining(false);
-      setTrainStatus('');
     }
+    // training=false will be set when LED transitions to active
   };
+
+  // When LED reports active/untrained, allow button again
+  const handleStatusChange = useCallback((s) => {
+    setModelStatus(s);
+    if (s !== 'training') setTraining(false);
+  }, []);
+
+  // Retrain schedule state
+  const [scheduleType, setScheduleType] = useState('manual');
+  const [scheduleTime, setScheduleTime] = useState('23:59');
+  const [scheduleDay, setScheduleDay] = useState('mon');
+  const [scheduleSaved, setScheduleSaved] = useState(false);
+
+  const handleSaveSchedule = async () => {
+    try {
+      await api.post('/forecasting/retrain-schedule', {
+        type: scheduleType, time: scheduleTime, day: scheduleDay
+      });
+      setScheduleSaved(true);
+      setTimeout(() => setScheduleSaved(false), 2000);
+    } catch (e) { console.error(e); }
+  };
+
+  useEffect(() => {
+    api.get('/forecasting/retrain-schedule').then(r => {
+      setScheduleType(r.data.type || 'manual');
+      setScheduleTime(r.data.time || '23:59');
+      setScheduleDay(r.data.day || 'mon');
+    }).catch(() => {});
+  }, []);
 
   useEffect(() => {
     const fetchInitialData = async () => {
@@ -84,20 +120,20 @@ const Dashboard = () => {
     const fetchForecast = async () => {
       setLoadingForecast(true);
       try {
-        const [metricsRes, predRes, anomalyRes] = await Promise.all([
-          api.get(`/forecasting/metrics/${selectedProductId}`),
-          api.get(`/forecasting/predictions/${selectedProductId}?lead_time=${leadTime}&z_score=${zScore}`),
+        // Single merged call replaces previous /metrics + /predictions double-train
+        const [forecastRes, anomalyRes] = await Promise.all([
+          api.get(`/forecasting/forecast/${selectedProductId}?lead_time=${debouncedLeadTime}&z_score=${debouncedZScore}`),
           api.get(`/forecasting/analytics/anomalies/${selectedProductId}`)
         ]);
 
         setForecastDetails({
-          productName: metricsRes.data.product_name,
-          classification: metricsRes.data.classification,
-          bestModel: metricsRes.data.best_model,
-          featureImportance: metricsRes.data.feature_importance || predRes.data.feature_importance || [],
-          metrics: metricsRes.data.metrics,
-          predictions: predRes.data.predictions,
-          recommendation: predRes.data.recommendation,
+          productName: forecastRes.data.product_name,
+          classification: forecastRes.data.classification,
+          bestModel: forecastRes.data.best_model,
+          featureImportance: forecastRes.data.feature_importance || [],
+          metrics: forecastRes.data.metrics,
+          predictions: forecastRes.data.predictions,
+          recommendation: forecastRes.data.recommendation,
           anomalies: anomalyRes.data
         });
       } catch (err) {
@@ -108,7 +144,7 @@ const Dashboard = () => {
     };
 
     fetchForecast();
-  }, [selectedProductId, leadTime, zScore]);
+  }, [selectedProductId, debouncedLeadTime, debouncedZScore]);
 
   const categoryChartData = Object.entries(overallStats.categories).map(([name, count]) => ({
     name,
@@ -117,72 +153,82 @@ const Dashboard = () => {
 
   return (
     <div className="page-container" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <div className="action-bar" style={{ flexWrap: 'wrap', gap: '1rem' }}>
+      <div className="action-bar" style={{ flexWrap: 'wrap', gap: '1rem', alignItems: 'flex-start' }}>
         <div>
           <h1>AI Supply Chain Intelligence & Demand Forecasting</h1>
           <p style={{ color: 'var(--text-muted)', marginTop: '0.2rem' }}>
-            ML Tournament: Random Forest Regressor (Lag Features), Prophet & Holt-Winters Exponential Smoothing
+            ML Tournament: Random Forest, Prophet & Holt-Winters · Continuous Self-Learning
           </p>
         </div>
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <label style={{ fontWeight: '500', whiteSpace: 'nowrap' }}>Inspect Product:</label>
-          <select 
-            value={selectedProductId} 
+        <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
+          <ModelStatusLED onStatusChange={handleStatusChange} />
+          <div style={{ width: '1px', height: '32px', background: 'var(--border-color)' }} />
+          <label style={{ fontWeight: '500', whiteSpace: 'nowrap', fontSize: '0.9rem' }}>Inspect Product:</label>
+          <select
+            value={selectedProductId}
             onChange={(e) => setSelectedProductId(e.target.value)}
-            style={{ minWidth: '220px', padding: '0.4rem 0.6rem' }}
+            style={{ minWidth: '200px', padding: '0.4rem 0.6rem' }}
           >
             <option value="">-- All Products (Portfolio Overview) --</option>
             {products.map(p => (
               <option key={p.id} value={p.id}>{p.name} ({p.category})</option>
             ))}
           </select>
-          <button 
-            className="btn" 
+          <button
+            className="btn"
             onClick={() => window.print()}
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0.4rem',
-              backgroundColor: '#4F46E5',
-              color: 'white',
-              cursor: 'pointer'
-            }}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', backgroundColor: '#4F46E5', color: 'white', cursor: 'pointer' }}
           >
-            <Printer size={16} /> Export AI Report
+            <Printer size={16} /> Export Report
           </button>
-          <button 
-            className="btn" 
-            onClick={handleSelfTrain} 
-            disabled={training}
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0.5rem',
-              backgroundColor: 'var(--primary-color)',
+          <button
+            className="btn"
+            onClick={handleSelfTrain}
+            disabled={training || modelStatus === 'training'}
+            title={modelStatus === 'training' ? 'Model is currently training — please wait' : 'Seed dataset and retrain all ML models'}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '0.5rem',
+              backgroundColor: modelStatus === 'training' ? '#9CA3AF' : 'var(--primary-color)',
               color: 'white',
-              opacity: training ? 0.7 : 1,
-              cursor: training ? 'not-allowed' : 'pointer'
+              cursor: (training || modelStatus === 'training') ? 'not-allowed' : 'pointer'
             }}
           >
-            {training ? (
+            {(training || modelStatus === 'training') ? (
               <>
-                <span className="spinner" style={{
-                  width: '14px',
-                  height: '14px',
-                  border: '2px solid rgba(255,255,255,0.3)',
-                  borderTopColor: '#fff',
-                  borderRadius: '50%',
-                  animation: 'spin 1s linear infinite',
-                  display: 'inline-block'
-                }} />
-                {trainStatus}
+                <span style={{ width: '12px', height: '12px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 1s linear infinite', display: 'inline-block' }} />
+                Training...
               </>
             ) : 'Self-Train ML Models'}
           </button>
           <button className="btn btn-primary" onClick={() => window.location.href='/inventory'}>View Inventory</button>
         </div>
       </div>
-      
+
+      {/* Retrain Schedule Panel */}
+      <div style={{
+        background: '#F8F9FA', border: '1px solid var(--border-color)', borderRadius: '0.5rem',
+        padding: '0.75rem 1.25rem', margin: '0.5rem 0', display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap'
+      }}>
+        <span style={{ fontSize: '0.82rem', fontWeight: '600', color: '#374151', whiteSpace: 'nowrap' }}>⏱ Auto-Retrain Schedule:</span>
+        <select value={scheduleType} onChange={e => setScheduleType(e.target.value)} style={{ padding: '0.3rem 0.5rem', fontSize: '0.82rem', borderRadius: '4px', border: '1px solid #D1D5DB' }}>
+          <option value="manual">Manual only</option>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+        </select>
+        {scheduleType !== 'manual' && (
+          <input type="time" value={scheduleTime} onChange={e => setScheduleTime(e.target.value)}
+            style={{ padding: '0.3rem 0.5rem', fontSize: '0.82rem', borderRadius: '4px', border: '1px solid #D1D5DB' }} />
+        )}
+        {scheduleType === 'weekly' && (
+          <select value={scheduleDay} onChange={e => setScheduleDay(e.target.value)} style={{ padding: '0.3rem 0.5rem', fontSize: '0.82rem', borderRadius: '4px', border: '1px solid #D1D5DB' }}>
+            {['mon','tue','wed','thu','fri','sat','sun'].map(d => <option key={d} value={d}>{d.charAt(0).toUpperCase()+d.slice(1)}</option>)}
+          </select>
+        )}
+        <button onClick={handleSaveSchedule} style={{ padding: '0.3rem 0.75rem', fontSize: '0.82rem', background: scheduleSaved ? '#10B981' : 'var(--primary-color)', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: '600' }}>
+          {scheduleSaved ? '✓ Saved' : 'Save Schedule'}
+        </button>
+        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Times are in UTC</span>
+      </div>
       <div style={{ flex: 1, padding: '0.5rem 0', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         
         <AnimatePresence mode="wait">
@@ -194,6 +240,10 @@ const Dashboard = () => {
               exit={{ opacity: 0, y: -10 }}
               style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
             >
+              {/* Today's KPI Cards */}
+              <TodaySummaryWidgets />
+
+              {/* Inventory + AI Status row */}
               <div className="metric-grid">
                 <div className="metric-card">
                   <div className="metric-icon"><Package size={24} /></div>
@@ -202,7 +252,6 @@ const Dashboard = () => {
                     <p>{overallStats.total}</p>
                   </div>
                 </div>
-                
                 <div className="metric-card">
                   <div className="metric-icon" style={{ background: 'rgba(220, 53, 69, 0.1)', color: 'var(--danger-color)' }}>
                     <AlertCircle size={24} />
@@ -212,70 +261,23 @@ const Dashboard = () => {
                     <p>{overallStats.lowStock}</p>
                   </div>
                 </div>
-
                 <div className="metric-card">
                   <div className="metric-icon" style={{ background: 'rgba(25, 135, 84, 0.1)', color: 'var(--success-color)' }}>
                     <TrendingUp size={24} />
                   </div>
                   <div className="metric-info">
                     <h3>AI Engine Status</h3>
-                    <p>Random Forest & Prophet Active</p>
+                    <p style={{ fontSize: '0.9rem' }}>RF + Prophet + HW Active</p>
                   </div>
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
-                <div style={{ background: 'white', border: '1px solid var(--border-color)', borderRadius: '0.5rem', padding: '1.5rem', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                  <h2 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <Activity size={20} color="#714B67" /> Explainable Multi-Model AI Architecture
-                  </h2>
-                  <p style={{ color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.2rem' }}>
-                    Welcome to **NexusERP's Explainable ML Forecasting Platform**. Our system combines classical time-series models with **Random Forest Regressors** equipped with time-lag features (`t-1`, `t-7`, rolling mean/std, day-of-week). Each product undergoes automated cross-validation backtesting ($R^2$, MAE, RMSE, MAPE) and feature contribution breakdown (XAI).
-                  </p>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                    <div style={{ background: '#f8f9fa', padding: '1rem', borderRadius: '0.25rem' }}>
-                      <h4 style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Lag Feature Engineering</h4>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                        Engineers 7-day rolling statistics, previous lag periods, and calendar weekly flags to capture demand inertia.
-                      </p>
-                    </div>
-                    <div style={{ background: '#f8f9fa', padding: '1rem', borderRadius: '0.25rem' }}>
-                      <h4 style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Explainable AI (XAI)</h4>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                        Quantifies exact feature importance contributions for total model explainability during academic evaluation.
-                      </p>
-                    </div>
-                  </div>
-                  <div style={{ marginTop: '1.5rem', textAlign: 'right' }}>
-                    <span style={{ fontSize: '0.9rem', fontWeight: '500', color: 'var(--primary-color)', cursor: 'pointer' }} onClick={() => setSelectedProductId(products[0]?.id || '')}>
-                      Inspect Milk ML breakdown <ArrowRight size={16} style={{ display: 'inline', verticalAlign: 'middle' }} />
-                    </span>
-                  </div>
-                </div>
+              {/* Accuracy Trend Chart */}
+              <AccuracyTrendChart />
 
-                <div style={{ background: 'white', border: '1px solid var(--border-color)', borderRadius: '0.5rem', padding: '1.5rem', boxShadow: '0 2px 4px rgba(0,0,0,0.02)' }}>
-                  <h2 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <BarChart3 size={20} color="#FFC107" /> Demand Pattern Categories
-                  </h2>
-                  <div style={{ height: '220px', width: '100%' }}>
-                    {categoryChartData.length > 0 ? (
-                      <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={categoryChartData} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                          <XAxis type="number" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#6B7280' }} />
-                          <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#374151', fontWeight: 500 }} width={80} />
-                          <Tooltip cursor={{ fill: '#F3F4F6' }} />
-                          <Bar dataKey="count" fill="var(--primary-color)" radius={[0, 4, 4, 0]} barSize={15} />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    ) : (
-                      <p style={{ textAlign: 'center', color: 'var(--text-muted)', paddingTop: '4rem' }}>No data seeded yet</p>
-                    )}
-                  </div>
-                </div>
-              </div>
+              {/* Recent Sales + Low Stock feeds */}
+              <RecentFeedsPanel />
 
-              {/* Portfolio ABC-XYZ Classification Matrix */}
-              <ABCXYZMatrix />
             </motion.div>
           ) : (
             
@@ -310,7 +312,7 @@ const Dashboard = () => {
                           min="1" 
                           max="14" 
                           value={leadTime} 
-                          onChange={(e) => setLeadTime(Number(e.target.value))}
+                          onChange={(e) => updateSimParams(Number(e.target.value), zScore)}
                           style={{ cursor: 'pointer', accentColor: 'var(--primary-color)' }}
                         />
                       </div>
@@ -318,7 +320,7 @@ const Dashboard = () => {
                         <label style={{ fontSize: '0.85rem', fontWeight: '500' }}>Service Level (Z):</label>
                         <select 
                           value={zScore} 
-                          onChange={(e) => setZScore(Number(e.target.value))}
+                          onChange={(e) => updateSimParams(leadTime, Number(e.target.value))}
                           style={{ padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.85rem' }}
                         >
                           <option value={1.28}>90% Confidence (Z=1.28)</option>

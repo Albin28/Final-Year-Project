@@ -1,0 +1,333 @@
+"""
+prediction_tracker.py
+---------------------
+Handles the continuous self-learning loop:
+  1. get/set system config (model_status, schedule, last_trained_at)
+  2. Day-indexed retraining: treat dataset dates as accumulated over time
+  3. Save next-day predictions to prediction_log
+  4. Reconcile actuals: fill in actual_qty + mae from real POS bills
+  5. Compute accuracy history and maturity status
+"""
+
+import json
+import logging
+import numpy as np
+import pandas as pd
+from datetime import datetime, date, timedelta
+from sqlalchemy.orm import Session
+from sqlalchemy import func
+
+import models
+import forecasting_engine
+
+logger = logging.getLogger(__name__)
+
+
+# -- System Config helpers ----------------------------------------------------
+
+def get_config(db: Session, key: str, default=None):
+    row = db.query(models.SystemConfig).filter(models.SystemConfig.key == key).first()
+    if row is None:
+        return default
+    return row.value
+
+
+def set_config(db: Session, key: str, value):
+    row = db.query(models.SystemConfig).filter(models.SystemConfig.key == key).first()
+    str_val = str(value) if value is not None else None
+    if row:
+        row.value = str_val
+    else:
+        row = models.SystemConfig(key=key, value=str_val)
+        db.add(row)
+    db.commit()
+
+
+def get_model_status(db: Session) -> str:
+    status = get_config(db, "model_status", None)
+    if not status or status == "untrained":
+        try:
+            if db.query(models.Product).count() > 0:
+                return "active"
+        except Exception:
+            pass
+        return "untrained"
+    return status
+
+
+def set_model_status(db: Session, status: str):
+    set_config(db, "model_status", status)
+
+
+def get_retrain_schedule(db: Session) -> dict:
+    raw = get_config(db, "retrain_schedule", None)
+    if raw is None:
+        return {"type": "manual"}
+    try:
+        return json.loads(raw)
+    except Exception:
+        return {"type": "manual"}
+
+
+def set_retrain_schedule(db: Session, schedule: dict):
+    set_config(db, "retrain_schedule", json.dumps(schedule))
+
+
+# -- Accuracy History ---------------------------------------------------------
+
+def get_accuracy_history(db: Session, days: int = 60):
+    rows = (
+        db.query(
+            models.PredictionLog.prediction_date,
+            func.avg(models.PredictionLog.mae).label("avg_mae"),
+            func.count(models.PredictionLog.id).label("count")
+        )
+        .filter(models.PredictionLog.mae.isnot(None))
+        .group_by(models.PredictionLog.prediction_date)
+        .order_by(models.PredictionLog.prediction_date)
+        .all()
+    )
+    return [
+        {"date": str(r.prediction_date), "avg_mae": round(float(r.avg_mae), 3), "count": r.count}
+        for r in rows[-days:]
+    ]
+
+
+def get_maturity_status(db: Session) -> dict:
+    status = get_model_status(db)
+    last_trained = get_config(db, "last_trained_at", None)
+    if not last_trained and status == "active":
+        last_trained = datetime.utcnow().isoformat()
+        set_config(db, "last_trained_at", last_trained)
+    history = get_accuracy_history(db, days=90)
+    days_with_data = len(history)
+
+    avg_mae = None
+    is_mature = False
+    threshold = None
+
+    if days_with_data >= 7:
+        recent_7 = [h["avg_mae"] for h in history[-7:]]
+        avg_mae = round(float(np.mean(recent_7)), 3)
+
+        products = db.query(models.Product).all()
+        demands = []
+        for p in products:
+            df = forecasting_engine.get_product_sales_series(db, p.id)
+            if not df.empty and df["y"].sum() > 0:
+                demands.append(float(df["y"].mean()))
+        if demands:
+            avg_demand = float(np.mean(demands))
+            threshold = round(avg_demand * 0.30, 3)
+            is_mature = avg_mae <= threshold
+
+    return {
+        "model_status": status,
+        "last_trained_at": last_trained,
+        "days_with_data": days_with_data,
+        "avg_mae_7d": avg_mae,
+        "maturity_threshold": threshold,
+        "is_mature": is_mature,
+    }
+
+
+# -- Core Retrain Logic -------------------------------------------------------
+
+def run_full_retrain(db: Session):
+    set_model_status(db, "training")
+    set_config(db, "training_started_at", datetime.utcnow().isoformat())
+    db.commit()
+
+    try:
+        forecasting_engine.clear_forecast_cache()
+        products = db.query(models.Product).all()
+
+        if not products:
+            logger.warning("No products found -- skipping retrain.")
+            set_model_status(db, "untrained")
+            return
+
+        _backfill_prediction_log(db, products)
+        _save_tomorrow_predictions(db, products)
+
+        set_model_status(db, "active")
+        set_config(db, "last_trained_at", datetime.utcnow().isoformat())
+        logger.info("Retrain complete -- model is now active.")
+
+    except Exception as e:
+        logger.error(f"Retrain failed: {e}", exc_info=True)
+        set_model_status(db, "untrained")
+        raise
+    finally:
+        db.commit()
+
+
+def _backfill_prediction_log(db: Session, products):
+    STEP = 7  # one accuracy data point per week
+
+    for product in products:
+        df = forecasting_engine.get_product_sales_series(db, product.id)
+        if df.empty or len(df) < 20:
+            continue
+
+        dates = df["ds"].tolist()
+        existing_dates = set(
+            str(r.prediction_date)
+            for r in db.query(models.PredictionLog.prediction_date)
+            .filter(models.PredictionLog.product_id == product.id)
+            .all()
+        )
+
+        sample_indices = range(14, len(dates) - 1, STEP)
+
+        for idx in sample_indices:
+            raw_date = dates[idx + 1]
+            predict_date = raw_date.date() if hasattr(raw_date, "date") else raw_date
+
+            if str(predict_date) in existing_dates:
+                continue
+
+            train_df = df.iloc[: idx + 1].copy()
+            if len(train_df) < 10:
+                continue
+
+            try:
+                from statsmodels.tsa.holtwinters import SimpleExpSmoothing
+                model = SimpleExpSmoothing(train_df["y"]).fit(optimized=True)
+                pred = max(0.0, float(model.forecast(1).iloc[0]))
+            except Exception:
+                pred = float(train_df["y"].mean())
+
+            actual = float(df.iloc[idx + 1]["y"])
+            mae = abs(pred - actual)
+
+            db.add(models.PredictionLog(
+                product_id=product.id,
+                prediction_date=predict_date,
+                predicted_qty=round(pred, 2),
+                actual_qty=round(actual, 2),
+                mae=round(mae, 3),
+                model_used="SES (backfill)"
+            ))
+
+    db.commit()
+
+
+def _save_tomorrow_predictions(db: Session, products):
+    tomorrow = date.today() + timedelta(days=1)
+
+    for product in products:
+        exists = db.query(models.PredictionLog).filter(
+            models.PredictionLog.product_id == product.id,
+            models.PredictionLog.prediction_date == tomorrow,
+            models.PredictionLog.actual_qty.is_(None)
+        ).first()
+        if exists:
+            continue
+
+        df = forecasting_engine.get_product_sales_series(db, product.id)
+        if df.empty or len(df) < 10:
+            continue
+
+        try:
+            plan = forecasting_engine.generate_forecast_and_inventory_plan(db, product.id)
+            pred = plan["predictions"][0]["quantity"] if plan["predictions"] else float(df["y"].mean())
+            best_model = plan.get("best_model", "unknown")
+        except Exception:
+            pred = float(df["y"].mean()) if not df.empty else 0.0
+            best_model = "fallback"
+
+        db.add(models.PredictionLog(
+            product_id=product.id,
+            prediction_date=tomorrow,
+            predicted_qty=round(pred, 2),
+            actual_qty=None,
+            mae=None,
+            model_used=best_model
+        ))
+
+    db.commit()
+
+
+def reconcile_actuals(db: Session):
+    today = date.today()
+    pending = (
+        db.query(models.PredictionLog)
+        .filter(
+            models.PredictionLog.actual_qty.is_(None),
+            models.PredictionLog.prediction_date <= today
+        )
+        .all()
+    )
+
+    for log in pending:
+        items = db.query(models.BillItem).filter(
+            models.BillItem.product_id == log.product_id
+        ).all()
+
+        bill_ids = [i.bill_id for i in items]
+        if not bill_ids:
+            log.actual_qty = 0.0
+            log.mae = log.predicted_qty
+            continue
+
+        bills_on_date = db.query(models.Bill).filter(
+            models.Bill.id.in_(bill_ids),
+            func.date(models.Bill.created_at) == log.prediction_date
+        ).all()
+
+        bill_ids_on_date = {b.id for b in bills_on_date}
+        actual_qty = sum(i.quantity for i in items if i.bill_id in bill_ids_on_date)
+
+        log.actual_qty = float(actual_qty)
+        log.mae = abs(log.predicted_qty - log.actual_qty)
+
+    db.commit()
+    logger.info(f"Reconciled {len(pending)} prediction log entries.")
+
+
+# -- Dashboard Stats ----------------------------------------------------------
+
+def get_today_summary(db: Session) -> dict:
+    today = date.today()
+    bills_today = db.query(models.Bill).filter(
+        func.date(models.Bill.created_at) == today
+    ).all()
+
+    total_revenue = sum(b.total_amount for b in bills_today)
+    transaction_count = len(bills_today)
+    top_product = None
+
+    if bills_today:
+        bill_ids = [b.id for b in bills_today]
+        items = db.query(models.BillItem).filter(models.BillItem.bill_id.in_(bill_ids)).all()
+        product_qty = {}
+        for item in items:
+            product_qty[item.product_name] = product_qty.get(item.product_name, 0) + item.quantity
+        if product_qty:
+            top_product = max(product_qty, key=lambda k: product_qty[k])
+
+    return {
+        "date": str(today),
+        "total_revenue": round(float(total_revenue), 2),
+        "transaction_count": transaction_count,
+        "top_product_today": top_product,
+    }
+
+
+def get_recent_bills(db: Session, limit: int = 5) -> list:
+    bills = (
+        db.query(models.Bill)
+        .order_by(models.Bill.created_at.desc())
+        .limit(limit)
+        .all()
+    )
+    result = []
+    for b in bills:
+        result.append({
+            "id": b.id,
+            "total_amount": round(float(b.total_amount), 2),
+            "item_count": len(b.items),
+            "created_at": b.created_at.isoformat() if b.created_at else None,
+        })
+    return result
