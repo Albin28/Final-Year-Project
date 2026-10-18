@@ -76,6 +76,13 @@ def get_cached_forecast(db: Session, product_id: int, lead_time: int = 3, z_scor
         target_inventory = rec["target_inventory"]
         reorder_point = rec["reorder_point"]
 
+        if product and reorder_point > 0:
+            dynamic_rp = int(np.ceil(reorder_point))
+            if product.reorder_level != dynamic_rp:
+                product.reorder_level = dynamic_rp
+                product_reorder_level = dynamic_rp
+                db.commit()
+
         restock_needed = (current_stock < target_inventory) and (current_stock <= max(reorder_point, product_reorder_level))
         restock_volume = max(0, target_inventory - current_stock) if restock_needed else 0
 
@@ -513,6 +520,14 @@ def generate_forecast_and_inventory_plan(db: Session, product_id: int, lead_time
     product = db.query(models.Product).filter(models.Product.id == product_id).first()
     current_stock = product.quantity_in_stock if product else 0
     product_reorder_level = product.reorder_level if product else 0
+
+    # Sync product's database reorder_level with the AI-calculated dynamic reorder point
+    if product and reorder_point > 0:
+        dynamic_rp = int(np.ceil(reorder_point))
+        if product.reorder_level != dynamic_rp:
+            product.reorder_level = dynamic_rp
+            product_reorder_level = dynamic_rp
+            db.commit()
 
     # Restock is needed if stock can't cover the next restock cycle
     # Also respect the product's manually set reorder_level as a lower bound check

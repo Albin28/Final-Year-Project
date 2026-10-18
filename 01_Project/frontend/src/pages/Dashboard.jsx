@@ -60,6 +60,24 @@ const Dashboard = () => {
     // training=false will be set when LED transitions to active
   };
 
+  const [generatingPOs, setGeneratingPOs] = useState(false);
+  const [poBanner, setPoBanner] = useState(null);
+
+  const handleAutoGeneratePOs = async () => {
+    setGeneratingPOs(true);
+    setPoBanner(null);
+    try {
+      const res = await api.post('/po/auto-generate-low-stock');
+      setPoBanner({ type: 'success', msg: res.data.message, count: res.data.count });
+      setTimeout(() => setPoBanner(null), 6000);
+    } catch (err) {
+      setPoBanner({ type: 'error', msg: err.response?.data?.detail || err.message });
+      setTimeout(() => setPoBanner(null), 6000);
+    } finally {
+      setGeneratingPOs(false);
+    }
+  };
+
   // When LED reports active/untrained, allow button again
   const handleStatusChange = useCallback((s) => {
     setModelStatus(s);
@@ -200,9 +218,53 @@ const Dashboard = () => {
               </>
             ) : 'Self-Train ML Models'}
           </button>
+          <button
+            className="btn"
+            onClick={handleAutoGeneratePOs}
+            disabled={generatingPOs}
+            title="Auto-generate separate Purchase Orders for all products with low stock"
+            style={{
+              display: 'flex', alignItems: 'center', gap: '0.4rem',
+              backgroundColor: '#10B981', color: 'white', cursor: generatingPOs ? 'not-allowed' : 'pointer'
+            }}
+          >
+            <ShoppingCart size={16} />
+            {generatingPOs ? 'Generating...' : 'Auto-Generate Restock POs'}
+          </button>
           <button className="btn btn-primary" onClick={() => window.location.href='/inventory'}>View Inventory</button>
         </div>
       </div>
+
+      {/* PO Generation Alert Banner */}
+      {poBanner && (
+        <div style={{
+          padding: '0.75rem 1.25rem',
+          borderRadius: '8px',
+          margin: '0.5rem 0',
+          fontSize: '13px',
+          fontWeight: '600',
+          backgroundColor: poBanner.type === 'error' ? '#FEF2F2' : '#DCFCE7',
+          border: `1px solid ${poBanner.type === 'error' ? '#FECACA' : '#86EFAC'}`,
+          color: poBanner.type === 'error' ? '#991B1B' : '#14532D',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}>
+          <span>{poBanner.msg}</span>
+          {poBanner.count > 0 && (
+            <button
+              onClick={() => navigate('/po')}
+              style={{
+                background: '#15803D', color: 'white', border: 'none',
+                padding: '4px 10px', borderRadius: '4px', fontSize: '12px',
+                cursor: 'pointer', fontWeight: '600'
+              }}
+            >
+              Go to Purchase Orders →
+            </button>
+          )}
+        </div>
+      )}
 
       {/* Retrain Schedule Panel */}
       <div style={{

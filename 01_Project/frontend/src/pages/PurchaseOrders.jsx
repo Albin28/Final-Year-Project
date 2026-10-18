@@ -78,6 +78,7 @@ const PurchaseOrders = () => {
       setPoList(prev => prev.map(p => p.id === po.id ? res.data : p));
       if (res.data.inventory_updated) {
         showToast('Stock updated! ' + po.product_name + ' inventory +' + po.quantity + ' units (now ' + res.data.new_stock + ').', 'success');
+        api.get('/products/').then(r => setProducts(r.data)).catch(() => {});
       } else {
         showToast('PO ' + po.po_number + ' updated to "' + newStatus + '".');
       }
@@ -85,6 +86,26 @@ const PurchaseOrders = () => {
       showToast(err.response?.data?.detail || 'Failed to update status', 'error');
     } finally {
       setUpdatingId(null);
+    }
+  };
+
+  const [generatingPOs, setGeneratingPOs] = useState(false);
+
+  const handleAutoGeneratePOs = async () => {
+    setGeneratingPOs(true);
+    try {
+      const res = await api.post('/po/auto-generate-low-stock');
+      showToast(res.data.message);
+      const [prodRes, poRes] = await Promise.all([
+        api.get('/products/'),
+        api.get('/po/'),
+      ]);
+      setProducts(prodRes.data);
+      setPoList(poRes.data);
+    } catch (err) {
+      showToast(err.response?.data?.detail || 'Failed to auto-generate POs', 'error');
+    } finally {
+      setGeneratingPOs(false);
     }
   };
 
@@ -106,13 +127,25 @@ const PurchaseOrders = () => {
         </div>
       )}
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
           <h1 style={{ fontSize: '22px', fontWeight: '700', color: '#111827', margin: 0 }}>Purchase Orders & Supplier Management</h1>
           <p style={{ fontSize: '13px', color: '#6B7280', margin: '4px 0 0 0' }}>
             Create supplier orders and track delivery. Marking <strong>Delivered</strong> automatically updates inventory stock.
           </p>
         </div>
+        <button
+          onClick={handleAutoGeneratePOs}
+          disabled={generatingPOs}
+          style={{
+            display: 'flex', alignItems: 'center', gap: '0.4rem',
+            padding: '0.6rem 1.1rem', background: '#10B981', color: 'white',
+            border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: '700',
+            cursor: generatingPOs ? 'not-allowed' : 'pointer', boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+          }}
+        >
+          {generatingPOs ? 'Generating...' : '⚡ Auto-Generate Restock POs for All Low Stock'}
+        </button>
       </div>
 
       <div style={{ backgroundColor: 'white', padding: '1.2rem', borderRadius: '10px', border: '1px solid #E5E7EB', marginBottom: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
@@ -196,21 +229,55 @@ const PurchaseOrders = () => {
                     </td>
                     <td style={{ textAlign: 'center' }}>
                       {isLocked ? (
-                        <span style={{ fontSize: '11px', color: '#10B981', fontWeight: '600' }}>Fulfilled</span>
+                        <span style={{ fontSize: '11px', color: '#10B981', fontWeight: '700', display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
+                          ✓ Fulfilled & Restocked
+                        </span>
                       ) : (
-                        <div style={{ display: 'flex', gap: '4px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                          {nextStatuses.map(ns => (
-                            <button key={ns} onClick={() => handleStatusChange(po, ns)} disabled={isUpdating}
+                        <div style={{ display: 'flex', gap: '5px', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
+                          {po.status === 'Pending Delivery' ? (
+                            <button
+                              onClick={() => handleStatusChange(po, 'Delivered')}
+                              disabled={isUpdating}
                               style={{
-                                padding: '3px 8px', fontSize: '10px', fontWeight: '600', borderRadius: '4px',
-                                border: '1px solid ' + (STATUS_STYLE[ns]?.color || '#D1D5DB'),
-                                background: STATUS_STYLE[ns]?.bg || '#F9FAFB',
-                                color: STATUS_STYLE[ns]?.color || '#374151',
-                                cursor: isUpdating ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap'
-                              }}>
-                              {ns}
+                                padding: '4px 10px',
+                                fontSize: '11px',
+                                fontWeight: '700',
+                                borderRadius: '5px',
+                                border: 'none',
+                                background: '#10B981',
+                                color: 'white',
+                                cursor: isUpdating ? 'not-allowed' : 'pointer',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '0.3rem',
+                                boxShadow: '0 2px 4px rgba(16, 185, 129, 0.25)',
+                                whiteSpace: 'nowrap'
+                              }}
+                            >
+                              📦 Receive Stock (+{po.quantity})
                             </button>
-                          ))}
+                          ) : (
+                            nextStatuses.map(ns => (
+                              <button
+                                key={ns}
+                                onClick={() => handleStatusChange(po, ns)}
+                                disabled={isUpdating}
+                                style={{
+                                  padding: '3px 8px',
+                                  fontSize: '10px',
+                                  fontWeight: '600',
+                                  borderRadius: '4px',
+                                  border: '1px solid ' + (STATUS_STYLE[ns]?.color || '#D1D5DB'),
+                                  background: STATUS_STYLE[ns]?.bg || '#F9FAFB',
+                                  color: STATUS_STYLE[ns]?.color || '#374151',
+                                  cursor: isUpdating ? 'not-allowed' : 'pointer',
+                                  whiteSpace: 'nowrap'
+                                }}
+                              >
+                                {ns === 'Delivered' ? '📦 Receive' : ns}
+                              </button>
+                            ))
+                          )}
                         </div>
                       )}
                     </td>

@@ -107,7 +107,7 @@ const ABCXYZMatrix = () => {
                     {cellItems.length > 0 ? (
                       cellItems.slice(0, 3).map(item => (
                         <div key={item.id} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                          • {item.name} (${item.revenue.toFixed(0)})
+                          • {item.name} (Rs. {item.revenue.toFixed(0)})
                         </div>
                       ))
                     ) : (

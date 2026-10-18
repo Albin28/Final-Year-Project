@@ -175,6 +175,16 @@ def get_recent_bills(db: Session = Depends(get_db)):
     return prediction_tracker.get_recent_bills(db, limit=5)
 
 
+@router.post("/simulate-sales")
+def simulate_sales(days: int = 1, fill_today: bool = True, db: Session = Depends(get_db)):
+    """
+    Simulates realistic POS customer transactions for today or missed past days.
+    """
+    import prediction_tracker
+    return prediction_tracker.simulate_store_sales(db, days=days, fill_today=fill_today)
+
+
+
 # -- Self-Train (runs in background thread, LED goes orange immediately) -------
 
 import threading

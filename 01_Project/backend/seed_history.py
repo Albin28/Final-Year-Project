@@ -27,12 +27,12 @@ def seed_data():
     Base.metadata.create_all(bind=engine)
 
     print("Seeding products...")
-    # Define our four products representing distinct demand pattern archetypes
+    # Define products representing distinct demand pattern archetypes with Indian brands and INR prices
     products_data = [
-        {"id": 1, "name": "Premium Milk", "category": "Dairy", "price": 3.0, "quantity_in_stock": 100, "reorder_level": 30},
-        {"id": 2, "name": "Specialty Coffee Beans", "category": "Beverages", "price": 15.0, "quantity_in_stock": 50, "reorder_level": 15},
-        {"id": 3, "name": "Industrial Cleaning Solution", "category": "Cleaning", "price": 45.0, "quantity_in_stock": 25, "reorder_level": 5},
-        {"id": 4, "name": "Air Conditioning Unit", "category": "Appliances", "price": 500.0, "quantity_in_stock": 10, "reorder_level": 2}
+        {"id": 1, "name": "Amul Taaza Toned Milk (1L)", "category": "Dairy", "price": 74.0, "quantity_in_stock": 100, "reorder_level": 30},
+        {"id": 2, "name": "Nescafé Classic Instant Coffee Glass Jar (100g)", "category": "Beverages", "price": 380.0, "quantity_in_stock": 50, "reorder_level": 15},
+        {"id": 3, "name": "Vim Dishwash Liquid Gel Lemon (750ml)", "category": "Household Care", "price": 160.0, "quantity_in_stock": 25, "reorder_level": 10},
+        {"id": 4, "name": "Aashirvaad Superior MP Shudh Chakki Atta (5kg)", "category": "Grains & Staples", "price": 270.0, "quantity_in_stock": 20, "reorder_level": 10}
     ]
 
     products = []

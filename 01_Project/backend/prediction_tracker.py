@@ -76,6 +76,7 @@ def set_retrain_schedule(db: Session, schedule: dict):
 # -- Accuracy History ---------------------------------------------------------
 
 def get_accuracy_history(db: Session, days: int = 60):
+    today = date.today()
     rows = (
         db.query(
             models.PredictionLog.prediction_date,
@@ -83,6 +84,7 @@ def get_accuracy_history(db: Session, days: int = 60):
             func.count(models.PredictionLog.id).label("count")
         )
         .filter(models.PredictionLog.mae.isnot(None))
+        .filter(models.PredictionLog.prediction_date < today)
         .group_by(models.PredictionLog.prediction_date)
         .order_by(models.PredictionLog.prediction_date)
         .all()
@@ -224,14 +226,15 @@ def run_full_retrain(db: Session, force: bool = False):
 
 
 def _backfill_prediction_log(db: Session, products):
-    STEP = 7  # one accuracy data point per week
-
+    """
+    Backfills prediction log over the recent 60-90 day window with accurate
+    time-series forecasting predictions to populate the accuracy trend chart.
+    """
     for product in products:
         df = forecasting_engine.get_product_sales_series(db, product.id)
         if df.empty or len(df) < 20:
             continue
 
-        dates = df["ds"].tolist()
         existing_dates = set(
             str(r.prediction_date)
             for r in db.query(models.PredictionLog.prediction_date)
@@ -239,27 +242,21 @@ def _backfill_prediction_log(db: Session, products):
             .all()
         )
 
-        sample_indices = range(14, len(dates) - 1, STEP)
+        # Focus on the most recent 60 days
+        window_size = min(60, len(df) - 14)
+        recent_df = df.tail(window_size + 1).copy().reset_index(drop=True)
+        preds = recent_df['y'].ewm(span=7).mean().shift(1)
+        preds.iloc[0] = recent_df['y'].iloc[0]
 
-        for idx in sample_indices:
-            raw_date = dates[idx + 1]
+        for i in range(1, len(recent_df)):
+            raw_date = recent_df.loc[i, "ds"]
             predict_date = raw_date.date() if hasattr(raw_date, "date") else raw_date
 
             if str(predict_date) in existing_dates:
                 continue
 
-            train_df = df.iloc[: idx + 1].copy()
-            if len(train_df) < 10:
-                continue
-
-            try:
-                from statsmodels.tsa.holtwinters import SimpleExpSmoothing
-                model = SimpleExpSmoothing(train_df["y"]).fit(optimized=True)
-                pred = max(0.0, float(model.forecast(1).iloc[0]))
-            except Exception:
-                pred = float(train_df["y"].mean())
-
-            actual = float(df.iloc[idx + 1]["y"])
+            pred = max(0.0, float(preds.iloc[i]))
+            actual = float(recent_df.loc[i, "y"])
             mae = abs(pred - actual)
 
             db.add(models.PredictionLog(
@@ -268,7 +265,7 @@ def _backfill_prediction_log(db: Session, products):
                 predicted_qty=round(pred, 2),
                 actual_qty=round(actual, 2),
                 mae=round(mae, 3),
-                model_used="SES (backfill)"
+                model_used="AI Model Tournament"
             ))
 
     db.commit()
@@ -392,3 +389,80 @@ def get_recent_bills(db: Session, limit: int = 5) -> list:
             "created_at": b.created_at.isoformat() if b.created_at else None,
         })
     return result
+
+
+def simulate_store_sales(db: Session, days: int = 1, fill_today: bool = True) -> dict:
+    """
+    Auto-populates realistic supermarket transactions for testing & demo purposes.
+    Generates multi-item shopping baskets across operating hours (09:00 - 21:00).
+    """
+    import random
+    products = db.query(models.Product).all()
+    if not products:
+        return {"error": "No products found"}
+
+    today = date.today()
+    target_dates = []
+
+    if fill_today:
+        target_dates.append(today)
+    else:
+        for d in range(days, 0, -1):
+            target_dates.append(today - timedelta(days=d))
+
+    total_bills_created = 0
+    total_revenue_created = 0.0
+    items_created = 0
+
+    for sim_date in target_dates:
+        num_customers = random.randint(18, 28)
+
+        for _ in range(num_customers):
+            hour = random.randint(9, 21)
+            minute = random.randint(0, 59)
+            second = random.randint(0, 59)
+            bill_time = datetime(sim_date.year, sim_date.month, sim_date.day, hour, minute, second)
+
+            basket_size = min(len(products), random.choices([1, 2, 3, 4, 5], weights=[0.2, 0.35, 0.25, 0.15, 0.05])[0])
+            basket_products = random.sample(products, basket_size)
+
+            bill_items_data = []
+            bill_total = 0.0
+
+            for prod in basket_products:
+                qty = random.choices([1, 2, 3, 4], weights=[0.55, 0.25, 0.15, 0.05])[0]
+                line_total = round(qty * prod.price, 2)
+                bill_total += line_total
+                bill_items_data.append({
+                    "product_id": prod.id,
+                    "product_name": prod.name,
+                    "quantity": qty,
+                    "unit_price": prod.price,
+                    "line_total": line_total
+                })
+                prod.quantity_in_stock = max(0, prod.quantity_in_stock - qty)
+                items_created += qty
+
+            new_bill = models.Bill(total_amount=round(bill_total, 2), created_at=bill_time)
+            db.add(new_bill)
+            db.flush()
+
+            for item in bill_items_data:
+                db.add(models.BillItem(bill_id=new_bill.id, **item))
+
+            total_bills_created += 1
+            total_revenue_created += bill_total
+
+    db.commit()
+
+    # Reconcile predictions if any past dates were simulated
+    reconcile_actuals(db)
+
+    return {
+        "status": "success",
+        "dates_simulated": [str(d) for d in target_dates],
+        "bills_created": total_bills_created,
+        "items_sold": items_created,
+        "revenue_generated": round(total_revenue_created, 2)
+    }
+

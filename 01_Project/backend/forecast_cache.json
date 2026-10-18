@@ -1,376 +1,195 @@
 {
-  "1:3:1.65": {
-    "product_id": 1,
-    "classification": {
-      "adi": 2.758,
-      "cv2": 0.114,
-      "category": "Intermittent",
-      "description": "Sparsely occurring demand with consistent quantities."
-    },
-    "metrics": {
-      "Random Forest ML": {
-        "mae": 0.002,
-        "rmse": 0.063,
-        "mape": 100.0,
-        "r2": -0.001
-      },
-      "Simple Exponential Smoothing": {
-        "mae": 0.002,
-        "rmse": 0.063,
-        "mape": 100.0,
-        "r2": -0.001
-      }
-    },
-    "best_model": "Random Forest ML",
-    "feature_importance": [
-      {
-        "feature": "Lag 1",
-        "importance": 81.65
-      },
-      {
-        "feature": "Rolling Mean 7",
-        "importance": 9.86
-      },
-      {
-        "feature": "Day Of Week",
-        "importance": 2.71
-      },
-      {
-        "feature": "Rolling Std 7",
-        "importance": 2.07
-      },
-      {
-        "feature": "Lag 7",
-        "importance": 1.67
-      },
-      {
-        "feature": "Day Of Month",
-        "importance": 1.62
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 0.42
-      }
-    ],
-    "predictions": [
-      {
-        "date": "2026-10-19",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-10-20",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-10-21",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-10-22",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-10-23",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-10-24",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-10-25",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-10-26",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-10-27",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-10-28",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-10-29",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-10-30",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-10-31",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-01",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-02",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-03",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-04",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-05",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-06",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-07",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-08",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-09",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-10",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-11",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-12",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-13",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-14",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-15",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-16",
-        "quantity": 0.0
-      },
-      {
-        "date": "2026-11-17",
-        "quantity": 0.0
-      }
-    ],
-    "recommendation": {
-      "current_stock": 150,
-      "lead_time_days": 3,
-      "z_score": 1.65,
-      "average_daily_forecast": 0.0,
-      "safety_stock": 29.78,
-      "reorder_point": 29.78,
-      "target_inventory": 29.78,
-      "restock_needed": false,
-      "recommended_volume": 0
-    }
-  },
   "2:3:1.65": {
     "product_id": 2,
     "classification": {
-      "adi": 2.758,
+      "adi": 1.0,
       "cv2": 0.08,
-      "category": "Intermittent",
-      "description": "Sparsely occurring demand with consistent quantities."
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
     },
     "metrics": {
-      "Random Forest ML": {
-        "mae": 0.001,
-        "rmse": 0.031,
-        "mape": 100.0,
-        "r2": -0.001
+      "Gradient Boosting ML": {
+        "mae": 7.244,
+        "rmse": 9.588,
+        "mape": 18.091,
+        "r2": 0.646
       },
-      "Simple Exponential Smoothing": {
-        "mae": 0.001,
-        "rmse": 0.031,
-        "mape": 100.0,
-        "r2": -0.001
+      "Holt-Winters": {
+        "mae": 17.211,
+        "rmse": 20.809,
+        "mape": 30.81,
+        "r2": -0.666
+      },
+      "Prophet": {
+        "mae": 11.524,
+        "rmse": 14.259,
+        "mape": 29.242,
+        "r2": 0.218
       }
     },
-    "best_model": "Random Forest ML",
+    "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
-        "feature": "Lag 1",
-        "importance": 83.38
-      },
-      {
         "feature": "Rolling Mean 7",
-        "importance": 8.27
+        "importance": 46.46
       },
       {
         "feature": "Lag 7",
-        "importance": 5.37
+        "importance": 27.21
       },
       {
         "feature": "Day Of Week",
-        "importance": 1.38
+        "importance": 14.56
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 7.2
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 0.82
+        "importance": 3.39
       },
       {
         "feature": "Day Of Month",
-        "importance": 0.68
+        "importance": 0.91
       },
       {
         "feature": "Is Weekend",
-        "importance": 0.11
+        "importance": 0.27
       }
     ],
     "predictions": [
       {
         "date": "2026-10-19",
-        "quantity": 0.0
+        "quantity": 56.17
       },
       {
         "date": "2026-10-20",
-        "quantity": 0.0
+        "quantity": 56.68
       },
       {
         "date": "2026-10-21",
-        "quantity": 0.0
+        "quantity": 57.11
       },
       {
         "date": "2026-10-22",
-        "quantity": 0.0
+        "quantity": 60.68
       },
       {
         "date": "2026-10-23",
-        "quantity": 0.0
+        "quantity": 65.16
       },
       {
         "date": "2026-10-24",
-        "quantity": 0.0
+        "quantity": 73.36
       },
       {
         "date": "2026-10-25",
-        "quantity": 0.0
+        "quantity": 47.17
       },
       {
         "date": "2026-10-26",
-        "quantity": 0.0
+        "quantity": 54.87
       },
       {
         "date": "2026-10-27",
-        "quantity": 0.0
+        "quantity": 57.5
       },
       {
         "date": "2026-10-28",
-        "quantity": 0.0
+        "quantity": 60.28
       },
       {
         "date": "2026-10-29",
-        "quantity": 0.0
+        "quantity": 64.37
       },
       {
         "date": "2026-10-30",
-        "quantity": 0.0
+        "quantity": 70.38
       },
       {
         "date": "2026-10-31",
-        "quantity": 0.0
+        "quantity": 72.92
       },
       {
         "date": "2026-11-01",
-        "quantity": 0.0
+        "quantity": 47.47
       },
       {
         "date": "2026-11-02",
-        "quantity": 0.0
+        "quantity": 55.74
       },
       {
         "date": "2026-11-03",
-        "quantity": 0.0
+        "quantity": 58.64
       },
       {
         "date": "2026-11-04",
-        "quantity": 0.0
+        "quantity": 61.36
       },
       {
         "date": "2026-11-05",
-        "quantity": 0.0
+        "quantity": 64.78
       },
       {
         "date": "2026-11-06",
-        "quantity": 0.0
+        "quantity": 70.79
       },
       {
         "date": "2026-11-07",
-        "quantity": 0.0
+        "quantity": 73.02
       },
       {
         "date": "2026-11-08",
-        "quantity": 0.0
+        "quantity": 48.27
       },
       {
         "date": "2026-11-09",
-        "quantity": 0.0
+        "quantity": 55.67
       },
       {
         "date": "2026-11-10",
-        "quantity": 0.0
+        "quantity": 58.52
       },
       {
         "date": "2026-11-11",
-        "quantity": 0.0
+        "quantity": 61.12
       },
       {
         "date": "2026-11-12",
-        "quantity": 0.0
+        "quantity": 65.23
       },
       {
         "date": "2026-11-13",
-        "quantity": 0.0
+        "quantity": 70.79
       },
       {
         "date": "2026-11-14",
-        "quantity": 0.0
+        "quantity": 72.93
       },
       {
         "date": "2026-11-15",
-        "quantity": 0.0
+        "quantity": 48.39
       },
       {
         "date": "2026-11-16",
-        "quantity": 0.0
+        "quantity": 55.68
       },
       {
         "date": "2026-11-17",
-        "quantity": 0.0
+        "quantity": 58.02
       }
     ],
     "recommendation": {
-      "current_stock": 80,
+      "current_stock": 25,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 0.0,
-      "safety_stock": 77.44,
-      "reorder_point": 77.44,
-      "target_inventory": 77.44,
-      "restock_needed": false,
-      "recommended_volume": 0
+      "average_daily_forecast": 60.77,
+      "safety_stock": 42.98,
+      "reorder_point": 225.29,
+      "target_inventory": 468.36,
+      "restock_needed": true,
+      "recommended_volume": 444
     }
   },
   "3:3:1.65": {
@@ -383,187 +202,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 5.585,
-        "rmse": 7.106,
-        "mape": 15.951,
-        "r2": 0.542
+        "mae": 5.6,
+        "rmse": 7.344,
+        "mape": 16.99,
+        "r2": 0.514
       },
       "Holt-Winters": {
-        "mae": 10.552,
-        "rmse": 13.081,
-        "mape": 26.056,
-        "r2": -0.553
+        "mae": 10.727,
+        "rmse": 13.292,
+        "mape": 27.428,
+        "r2": -0.591
       },
       "Prophet": {
-        "mae": 7.598,
-        "rmse": 9.503,
-        "mape": 23.521,
-        "r2": 0.181
+        "mae": 7.555,
+        "rmse": 9.484,
+        "mape": 24.826,
+        "r2": 0.19
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 59.17
+        "importance": 54.51
       },
       {
         "feature": "Day Of Week",
-        "importance": 22.69
-      },
-      {
-        "feature": "Lag 1",
-        "importance": 4.87
+        "importance": 19.98
       },
       {
         "feature": "Lag 7",
-        "importance": 4.58
+        "importance": 10.19
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 9.08
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 3.4
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 3.05
+        "importance": 3.97
       },
       {
         "feature": "Day Of Month",
-        "importance": 2.24
+        "importance": 1.84
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.42
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 23.1
+        "date": "2026-10-19",
+        "quantity": 24.63
       },
       {
-        "date": "2018-01-02",
-        "quantity": 23.49
-      },
-      {
-        "date": "2018-01-03",
-        "quantity": 25.13
-      },
-      {
-        "date": "2018-01-04",
+        "date": "2026-10-20",
         "quantity": 26.38
       },
       {
-        "date": "2018-01-05",
-        "quantity": 30.28
+        "date": "2026-10-21",
+        "quantity": 27.82
       },
       {
-        "date": "2018-01-06",
-        "quantity": 29.0
+        "date": "2026-10-22",
+        "quantity": 30.38
       },
       {
-        "date": "2018-01-07",
-        "quantity": 31.28
+        "date": "2026-10-23",
+        "quantity": 29.63
       },
       {
-        "date": "2018-01-08",
-        "quantity": 22.04
+        "date": "2026-10-24",
+        "quantity": 30.96
       },
       {
-        "date": "2018-01-09",
-        "quantity": 24.23
+        "date": "2026-10-25",
+        "quantity": 21.83
       },
       {
-        "date": "2018-01-10",
-        "quantity": 25.03
+        "date": "2026-10-26",
+        "quantity": 26.08
       },
       {
-        "date": "2018-01-11",
-        "quantity": 26.25
+        "date": "2026-10-27",
+        "quantity": 30.85
       },
       {
-        "date": "2018-01-12",
-        "quantity": 29.43
+        "date": "2026-10-28",
+        "quantity": 29.23
       },
       {
-        "date": "2018-01-13",
-        "quantity": 30.07
+        "date": "2026-10-29",
+        "quantity": 31.36
       },
       {
-        "date": "2018-01-14",
-        "quantity": 31.78
+        "date": "2026-10-30",
+        "quantity": 32.64
       },
       {
-        "date": "2018-01-15",
-        "quantity": 21.92
+        "date": "2026-10-31",
+        "quantity": 34.91
       },
       {
-        "date": "2018-01-16",
-        "quantity": 24.4
+        "date": "2026-11-01",
+        "quantity": 22.85
       },
       {
-        "date": "2018-01-17",
-        "quantity": 25.32
+        "date": "2026-11-02",
+        "quantity": 26.4
       },
       {
-        "date": "2018-01-18",
-        "quantity": 26.53
+        "date": "2026-11-03",
+        "quantity": 27.2
       },
       {
-        "date": "2018-01-19",
-        "quantity": 29.71
+        "date": "2026-11-04",
+        "quantity": 27.99
       },
       {
-        "date": "2018-01-20",
-        "quantity": 30.35
-      },
-      {
-        "date": "2018-01-21",
-        "quantity": 31.2
-      },
-      {
-        "date": "2018-01-22",
-        "quantity": 22.11
-      },
-      {
-        "date": "2018-01-23",
-        "quantity": 24.59
-      },
-      {
-        "date": "2018-01-24",
-        "quantity": 25.27
-      },
-      {
-        "date": "2018-01-25",
-        "quantity": 26.12
-      },
-      {
-        "date": "2018-01-26",
-        "quantity": 29.36
-      },
-      {
-        "date": "2018-01-27",
-        "quantity": 29.79
-      },
-      {
-        "date": "2018-01-28",
+        "date": "2026-11-05",
         "quantity": 30.45
       },
       {
-        "date": "2018-01-29",
-        "quantity": 19.64
+        "date": "2026-11-06",
+        "quantity": 30.71
       },
       {
-        "date": "2018-01-30",
-        "quantity": 24.32
+        "date": "2026-11-07",
+        "quantity": 33.19
+      },
+      {
+        "date": "2026-11-08",
+        "quantity": 22.8
+      },
+      {
+        "date": "2026-11-09",
+        "quantity": 26.66
+      },
+      {
+        "date": "2026-11-10",
+        "quantity": 27.43
+      },
+      {
+        "date": "2026-11-11",
+        "quantity": 28.17
+      },
+      {
+        "date": "2026-11-12",
+        "quantity": 30.39
+      },
+      {
+        "date": "2026-11-13",
+        "quantity": 30.64
+      },
+      {
+        "date": "2026-11-14",
+        "quantity": 32.11
+      },
+      {
+        "date": "2026-11-15",
+        "quantity": 20.89
+      },
+      {
+        "date": "2026-11-16",
+        "quantity": 26.71
+      },
+      {
+        "date": "2026-11-17",
+        "quantity": 27.47
       }
     ],
     "recommendation": {
-      "current_stock": 60,
+      "current_stock": 24,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 26.62,
-      "safety_stock": 28.78,
-      "reorder_point": 108.63,
-      "target_inventory": 215.11,
+      "average_daily_forecast": 28.29,
+      "safety_stock": 28.8,
+      "reorder_point": 113.67,
+      "target_inventory": 226.84,
       "restock_needed": true,
-      "recommended_volume": 156
+      "recommended_volume": 203
     }
   },
   "4:3:1.65": {
@@ -576,380 +395,380 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 4.231,
-        "rmse": 5.299,
-        "mape": 20.669,
-        "r2": 0.398
+        "mae": 4.311,
+        "rmse": 5.413,
+        "mape": 22.038,
+        "r2": 0.377
       },
       "Holt-Winters": {
-        "mae": 5.487,
-        "rmse": 6.969,
-        "mape": 24.782,
-        "r2": -0.041
+        "mae": 5.7,
+        "rmse": 7.268,
+        "mape": 25.877,
+        "r2": -0.124
       },
       "Prophet": {
-        "mae": 5.136,
-        "rmse": 6.38,
-        "mape": 28.372,
-        "r2": 0.127
+        "mae": 5.058,
+        "rmse": 6.321,
+        "mape": 28.967,
+        "r2": 0.15
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 56.61
+        "importance": 55.92
       },
       {
         "feature": "Day Of Week",
-        "importance": 19.92
-      },
-      {
-        "feature": "Rolling Std 7",
-        "importance": 6.2
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 5.95
+        "importance": 24.49
       },
       {
         "feature": "Lag 7",
-        "importance": 5.36
+        "importance": 8.42
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 5.85
       },
       {
         "feature": "Day Of Month",
-        "importance": 3.21
+        "importance": 2.72
       },
       {
         "feature": "Lag 1",
-        "importance": 2.75
+        "importance": 2.33
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.27
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 14.28
+        "date": "2026-10-19",
+        "quantity": 15.87
       },
       {
-        "date": "2018-01-02",
+        "date": "2026-10-20",
         "quantity": 16.63
       },
       {
-        "date": "2018-01-03",
-        "quantity": 17.13
+        "date": "2026-10-21",
+        "quantity": 19.5
       },
       {
-        "date": "2018-01-04",
-        "quantity": 18.29
+        "date": "2026-10-22",
+        "quantity": 18.8
       },
       {
-        "date": "2018-01-05",
-        "quantity": 18.19
+        "date": "2026-10-23",
+        "quantity": 21.53
       },
       {
-        "date": "2018-01-06",
-        "quantity": 20.43
+        "date": "2026-10-24",
+        "quantity": 20.46
       },
       {
-        "date": "2018-01-07",
-        "quantity": 20.72
+        "date": "2026-10-25",
+        "quantity": 13.41
       },
       {
-        "date": "2018-01-08",
-        "quantity": 15.23
+        "date": "2026-10-26",
+        "quantity": 17.0
       },
       {
-        "date": "2018-01-09",
-        "quantity": 17.18
+        "date": "2026-10-27",
+        "quantity": 18.0
       },
       {
-        "date": "2018-01-10",
+        "date": "2026-10-28",
+        "quantity": 19.98
+      },
+      {
+        "date": "2026-10-29",
+        "quantity": 19.98
+      },
+      {
+        "date": "2026-10-30",
+        "quantity": 21.63
+      },
+      {
+        "date": "2026-10-31",
+        "quantity": 22.07
+      },
+      {
+        "date": "2026-11-01",
+        "quantity": 14.68
+      },
+      {
+        "date": "2026-11-02",
         "quantity": 17.58
       },
       {
-        "date": "2018-01-11",
-        "quantity": 19.1
+        "date": "2026-11-03",
+        "quantity": 18.72
       },
       {
-        "date": "2018-01-12",
-        "quantity": 19.19
+        "date": "2026-11-04",
+        "quantity": 20.63
       },
       {
-        "date": "2018-01-13",
-        "quantity": 21.67
+        "date": "2026-11-05",
+        "quantity": 20.63
       },
       {
-        "date": "2018-01-14",
-        "quantity": 22.93
+        "date": "2026-11-06",
+        "quantity": 22.06
       },
       {
-        "date": "2018-01-15",
-        "quantity": 15.38
+        "date": "2026-11-07",
+        "quantity": 23.0
       },
       {
-        "date": "2018-01-16",
-        "quantity": 17.3
+        "date": "2026-11-08",
+        "quantity": 15.46
       },
       {
-        "date": "2018-01-17",
-        "quantity": 17.7
+        "date": "2026-11-09",
+        "quantity": 18.53
       },
       {
-        "date": "2018-01-18",
-        "quantity": 19.08
+        "date": "2026-11-10",
+        "quantity": 20.11
       },
       {
-        "date": "2018-01-19",
-        "quantity": 19.29
+        "date": "2026-11-11",
+        "quantity": 22.26
       },
       {
-        "date": "2018-01-20",
-        "quantity": 21.68
+        "date": "2026-11-12",
+        "quantity": 22.45
       },
       {
-        "date": "2018-01-21",
-        "quantity": 22.66
+        "date": "2026-11-13",
+        "quantity": 24.24
       },
       {
-        "date": "2018-01-22",
-        "quantity": 14.77
+        "date": "2026-11-14",
+        "quantity": 25.12
       },
       {
-        "date": "2018-01-23",
-        "quantity": 17.81
+        "date": "2026-11-15",
+        "quantity": 15.93
       },
       {
-        "date": "2018-01-24",
-        "quantity": 17.7
+        "date": "2026-11-16",
+        "quantity": 19.66
       },
       {
-        "date": "2018-01-25",
-        "quantity": 18.9
-      },
-      {
-        "date": "2018-01-26",
-        "quantity": 18.99
-      },
-      {
-        "date": "2018-01-27",
-        "quantity": 21.5
-      },
-      {
-        "date": "2018-01-28",
-        "quantity": 22.23
-      },
-      {
-        "date": "2018-01-29",
-        "quantity": 15.12
-      },
-      {
-        "date": "2018-01-30",
-        "quantity": 14.52
+        "date": "2026-11-17",
+        "quantity": 20.1
       }
     ],
     "recommendation": {
-      "current_stock": 100,
+      "current_stock": 60,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 18.44,
-      "safety_stock": 18.97,
-      "reorder_point": 74.29,
-      "target_inventory": 148.05,
-      "restock_needed": false,
-      "recommended_volume": 0
+      "average_daily_forecast": 19.53,
+      "safety_stock": 19.0,
+      "reorder_point": 77.6,
+      "target_inventory": 155.74,
+      "restock_needed": true,
+      "recommended_volume": 96
     }
   },
   "5:3:1.65": {
     "product_id": 5,
     "classification": {
       "adi": 1.0,
-      "cv2": 0.117,
+      "cv2": 0.116,
       "category": "Regular",
       "description": "Smooth, high-frequency demand with low variability."
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 3.51,
-        "rmse": 4.586,
-        "mape": 21.845,
-        "r2": 0.353
+        "mae": 3.487,
+        "rmse": 4.6,
+        "mape": 21.69,
+        "r2": 0.347
       },
       "Holt-Winters": {
-        "mae": 5.193,
-        "rmse": 6.377,
-        "mape": 27.998,
-        "r2": -0.252
+        "mae": 5.159,
+        "rmse": 6.342,
+        "mape": 27.466,
+        "r2": -0.242
       },
       "Prophet": {
-        "mae": 4.157,
-        "rmse": 5.261,
-        "mape": 29.484,
-        "r2": 0.148
+        "mae": 4.134,
+        "rmse": 5.223,
+        "mape": 28.961,
+        "r2": 0.158
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 59.77
+        "importance": 59.64
       },
       {
         "feature": "Day Of Week",
-        "importance": 22.36
+        "importance": 23.07
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 6.29
-      },
-      {
-        "feature": "Day Of Month",
-        "importance": 4.25
-      },
-      {
-        "feature": "Lag 1",
-        "importance": 3.62
+        "importance": 5.07
       },
       {
         "feature": "Lag 7",
-        "importance": 2.46
+        "importance": 4.28
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 3.91
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 3.28
       },
       {
         "feature": "Is Weekend",
-        "importance": 1.25
+        "importance": 0.75
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
+        "date": "2026-10-19",
         "quantity": 13.47
       },
       {
-        "date": "2018-01-02",
-        "quantity": 14.28
+        "date": "2026-10-20",
+        "quantity": 14.9
       },
       {
-        "date": "2018-01-03",
-        "quantity": 15.07
+        "date": "2026-10-21",
+        "quantity": 16.3
       },
       {
-        "date": "2018-01-04",
-        "quantity": 15.97
+        "date": "2026-10-22",
+        "quantity": 17.14
       },
       {
-        "date": "2018-01-05",
-        "quantity": 16.18
+        "date": "2026-10-23",
+        "quantity": 16.73
       },
       {
-        "date": "2018-01-06",
-        "quantity": 17.83
+        "date": "2026-10-24",
+        "quantity": 17.1
       },
       {
-        "date": "2018-01-07",
-        "quantity": 19.62
+        "date": "2026-10-25",
+        "quantity": 12.34
       },
       {
-        "date": "2018-01-08",
-        "quantity": 12.9
+        "date": "2026-10-26",
+        "quantity": 14.64
       },
       {
-        "date": "2018-01-09",
-        "quantity": 14.66
+        "date": "2026-10-27",
+        "quantity": 14.24
       },
       {
-        "date": "2018-01-10",
-        "quantity": 14.95
+        "date": "2026-10-28",
+        "quantity": 16.56
       },
       {
-        "date": "2018-01-11",
-        "quantity": 16.05
+        "date": "2026-10-29",
+        "quantity": 16.53
       },
       {
-        "date": "2018-01-12",
-        "quantity": 16.26
+        "date": "2026-10-30",
+        "quantity": 17.32
       },
       {
-        "date": "2018-01-13",
-        "quantity": 18.01
+        "date": "2026-10-31",
+        "quantity": 18.99
       },
       {
-        "date": "2018-01-14",
-        "quantity": 18.77
+        "date": "2026-11-01",
+        "quantity": 13.09
       },
       {
-        "date": "2018-01-15",
-        "quantity": 11.95
+        "date": "2026-11-02",
+        "quantity": 15.18
       },
       {
-        "date": "2018-01-16",
-        "quantity": 14.82
+        "date": "2026-11-03",
+        "quantity": 15.16
       },
       {
-        "date": "2018-01-17",
-        "quantity": 15.03
+        "date": "2026-11-04",
+        "quantity": 16.36
       },
       {
-        "date": "2018-01-18",
-        "quantity": 16.13
+        "date": "2026-11-05",
+        "quantity": 16.5
       },
       {
-        "date": "2018-01-19",
-        "quantity": 16.34
+        "date": "2026-11-06",
+        "quantity": 17.61
       },
       {
-        "date": "2018-01-20",
-        "quantity": 18.05
+        "date": "2026-11-07",
+        "quantity": 19.09
       },
       {
-        "date": "2018-01-21",
-        "quantity": 18.96
+        "date": "2026-11-08",
+        "quantity": 13.27
       },
       {
-        "date": "2018-01-22",
-        "quantity": 13.01
+        "date": "2026-11-09",
+        "quantity": 15.32
       },
       {
-        "date": "2018-01-23",
-        "quantity": 14.54
+        "date": "2026-11-10",
+        "quantity": 15.51
       },
       {
-        "date": "2018-01-24",
-        "quantity": 14.68
+        "date": "2026-11-11",
+        "quantity": 16.71
       },
       {
-        "date": "2018-01-25",
-        "quantity": 16.69
+        "date": "2026-11-12",
+        "quantity": 16.46
       },
       {
-        "date": "2018-01-26",
-        "quantity": 16.48
+        "date": "2026-11-13",
+        "quantity": 17.15
       },
       {
-        "date": "2018-01-27",
-        "quantity": 17.99
+        "date": "2026-11-14",
+        "quantity": 18.25
       },
       {
-        "date": "2018-01-28",
-        "quantity": 18.95
+        "date": "2026-11-15",
+        "quantity": 13.78
       },
       {
-        "date": "2018-01-29",
-        "quantity": 12.12
+        "date": "2026-11-16",
+        "quantity": 16.74
       },
       {
-        "date": "2018-01-30",
-        "quantity": 13.79
+        "date": "2026-11-17",
+        "quantity": 16.96
       }
     ],
     "recommendation": {
-      "current_stock": 45,
+      "current_stock": 0,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 15.79,
-      "safety_stock": 16.21,
-      "reorder_point": 63.56,
-      "target_inventory": 126.7,
+      "average_daily_forecast": 15.98,
+      "safety_stock": 16.22,
+      "reorder_point": 64.16,
+      "target_inventory": 128.08,
       "restock_needed": true,
-      "recommended_volume": 82
+      "recommended_volume": 129
     }
   },
   "6:3:1.65": {
@@ -962,187 +781,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 7.055,
-        "rmse": 8.895,
-        "mape": 12.261,
-        "r2": 0.638
+        "mae": 7.185,
+        "rmse": 9.071,
+        "mape": 13.438,
+        "r2": 0.632
       },
       "Holt-Winters": {
-        "mae": 14.678,
-        "rmse": 17.806,
-        "mape": 22.975,
-        "r2": -0.45
+        "mae": 14.551,
+        "rmse": 17.698,
+        "mape": 23.796,
+        "r2": -0.401
       },
       "Prophet": {
-        "mae": 10.822,
-        "rmse": 13.38,
-        "mape": 21.509,
-        "r2": 0.181
+        "mae": 10.683,
+        "rmse": 13.3,
+        "mape": 22.65,
+        "r2": 0.209
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 52.61
-      },
-      {
-        "feature": "Day Of Week",
-        "importance": 20.95
+        "importance": 45.14
       },
       {
         "feature": "Lag 7",
-        "importance": 17.46
+        "importance": 28.84
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 15.82
       },
       {
         "feature": "Lag 1",
-        "importance": 3.07
+        "importance": 6.36
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 2.61
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 1.81
+        "importance": 2.69
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.5
+        "importance": 0.94
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.21
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 37.47
+        "date": "2026-10-19",
+        "quantity": 37.56
       },
       {
-        "date": "2018-01-02",
-        "quantity": 44.45
+        "date": "2026-10-20",
+        "quantity": 35.57
       },
       {
-        "date": "2018-01-03",
-        "quantity": 43.67
+        "date": "2026-10-21",
+        "quantity": 35.99
       },
       {
-        "date": "2018-01-04",
-        "quantity": 47.21
+        "date": "2026-10-22",
+        "quantity": 35.08
       },
       {
-        "date": "2018-01-05",
-        "quantity": 53.35
+        "date": "2026-10-23",
+        "quantity": 39.57
       },
       {
-        "date": "2018-01-06",
-        "quantity": 55.19
+        "date": "2026-10-24",
+        "quantity": 42.94
       },
       {
-        "date": "2018-01-07",
-        "quantity": 57.78
+        "date": "2026-10-25",
+        "quantity": 27.88
       },
       {
-        "date": "2018-01-08",
-        "quantity": 37.37
+        "date": "2026-10-26",
+        "quantity": 38.0
       },
       {
-        "date": "2018-01-09",
-        "quantity": 44.39
+        "date": "2026-10-27",
+        "quantity": 37.29
       },
       {
-        "date": "2018-01-10",
-        "quantity": 44.59
+        "date": "2026-10-28",
+        "quantity": 39.68
       },
       {
-        "date": "2018-01-11",
-        "quantity": 47.28
+        "date": "2026-10-29",
+        "quantity": 41.67
       },
       {
-        "date": "2018-01-12",
-        "quantity": 52.56
+        "date": "2026-10-30",
+        "quantity": 43.82
       },
       {
-        "date": "2018-01-13",
-        "quantity": 55.19
+        "date": "2026-10-31",
+        "quantity": 41.92
       },
       {
-        "date": "2018-01-14",
-        "quantity": 57.61
+        "date": "2026-11-01",
+        "quantity": 29.73
       },
       {
-        "date": "2018-01-15",
-        "quantity": 37.37
+        "date": "2026-11-02",
+        "quantity": 38.5
       },
       {
-        "date": "2018-01-16",
-        "quantity": 44.39
+        "date": "2026-11-03",
+        "quantity": 39.69
       },
       {
-        "date": "2018-01-17",
-        "quantity": 44.88
+        "date": "2026-11-04",
+        "quantity": 40.91
       },
       {
-        "date": "2018-01-18",
-        "quantity": 47.28
+        "date": "2026-11-05",
+        "quantity": 42.11
       },
       {
-        "date": "2018-01-19",
-        "quantity": 52.56
+        "date": "2026-11-06",
+        "quantity": 43.4
       },
       {
-        "date": "2018-01-20",
-        "quantity": 55.37
+        "date": "2026-11-07",
+        "quantity": 44.72
       },
       {
-        "date": "2018-01-21",
-        "quantity": 57.61
+        "date": "2026-11-08",
+        "quantity": 30.46
       },
       {
-        "date": "2018-01-22",
-        "quantity": 37.55
+        "date": "2026-11-09",
+        "quantity": 38.6
       },
       {
-        "date": "2018-01-23",
-        "quantity": 44.56
+        "date": "2026-11-10",
+        "quantity": 39.55
       },
       {
-        "date": "2018-01-24",
-        "quantity": 45.06
+        "date": "2026-11-11",
+        "quantity": 39.03
       },
       {
-        "date": "2018-01-25",
-        "quantity": 47.46
+        "date": "2026-11-12",
+        "quantity": 42.03
       },
       {
-        "date": "2018-01-26",
-        "quantity": 52.73
+        "date": "2026-11-13",
+        "quantity": 43.71
       },
       {
-        "date": "2018-01-27",
-        "quantity": 54.82
+        "date": "2026-11-14",
+        "quantity": 45.95
       },
       {
-        "date": "2018-01-28",
-        "quantity": 57.59
+        "date": "2026-11-15",
+        "quantity": 30.47
       },
       {
-        "date": "2018-01-29",
-        "quantity": 36.84
+        "date": "2026-11-16",
+        "quantity": 38.76
       },
       {
-        "date": "2018-01-30",
-        "quantity": 44.56
+        "date": "2026-11-17",
+        "quantity": 39.72
       }
     ],
     "recommendation": {
-      "current_stock": 50,
+      "current_stock": 3,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 47.96,
-      "safety_stock": 42.36,
-      "reorder_point": 186.24,
-      "target_inventory": 378.07,
+      "average_daily_forecast": 38.81,
+      "safety_stock": 42.44,
+      "reorder_point": 158.87,
+      "target_inventory": 314.11,
       "restock_needed": true,
-      "recommended_volume": 329
+      "recommended_volume": 312
     }
   },
   "7:3:1.65": {
@@ -1155,187 +974,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 7.282,
-        "rmse": 9.015,
-        "mape": 12.729,
-        "r2": 0.65
+        "mae": 7.621,
+        "rmse": 9.572,
+        "mape": 15.494,
+        "r2": 0.614
       },
       "Holt-Winters": {
-        "mae": 18.243,
-        "rmse": 21.616,
-        "mape": 28.495,
-        "r2": -1.0
+        "mae": 18.246,
+        "rmse": 21.58,
+        "mape": 30.244,
+        "r2": -0.962
       },
       "Prophet": {
-        "mae": 10.995,
-        "rmse": 13.685,
-        "mape": 21.856,
-        "r2": 0.193
+        "mae": 10.956,
+        "rmse": 13.733,
+        "mape": 24.706,
+        "r2": 0.206
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Lag 7",
-        "importance": 38.27
+        "importance": 48.58
       },
       {
         "feature": "Rolling Mean 7",
-        "importance": 34.53
+        "importance": 27.01
       },
       {
         "feature": "Day Of Week",
-        "importance": 15.05
+        "importance": 13.58
       },
       {
         "feature": "Lag 1",
-        "importance": 5.69
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 2.7
+        "importance": 7.57
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 2.49
+        "importance": 2.38
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.28
+        "importance": 0.87
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.0
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 37.26
+        "date": "2026-10-19",
+        "quantity": 42.04
       },
       {
-        "date": "2018-01-02",
-        "quantity": 44.61
+        "date": "2026-10-20",
+        "quantity": 43.97
       },
       {
-        "date": "2018-01-03",
-        "quantity": 46.04
+        "date": "2026-10-21",
+        "quantity": 44.36
       },
       {
-        "date": "2018-01-04",
-        "quantity": 47.27
+        "date": "2026-10-22",
+        "quantity": 48.93
       },
       {
-        "date": "2018-01-05",
-        "quantity": 51.87
+        "date": "2026-10-23",
+        "quantity": 49.81
       },
       {
-        "date": "2018-01-06",
-        "quantity": 60.4
+        "date": "2026-10-24",
+        "quantity": 50.71
       },
       {
-        "date": "2018-01-07",
-        "quantity": 61.12
+        "date": "2026-10-25",
+        "quantity": 26.53
       },
       {
-        "date": "2018-01-08",
-        "quantity": 37.98
+        "date": "2026-10-26",
+        "quantity": 40.76
       },
       {
-        "date": "2018-01-09",
-        "quantity": 44.84
+        "date": "2026-10-27",
+        "quantity": 41.9
       },
       {
-        "date": "2018-01-10",
-        "quantity": 46.32
+        "date": "2026-10-28",
+        "quantity": 42.24
       },
       {
-        "date": "2018-01-11",
-        "quantity": 48.51
+        "date": "2026-10-29",
+        "quantity": 44.31
       },
       {
-        "date": "2018-01-12",
-        "quantity": 51.11
+        "date": "2026-10-30",
+        "quantity": 47.81
       },
       {
-        "date": "2018-01-13",
-        "quantity": 55.35
+        "date": "2026-10-31",
+        "quantity": 48.04
       },
       {
-        "date": "2018-01-14",
-        "quantity": 62.17
+        "date": "2026-11-01",
+        "quantity": 33.67
       },
       {
-        "date": "2018-01-15",
-        "quantity": 38.37
+        "date": "2026-11-02",
+        "quantity": 40.79
       },
       {
-        "date": "2018-01-16",
-        "quantity": 44.12
+        "date": "2026-11-03",
+        "quantity": 41.4
       },
       {
-        "date": "2018-01-17",
-        "quantity": 45.6
+        "date": "2026-11-04",
+        "quantity": 42.49
       },
       {
-        "date": "2018-01-18",
-        "quantity": 48.31
+        "date": "2026-11-05",
+        "quantity": 45.49
       },
       {
-        "date": "2018-01-19",
-        "quantity": 51.32
+        "date": "2026-11-06",
+        "quantity": 50.19
       },
       {
-        "date": "2018-01-20",
-        "quantity": 54.11
+        "date": "2026-11-07",
+        "quantity": 50.76
       },
       {
-        "date": "2018-01-21",
-        "quantity": 59.89
+        "date": "2026-11-08",
+        "quantity": 34.95
       },
       {
-        "date": "2018-01-22",
-        "quantity": 38.23
+        "date": "2026-11-09",
+        "quantity": 41.23
       },
       {
-        "date": "2018-01-23",
-        "quantity": 44.12
+        "date": "2026-11-10",
+        "quantity": 41.22
       },
       {
-        "date": "2018-01-24",
-        "quantity": 45.6
+        "date": "2026-11-11",
+        "quantity": 42.92
       },
       {
-        "date": "2018-01-25",
-        "quantity": 49.18
+        "date": "2026-11-12",
+        "quantity": 45.77
       },
       {
-        "date": "2018-01-26",
-        "quantity": 52.74
+        "date": "2026-11-13",
+        "quantity": 50.89
       },
       {
-        "date": "2018-01-27",
-        "quantity": 59.3
+        "date": "2026-11-14",
+        "quantity": 51.31
       },
       {
-        "date": "2018-01-28",
-        "quantity": 60.18
+        "date": "2026-11-15",
+        "quantity": 34.33
       },
       {
-        "date": "2018-01-29",
-        "quantity": 39.29
+        "date": "2026-11-16",
+        "quantity": 40.6
       },
       {
-        "date": "2018-01-30",
-        "quantity": 45.42
+        "date": "2026-11-17",
+        "quantity": 41.22
       }
     ],
     "recommendation": {
-      "current_stock": 70,
+      "current_stock": 28,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 49.02,
-      "safety_stock": 43.07,
-      "reorder_point": 190.13,
-      "target_inventory": 386.22,
+      "average_daily_forecast": 43.35,
+      "safety_stock": 43.15,
+      "reorder_point": 173.21,
+      "target_inventory": 346.63,
       "restock_needed": true,
-      "recommended_volume": 317
+      "recommended_volume": 319
     }
   },
   "8:3:1.65": {
@@ -1348,187 +1167,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 8.598,
-        "rmse": 10.842,
-        "mape": 11.362,
-        "r2": 0.695
+        "mae": 8.865,
+        "rmse": 11.281,
+        "mape": 14.754,
+        "r2": 0.679
       },
       "Holt-Winters": {
-        "mae": 20.316,
-        "rmse": 24.41,
-        "mape": 23.979,
-        "r2": -0.548
+        "mae": 20.554,
+        "rmse": 24.655,
+        "mape": 27.071,
+        "r2": -0.535
       },
       "Prophet": {
-        "mae": 13.956,
-        "rmse": 17.236,
-        "mape": 20.615,
-        "r2": 0.228
+        "mae": 13.959,
+        "rmse": 17.385,
+        "mape": 24.74,
+        "r2": 0.237
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Lag 7",
-        "importance": 43.93
+        "importance": 50.14
       },
       {
         "feature": "Rolling Mean 7",
-        "importance": 30.99
+        "importance": 27.41
       },
       {
         "feature": "Day Of Week",
-        "importance": 14.21
+        "importance": 11.43
       },
       {
         "feature": "Lag 1",
-        "importance": 6.87
+        "importance": 9.01
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 1.58
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 1.32
+        "importance": 1.29
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.1
+        "importance": 0.51
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.19
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 53.03
+        "date": "2026-10-19",
+        "quantity": 51.62
       },
       {
-        "date": "2018-01-02",
-        "quantity": 59.74
+        "date": "2026-10-20",
+        "quantity": 54.76
       },
       {
-        "date": "2018-01-03",
-        "quantity": 62.17
+        "date": "2026-10-21",
+        "quantity": 56.88
       },
       {
-        "date": "2018-01-04",
+        "date": "2026-10-22",
+        "quantity": 58.67
+      },
+      {
+        "date": "2026-10-23",
+        "quantity": 66.23
+      },
+      {
+        "date": "2026-10-24",
+        "quantity": 65.48
+      },
+      {
+        "date": "2026-10-25",
+        "quantity": 40.38
+      },
+      {
+        "date": "2026-10-26",
+        "quantity": 50.99
+      },
+      {
+        "date": "2026-10-27",
+        "quantity": 54.59
+      },
+      {
+        "date": "2026-10-28",
+        "quantity": 56.52
+      },
+      {
+        "date": "2026-10-29",
+        "quantity": 58.52
+      },
+      {
+        "date": "2026-10-30",
+        "quantity": 64.06
+      },
+      {
+        "date": "2026-10-31",
+        "quantity": 65.88
+      },
+      {
+        "date": "2026-11-01",
+        "quantity": 40.9
+      },
+      {
+        "date": "2026-11-02",
+        "quantity": 52.05
+      },
+      {
+        "date": "2026-11-03",
+        "quantity": 54.65
+      },
+      {
+        "date": "2026-11-04",
+        "quantity": 56.37
+      },
+      {
+        "date": "2026-11-05",
+        "quantity": 58.71
+      },
+      {
+        "date": "2026-11-06",
+        "quantity": 62.47
+      },
+      {
+        "date": "2026-11-07",
+        "quantity": 67.29
+      },
+      {
+        "date": "2026-11-08",
+        "quantity": 41.36
+      },
+      {
+        "date": "2026-11-09",
+        "quantity": 50.84
+      },
+      {
+        "date": "2026-11-10",
+        "quantity": 54.44
+      },
+      {
+        "date": "2026-11-11",
+        "quantity": 56.37
+      },
+      {
+        "date": "2026-11-12",
+        "quantity": 58.71
+      },
+      {
+        "date": "2026-11-13",
         "quantity": 62.57
       },
       {
-        "date": "2018-01-05",
-        "quantity": 66.04
+        "date": "2026-11-14",
+        "quantity": 68.5
       },
       {
-        "date": "2018-01-06",
-        "quantity": 72.04
+        "date": "2026-11-15",
+        "quantity": 41.17
       },
       {
-        "date": "2018-01-07",
-        "quantity": 72.31
+        "date": "2026-11-16",
+        "quantity": 51.0
       },
       {
-        "date": "2018-01-08",
-        "quantity": 49.71
-      },
-      {
-        "date": "2018-01-09",
-        "quantity": 59.04
-      },
-      {
-        "date": "2018-01-10",
-        "quantity": 59.77
-      },
-      {
-        "date": "2018-01-11",
-        "quantity": 62.81
-      },
-      {
-        "date": "2018-01-12",
-        "quantity": 68.39
-      },
-      {
-        "date": "2018-01-13",
-        "quantity": 72.05
-      },
-      {
-        "date": "2018-01-14",
-        "quantity": 75.37
-      },
-      {
-        "date": "2018-01-15",
-        "quantity": 49.93
-      },
-      {
-        "date": "2018-01-16",
-        "quantity": 59.26
-      },
-      {
-        "date": "2018-01-17",
-        "quantity": 60.17
-      },
-      {
-        "date": "2018-01-18",
-        "quantity": 63.45
-      },
-      {
-        "date": "2018-01-19",
-        "quantity": 68.46
-      },
-      {
-        "date": "2018-01-20",
-        "quantity": 72.05
-      },
-      {
-        "date": "2018-01-21",
-        "quantity": 75.51
-      },
-      {
-        "date": "2018-01-22",
-        "quantity": 50.15
-      },
-      {
-        "date": "2018-01-23",
-        "quantity": 59.26
-      },
-      {
-        "date": "2018-01-24",
-        "quantity": 60.02
-      },
-      {
-        "date": "2018-01-25",
-        "quantity": 63.3
-      },
-      {
-        "date": "2018-01-26",
-        "quantity": 67.54
-      },
-      {
-        "date": "2018-01-27",
-        "quantity": 71.14
-      },
-      {
-        "date": "2018-01-28",
-        "quantity": 74.41
-      },
-      {
-        "date": "2018-01-29",
-        "quantity": 49.72
-      },
-      {
-        "date": "2018-01-30",
-        "quantity": 58.35
+        "date": "2026-11-17",
+        "quantity": 54.44
       }
     ],
     "recommendation": {
-      "current_stock": 65,
+      "current_stock": 18,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 63.26,
-      "safety_stock": 53.58,
-      "reorder_point": 243.35,
-      "target_inventory": 496.38,
+      "average_daily_forecast": 55.88,
+      "safety_stock": 53.72,
+      "reorder_point": 221.36,
+      "target_inventory": 444.87,
       "restock_needed": true,
-      "recommended_volume": 432
+      "recommended_volume": 427
     }
   },
   "9:3:1.65": {
@@ -1541,187 +1360,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 6.744,
-        "rmse": 8.393,
-        "mape": 13.584,
-        "r2": 0.591
+        "mae": 6.844,
+        "rmse": 8.664,
+        "mape": 23.101,
+        "r2": 0.571
       },
       "Holt-Winters": {
-        "mae": 15.033,
-        "rmse": 17.913,
-        "mape": 26.866,
-        "r2": -0.862
+        "mae": 16.383,
+        "rmse": 19.304,
+        "mape": 36.438,
+        "r2": -1.0
       },
       "Prophet": {
-        "mae": 9.711,
-        "rmse": 12.091,
-        "mape": 22.139,
-        "r2": 0.152
+        "mae": 9.552,
+        "rmse": 11.949,
+        "mape": 33.706,
+        "r2": 0.185
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 50.69
+        "importance": 46.12
       },
       {
         "feature": "Lag 7",
-        "importance": 19.43
+        "importance": 26.09
       },
       {
         "feature": "Day Of Week",
-        "importance": 17.94
+        "importance": 16.09
       },
       {
         "feature": "Lag 1",
-        "importance": 4.43
+        "importance": 7.36
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 3.48
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 2.79
+        "importance": 2.69
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.24
+        "importance": 1.57
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.08
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 35.57
+        "date": "2026-10-19",
+        "quantity": 38.62
       },
       {
-        "date": "2018-01-02",
-        "quantity": 35.91
+        "date": "2026-10-20",
+        "quantity": 39.34
       },
       {
-        "date": "2018-01-03",
-        "quantity": 36.14
+        "date": "2026-10-21",
+        "quantity": 40.32
       },
       {
-        "date": "2018-01-04",
-        "quantity": 39.3
+        "date": "2026-10-22",
+        "quantity": 44.05
       },
       {
-        "date": "2018-01-05",
-        "quantity": 42.68
+        "date": "2026-10-23",
+        "quantity": 44.65
       },
       {
-        "date": "2018-01-06",
-        "quantity": 45.69
+        "date": "2026-10-24",
+        "quantity": 48.78
       },
       {
-        "date": "2018-01-07",
-        "quantity": 48.74
+        "date": "2026-10-25",
+        "quantity": 28.43
       },
       {
-        "date": "2018-01-08",
-        "quantity": 33.1
+        "date": "2026-10-26",
+        "quantity": 36.55
       },
       {
-        "date": "2018-01-09",
-        "quantity": 36.76
+        "date": "2026-10-27",
+        "quantity": 37.96
       },
       {
-        "date": "2018-01-10",
-        "quantity": 36.93
+        "date": "2026-10-28",
+        "quantity": 40.92
       },
       {
-        "date": "2018-01-11",
-        "quantity": 40.69
+        "date": "2026-10-29",
+        "quantity": 43.63
       },
       {
-        "date": "2018-01-12",
-        "quantity": 43.53
+        "date": "2026-10-30",
+        "quantity": 44.89
       },
       {
-        "date": "2018-01-13",
-        "quantity": 45.28
+        "date": "2026-10-31",
+        "quantity": 47.91
       },
       {
-        "date": "2018-01-14",
-        "quantity": 48.26
+        "date": "2026-11-01",
+        "quantity": 32.97
       },
       {
-        "date": "2018-01-15",
-        "quantity": 32.51
+        "date": "2026-11-02",
+        "quantity": 37.75
       },
       {
-        "date": "2018-01-16",
-        "quantity": 37.15
+        "date": "2026-11-03",
+        "quantity": 37.48
       },
       {
-        "date": "2018-01-17",
-        "quantity": 37.15
+        "date": "2026-11-04",
+        "quantity": 40.72
       },
       {
-        "date": "2018-01-18",
-        "quantity": 40.75
+        "date": "2026-11-05",
+        "quantity": 43.12
       },
       {
-        "date": "2018-01-19",
-        "quantity": 43.59
+        "date": "2026-11-06",
+        "quantity": 45.95
       },
       {
-        "date": "2018-01-20",
-        "quantity": 45.5
+        "date": "2026-11-07",
+        "quantity": 48.89
       },
       {
-        "date": "2018-01-21",
-        "quantity": 48.37
+        "date": "2026-11-08",
+        "quantity": 32.48
       },
       {
-        "date": "2018-01-22",
-        "quantity": 33.63
+        "date": "2026-11-09",
+        "quantity": 38.08
       },
       {
-        "date": "2018-01-23",
-        "quantity": 37.32
+        "date": "2026-11-10",
+        "quantity": 37.72
       },
       {
-        "date": "2018-01-24",
-        "quantity": 37.32
+        "date": "2026-11-11",
+        "quantity": 40.8
       },
       {
-        "date": "2018-01-25",
-        "quantity": 40.84
+        "date": "2026-11-12",
+        "quantity": 43.11
       },
       {
-        "date": "2018-01-26",
-        "quantity": 43.68
+        "date": "2026-11-13",
+        "quantity": 45.85
       },
       {
-        "date": "2018-01-27",
-        "quantity": 45.6
+        "date": "2026-11-14",
+        "quantity": 49.0
       },
       {
-        "date": "2018-01-28",
-        "quantity": 48.94
+        "date": "2026-11-15",
+        "quantity": 31.8
       },
       {
-        "date": "2018-01-29",
-        "quantity": 34.19
+        "date": "2026-11-16",
+        "quantity": 37.13
       },
       {
-        "date": "2018-01-30",
-        "quantity": 37.02
+        "date": "2026-11-17",
+        "quantity": 37.13
       }
     ],
     "recommendation": {
-      "current_stock": 90,
+      "current_stock": 34,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 40.41,
-      "safety_stock": 37.85,
-      "reorder_point": 159.07,
-      "target_inventory": 320.69,
+      "average_daily_forecast": 40.53,
+      "safety_stock": 37.93,
+      "reorder_point": 159.53,
+      "target_inventory": 321.67,
       "restock_needed": true,
-      "recommended_volume": 231
+      "recommended_volume": 288
     }
   },
   "10:3:1.65": {
@@ -1734,187 +1553,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 8.177,
-        "rmse": 10.382,
-        "mape": 11.356,
-        "r2": 0.694
+        "mae": 8.609,
+        "rmse": 10.93,
+        "mape": 13.589,
+        "r2": 0.67
       },
       "Holt-Winters": {
-        "mae": 20.418,
-        "rmse": 24.539,
-        "mape": 24.943,
-        "r2": -0.711
+        "mae": 20.41,
+        "rmse": 24.473,
+        "mape": 26.601,
+        "r2": -0.654
       },
       "Prophet": {
-        "mae": 13.157,
-        "rmse": 15.998,
-        "mape": 19.631,
-        "r2": 0.273
+        "mae": 13.166,
+        "rmse": 16.159,
+        "mape": 21.988,
+        "r2": 0.279
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 46.96
+        "importance": 43.57
       },
       {
         "feature": "Lag 7",
-        "importance": 25.13
+        "importance": 33.3
       },
       {
         "feature": "Day Of Week",
-        "importance": 17.63
+        "importance": 11.46
       },
       {
         "feature": "Lag 1",
-        "importance": 4.53
+        "importance": 7.32
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 2.81
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 1.92
+        "importance": 2.79
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.02
+        "importance": 0.9
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.66
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 47.49
+        "date": "2026-10-19",
+        "quantity": 41.24
       },
       {
-        "date": "2018-01-02",
-        "quantity": 55.47
+        "date": "2026-10-20",
+        "quantity": 43.54
       },
       {
-        "date": "2018-01-03",
-        "quantity": 57.12
+        "date": "2026-10-21",
+        "quantity": 47.13
       },
       {
-        "date": "2018-01-04",
-        "quantity": 59.79
+        "date": "2026-10-22",
+        "quantity": 45.36
       },
       {
-        "date": "2018-01-05",
-        "quantity": 63.22
+        "date": "2026-10-23",
+        "quantity": 48.25
       },
       {
-        "date": "2018-01-06",
-        "quantity": 66.08
+        "date": "2026-10-24",
+        "quantity": 60.06
       },
       {
-        "date": "2018-01-07",
-        "quantity": 69.4
+        "date": "2026-10-25",
+        "quantity": 37.63
       },
       {
-        "date": "2018-01-08",
-        "quantity": 45.73
+        "date": "2026-10-26",
+        "quantity": 44.61
       },
       {
-        "date": "2018-01-09",
-        "quantity": 53.06
+        "date": "2026-10-27",
+        "quantity": 46.6
       },
       {
-        "date": "2018-01-10",
-        "quantity": 54.91
+        "date": "2026-10-28",
+        "quantity": 49.42
       },
       {
-        "date": "2018-01-11",
-        "quantity": 57.91
+        "date": "2026-10-29",
+        "quantity": 50.07
       },
       {
-        "date": "2018-01-12",
-        "quantity": 60.53
+        "date": "2026-10-30",
+        "quantity": 54.57
       },
       {
-        "date": "2018-01-13",
-        "quantity": 64.98
+        "date": "2026-10-31",
+        "quantity": 58.83
       },
       {
-        "date": "2018-01-14",
-        "quantity": 70.41
+        "date": "2026-11-01",
+        "quantity": 36.94
       },
       {
-        "date": "2018-01-15",
-        "quantity": 44.2
-      },
-      {
-        "date": "2018-01-16",
-        "quantity": 52.42
-      },
-      {
-        "date": "2018-01-17",
-        "quantity": 54.17
-      },
-      {
-        "date": "2018-01-18",
-        "quantity": 57.91
-      },
-      {
-        "date": "2018-01-19",
-        "quantity": 59.79
-      },
-      {
-        "date": "2018-01-20",
-        "quantity": 64.2
-      },
-      {
-        "date": "2018-01-21",
-        "quantity": 69.66
-      },
-      {
-        "date": "2018-01-22",
-        "quantity": 44.2
-      },
-      {
-        "date": "2018-01-23",
-        "quantity": 51.95
-      },
-      {
-        "date": "2018-01-24",
-        "quantity": 54.17
-      },
-      {
-        "date": "2018-01-25",
-        "quantity": 57.3
-      },
-      {
-        "date": "2018-01-26",
-        "quantity": 58.96
-      },
-      {
-        "date": "2018-01-27",
-        "quantity": 62.28
-      },
-      {
-        "date": "2018-01-28",
-        "quantity": 65.52
-      },
-      {
-        "date": "2018-01-29",
+        "date": "2026-11-02",
         "quantity": 45.1
       },
       {
-        "date": "2018-01-30",
-        "quantity": 53.05
+        "date": "2026-11-03",
+        "quantity": 46.23
+      },
+      {
+        "date": "2026-11-04",
+        "quantity": 49.4
+      },
+      {
+        "date": "2026-11-05",
+        "quantity": 52.1
+      },
+      {
+        "date": "2026-11-06",
+        "quantity": 55.97
+      },
+      {
+        "date": "2026-11-07",
+        "quantity": 58.14
+      },
+      {
+        "date": "2026-11-08",
+        "quantity": 36.17
+      },
+      {
+        "date": "2026-11-09",
+        "quantity": 45.83
+      },
+      {
+        "date": "2026-11-10",
+        "quantity": 46.57
+      },
+      {
+        "date": "2026-11-11",
+        "quantity": 48.89
+      },
+      {
+        "date": "2026-11-12",
+        "quantity": 51.24
+      },
+      {
+        "date": "2026-11-13",
+        "quantity": 55.11
+      },
+      {
+        "date": "2026-11-14",
+        "quantity": 56.7
+      },
+      {
+        "date": "2026-11-15",
+        "quantity": 36.24
+      },
+      {
+        "date": "2026-11-16",
+        "quantity": 46.0
+      },
+      {
+        "date": "2026-11-17",
+        "quantity": 47.45
       }
     ],
     "recommendation": {
-      "current_stock": 40,
+      "current_stock": 0,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 57.37,
-      "safety_stock": 52.24,
-      "reorder_point": 224.33,
-      "target_inventory": 453.8,
+      "average_daily_forecast": 48.04,
+      "safety_stock": 52.37,
+      "reorder_point": 196.5,
+      "target_inventory": 388.68,
       "restock_needed": true,
-      "recommended_volume": 414
+      "recommended_volume": 389
     }
   },
   "11:3:1.65": {
@@ -1927,187 +1746,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 7.653,
-        "rmse": 9.796,
-        "mape": 11.391,
-        "r2": 0.705
+        "mae": 7.804,
+        "rmse": 10.038,
+        "mape": 12.088,
+        "r2": 0.696
       },
       "Holt-Winters": {
-        "mae": 20.339,
-        "rmse": 24.245,
-        "mape": 26.166,
-        "r2": -0.807
+        "mae": 20.249,
+        "rmse": 24.13,
+        "mape": 26.581,
+        "r2": -0.758
       },
       "Prophet": {
-        "mae": 13.147,
-        "rmse": 16.362,
-        "mape": 22.123,
-        "r2": 0.177
+        "mae": 13.056,
+        "rmse": 16.261,
+        "mape": 22.723,
+        "r2": 0.201
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Lag 7",
-        "importance": 36.23
+        "importance": 45.26
       },
       {
         "feature": "Rolling Mean 7",
-        "importance": 36.21
+        "importance": 29.58
       },
       {
         "feature": "Day Of Week",
-        "importance": 14.93
+        "importance": 11.42
       },
       {
         "feature": "Lag 1",
-        "importance": 7.41
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 2.32
+        "importance": 11.01
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 1.83
+        "importance": 1.77
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.07
+        "importance": 0.94
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.02
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 44.23
+        "date": "2026-10-19",
+        "quantity": 53.07
       },
       {
-        "date": "2018-01-02",
-        "quantity": 52.19
+        "date": "2026-10-20",
+        "quantity": 52.5
       },
       {
-        "date": "2018-01-03",
-        "quantity": 52.21
+        "date": "2026-10-21",
+        "quantity": 54.72
       },
       {
-        "date": "2018-01-04",
-        "quantity": 56.82
+        "date": "2026-10-22",
+        "quantity": 54.92
       },
       {
-        "date": "2018-01-05",
-        "quantity": 55.85
+        "date": "2026-10-23",
+        "quantity": 57.75
       },
       {
-        "date": "2018-01-06",
+        "date": "2026-10-24",
+        "quantity": 55.59
+      },
+      {
+        "date": "2026-10-25",
+        "quantity": 41.08
+      },
+      {
+        "date": "2026-10-26",
+        "quantity": 49.16
+      },
+      {
+        "date": "2026-10-27",
+        "quantity": 50.75
+      },
+      {
+        "date": "2026-10-28",
+        "quantity": 56.4
+      },
+      {
+        "date": "2026-10-29",
+        "quantity": 56.8
+      },
+      {
+        "date": "2026-10-30",
+        "quantity": 58.01
+      },
+      {
+        "date": "2026-10-31",
+        "quantity": 57.84
+      },
+      {
+        "date": "2026-11-01",
+        "quantity": 40.55
+      },
+      {
+        "date": "2026-11-02",
+        "quantity": 48.74
+      },
+      {
+        "date": "2026-11-03",
+        "quantity": 50.33
+      },
+      {
+        "date": "2026-11-04",
+        "quantity": 54.51
+      },
+      {
+        "date": "2026-11-05",
         "quantity": 57.82
       },
       {
-        "date": "2018-01-07",
-        "quantity": 57.9
+        "date": "2026-11-06",
+        "quantity": 57.64
       },
       {
-        "date": "2018-01-08",
-        "quantity": 42.29
+        "date": "2026-11-07",
+        "quantity": 58.4
       },
       {
-        "date": "2018-01-09",
-        "quantity": 50.19
+        "date": "2026-11-08",
+        "quantity": 41.1
       },
       {
-        "date": "2018-01-10",
-        "quantity": 51.4
+        "date": "2026-11-09",
+        "quantity": 48.71
       },
       {
-        "date": "2018-01-11",
-        "quantity": 57.37
+        "date": "2026-11-10",
+        "quantity": 50.31
       },
       {
-        "date": "2018-01-12",
-        "quantity": 57.5
+        "date": "2026-11-11",
+        "quantity": 54.62
       },
       {
-        "date": "2018-01-13",
-        "quantity": 58.41
+        "date": "2026-11-12",
+        "quantity": 55.73
       },
       {
-        "date": "2018-01-14",
-        "quantity": 58.77
+        "date": "2026-11-13",
+        "quantity": 58.4
       },
       {
-        "date": "2018-01-15",
-        "quantity": 42.4
+        "date": "2026-11-14",
+        "quantity": 59.21
       },
       {
-        "date": "2018-01-16",
-        "quantity": 50.01
+        "date": "2026-11-15",
+        "quantity": 40.45
       },
       {
-        "date": "2018-01-17",
-        "quantity": 51.22
+        "date": "2026-11-16",
+        "quantity": 49.97
       },
       {
-        "date": "2018-01-18",
-        "quantity": 54.9
-      },
-      {
-        "date": "2018-01-19",
-        "quantity": 57.98
-      },
-      {
-        "date": "2018-01-20",
-        "quantity": 57.83
-      },
-      {
-        "date": "2018-01-21",
-        "quantity": 58.71
-      },
-      {
-        "date": "2018-01-22",
-        "quantity": 42.4
-      },
-      {
-        "date": "2018-01-23",
-        "quantity": 49.85
-      },
-      {
-        "date": "2018-01-24",
-        "quantity": 51.07
-      },
-      {
-        "date": "2018-01-25",
-        "quantity": 54.1
-      },
-      {
-        "date": "2018-01-26",
-        "quantity": 56.35
-      },
-      {
-        "date": "2018-01-27",
-        "quantity": 62.26
-      },
-      {
-        "date": "2018-01-28",
-        "quantity": 58.61
-      },
-      {
-        "date": "2018-01-29",
-        "quantity": 42.06
-      },
-      {
-        "date": "2018-01-30",
-        "quantity": 49.6
+        "date": "2026-11-17",
+        "quantity": 52.16
       }
     ],
     "recommendation": {
-      "current_stock": 120,
+      "current_stock": 76,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 53.08,
-      "safety_stock": 49.23,
-      "reorder_point": 208.46,
-      "target_inventory": 420.77,
+      "average_daily_forecast": 52.57,
+      "safety_stock": 49.3,
+      "reorder_point": 207.03,
+      "target_inventory": 417.32,
       "restock_needed": true,
-      "recommended_volume": 301
+      "recommended_volume": 342
     }
   },
   "12:3:1.65": {
@@ -2120,1152 +1939,959 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 7.688,
-        "rmse": 9.621,
-        "mape": 11.048,
-        "r2": 0.727
+        "mae": 8.031,
+        "rmse": 10.161,
+        "mape": 12.582,
+        "r2": 0.701
       },
       "Holt-Winters": {
-        "mae": 21.299,
-        "rmse": 25.481,
-        "mape": 27.271,
-        "r2": -0.916
+        "mae": 22.7,
+        "rmse": 26.934,
+        "mape": 29.967,
+        "r2": -1.0
       },
       "Prophet": {
-        "mae": 13.713,
-        "rmse": 16.742,
-        "mape": 22.475,
-        "r2": 0.173
+        "mae": 13.801,
+        "rmse": 16.927,
+        "mape": 24.351,
+        "r2": 0.17
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Lag 7",
-        "importance": 41.11
+        "importance": 45.11
       },
       {
         "feature": "Rolling Mean 7",
-        "importance": 35.2
+        "importance": 35.37
       },
       {
         "feature": "Day Of Week",
-        "importance": 14.65
+        "importance": 10.21
       },
       {
         "feature": "Lag 1",
-        "importance": 4.03
+        "importance": 5.56
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 2.86
+        "importance": 2.59
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.26
+        "importance": 0.94
       },
       {
         "feature": "Is Weekend",
-        "importance": 0.88
+        "importance": 0.23
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 47.08
+        "date": "2026-10-19",
+        "quantity": 50.11
       },
       {
-        "date": "2018-01-02",
-        "quantity": 52.06
+        "date": "2026-10-20",
+        "quantity": 48.37
       },
       {
-        "date": "2018-01-03",
-        "quantity": 48.62
+        "date": "2026-10-21",
+        "quantity": 51.96
       },
       {
-        "date": "2018-01-04",
-        "quantity": 51.54
+        "date": "2026-10-22",
+        "quantity": 59.03
       },
       {
-        "date": "2018-01-05",
-        "quantity": 57.6
+        "date": "2026-10-23",
+        "quantity": 60.89
       },
       {
-        "date": "2018-01-06",
-        "quantity": 57.57
+        "date": "2026-10-24",
+        "quantity": 63.89
       },
       {
-        "date": "2018-01-07",
-        "quantity": 62.01
+        "date": "2026-10-25",
+        "quantity": 39.16
       },
       {
-        "date": "2018-01-08",
-        "quantity": 43.62
+        "date": "2026-10-26",
+        "quantity": 50.63
       },
       {
-        "date": "2018-01-09",
-        "quantity": 50.68
+        "date": "2026-10-27",
+        "quantity": 53.05
       },
       {
-        "date": "2018-01-10",
-        "quantity": 51.86
+        "date": "2026-10-28",
+        "quantity": 56.83
       },
       {
-        "date": "2018-01-11",
-        "quantity": 55.95
+        "date": "2026-10-29",
+        "quantity": 63.61
       },
       {
-        "date": "2018-01-12",
-        "quantity": 59.96
+        "date": "2026-10-30",
+        "quantity": 65.47
       },
       {
-        "date": "2018-01-13",
-        "quantity": 64.22
+        "date": "2026-10-31",
+        "quantity": 67.64
       },
       {
-        "date": "2018-01-14",
-        "quantity": 67.73
+        "date": "2026-11-01",
+        "quantity": 45.48
       },
       {
-        "date": "2018-01-15",
-        "quantity": 44.63
+        "date": "2026-11-02",
+        "quantity": 52.89
       },
       {
-        "date": "2018-01-16",
-        "quantity": 53.18
+        "date": "2026-11-03",
+        "quantity": 55.0
       },
       {
-        "date": "2018-01-17",
-        "quantity": 55.23
+        "date": "2026-11-04",
+        "quantity": 57.72
       },
       {
-        "date": "2018-01-18",
-        "quantity": 59.89
+        "date": "2026-11-05",
+        "quantity": 62.27
       },
       {
-        "date": "2018-01-19",
-        "quantity": 64.78
+        "date": "2026-11-06",
+        "quantity": 66.25
       },
       {
-        "date": "2018-01-20",
-        "quantity": 65.31
+        "date": "2026-11-07",
+        "quantity": 69.8
       },
       {
-        "date": "2018-01-21",
-        "quantity": 69.78
+        "date": "2026-11-08",
+        "quantity": 44.83
       },
       {
-        "date": "2018-01-22",
-        "quantity": 44.71
+        "date": "2026-11-09",
+        "quantity": 52.56
       },
       {
-        "date": "2018-01-23",
-        "quantity": 54.2
+        "date": "2026-11-10",
+        "quantity": 56.85
       },
       {
-        "date": "2018-01-24",
-        "quantity": 56.65
+        "date": "2026-11-11",
+        "quantity": 59.82
       },
       {
-        "date": "2018-01-25",
-        "quantity": 60.08
+        "date": "2026-11-12",
+        "quantity": 63.92
       },
       {
-        "date": "2018-01-26",
-        "quantity": 64.97
+        "date": "2026-11-13",
+        "quantity": 67.18
       },
       {
-        "date": "2018-01-27",
-        "quantity": 67.36
+        "date": "2026-11-14",
+        "quantity": 70.8
       },
       {
-        "date": "2018-01-28",
-        "quantity": 72.33
+        "date": "2026-11-15",
+        "quantity": 45.96
       },
       {
-        "date": "2018-01-29",
-        "quantity": 46.14
+        "date": "2026-11-16",
+        "quantity": 54.98
       },
       {
-        "date": "2018-01-30",
-        "quantity": 56.39
+        "date": "2026-11-17",
+        "quantity": 57.35
       }
     ],
     "recommendation": {
-      "current_stock": 50,
+      "current_stock": 8,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 56.87,
-      "safety_stock": 50.39,
-      "reorder_point": 221.0,
-      "target_inventory": 448.48,
+      "average_daily_forecast": 57.14,
+      "safety_stock": 50.48,
+      "reorder_point": 221.91,
+      "target_inventory": 450.48,
       "restock_needed": true,
-      "recommended_volume": 399
+      "recommended_volume": 443
     }
   },
   "13:3:1.65": {
     "product_id": 13,
     "classification": {
       "adi": 1.0,
-      "cv2": 0.072,
+      "cv2": 0.071,
       "category": "Regular",
       "description": "Smooth, high-frequency demand with low variability."
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 8.672,
-        "rmse": 11.141,
-        "mape": 10.462,
-        "r2": 0.707
+        "mae": 8.959,
+        "rmse": 11.521,
+        "mape": 10.744,
+        "r2": 0.683
       },
       "Holt-Winters": {
-        "mae": 22.146,
-        "rmse": 26.539,
-        "mape": 23.81,
-        "r2": -0.665
+        "mae": 22.124,
+        "rmse": 26.531,
+        "mape": 23.753,
+        "r2": -0.68
       },
       "Prophet": {
-        "mae": 15.461,
-        "rmse": 18.983,
-        "mape": 21.466,
-        "r2": 0.148
+        "mae": 15.018,
+        "rmse": 18.31,
+        "mape": 20.474,
+        "r2": 0.2
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Lag 7",
-        "importance": 43.64
+        "importance": 48.73
       },
       {
         "feature": "Rolling Mean 7",
-        "importance": 33.55
+        "importance": 31.7
       },
       {
         "feature": "Day Of Week",
-        "importance": 13.52
+        "importance": 10.3
       },
       {
         "feature": "Lag 1",
-        "importance": 5.03
+        "importance": 6.08
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 2.39
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 1.06
+        "importance": 2.45
       },
       {
         "feature": "Day Of Month",
-        "importance": 0.8
+        "importance": 0.63
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.12
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 52.31
+        "date": "2026-10-18",
+        "quantity": 52.5
       },
       {
-        "date": "2018-01-02",
-        "quantity": 58.66
+        "date": "2026-10-19",
+        "quantity": 59.99
       },
       {
-        "date": "2018-01-03",
-        "quantity": 59.18
+        "date": "2026-10-20",
+        "quantity": 62.65
       },
       {
-        "date": "2018-01-04",
-        "quantity": 65.03
+        "date": "2026-10-21",
+        "quantity": 66.05
       },
       {
-        "date": "2018-01-05",
-        "quantity": 70.55
+        "date": "2026-10-22",
+        "quantity": 71.55
       },
       {
-        "date": "2018-01-06",
-        "quantity": 73.98
+        "date": "2026-10-23",
+        "quantity": 75.26
       },
       {
-        "date": "2018-01-07",
-        "quantity": 76.67
+        "date": "2026-10-24",
+        "quantity": 80.87
       },
       {
-        "date": "2018-01-08",
-        "quantity": 50.28
+        "date": "2026-10-25",
+        "quantity": 53.39
       },
       {
-        "date": "2018-01-09",
-        "quantity": 57.54
+        "date": "2026-10-26",
+        "quantity": 57.55
       },
       {
-        "date": "2018-01-10",
-        "quantity": 58.7
+        "date": "2026-10-27",
+        "quantity": 61.07
       },
       {
-        "date": "2018-01-11",
-        "quantity": 65.53
+        "date": "2026-10-28",
+        "quantity": 65.84
       },
       {
-        "date": "2018-01-12",
-        "quantity": 71.23
+        "date": "2026-10-29",
+        "quantity": 72.49
       },
       {
-        "date": "2018-01-13",
-        "quantity": 73.47
+        "date": "2026-10-30",
+        "quantity": 75.45
       },
       {
-        "date": "2018-01-14",
-        "quantity": 80.72
+        "date": "2026-10-31",
+        "quantity": 79.94
       },
       {
-        "date": "2018-01-15",
-        "quantity": 53.85
+        "date": "2026-11-01",
+        "quantity": 54.41
       },
       {
-        "date": "2018-01-16",
-        "quantity": 57.94
+        "date": "2026-11-02",
+        "quantity": 58.51
       },
       {
-        "date": "2018-01-17",
-        "quantity": 58.87
+        "date": "2026-11-03",
+        "quantity": 58.79
       },
       {
-        "date": "2018-01-18",
-        "quantity": 65.51
+        "date": "2026-11-04",
+        "quantity": 65.65
       },
       {
-        "date": "2018-01-19",
-        "quantity": 71.21
+        "date": "2026-11-05",
+        "quantity": 72.43
       },
       {
-        "date": "2018-01-20",
-        "quantity": 73.46
+        "date": "2026-11-06",
+        "quantity": 75.24
       },
       {
-        "date": "2018-01-21",
-        "quantity": 80.11
+        "date": "2026-11-07",
+        "quantity": 79.22
       },
       {
-        "date": "2018-01-22",
-        "quantity": 52.69
+        "date": "2026-11-08",
+        "quantity": 52.27
       },
       {
-        "date": "2018-01-23",
-        "quantity": 57.5
+        "date": "2026-11-09",
+        "quantity": 58.07
       },
       {
-        "date": "2018-01-24",
-        "quantity": 58.67
+        "date": "2026-11-10",
+        "quantity": 59.51
       },
       {
-        "date": "2018-01-25",
-        "quantity": 64.88
+        "date": "2026-11-11",
+        "quantity": 65.65
       },
       {
-        "date": "2018-01-26",
-        "quantity": 70.59
+        "date": "2026-11-12",
+        "quantity": 71.97
       },
       {
-        "date": "2018-01-27",
-        "quantity": 72.52
+        "date": "2026-11-13",
+        "quantity": 74.73
       },
       {
-        "date": "2018-01-28",
-        "quantity": 80.33
+        "date": "2026-11-14",
+        "quantity": 80.49
       },
       {
-        "date": "2018-01-29",
-        "quantity": 52.88
+        "date": "2026-11-15",
+        "quantity": 52.51
       },
       {
-        "date": "2018-01-30",
-        "quantity": 57.79
+        "date": "2026-11-16",
+        "quantity": 58.27
       }
     ],
     "recommendation": {
-      "current_stock": 75,
+      "current_stock": 35,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 64.76,
-      "safety_stock": 58.21,
-      "reorder_point": 252.48,
-      "target_inventory": 511.5,
+      "average_daily_forecast": 65.74,
+      "safety_stock": 58.19,
+      "reorder_point": 255.42,
+      "target_inventory": 518.39,
       "restock_needed": true,
-      "recommended_volume": 437
-    }
-  },
-  "14:3:1.65": {
-    "product_id": 14,
-    "classification": {
-      "adi": 1.0,
-      "cv2": 0.077,
-      "category": "Regular",
-      "description": "Smooth, high-frequency demand with low variability."
-    },
-    "metrics": {
-      "Gradient Boosting ML": {
-        "mae": 6.92,
-        "rmse": 8.92,
-        "mape": 11.743,
-        "r2": 0.664
-      },
-      "Holt-Winters": {
-        "mae": 15.854,
-        "rmse": 19.267,
-        "mape": 24.54,
-        "r2": -0.567
-      },
-      "Prophet": {
-        "mae": 11.67,
-        "rmse": 14.195,
-        "mape": 23.187,
-        "r2": 0.149
-      }
-    },
-    "best_model": "Gradient Boosting ML",
-    "feature_importance": [
-      {
-        "feature": "Rolling Mean 7",
-        "importance": 56.64
-      },
-      {
-        "feature": "Day Of Week",
-        "importance": 19.5
-      },
-      {
-        "feature": "Lag 7",
-        "importance": 16.23
-      },
-      {
-        "feature": "Lag 1",
-        "importance": 2.25
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 2.2
-      },
-      {
-        "feature": "Rolling Std 7",
-        "importance": 1.93
-      },
-      {
-        "feature": "Day Of Month",
-        "importance": 1.25
-      }
-    ],
-    "predictions": [
-      {
-        "date": "2018-01-01",
-        "quantity": 38.88
-      },
-      {
-        "date": "2018-01-02",
-        "quantity": 42.86
-      },
-      {
-        "date": "2018-01-03",
-        "quantity": 43.73
-      },
-      {
-        "date": "2018-01-04",
-        "quantity": 46.11
-      },
-      {
-        "date": "2018-01-05",
-        "quantity": 49.15
-      },
-      {
-        "date": "2018-01-06",
-        "quantity": 55.06
-      },
-      {
-        "date": "2018-01-07",
-        "quantity": 54.63
-      },
-      {
-        "date": "2018-01-08",
-        "quantity": 37.91
-      },
-      {
-        "date": "2018-01-09",
-        "quantity": 42.54
-      },
-      {
-        "date": "2018-01-10",
-        "quantity": 43.39
-      },
-      {
-        "date": "2018-01-11",
-        "quantity": 45.78
-      },
-      {
-        "date": "2018-01-12",
-        "quantity": 49.46
-      },
-      {
-        "date": "2018-01-13",
-        "quantity": 54.39
-      },
-      {
-        "date": "2018-01-14",
-        "quantity": 56.5
-      },
-      {
-        "date": "2018-01-15",
-        "quantity": 37.4
-      },
-      {
-        "date": "2018-01-16",
-        "quantity": 42.1
-      },
-      {
-        "date": "2018-01-17",
-        "quantity": 43.39
-      },
-      {
-        "date": "2018-01-18",
-        "quantity": 45.78
-      },
-      {
-        "date": "2018-01-19",
-        "quantity": 49.46
-      },
-      {
-        "date": "2018-01-20",
-        "quantity": 52.3
-      },
-      {
-        "date": "2018-01-21",
-        "quantity": 56.41
-      },
-      {
-        "date": "2018-01-22",
-        "quantity": 37.51
-      },
-      {
-        "date": "2018-01-23",
-        "quantity": 42.0
-      },
-      {
-        "date": "2018-01-24",
-        "quantity": 43.39
-      },
-      {
-        "date": "2018-01-25",
-        "quantity": 45.78
-      },
-      {
-        "date": "2018-01-26",
-        "quantity": 49.46
-      },
-      {
-        "date": "2018-01-27",
-        "quantity": 52.3
-      },
-      {
-        "date": "2018-01-28",
-        "quantity": 56.41
-      },
-      {
-        "date": "2018-01-29",
-        "quantity": 37.51
-      },
-      {
-        "date": "2018-01-30",
-        "quantity": 42.0
-      }
-    ],
-    "recommendation": {
-      "current_stock": 368,
-      "lead_time_days": 3,
-      "z_score": 1.65,
-      "average_daily_forecast": 46.45,
-      "safety_stock": 42.2,
-      "reorder_point": 181.56,
-      "target_inventory": 367.38,
-      "restock_needed": false,
-      "recommended_volume": 0
+      "recommended_volume": 484
     }
   },
   "15:3:1.65": {
     "product_id": 15,
     "classification": {
       "adi": 1.0,
-      "cv2": 0.074,
+      "cv2": 0.075,
       "category": "Regular",
       "description": "Smooth, high-frequency demand with low variability."
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 8.384,
-        "rmse": 11.018,
-        "mape": 9.722,
-        "r2": 0.726
+        "mae": 8.573,
+        "rmse": 11.389,
+        "mape": 11.396,
+        "r2": 0.715
       },
       "Holt-Winters": {
-        "mae": 24.045,
-        "rmse": 28.505,
-        "mape": 24.862,
-        "r2": -0.837
+        "mae": 24.412,
+        "rmse": 28.827,
+        "mape": 26.587,
+        "r2": -0.826
       },
       "Prophet": {
-        "mae": 14.607,
-        "rmse": 18.223,
-        "mape": 18.214,
-        "r2": 0.249
+        "mae": 14.708,
+        "rmse": 18.554,
+        "mape": 20.677,
+        "r2": 0.243
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Lag 7",
-        "importance": 40.58
+        "importance": 50.7
       },
       {
         "feature": "Rolling Mean 7",
-        "importance": 33.11
+        "importance": 25.19
       },
       {
         "feature": "Day Of Week",
-        "importance": 15.6
+        "importance": 11.51
       },
       {
         "feature": "Lag 1",
-        "importance": 6.87
+        "importance": 9.42
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 2.38
+        "importance": 2.34
       },
       {
         "feature": "Day Of Month",
-        "importance": 0.89
+        "importance": 0.54
       },
       {
         "feature": "Is Weekend",
-        "importance": 0.56
+        "importance": 0.31
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 52.39
+        "date": "2026-10-19",
+        "quantity": 53.76
       },
       {
-        "date": "2018-01-02",
-        "quantity": 64.2
+        "date": "2026-10-20",
+        "quantity": 59.26
       },
       {
-        "date": "2018-01-03",
-        "quantity": 66.37
+        "date": "2026-10-21",
+        "quantity": 64.14
       },
       {
-        "date": "2018-01-04",
-        "quantity": 67.69
+        "date": "2026-10-22",
+        "quantity": 59.03
       },
       {
-        "date": "2018-01-05",
-        "quantity": 72.0
+        "date": "2026-10-23",
+        "quantity": 61.69
       },
       {
-        "date": "2018-01-06",
-        "quantity": 79.3
+        "date": "2026-10-24",
+        "quantity": 65.16
       },
       {
-        "date": "2018-01-07",
-        "quantity": 85.03
+        "date": "2026-10-25",
+        "quantity": 39.38
       },
       {
-        "date": "2018-01-08",
-        "quantity": 52.96
+        "date": "2026-10-26",
+        "quantity": 53.14
       },
       {
-        "date": "2018-01-09",
-        "quantity": 64.11
+        "date": "2026-10-27",
+        "quantity": 56.79
       },
       {
-        "date": "2018-01-10",
-        "quantity": 65.59
+        "date": "2026-10-28",
+        "quantity": 60.29
       },
       {
-        "date": "2018-01-11",
-        "quantity": 69.89
+        "date": "2026-10-29",
+        "quantity": 64.26
       },
       {
-        "date": "2018-01-12",
-        "quantity": 73.98
+        "date": "2026-10-30",
+        "quantity": 67.02
       },
       {
-        "date": "2018-01-13",
-        "quantity": 80.28
+        "date": "2026-10-31",
+        "quantity": 71.13
       },
       {
-        "date": "2018-01-14",
-        "quantity": 90.52
+        "date": "2026-11-01",
+        "quantity": 46.05
       },
       {
-        "date": "2018-01-15",
-        "quantity": 56.34
+        "date": "2026-11-02",
+        "quantity": 54.85
       },
       {
-        "date": "2018-01-16",
+        "date": "2026-11-03",
+        "quantity": 57.78
+      },
+      {
+        "date": "2026-11-04",
+        "quantity": 64.26
+      },
+      {
+        "date": "2026-11-05",
+        "quantity": 68.16
+      },
+      {
+        "date": "2026-11-06",
+        "quantity": 70.81
+      },
+      {
+        "date": "2026-11-07",
+        "quantity": 74.15
+      },
+      {
+        "date": "2026-11-08",
+        "quantity": 49.7
+      },
+      {
+        "date": "2026-11-09",
+        "quantity": 56.85
+      },
+      {
+        "date": "2026-11-10",
+        "quantity": 61.76
+      },
+      {
+        "date": "2026-11-11",
+        "quantity": 66.41
+      },
+      {
+        "date": "2026-11-12",
+        "quantity": 70.73
+      },
+      {
+        "date": "2026-11-13",
+        "quantity": 72.07
+      },
+      {
+        "date": "2026-11-14",
+        "quantity": 76.84
+      },
+      {
+        "date": "2026-11-15",
+        "quantity": 49.44
+      },
+      {
+        "date": "2026-11-16",
+        "quantity": 58.87
+      },
+      {
+        "date": "2026-11-17",
         "quantity": 65.6
-      },
-      {
-        "date": "2018-01-17",
-        "quantity": 65.6
-      },
-      {
-        "date": "2018-01-18",
-        "quantity": 69.74
-      },
-      {
-        "date": "2018-01-19",
-        "quantity": 73.55
-      },
-      {
-        "date": "2018-01-20",
-        "quantity": 80.28
-      },
-      {
-        "date": "2018-01-21",
-        "quantity": 90.31
-      },
-      {
-        "date": "2018-01-22",
-        "quantity": 56.05
-      },
-      {
-        "date": "2018-01-23",
-        "quantity": 65.6
-      },
-      {
-        "date": "2018-01-24",
-        "quantity": 65.6
-      },
-      {
-        "date": "2018-01-25",
-        "quantity": 69.67
-      },
-      {
-        "date": "2018-01-26",
-        "quantity": 73.55
-      },
-      {
-        "date": "2018-01-27",
-        "quantity": 78.89
-      },
-      {
-        "date": "2018-01-28",
-        "quantity": 90.4
-      },
-      {
-        "date": "2018-01-29",
-        "quantity": 52.9
-      },
-      {
-        "date": "2018-01-30",
-        "quantity": 62.34
       }
     ],
     "recommendation": {
-      "current_stock": 40,
+      "current_stock": 0,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 70.02,
-      "safety_stock": 62.07,
-      "reorder_point": 272.15,
-      "target_inventory": 552.24,
+      "average_daily_forecast": 61.31,
+      "safety_stock": 62.21,
+      "reorder_point": 246.15,
+      "target_inventory": 491.4,
       "restock_needed": true,
-      "recommended_volume": 513
+      "recommended_volume": 492
     }
   },
   "16:3:1.65": {
     "product_id": 16,
     "classification": {
       "adi": 1.0,
-      "cv2": 0.106,
+      "cv2": 0.107,
       "category": "Regular",
       "description": "Smooth, high-frequency demand with low variability."
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 4.777,
-        "rmse": 6.027,
-        "mape": 19.891,
-        "r2": 0.43
+        "mae": 4.936,
+        "rmse": 6.197,
+        "mape": 20.838,
+        "r2": 0.4
       },
       "Holt-Winters": {
-        "mae": 7.574,
-        "rmse": 9.357,
-        "mape": 27.239,
-        "r2": -0.374
+        "mae": 7.956,
+        "rmse": 9.764,
+        "mape": 28.478,
+        "r2": -0.489
       },
       "Prophet": {
-        "mae": 5.813,
-        "rmse": 7.147,
-        "mape": 26.872,
-        "r2": 0.199
+        "mae": 5.765,
+        "rmse": 7.099,
+        "mape": 26.96,
+        "r2": 0.213
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 61.1
+        "importance": 57.98
       },
       {
         "feature": "Day Of Week",
-        "importance": 23.11
-      },
-      {
-        "feature": "Rolling Std 7",
-        "importance": 5.53
-      },
-      {
-        "feature": "Lag 1",
-        "importance": 3.17
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 2.69
+        "importance": 23.71
       },
       {
         "feature": "Lag 7",
-        "importance": 2.26
+        "importance": 5.85
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 5.08
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 5.08
       },
       {
         "feature": "Day Of Month",
-        "importance": 2.15
+        "importance": 2.23
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.07
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 14.36
+        "date": "2026-10-19",
+        "quantity": 25.39
       },
       {
-        "date": "2018-01-02",
-        "quantity": 20.43
+        "date": "2026-10-20",
+        "quantity": 24.0
       },
       {
-        "date": "2018-01-03",
-        "quantity": 20.4
+        "date": "2026-10-21",
+        "quantity": 23.67
       },
       {
-        "date": "2018-01-04",
-        "quantity": 20.93
+        "date": "2026-10-22",
+        "quantity": 24.59
       },
       {
-        "date": "2018-01-05",
-        "quantity": 21.53
+        "date": "2026-10-23",
+        "quantity": 26.28
       },
       {
-        "date": "2018-01-06",
-        "quantity": 27.12
+        "date": "2026-10-24",
+        "quantity": 26.38
       },
       {
-        "date": "2018-01-07",
-        "quantity": 26.97
+        "date": "2026-10-25",
+        "quantity": 19.2
       },
       {
-        "date": "2018-01-08",
-        "quantity": 17.42
+        "date": "2026-10-26",
+        "quantity": 26.77
       },
       {
-        "date": "2018-01-09",
-        "quantity": 20.84
+        "date": "2026-10-27",
+        "quantity": 25.31
       },
       {
-        "date": "2018-01-10",
-        "quantity": 20.84
+        "date": "2026-10-28",
+        "quantity": 25.68
       },
       {
-        "date": "2018-01-11",
-        "quantity": 21.73
+        "date": "2026-10-29",
+        "quantity": 29.19
       },
       {
-        "date": "2018-01-12",
-        "quantity": 23.16
+        "date": "2026-10-30",
+        "quantity": 28.79
       },
       {
-        "date": "2018-01-13",
-        "quantity": 28.74
+        "date": "2026-10-31",
+        "quantity": 29.33
       },
       {
-        "date": "2018-01-14",
-        "quantity": 28.64
+        "date": "2026-11-01",
+        "quantity": 22.63
       },
       {
-        "date": "2018-01-15",
-        "quantity": 19.72
+        "date": "2026-11-02",
+        "quantity": 33.55
       },
       {
-        "date": "2018-01-16",
-        "quantity": 22.8
+        "date": "2026-11-03",
+        "quantity": 24.73
       },
       {
-        "date": "2018-01-17",
-        "quantity": 23.0
+        "date": "2026-11-04",
+        "quantity": 27.34
       },
       {
-        "date": "2018-01-18",
-        "quantity": 25.65
+        "date": "2026-11-05",
+        "quantity": 29.9
       },
       {
-        "date": "2018-01-19",
+        "date": "2026-11-06",
+        "quantity": 31.42
+      },
+      {
+        "date": "2026-11-07",
+        "quantity": 30.86
+      },
+      {
+        "date": "2026-11-08",
+        "quantity": 23.27
+      },
+      {
+        "date": "2026-11-09",
+        "quantity": 24.8
+      },
+      {
+        "date": "2026-11-10",
+        "quantity": 24.92
+      },
+      {
+        "date": "2026-11-11",
         "quantity": 26.8
       },
       {
-        "date": "2018-01-20",
-        "quantity": 27.25
+        "date": "2026-11-12",
+        "quantity": 28.82
       },
       {
-        "date": "2018-01-21",
-        "quantity": 28.2
+        "date": "2026-11-13",
+        "quantity": 30.08
       },
       {
-        "date": "2018-01-22",
-        "quantity": 19.91
+        "date": "2026-11-14",
+        "quantity": 32.63
       },
       {
-        "date": "2018-01-23",
-        "quantity": 22.16
+        "date": "2026-11-15",
+        "quantity": 23.82
       },
       {
-        "date": "2018-01-24",
-        "quantity": 21.33
+        "date": "2026-11-16",
+        "quantity": 24.5
       },
       {
-        "date": "2018-01-25",
-        "quantity": 24.25
-      },
-      {
-        "date": "2018-01-26",
-        "quantity": 24.41
-      },
-      {
-        "date": "2018-01-27",
-        "quantity": 26.34
-      },
-      {
-        "date": "2018-01-28",
-        "quantity": 29.15
-      },
-      {
-        "date": "2018-01-29",
-        "quantity": 18.98
-      },
-      {
-        "date": "2018-01-30",
-        "quantity": 20.66
+        "date": "2026-11-17",
+        "quantity": 24.63
       }
     ],
     "recommendation": {
-      "current_stock": 90,
+      "current_stock": 30,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 23.12,
-      "safety_stock": 21.76,
-      "reorder_point": 91.13,
-      "target_inventory": 183.63,
+      "average_daily_forecast": 26.64,
+      "safety_stock": 21.79,
+      "reorder_point": 101.71,
+      "target_inventory": 208.28,
       "restock_needed": true,
-      "recommended_volume": 94
+      "recommended_volume": 179
     }
   },
   "17:3:1.65": {
     "product_id": 17,
     "classification": {
       "adi": 1.0,
-      "cv2": 0.092,
+      "cv2": 0.093,
       "category": "Regular",
       "description": "Smooth, high-frequency demand with low variability."
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 5.094,
-        "rmse": 6.385,
-        "mape": 16.835,
-        "r2": 0.52
+        "mae": 5.311,
+        "rmse": 6.599,
+        "mape": 18.099,
+        "r2": 0.494
       },
       "Holt-Winters": {
-        "mae": 9.941,
-        "rmse": 11.983,
-        "mape": 27.886,
-        "r2": -0.689
+        "mae": 28.214,
+        "rmse": 31.168,
+        "mape": 81.097,
+        "r2": -1.0
       },
       "Prophet": {
-        "mae": 7.016,
-        "rmse": 8.738,
-        "mape": 26.646,
-        "r2": 0.102
+        "mae": 6.751,
+        "rmse": 8.471,
+        "mape": 25.951,
+        "r2": 0.166
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 61.84
+        "importance": 57.4
       },
       {
         "feature": "Day Of Week",
-        "importance": 21.49
+        "importance": 17.26
       },
       {
         "feature": "Lag 7",
-        "importance": 5.72
-      },
-      {
-        "feature": "Rolling Std 7",
-        "importance": 3.29
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 3.05
-      },
-      {
-        "feature": "Day Of Month",
-        "importance": 2.35
+        "importance": 14.74
       },
       {
         "feature": "Lag 1",
-        "importance": 2.27
+        "importance": 5.28
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.91
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 2.09
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.31
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 20.13
+        "date": "2026-10-19",
+        "quantity": 22.91
       },
       {
-        "date": "2018-01-02",
+        "date": "2026-10-20",
         "quantity": 24.1
       },
       {
-        "date": "2018-01-03",
-        "quantity": 24.21
+        "date": "2026-10-21",
+        "quantity": 22.39
       },
       {
-        "date": "2018-01-04",
-        "quantity": 24.46
+        "date": "2026-10-22",
+        "quantity": 25.45
       },
       {
-        "date": "2018-01-05",
-        "quantity": 28.99
+        "date": "2026-10-23",
+        "quantity": 26.6
       },
       {
-        "date": "2018-01-06",
-        "quantity": 30.73
-      },
-      {
-        "date": "2018-01-07",
-        "quantity": 32.37
-      },
-      {
-        "date": "2018-01-08",
-        "quantity": 21.93
-      },
-      {
-        "date": "2018-01-09",
-        "quantity": 23.87
-      },
-      {
-        "date": "2018-01-10",
-        "quantity": 24.76
-      },
-      {
-        "date": "2018-01-11",
+        "date": "2026-10-24",
         "quantity": 25.77
       },
       {
-        "date": "2018-01-12",
-        "quantity": 28.85
+        "date": "2026-10-25",
+        "quantity": 17.46
       },
       {
-        "date": "2018-01-13",
-        "quantity": 29.33
+        "date": "2026-10-26",
+        "quantity": 22.4
       },
       {
-        "date": "2018-01-14",
-        "quantity": 31.89
+        "date": "2026-10-27",
+        "quantity": 22.53
       },
       {
-        "date": "2018-01-15",
-        "quantity": 22.77
+        "date": "2026-10-28",
+        "quantity": 23.02
       },
       {
-        "date": "2018-01-16",
-        "quantity": 24.1
+        "date": "2026-10-29",
+        "quantity": 25.7
       },
       {
-        "date": "2018-01-17",
-        "quantity": 25.14
+        "date": "2026-10-30",
+        "quantity": 26.02
       },
       {
-        "date": "2018-01-18",
-        "quantity": 25.83
+        "date": "2026-10-31",
+        "quantity": 27.27
       },
       {
-        "date": "2018-01-19",
-        "quantity": 29.23
+        "date": "2026-11-01",
+        "quantity": 18.47
       },
       {
-        "date": "2018-01-20",
-        "quantity": 29.9
+        "date": "2026-11-02",
+        "quantity": 23.31
       },
       {
-        "date": "2018-01-21",
-        "quantity": 31.47
+        "date": "2026-11-03",
+        "quantity": 22.23
       },
       {
-        "date": "2018-01-22",
-        "quantity": 22.9
+        "date": "2026-11-04",
+        "quantity": 22.68
       },
       {
-        "date": "2018-01-23",
-        "quantity": 24.1
+        "date": "2026-11-05",
+        "quantity": 25.26
       },
       {
-        "date": "2018-01-24",
-        "quantity": 25.14
+        "date": "2026-11-06",
+        "quantity": 25.76
       },
       {
-        "date": "2018-01-25",
-        "quantity": 25.83
+        "date": "2026-11-07",
+        "quantity": 26.38
       },
       {
-        "date": "2018-01-26",
-        "quantity": 29.23
+        "date": "2026-11-08",
+        "quantity": 18.21
       },
       {
-        "date": "2018-01-27",
-        "quantity": 28.57
+        "date": "2026-11-09",
+        "quantity": 21.97
       },
       {
-        "date": "2018-01-28",
-        "quantity": 29.68
+        "date": "2026-11-10",
+        "quantity": 22.31
       },
       {
-        "date": "2018-01-29",
-        "quantity": 21.02
+        "date": "2026-11-11",
+        "quantity": 22.76
       },
       {
-        "date": "2018-01-30",
-        "quantity": 22.51
+        "date": "2026-11-12",
+        "quantity": 25.44
+      },
+      {
+        "date": "2026-11-13",
+        "quantity": 25.76
+      },
+      {
+        "date": "2026-11-14",
+        "quantity": 26.38
+      },
+      {
+        "date": "2026-11-15",
+        "quantity": 18.22
+      },
+      {
+        "date": "2026-11-16",
+        "quantity": 22.14
+      },
+      {
+        "date": "2026-11-17",
+        "quantity": 22.54
       }
     ],
     "recommendation": {
-      "current_stock": 130,
+      "current_stock": 79,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 26.29,
-      "safety_stock": 26.05,
-      "reorder_point": 104.93,
-      "target_inventory": 210.11,
-      "restock_needed": false,
-      "recommended_volume": 0
+      "average_daily_forecast": 23.38,
+      "safety_stock": 26.08,
+      "reorder_point": 96.23,
+      "target_inventory": 189.75,
+      "restock_needed": true,
+      "recommended_volume": 111
     }
   },
   "18:3:1.65": {
@@ -3278,187 +2904,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 8.999,
-        "rmse": 11.316,
-        "mape": 10.868,
-        "r2": 0.726
+        "mae": 9.509,
+        "rmse": 12.025,
+        "mape": 13.983,
+        "r2": 0.698
       },
       "Holt-Winters": {
-        "mae": 22.852,
-        "rmse": 27.451,
-        "mape": 24.695,
-        "r2": -0.614
+        "mae": 23.918,
+        "rmse": 28.633,
+        "mape": 27.972,
+        "r2": -0.711
       },
       "Prophet": {
-        "mae": 15.641,
-        "rmse": 19.15,
-        "mape": 21.314,
-        "r2": 0.214
+        "mae": 15.592,
+        "rmse": 19.226,
+        "mape": 24.822,
+        "r2": 0.228
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Lag 7",
-        "importance": 57.8
+        "importance": 61.0
       },
       {
         "feature": "Rolling Mean 7",
-        "importance": 20.96
+        "importance": 19.53
       },
       {
         "feature": "Day Of Week",
-        "importance": 11.27
+        "importance": 9.35
       },
       {
         "feature": "Lag 1",
-        "importance": 6.6
+        "importance": 7.77
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 1.43
+        "importance": 1.7
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.08
+        "importance": 0.4
       },
       {
         "feature": "Is Weekend",
-        "importance": 0.88
+        "importance": 0.25
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 54.81
+        "date": "2026-10-19",
+        "quantity": 47.41
       },
       {
-        "date": "2018-01-02",
-        "quantity": 57.57
+        "date": "2026-10-20",
+        "quantity": 59.98
       },
       {
-        "date": "2018-01-03",
-        "quantity": 61.42
+        "date": "2026-10-21",
+        "quantity": 65.12
       },
       {
-        "date": "2018-01-04",
-        "quantity": 63.76
+        "date": "2026-10-22",
+        "quantity": 66.58
       },
       {
-        "date": "2018-01-05",
-        "quantity": 69.02
+        "date": "2026-10-23",
+        "quantity": 68.96
       },
       {
-        "date": "2018-01-06",
-        "quantity": 73.2
+        "date": "2026-10-24",
+        "quantity": 69.99
       },
       {
-        "date": "2018-01-07",
-        "quantity": 81.0
+        "date": "2026-10-25",
+        "quantity": 53.6
       },
       {
-        "date": "2018-01-08",
-        "quantity": 52.34
+        "date": "2026-10-26",
+        "quantity": 57.65
       },
       {
-        "date": "2018-01-09",
-        "quantity": 60.01
+        "date": "2026-10-27",
+        "quantity": 60.65
       },
       {
-        "date": "2018-01-10",
-        "quantity": 60.3
+        "date": "2026-10-28",
+        "quantity": 64.18
       },
       {
-        "date": "2018-01-11",
-        "quantity": 63.26
+        "date": "2026-10-29",
+        "quantity": 68.98
       },
       {
-        "date": "2018-01-12",
-        "quantity": 66.97
+        "date": "2026-10-30",
+        "quantity": 72.63
       },
       {
-        "date": "2018-01-13",
-        "quantity": 71.74
+        "date": "2026-10-31",
+        "quantity": 75.4
       },
       {
-        "date": "2018-01-14",
-        "quantity": 77.58
+        "date": "2026-11-01",
+        "quantity": 49.22
       },
       {
-        "date": "2018-01-15",
-        "quantity": 51.2
+        "date": "2026-11-02",
+        "quantity": 59.94
       },
       {
-        "date": "2018-01-16",
-        "quantity": 60.3
+        "date": "2026-11-03",
+        "quantity": 61.64
       },
       {
-        "date": "2018-01-17",
-        "quantity": 60.3
+        "date": "2026-11-04",
+        "quantity": 63.48
       },
       {
-        "date": "2018-01-18",
-        "quantity": 62.44
+        "date": "2026-11-05",
+        "quantity": 69.19
       },
       {
-        "date": "2018-01-19",
-        "quantity": 66.97
+        "date": "2026-11-06",
+        "quantity": 74.67
       },
       {
-        "date": "2018-01-20",
-        "quantity": 71.32
+        "date": "2026-11-07",
+        "quantity": 81.52
       },
       {
-        "date": "2018-01-21",
-        "quantity": 78.46
+        "date": "2026-11-08",
+        "quantity": 50.51
       },
       {
-        "date": "2018-01-22",
-        "quantity": 51.45
+        "date": "2026-11-09",
+        "quantity": 62.0
       },
       {
-        "date": "2018-01-23",
-        "quantity": 60.3
+        "date": "2026-11-10",
+        "quantity": 61.64
       },
       {
-        "date": "2018-01-24",
-        "quantity": 60.3
+        "date": "2026-11-11",
+        "quantity": 63.48
       },
       {
-        "date": "2018-01-25",
-        "quantity": 62.44
+        "date": "2026-11-12",
+        "quantity": 69.19
       },
       {
-        "date": "2018-01-26",
-        "quantity": 66.97
+        "date": "2026-11-13",
+        "quantity": 77.75
       },
       {
-        "date": "2018-01-27",
-        "quantity": 71.32
+        "date": "2026-11-14",
+        "quantity": 82.18
       },
       {
-        "date": "2018-01-28",
-        "quantity": 78.87
+        "date": "2026-11-15",
+        "quantity": 51.24
       },
       {
-        "date": "2018-01-29",
-        "quantity": 49.38
+        "date": "2026-11-16",
+        "quantity": 62.32
       },
       {
-        "date": "2018-01-30",
-        "quantity": 59.19
+        "date": "2026-11-17",
+        "quantity": 61.8
       }
     ],
     "recommendation": {
-      "current_stock": 55,
+      "current_stock": 0,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 64.14,
-      "safety_stock": 60.15,
-      "reorder_point": 252.57,
-      "target_inventory": 509.13,
+      "average_daily_forecast": 64.43,
+      "safety_stock": 60.3,
+      "reorder_point": 253.59,
+      "target_inventory": 511.3,
       "restock_needed": true,
-      "recommended_volume": 455
+      "recommended_volume": 512
     }
   },
   "19:3:1.65": {
@@ -3471,187 +3097,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 5.697,
-        "rmse": 7.27,
-        "mape": 14.328,
+        "mae": 5.688,
+        "rmse": 7.291,
+        "mape": 14.615,
         "r2": 0.579
       },
       "Holt-Winters": {
-        "mae": 10.273,
-        "rmse": 12.78,
-        "mape": 23.053,
-        "r2": -0.3
+        "mae": 10.973,
+        "rmse": 13.572,
+        "mape": 24.577,
+        "r2": -0.458
       },
       "Prophet": {
-        "mae": 8.482,
-        "rmse": 10.475,
-        "mape": 24.397,
-        "r2": 0.126
+        "mae": 8.404,
+        "rmse": 10.374,
+        "mape": 24.472,
+        "r2": 0.148
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 63.26
+        "importance": 57.28
       },
       {
         "feature": "Day Of Week",
-        "importance": 22.74
-      },
-      {
-        "feature": "Rolling Std 7",
-        "importance": 3.53
+        "importance": 19.08
       },
       {
         "feature": "Lag 7",
-        "importance": 3.23
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 3.15
+        "importance": 14.26
       },
       {
         "feature": "Lag 1",
-        "importance": 2.17
+        "importance": 4.29
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 3.48
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.93
+        "importance": 1.42
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.18
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 24.92
+        "date": "2026-10-19",
+        "quantity": 26.26
       },
       {
-        "date": "2018-01-02",
-        "quantity": 30.78
+        "date": "2026-10-20",
+        "quantity": 30.55
       },
       {
-        "date": "2018-01-03",
-        "quantity": 32.73
+        "date": "2026-10-21",
+        "quantity": 32.25
       },
       {
-        "date": "2018-01-04",
-        "quantity": 33.2
+        "date": "2026-10-22",
+        "quantity": 31.69
       },
       {
-        "date": "2018-01-05",
-        "quantity": 35.04
+        "date": "2026-10-23",
+        "quantity": 34.06
       },
       {
-        "date": "2018-01-06",
-        "quantity": 38.72
+        "date": "2026-10-24",
+        "quantity": 33.66
       },
       {
-        "date": "2018-01-07",
-        "quantity": 36.76
+        "date": "2026-10-25",
+        "quantity": 22.56
       },
       {
-        "date": "2018-01-08",
-        "quantity": 25.53
+        "date": "2026-10-26",
+        "quantity": 27.48
       },
       {
-        "date": "2018-01-09",
-        "quantity": 30.24
+        "date": "2026-10-27",
+        "quantity": 27.9
       },
       {
-        "date": "2018-01-10",
-        "quantity": 31.2
+        "date": "2026-10-28",
+        "quantity": 28.81
       },
       {
-        "date": "2018-01-11",
-        "quantity": 31.31
+        "date": "2026-10-29",
+        "quantity": 29.59
       },
       {
-        "date": "2018-01-12",
-        "quantity": 33.05
+        "date": "2026-10-30",
+        "quantity": 31.6
       },
       {
-        "date": "2018-01-13",
-        "quantity": 36.9
+        "date": "2026-10-31",
+        "quantity": 35.32
       },
       {
-        "date": "2018-01-14",
-        "quantity": 37.79
+        "date": "2026-11-01",
+        "quantity": 23.57
       },
       {
-        "date": "2018-01-15",
-        "quantity": 24.42
+        "date": "2026-11-02",
+        "quantity": 26.77
       },
       {
-        "date": "2018-01-16",
-        "quantity": 29.66
+        "date": "2026-11-03",
+        "quantity": 26.23
       },
       {
-        "date": "2018-01-17",
-        "quantity": 30.96
+        "date": "2026-11-04",
+        "quantity": 26.96
       },
       {
-        "date": "2018-01-18",
-        "quantity": 31.79
+        "date": "2026-11-05",
+        "quantity": 28.97
       },
       {
-        "date": "2018-01-19",
-        "quantity": 33.65
+        "date": "2026-11-06",
+        "quantity": 32.15
       },
       {
-        "date": "2018-01-20",
-        "quantity": 37.46
+        "date": "2026-11-07",
+        "quantity": 32.9
       },
       {
-        "date": "2018-01-21",
-        "quantity": 38.27
+        "date": "2026-11-08",
+        "quantity": 25.86
       },
       {
-        "date": "2018-01-22",
-        "quantity": 24.74
+        "date": "2026-11-09",
+        "quantity": 27.64
       },
       {
-        "date": "2018-01-23",
-        "quantity": 30.15
+        "date": "2026-11-10",
+        "quantity": 27.39
       },
       {
-        "date": "2018-01-24",
-        "quantity": 30.98
+        "date": "2026-11-11",
+        "quantity": 28.06
       },
       {
-        "date": "2018-01-25",
-        "quantity": 31.8
+        "date": "2026-11-12",
+        "quantity": 31.36
       },
       {
-        "date": "2018-01-26",
-        "quantity": 33.65
+        "date": "2026-11-13",
+        "quantity": 34.78
       },
       {
-        "date": "2018-01-27",
-        "quantity": 37.46
+        "date": "2026-11-14",
+        "quantity": 36.47
       },
       {
-        "date": "2018-01-28",
-        "quantity": 38.7
+        "date": "2026-11-15",
+        "quantity": 24.36
       },
       {
-        "date": "2018-01-29",
-        "quantity": 24.52
+        "date": "2026-11-16",
+        "quantity": 29.46
       },
       {
-        "date": "2018-01-30",
-        "quantity": 30.15
+        "date": "2026-11-17",
+        "quantity": 29.39
       }
     ],
     "recommendation": {
-      "current_stock": 150,
+      "current_stock": 113,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 32.22,
-      "safety_stock": 31.72,
-      "reorder_point": 128.37,
-      "target_inventory": 257.24,
-      "restock_needed": false,
-      "recommended_volume": 0
+      "average_daily_forecast": 29.47,
+      "safety_stock": 31.74,
+      "reorder_point": 120.14,
+      "target_inventory": 238.02,
+      "restock_needed": true,
+      "recommended_volume": 126
     }
   },
   "20:3:1.65": {
@@ -3664,187 +3290,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 6.445,
-        "rmse": 8.418,
-        "mape": 13.838,
-        "r2": 0.547
+        "mae": 6.586,
+        "rmse": 8.53,
+        "mape": 14.639,
+        "r2": 0.541
       },
       "Holt-Winters": {
-        "mae": 37.779,
-        "rmse": 41.871,
-        "mape": 75.325,
+        "mae": 39.858,
+        "rmse": 43.897,
+        "mape": 79.255,
         "r2": -1.0
       },
       "Prophet": {
-        "mae": 8.984,
-        "rmse": 11.252,
-        "mape": 21.764,
-        "r2": 0.19
+        "mae": 8.845,
+        "rmse": 11.172,
+        "mape": 22.04,
+        "r2": 0.213
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 48.44
+        "importance": 44.43
       },
       {
         "feature": "Lag 7",
-        "importance": 22.61
+        "importance": 31.3
       },
       {
         "feature": "Day Of Week",
-        "importance": 18.79
-      },
-      {
-        "feature": "Rolling Std 7",
-        "importance": 2.94
+        "importance": 15.61
       },
       {
         "feature": "Lag 1",
-        "importance": 2.79
+        "importance": 4.05
       },
       {
-        "feature": "Is Weekend",
-        "importance": 2.76
+        "feature": "Rolling Std 7",
+        "importance": 3.18
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.68
+        "importance": 1.16
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.26
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 28.74
+        "date": "2026-10-19",
+        "quantity": 37.32
       },
       {
-        "date": "2018-01-02",
-        "quantity": 33.27
+        "date": "2026-10-20",
+        "quantity": 33.93
       },
       {
-        "date": "2018-01-03",
-        "quantity": 32.65
+        "date": "2026-10-21",
+        "quantity": 36.19
       },
       {
-        "date": "2018-01-04",
-        "quantity": 34.93
+        "date": "2026-10-22",
+        "quantity": 38.47
       },
       {
-        "date": "2018-01-05",
-        "quantity": 38.87
+        "date": "2026-10-23",
+        "quantity": 39.68
       },
       {
-        "date": "2018-01-06",
-        "quantity": 40.26
+        "date": "2026-10-24",
+        "quantity": 40.96
       },
       {
-        "date": "2018-01-07",
-        "quantity": 43.72
+        "date": "2026-10-25",
+        "quantity": 26.87
       },
       {
-        "date": "2018-01-08",
-        "quantity": 29.37
+        "date": "2026-10-26",
+        "quantity": 35.39
       },
       {
-        "date": "2018-01-09",
-        "quantity": 34.98
+        "date": "2026-10-27",
+        "quantity": 36.09
       },
       {
-        "date": "2018-01-10",
-        "quantity": 34.8
+        "date": "2026-10-28",
+        "quantity": 38.6
       },
       {
-        "date": "2018-01-11",
-        "quantity": 38.01
+        "date": "2026-10-29",
+        "quantity": 37.07
       },
       {
-        "date": "2018-01-12",
-        "quantity": 40.31
+        "date": "2026-10-30",
+        "quantity": 41.66
       },
       {
-        "date": "2018-01-13",
-        "quantity": 43.73
+        "date": "2026-10-31",
+        "quantity": 41.94
       },
       {
-        "date": "2018-01-14",
-        "quantity": 45.37
+        "date": "2026-11-01",
+        "quantity": 28.94
       },
       {
-        "date": "2018-01-15",
-        "quantity": 31.32
+        "date": "2026-11-02",
+        "quantity": 37.78
       },
       {
-        "date": "2018-01-16",
-        "quantity": 38.51
+        "date": "2026-11-03",
+        "quantity": 38.07
       },
       {
-        "date": "2018-01-17",
-        "quantity": 39.03
+        "date": "2026-11-04",
+        "quantity": 38.77
       },
       {
-        "date": "2018-01-18",
-        "quantity": 42.16
+        "date": "2026-11-05",
+        "quantity": 39.98
       },
       {
-        "date": "2018-01-19",
-        "quantity": 45.56
+        "date": "2026-11-06",
+        "quantity": 47.35
       },
       {
-        "date": "2018-01-20",
-        "quantity": 49.06
+        "date": "2026-11-07",
+        "quantity": 48.73
       },
       {
-        "date": "2018-01-21",
-        "quantity": 50.31
+        "date": "2026-11-08",
+        "quantity": 31.94
       },
       {
-        "date": "2018-01-22",
-        "quantity": 35.16
+        "date": "2026-11-09",
+        "quantity": 39.49
       },
       {
-        "date": "2018-01-23",
-        "quantity": 39.54
+        "date": "2026-11-10",
+        "quantity": 39.49
       },
       {
-        "date": "2018-01-24",
-        "quantity": 40.3
+        "date": "2026-11-11",
+        "quantity": 41.72
       },
       {
-        "date": "2018-01-25",
-        "quantity": 43.08
+        "date": "2026-11-12",
+        "quantity": 46.66
       },
       {
-        "date": "2018-01-26",
-        "quantity": 45.61
+        "date": "2026-11-13",
+        "quantity": 49.15
       },
       {
-        "date": "2018-01-27",
-        "quantity": 50.3
+        "date": "2026-11-14",
+        "quantity": 50.47
       },
       {
-        "date": "2018-01-28",
-        "quantity": 53.87
+        "date": "2026-11-15",
+        "quantity": 33.72
       },
       {
-        "date": "2018-01-29",
-        "quantity": 35.45
+        "date": "2026-11-16",
+        "quantity": 40.8
       },
       {
-        "date": "2018-01-30",
-        "quantity": 42.67
+        "date": "2026-11-17",
+        "quantity": 41.43
       }
     ],
     "recommendation": {
-      "current_stock": 60,
+      "current_stock": 7,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 40.03,
-      "safety_stock": 34.8,
-      "reorder_point": 154.9,
-      "target_inventory": 315.02,
+      "average_daily_forecast": 39.29,
+      "safety_stock": 34.87,
+      "reorder_point": 152.74,
+      "target_inventory": 309.9,
       "restock_needed": true,
-      "recommended_volume": 256
+      "recommended_volume": 303
     }
   },
   "21:3:1.65": {
@@ -3857,187 +3483,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 5.659,
-        "rmse": 7.369,
-        "mape": 15.077,
-        "r2": 0.592
+        "mae": 5.774,
+        "rmse": 7.49,
+        "mape": 18.078,
+        "r2": 0.585
       },
       "Holt-Winters": {
-        "mae": 11.366,
-        "rmse": 13.935,
-        "mape": 26.081,
-        "r2": -0.458
+        "mae": 11.362,
+        "rmse": 13.936,
+        "mape": 28.901,
+        "r2": -0.437
       },
       "Prophet": {
-        "mae": 8.156,
-        "rmse": 10.158,
-        "mape": 23.227,
-        "r2": 0.225
+        "mae": 8.136,
+        "rmse": 10.187,
+        "mape": 27.015,
+        "r2": 0.232
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 60.16
+        "importance": 54.51
       },
       {
         "feature": "Day Of Week",
-        "importance": 21.71
+        "importance": 18.54
       },
       {
         "feature": "Lag 7",
-        "importance": 7.86
-      },
-      {
-        "feature": "Rolling Std 7",
-        "importance": 3.18
+        "importance": 18.44
       },
       {
         "feature": "Lag 1",
-        "importance": 2.87
+        "importance": 4.06
       },
       {
-        "feature": "Is Weekend",
-        "importance": 2.63
+        "feature": "Rolling Std 7",
+        "importance": 2.79
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.6
+        "importance": 1.35
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.3
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 23.98
+        "date": "2026-10-19",
+        "quantity": 26.99
       },
       {
-        "date": "2018-01-02",
-        "quantity": 28.01
+        "date": "2026-10-20",
+        "quantity": 26.16
       },
       {
-        "date": "2018-01-03",
-        "quantity": 28.73
+        "date": "2026-10-21",
+        "quantity": 27.17
       },
       {
-        "date": "2018-01-04",
-        "quantity": 32.07
+        "date": "2026-10-22",
+        "quantity": 25.93
       },
       {
-        "date": "2018-01-05",
-        "quantity": 33.78
+        "date": "2026-10-23",
+        "quantity": 31.07
       },
       {
-        "date": "2018-01-06",
-        "quantity": 35.13
+        "date": "2026-10-24",
+        "quantity": 32.46
       },
       {
-        "date": "2018-01-07",
-        "quantity": 36.04
+        "date": "2026-10-25",
+        "quantity": 20.11
       },
       {
-        "date": "2018-01-08",
-        "quantity": 25.24
+        "date": "2026-10-26",
+        "quantity": 25.92
       },
       {
-        "date": "2018-01-09",
-        "quantity": 28.03
+        "date": "2026-10-27",
+        "quantity": 25.54
       },
       {
-        "date": "2018-01-10",
-        "quantity": 28.13
+        "date": "2026-10-28",
+        "quantity": 27.27
       },
       {
-        "date": "2018-01-11",
-        "quantity": 31.22
+        "date": "2026-10-29",
+        "quantity": 27.43
       },
       {
-        "date": "2018-01-12",
-        "quantity": 32.59
+        "date": "2026-10-30",
+        "quantity": 31.08
       },
       {
-        "date": "2018-01-13",
-        "quantity": 35.16
+        "date": "2026-10-31",
+        "quantity": 34.23
       },
       {
-        "date": "2018-01-14",
-        "quantity": 36.26
+        "date": "2026-11-01",
+        "quantity": 21.51
       },
       {
-        "date": "2018-01-15",
-        "quantity": 24.59
+        "date": "2026-11-02",
+        "quantity": 26.52
       },
       {
-        "date": "2018-01-16",
-        "quantity": 27.98
+        "date": "2026-11-03",
+        "quantity": 25.81
       },
       {
-        "date": "2018-01-17",
-        "quantity": 27.98
+        "date": "2026-11-04",
+        "quantity": 28.58
       },
       {
-        "date": "2018-01-18",
-        "quantity": 31.63
+        "date": "2026-11-05",
+        "quantity": 29.16
       },
       {
-        "date": "2018-01-19",
-        "quantity": 32.96
+        "date": "2026-11-06",
+        "quantity": 32.55
       },
       {
-        "date": "2018-01-20",
-        "quantity": 35.12
+        "date": "2026-11-07",
+        "quantity": 36.11
       },
       {
-        "date": "2018-01-21",
-        "quantity": 36.67
+        "date": "2026-11-08",
+        "quantity": 23.09
       },
       {
-        "date": "2018-01-22",
-        "quantity": 24.94
+        "date": "2026-11-09",
+        "quantity": 27.42
       },
       {
-        "date": "2018-01-23",
-        "quantity": 27.98
+        "date": "2026-11-10",
+        "quantity": 26.95
       },
       {
-        "date": "2018-01-24",
-        "quantity": 27.98
+        "date": "2026-11-11",
+        "quantity": 30.21
       },
       {
-        "date": "2018-01-25",
-        "quantity": 31.63
+        "date": "2026-11-12",
+        "quantity": 30.38
       },
       {
-        "date": "2018-01-26",
-        "quantity": 32.96
+        "date": "2026-11-13",
+        "quantity": 33.24
       },
       {
-        "date": "2018-01-27",
-        "quantity": 35.12
+        "date": "2026-11-14",
+        "quantity": 36.1
       },
       {
-        "date": "2018-01-28",
-        "quantity": 36.65
+        "date": "2026-11-15",
+        "quantity": 23.88
       },
       {
-        "date": "2018-01-29",
-        "quantity": 24.94
+        "date": "2026-11-16",
+        "quantity": 27.3
       },
       {
-        "date": "2018-01-30",
-        "quantity": 26.93
+        "date": "2026-11-17",
+        "quantity": 26.88
       }
     ],
     "recommendation": {
-      "current_stock": 85,
+      "current_stock": 48,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 30.68,
-      "safety_stock": 30.97,
-      "reorder_point": 123.02,
-      "target_inventory": 245.75,
+      "average_daily_forecast": 28.24,
+      "safety_stock": 31.02,
+      "reorder_point": 115.73,
+      "target_inventory": 228.67,
       "restock_needed": true,
-      "recommended_volume": 161
+      "recommended_volume": 181
     }
   },
   "22:3:1.65": {
@@ -4050,187 +3676,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 8.835,
-        "rmse": 11.524,
-        "mape": 11.114,
-        "r2": 0.69
+        "mae": 9.006,
+        "rmse": 11.812,
+        "mape": 16.336,
+        "r2": 0.683
       },
       "Holt-Winters": {
-        "mae": 17.178,
-        "rmse": 20.79,
-        "mape": 20.344,
-        "r2": -0.008
+        "mae": 19.01,
+        "rmse": 23.009,
+        "mape": 26.397,
+        "r2": -0.202
       },
       "Prophet": {
-        "mae": 15.303,
-        "rmse": 19.01,
-        "mape": 22.584,
-        "r2": 0.157
+        "mae": 14.856,
+        "rmse": 18.634,
+        "mape": 27.994,
+        "r2": 0.212
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Lag 7",
-        "importance": 39.49
+        "importance": 44.65
       },
       {
         "feature": "Rolling Mean 7",
-        "importance": 33.63
+        "importance": 29.82
       },
       {
         "feature": "Day Of Week",
-        "importance": 14.25
+        "importance": 12.99
       },
       {
         "feature": "Lag 1",
-        "importance": 7.63
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 1.91
+        "importance": 9.59
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 1.9
+        "importance": 1.99
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.19
+        "importance": 0.78
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.18
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 55.21
+        "date": "2026-10-19",
+        "quantity": 58.25
       },
       {
-        "date": "2018-01-02",
-        "quantity": 59.03
+        "date": "2026-10-20",
+        "quantity": 61.54
       },
       {
-        "date": "2018-01-03",
-        "quantity": 57.12
+        "date": "2026-10-21",
+        "quantity": 62.54
       },
       {
-        "date": "2018-01-04",
-        "quantity": 65.08
+        "date": "2026-10-22",
+        "quantity": 64.34
       },
       {
-        "date": "2018-01-05",
-        "quantity": 69.21
+        "date": "2026-10-23",
+        "quantity": 67.46
       },
       {
-        "date": "2018-01-06",
-        "quantity": 71.35
+        "date": "2026-10-24",
+        "quantity": 75.31
       },
       {
-        "date": "2018-01-07",
-        "quantity": 80.44
+        "date": "2026-10-25",
+        "quantity": 42.87
       },
       {
-        "date": "2018-01-08",
-        "quantity": 51.64
+        "date": "2026-10-26",
+        "quantity": 55.01
       },
       {
-        "date": "2018-01-09",
-        "quantity": 59.7
+        "date": "2026-10-27",
+        "quantity": 59.5
       },
       {
-        "date": "2018-01-10",
-        "quantity": 61.66
+        "date": "2026-10-28",
+        "quantity": 63.51
       },
       {
-        "date": "2018-01-11",
-        "quantity": 67.33
+        "date": "2026-10-29",
+        "quantity": 65.43
       },
       {
-        "date": "2018-01-12",
-        "quantity": 72.3
+        "date": "2026-10-30",
+        "quantity": 67.3
       },
       {
-        "date": "2018-01-13",
-        "quantity": 77.49
+        "date": "2026-10-31",
+        "quantity": 72.93
       },
       {
-        "date": "2018-01-14",
-        "quantity": 86.34
+        "date": "2026-11-01",
+        "quantity": 49.54
       },
       {
-        "date": "2018-01-15",
-        "quantity": 51.03
+        "date": "2026-11-02",
+        "quantity": 53.89
       },
       {
-        "date": "2018-01-16",
-        "quantity": 61.4
+        "date": "2026-11-03",
+        "quantity": 56.39
       },
       {
-        "date": "2018-01-17",
-        "quantity": 64.69
+        "date": "2026-11-04",
+        "quantity": 61.92
       },
       {
-        "date": "2018-01-18",
-        "quantity": 69.66
+        "date": "2026-11-05",
+        "quantity": 65.59
       },
       {
-        "date": "2018-01-19",
-        "quantity": 72.46
+        "date": "2026-11-06",
+        "quantity": 67.62
       },
       {
-        "date": "2018-01-20",
-        "quantity": 76.77
+        "date": "2026-11-07",
+        "quantity": 71.84
       },
       {
-        "date": "2018-01-21",
-        "quantity": 83.92
+        "date": "2026-11-08",
+        "quantity": 48.59
       },
       {
-        "date": "2018-01-22",
-        "quantity": 50.85
+        "date": "2026-11-09",
+        "quantity": 52.81
       },
       {
-        "date": "2018-01-23",
-        "quantity": 61.89
+        "date": "2026-11-10",
+        "quantity": 56.62
       },
       {
-        "date": "2018-01-24",
-        "quantity": 64.69
+        "date": "2026-11-11",
+        "quantity": 61.92
       },
       {
-        "date": "2018-01-25",
-        "quantity": 70.17
+        "date": "2026-11-12",
+        "quantity": 65.59
       },
       {
-        "date": "2018-01-26",
-        "quantity": 72.46
+        "date": "2026-11-13",
+        "quantity": 67.99
       },
       {
-        "date": "2018-01-27",
-        "quantity": 76.77
+        "date": "2026-11-14",
+        "quantity": 71.84
       },
       {
-        "date": "2018-01-28",
-        "quantity": 86.49
+        "date": "2026-11-15",
+        "quantity": 48.68
       },
       {
-        "date": "2018-01-29",
-        "quantity": 50.99
+        "date": "2026-11-16",
+        "quantity": 55.55
       },
       {
-        "date": "2018-01-30",
-        "quantity": 62.38
+        "date": "2026-11-17",
+        "quantity": 57.86
       }
     ],
     "recommendation": {
-      "current_stock": 50,
+      "current_stock": 6,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 67.02,
-      "safety_stock": 56.59,
-      "reorder_point": 257.65,
-      "target_inventory": 525.72,
+      "average_daily_forecast": 61.01,
+      "safety_stock": 56.74,
+      "reorder_point": 239.77,
+      "target_inventory": 483.8,
       "restock_needed": true,
-      "recommended_volume": 476
+      "recommended_volume": 478
     }
   },
   "23:3:1.65": {
@@ -4243,187 +3869,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 4.999,
-        "rmse": 6.403,
-        "mape": 17.38,
-        "r2": 0.438
+        "mae": 5.041,
+        "rmse": 6.501,
+        "mape": 17.579,
+        "r2": 0.422
       },
       "Holt-Winters": {
-        "mae": 7.821,
-        "rmse": 9.744,
-        "mape": 24.179,
-        "r2": -0.301
+        "mae": 8.103,
+        "rmse": 10.069,
+        "mape": 24.962,
+        "r2": -0.386
       },
       "Prophet": {
-        "mae": 6.221,
-        "rmse": 7.654,
-        "mape": 23.517,
-        "r2": 0.197
+        "mae": 6.187,
+        "rmse": 7.612,
+        "mape": 23.563,
+        "r2": 0.208
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 50.54
+        "importance": 49.58
       },
       {
         "feature": "Day Of Week",
-        "importance": 21.88
+        "importance": 21.43
       },
       {
         "feature": "Lag 7",
-        "importance": 12.04
+        "importance": 16.63
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 6.02
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 3.81
-      },
-      {
-        "feature": "Day Of Month",
-        "importance": 2.89
+        "importance": 6.59
       },
       {
         "feature": "Lag 1",
-        "importance": 2.81
+        "importance": 3.64
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.87
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.27
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 18.42
+        "date": "2026-10-19",
+        "quantity": 25.93
       },
       {
-        "date": "2018-01-02",
-        "quantity": 22.28
+        "date": "2026-10-20",
+        "quantity": 23.48
       },
       {
-        "date": "2018-01-03",
-        "quantity": 21.51
+        "date": "2026-10-21",
+        "quantity": 22.38
       },
       {
-        "date": "2018-01-04",
-        "quantity": 22.52
+        "date": "2026-10-22",
+        "quantity": 25.91
       },
       {
-        "date": "2018-01-05",
-        "quantity": 25.39
-      },
-      {
-        "date": "2018-01-06",
-        "quantity": 26.85
-      },
-      {
-        "date": "2018-01-07",
-        "quantity": 28.32
-      },
-      {
-        "date": "2018-01-08",
-        "quantity": 19.07
-      },
-      {
-        "date": "2018-01-09",
-        "quantity": 21.42
-      },
-      {
-        "date": "2018-01-10",
-        "quantity": 21.58
-      },
-      {
-        "date": "2018-01-11",
-        "quantity": 22.5
-      },
-      {
-        "date": "2018-01-12",
-        "quantity": 24.05
-      },
-      {
-        "date": "2018-01-13",
-        "quantity": 25.15
-      },
-      {
-        "date": "2018-01-14",
-        "quantity": 29.74
-      },
-      {
-        "date": "2018-01-15",
-        "quantity": 18.11
-      },
-      {
-        "date": "2018-01-16",
-        "quantity": 22.17
-      },
-      {
-        "date": "2018-01-17",
-        "quantity": 22.26
-      },
-      {
-        "date": "2018-01-18",
-        "quantity": 23.21
-      },
-      {
-        "date": "2018-01-19",
-        "quantity": 24.67
-      },
-      {
-        "date": "2018-01-20",
-        "quantity": 26.16
-      },
-      {
-        "date": "2018-01-21",
-        "quantity": 28.86
-      },
-      {
-        "date": "2018-01-22",
-        "quantity": 16.62
-      },
-      {
-        "date": "2018-01-23",
-        "quantity": 22.37
-      },
-      {
-        "date": "2018-01-24",
-        "quantity": 22.36
-      },
-      {
-        "date": "2018-01-25",
-        "quantity": 23.39
-      },
-      {
-        "date": "2018-01-26",
-        "quantity": 24.94
-      },
-      {
-        "date": "2018-01-27",
+        "date": "2026-10-23",
         "quantity": 26.59
       },
       {
-        "date": "2018-01-28",
-        "quantity": 28.84
+        "date": "2026-10-24",
+        "quantity": 29.07
       },
       {
-        "date": "2018-01-29",
-        "quantity": 17.4
+        "date": "2026-10-25",
+        "quantity": 19.45
       },
       {
-        "date": "2018-01-30",
-        "quantity": 19.92
+        "date": "2026-10-26",
+        "quantity": 21.03
+      },
+      {
+        "date": "2026-10-27",
+        "quantity": 23.36
+      },
+      {
+        "date": "2026-10-28",
+        "quantity": 24.56
+      },
+      {
+        "date": "2026-10-29",
+        "quantity": 26.16
+      },
+      {
+        "date": "2026-10-30",
+        "quantity": 27.28
+      },
+      {
+        "date": "2026-10-31",
+        "quantity": 28.74
+      },
+      {
+        "date": "2026-11-01",
+        "quantity": 16.6
+      },
+      {
+        "date": "2026-11-02",
+        "quantity": 23.66
+      },
+      {
+        "date": "2026-11-03",
+        "quantity": 23.79
+      },
+      {
+        "date": "2026-11-04",
+        "quantity": 24.46
+      },
+      {
+        "date": "2026-11-05",
+        "quantity": 26.1
+      },
+      {
+        "date": "2026-11-06",
+        "quantity": 27.42
+      },
+      {
+        "date": "2026-11-07",
+        "quantity": 29.75
+      },
+      {
+        "date": "2026-11-08",
+        "quantity": 18.15
+      },
+      {
+        "date": "2026-11-09",
+        "quantity": 23.72
+      },
+      {
+        "date": "2026-11-10",
+        "quantity": 23.36
+      },
+      {
+        "date": "2026-11-11",
+        "quantity": 24.46
+      },
+      {
+        "date": "2026-11-12",
+        "quantity": 26.1
+      },
+      {
+        "date": "2026-11-13",
+        "quantity": 27.42
+      },
+      {
+        "date": "2026-11-14",
+        "quantity": 29.56
+      },
+      {
+        "date": "2026-11-15",
+        "quantity": 17.87
+      },
+      {
+        "date": "2026-11-16",
+        "quantity": 23.19
+      },
+      {
+        "date": "2026-11-17",
+        "quantity": 23.26
       }
     ],
     "recommendation": {
-      "current_stock": 110,
+      "current_stock": 65,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 23.22,
-      "safety_stock": 24.17,
-      "reorder_point": 93.84,
-      "target_inventory": 186.73,
-      "restock_needed": false,
-      "recommended_volume": 0
+      "average_daily_forecast": 24.43,
+      "safety_stock": 24.19,
+      "reorder_point": 97.47,
+      "target_inventory": 195.17,
+      "restock_needed": true,
+      "recommended_volume": 131
     }
   },
   "24:3:1.65": {
@@ -4436,187 +4062,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 9.493,
-        "rmse": 11.899,
-        "mape": 64.393,
-        "r2": 0.664
+        "mae": 9.358,
+        "rmse": 11.823,
+        "mape": 65.283,
+        "r2": 0.67
       },
       "Holt-Winters": {
-        "mae": 9.414,
+        "mae": 9.42,
         "rmse": 11.677,
-        "mape": 68.414,
-        "r2": 0.677
+        "mape": 68.371,
+        "r2": 0.678
       },
       "Prophet": {
-        "mae": 9.407,
-        "rmse": 11.671,
-        "mape": 68.23,
-        "r2": 0.677
+        "mae": 9.414,
+        "rmse": 11.672,
+        "mape": 68.198,
+        "r2": 0.679
       }
     },
-    "best_model": "Prophet",
+    "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
-        "feature": "Lag 7",
-        "importance": 55.99
-      },
-      {
         "feature": "Day Of Week",
-        "importance": 32.18
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 3.96
+        "importance": 89.22
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 2.64
+        "importance": 3.3
       },
       {
         "feature": "Lag 1",
-        "importance": 2.39
+        "importance": 2.56
       },
       {
         "feature": "Rolling Mean 7",
-        "importance": 1.94
+        "importance": 1.86
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 1.18
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.95
       },
       {
         "feature": "Day Of Month",
-        "importance": 0.9
+        "importance": 0.94
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 20.12
+        "date": "2026-10-19",
+        "quantity": 39.21
       },
       {
-        "date": "2018-01-02",
-        "quantity": 39.11
+        "date": "2026-10-20",
+        "quantity": 57.15
       },
       {
-        "date": "2018-01-03",
-        "quantity": 57.08
+        "date": "2026-10-21",
+        "quantity": 58.0
       },
       {
-        "date": "2018-01-04",
-        "quantity": 60.91
+        "date": "2026-10-22",
+        "quantity": 50.78
       },
       {
-        "date": "2018-01-05",
-        "quantity": 49.45
+        "date": "2026-10-23",
+        "quantity": 25.8
       },
       {
-        "date": "2018-01-06",
-        "quantity": 26.81
+        "date": "2026-10-24",
+        "quantity": 14.39
       },
       {
-        "date": "2018-01-07",
-        "quantity": 15.82
+        "date": "2026-10-25",
+        "quantity": 17.93
       },
       {
-        "date": "2018-01-08",
-        "quantity": 20.12
+        "date": "2026-10-26",
+        "quantity": 36.35
       },
       {
-        "date": "2018-01-09",
-        "quantity": 39.11
+        "date": "2026-10-27",
+        "quantity": 55.91
       },
       {
-        "date": "2018-01-10",
-        "quantity": 57.07
+        "date": "2026-10-28",
+        "quantity": 57.19
       },
       {
-        "date": "2018-01-11",
-        "quantity": 60.91
+        "date": "2026-10-29",
+        "quantity": 49.41
       },
       {
-        "date": "2018-01-12",
-        "quantity": 49.45
+        "date": "2026-10-30",
+        "quantity": 22.03
       },
       {
-        "date": "2018-01-13",
-        "quantity": 26.81
+        "date": "2026-10-31",
+        "quantity": 18.14
       },
       {
-        "date": "2018-01-14",
-        "quantity": 15.82
+        "date": "2026-11-01",
+        "quantity": 19.63
       },
       {
-        "date": "2018-01-15",
-        "quantity": 20.12
+        "date": "2026-11-02",
+        "quantity": 36.29
       },
       {
-        "date": "2018-01-16",
-        "quantity": 39.11
+        "date": "2026-11-03",
+        "quantity": 56.18
       },
       {
-        "date": "2018-01-17",
-        "quantity": 57.07
+        "date": "2026-11-04",
+        "quantity": 57.68
       },
       {
-        "date": "2018-01-18",
-        "quantity": 60.91
+        "date": "2026-11-05",
+        "quantity": 49.18
       },
       {
-        "date": "2018-01-19",
-        "quantity": 49.45
+        "date": "2026-11-06",
+        "quantity": 23.51
       },
       {
-        "date": "2018-01-20",
-        "quantity": 26.81
+        "date": "2026-11-07",
+        "quantity": 15.96
       },
       {
-        "date": "2018-01-21",
-        "quantity": 15.82
+        "date": "2026-11-08",
+        "quantity": 20.28
       },
       {
-        "date": "2018-01-22",
-        "quantity": 20.12
+        "date": "2026-11-09",
+        "quantity": 36.45
       },
       {
-        "date": "2018-01-23",
-        "quantity": 39.11
+        "date": "2026-11-10",
+        "quantity": 56.34
       },
       {
-        "date": "2018-01-24",
-        "quantity": 57.07
+        "date": "2026-11-11",
+        "quantity": 57.84
       },
       {
-        "date": "2018-01-25",
-        "quantity": 60.91
+        "date": "2026-11-12",
+        "quantity": 49.65
       },
       {
-        "date": "2018-01-26",
-        "quantity": 49.45
+        "date": "2026-11-13",
+        "quantity": 23.97
       },
       {
-        "date": "2018-01-27",
-        "quantity": 26.81
+        "date": "2026-11-14",
+        "quantity": 15.62
       },
       {
-        "date": "2018-01-28",
-        "quantity": 15.82
+        "date": "2026-11-15",
+        "quantity": 20.25
       },
       {
-        "date": "2018-01-29",
-        "quantity": 20.12
+        "date": "2026-11-16",
+        "quantity": 35.95
       },
       {
-        "date": "2018-01-30",
-        "quantity": 39.11
+        "date": "2026-11-17",
+        "quantity": 55.84
       }
     ],
     "recommendation": {
-      "current_stock": 80,
+      "current_stock": 42,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 37.88,
-      "safety_stock": 58.03,
-      "reorder_point": 171.67,
-      "target_inventory": 323.2,
+      "average_daily_forecast": 37.76,
+      "safety_stock": 58.05,
+      "reorder_point": 171.34,
+      "target_inventory": 322.39,
       "restock_needed": true,
-      "recommended_volume": 244
+      "recommended_volume": 281
     }
   },
   "25:3:1.65": {
@@ -4629,573 +4255,380 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 8.224,
-        "rmse": 10.423,
-        "mape": 10.254,
-        "r2": 0.712
+        "mae": 8.724,
+        "rmse": 11.065,
+        "mape": 14.892,
+        "r2": 0.685
       },
       "Holt-Winters": {
-        "mae": 21.425,
-        "rmse": 25.712,
-        "mape": 24.238,
-        "r2": -0.751
+        "mae": 23.72,
+        "rmse": 28.102,
+        "mape": 30.433,
+        "r2": -1.0
       },
       "Prophet": {
-        "mae": 15.282,
-        "rmse": 18.659,
-        "mape": 22.145,
-        "r2": 0.078
+        "mae": 15.042,
+        "rmse": 18.529,
+        "mape": 28.225,
+        "r2": 0.117
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Lag 7",
-        "importance": 42.17
+        "importance": 54.58
       },
       {
         "feature": "Rolling Mean 7",
-        "importance": 33.96
+        "importance": 24.84
       },
       {
         "feature": "Day Of Week",
-        "importance": 14.89
+        "importance": 10.66
       },
       {
         "feature": "Lag 1",
-        "importance": 5.26
+        "importance": 7.13
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 1.94
+        "importance": 2.15
       },
       {
         "feature": "Day Of Month",
-        "importance": 0.98
+        "importance": 0.45
       },
       {
         "feature": "Is Weekend",
-        "importance": 0.81
+        "importance": 0.18
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 50.75
+        "date": "2026-10-19",
+        "quantity": 40.84
       },
       {
-        "date": "2018-01-02",
-        "quantity": 60.69
+        "date": "2026-10-20",
+        "quantity": 49.61
       },
       {
-        "date": "2018-01-03",
-        "quantity": 63.68
+        "date": "2026-10-21",
+        "quantity": 47.1
       },
       {
-        "date": "2018-01-04",
-        "quantity": 66.5
+        "date": "2026-10-22",
+        "quantity": 46.05
       },
       {
-        "date": "2018-01-05",
-        "quantity": 70.24
+        "date": "2026-10-23",
+        "quantity": 52.4
       },
       {
-        "date": "2018-01-06",
-        "quantity": 77.13
+        "date": "2026-10-24",
+        "quantity": 61.01
       },
       {
-        "date": "2018-01-07",
-        "quantity": 82.19
+        "date": "2026-10-25",
+        "quantity": 40.35
       },
       {
-        "date": "2018-01-08",
-        "quantity": 52.1
+        "date": "2026-10-26",
+        "quantity": 43.34
       },
       {
-        "date": "2018-01-09",
-        "quantity": 60.87
+        "date": "2026-10-27",
+        "quantity": 49.03
       },
       {
-        "date": "2018-01-10",
-        "quantity": 61.68
+        "date": "2026-10-28",
+        "quantity": 50.85
       },
       {
-        "date": "2018-01-11",
-        "quantity": 64.8
+        "date": "2026-10-29",
+        "quantity": 52.5
       },
       {
-        "date": "2018-01-12",
-        "quantity": 69.09
+        "date": "2026-10-30",
+        "quantity": 56.11
       },
       {
-        "date": "2018-01-13",
-        "quantity": 75.36
+        "date": "2026-10-31",
+        "quantity": 60.17
       },
       {
-        "date": "2018-01-14",
-        "quantity": 79.07
+        "date": "2026-11-01",
+        "quantity": 39.93
       },
       {
-        "date": "2018-01-15",
-        "quantity": 49.24
+        "date": "2026-11-02",
+        "quantity": 44.44
       },
       {
-        "date": "2018-01-16",
-        "quantity": 60.86
+        "date": "2026-11-03",
+        "quantity": 48.77
       },
       {
-        "date": "2018-01-17",
-        "quantity": 61.6
+        "date": "2026-11-04",
+        "quantity": 53.31
       },
       {
-        "date": "2018-01-18",
-        "quantity": 63.9
+        "date": "2026-11-05",
+        "quantity": 55.33
       },
       {
-        "date": "2018-01-19",
-        "quantity": 69.11
+        "date": "2026-11-06",
+        "quantity": 59.39
       },
       {
-        "date": "2018-01-20",
-        "quantity": 75.69
+        "date": "2026-11-07",
+        "quantity": 61.08
       },
       {
-        "date": "2018-01-21",
-        "quantity": 79.38
+        "date": "2026-11-08",
+        "quantity": 41.32
       },
       {
-        "date": "2018-01-22",
-        "quantity": 50.2
+        "date": "2026-11-09",
+        "quantity": 44.95
       },
       {
-        "date": "2018-01-23",
-        "quantity": 60.41
+        "date": "2026-11-10",
+        "quantity": 49.58
       },
       {
-        "date": "2018-01-24",
-        "quantity": 61.6
+        "date": "2026-11-11",
+        "quantity": 53.9
       },
       {
-        "date": "2018-01-25",
-        "quantity": 63.6
+        "date": "2026-11-12",
+        "quantity": 56.66
       },
       {
-        "date": "2018-01-26",
-        "quantity": 69.11
+        "date": "2026-11-13",
+        "quantity": 57.68
       },
       {
-        "date": "2018-01-27",
-        "quantity": 75.69
+        "date": "2026-11-14",
+        "quantity": 59.51
       },
       {
-        "date": "2018-01-28",
-        "quantity": 79.38
+        "date": "2026-11-15",
+        "quantity": 41.07
       },
       {
-        "date": "2018-01-29",
-        "quantity": 49.87
+        "date": "2026-11-16",
+        "quantity": 46.08
       },
       {
-        "date": "2018-01-30",
-        "quantity": 60.78
+        "date": "2026-11-17",
+        "quantity": 49.58
       }
     ],
     "recommendation": {
-      "current_stock": 40,
+      "current_stock": 0,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 65.49,
-      "safety_stock": 56.57,
-      "reorder_point": 253.03,
-      "target_inventory": 514.97,
+      "average_daily_forecast": 50.4,
+      "safety_stock": 56.72,
+      "reorder_point": 207.92,
+      "target_inventory": 409.51,
       "restock_needed": true,
-      "recommended_volume": 475
+      "recommended_volume": 410
     }
   },
   "26:3:1.65": {
     "product_id": 26,
     "classification": {
       "adi": 1.0,
-      "cv2": 0.088,
+      "cv2": 0.089,
       "category": "Regular",
       "description": "Smooth, high-frequency demand with low variability."
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 6.212,
-        "rmse": 7.723,
-        "mape": 13.6,
-        "r2": 0.653
+        "mae": 6.316,
+        "rmse": 7.954,
+        "mape": 15.32,
+        "r2": 0.64
       },
       "Holt-Winters": {
-        "mae": 18.107,
-        "rmse": 20.854,
-        "mape": 34.328,
+        "mae": 18.364,
+        "rmse": 21.053,
+        "mape": 35.683,
         "r2": -1.0
       },
       "Prophet": {
-        "mae": 9.207,
-        "rmse": 11.553,
-        "mape": 22.914,
-        "r2": 0.223
+        "mae": 9.154,
+        "rmse": 11.554,
+        "mape": 24.47,
+        "r2": 0.24
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 57.84
-      },
-      {
-        "feature": "Day Of Week",
-        "importance": 20.54
+        "importance": 49.6
       },
       {
         "feature": "Lag 7",
-        "importance": 12.36
+        "importance": 25.15
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 15.82
       },
       {
         "feature": "Lag 1",
-        "importance": 2.99
+        "importance": 5.02
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 2.87
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 1.72
+        "importance": 3.3
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.68
+        "importance": 0.96
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.16
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 32.71
+        "date": "2026-10-19",
+        "quantity": 36.9
       },
       {
-        "date": "2018-01-02",
-        "quantity": 38.86
+        "date": "2026-10-20",
+        "quantity": 40.2
       },
       {
-        "date": "2018-01-03",
-        "quantity": 41.28
+        "date": "2026-10-21",
+        "quantity": 44.09
       },
       {
-        "date": "2018-01-04",
-        "quantity": 44.16
+        "date": "2026-10-22",
+        "quantity": 41.3
       },
       {
-        "date": "2018-01-05",
-        "quantity": 43.93
+        "date": "2026-10-23",
+        "quantity": 45.46
       },
       {
-        "date": "2018-01-06",
-        "quantity": 48.29
+        "date": "2026-10-24",
+        "quantity": 44.71
       },
       {
-        "date": "2018-01-07",
-        "quantity": 52.44
+        "date": "2026-10-25",
+        "quantity": 33.76
       },
       {
-        "date": "2018-01-08",
-        "quantity": 34.08
+        "date": "2026-10-26",
+        "quantity": 41.62
       },
       {
-        "date": "2018-01-09",
-        "quantity": 40.01
+        "date": "2026-10-27",
+        "quantity": 39.55
       },
       {
-        "date": "2018-01-10",
-        "quantity": 40.82
+        "date": "2026-10-28",
+        "quantity": 40.94
       },
       {
-        "date": "2018-01-11",
-        "quantity": 43.51
+        "date": "2026-10-29",
+        "quantity": 42.9
       },
       {
-        "date": "2018-01-12",
-        "quantity": 45.42
+        "date": "2026-10-30",
+        "quantity": 44.28
       },
       {
-        "date": "2018-01-13",
-        "quantity": 49.4
+        "date": "2026-10-31",
+        "quantity": 48.3
       },
       {
-        "date": "2018-01-14",
-        "quantity": 54.02
+        "date": "2026-11-01",
+        "quantity": 36.27
       },
       {
-        "date": "2018-01-15",
-        "quantity": 35.31
+        "date": "2026-11-02",
+        "quantity": 42.03
       },
       {
-        "date": "2018-01-16",
-        "quantity": 41.47
+        "date": "2026-11-03",
+        "quantity": 42.5
       },
       {
-        "date": "2018-01-17",
-        "quantity": 42.24
+        "date": "2026-11-04",
+        "quantity": 45.03
       },
       {
-        "date": "2018-01-18",
-        "quantity": 44.12
+        "date": "2026-11-05",
+        "quantity": 46.08
       },
       {
-        "date": "2018-01-19",
-        "quantity": 46.04
+        "date": "2026-11-06",
+        "quantity": 47.25
       },
       {
-        "date": "2018-01-20",
-        "quantity": 49.58
+        "date": "2026-11-07",
+        "quantity": 48.25
       },
       {
-        "date": "2018-01-21",
-        "quantity": 53.6
+        "date": "2026-11-08",
+        "quantity": 32.51
       },
       {
-        "date": "2018-01-22",
-        "quantity": 34.32
+        "date": "2026-11-09",
+        "quantity": 40.28
       },
       {
-        "date": "2018-01-23",
-        "quantity": 41.31
+        "date": "2026-11-10",
+        "quantity": 40.62
       },
       {
-        "date": "2018-01-24",
-        "quantity": 41.54
+        "date": "2026-11-11",
+        "quantity": 43.79
       },
       {
-        "date": "2018-01-25",
-        "quantity": 43.69
+        "date": "2026-11-12",
+        "quantity": 44.77
       },
       {
-        "date": "2018-01-26",
-        "quantity": 45.31
+        "date": "2026-11-13",
+        "quantity": 46.9
       },
       {
-        "date": "2018-01-27",
-        "quantity": 49.17
+        "date": "2026-11-14",
+        "quantity": 50.43
       },
       {
-        "date": "2018-01-28",
-        "quantity": 52.92
+        "date": "2026-11-15",
+        "quantity": 36.05
       },
       {
-        "date": "2018-01-29",
-        "quantity": 34.81
+        "date": "2026-11-16",
+        "quantity": 40.77
       },
       {
-        "date": "2018-01-30",
-        "quantity": 41.03
+        "date": "2026-11-17",
+        "quantity": 41.92
       }
     ],
     "recommendation": {
-      "current_stock": 75,
+      "current_stock": 33,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 43.51,
-      "safety_stock": 36.71,
-      "reorder_point": 167.25,
-      "target_inventory": 341.3,
+      "average_daily_forecast": 42.31,
+      "safety_stock": 36.79,
+      "reorder_point": 163.74,
+      "target_inventory": 333.0,
       "restock_needed": true,
-      "recommended_volume": 267
-    }
-  },
-  "27:3:1.65": {
-    "product_id": 27,
-    "classification": {
-      "adi": 1.0,
-      "cv2": 0.11,
-      "category": "Regular",
-      "description": "Smooth, high-frequency demand with low variability."
-    },
-    "metrics": {
-      "Gradient Boosting ML": {
-        "mae": 4.167,
-        "rmse": 5.386,
-        "mape": 20.233,
-        "r2": 0.421
-      },
-      "Holt-Winters": {
-        "mae": 6.861,
-        "rmse": 8.48,
-        "mape": 28.998,
-        "r2": -0.435
-      },
-      "Prophet": {
-        "mae": 5.26,
-        "rmse": 6.506,
-        "mape": 28.653,
-        "r2": 0.155
-      }
-    },
-    "best_model": "Gradient Boosting ML",
-    "feature_importance": [
-      {
-        "feature": "Rolling Mean 7",
-        "importance": 54.91
-      },
-      {
-        "feature": "Day Of Week",
-        "importance": 28.26
-      },
-      {
-        "feature": "Rolling Std 7",
-        "importance": 6.9
-      },
-      {
-        "feature": "Day Of Month",
-        "importance": 4.07
-      },
-      {
-        "feature": "Lag 7",
-        "importance": 3.23
-      },
-      {
-        "feature": "Lag 1",
-        "importance": 2.61
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 0.02
-      }
-    ],
-    "predictions": [
-      {
-        "date": "2018-01-01",
-        "quantity": 15.68
-      },
-      {
-        "date": "2018-01-02",
-        "quantity": 15.59
-      },
-      {
-        "date": "2018-01-03",
-        "quantity": 15.55
-      },
-      {
-        "date": "2018-01-04",
-        "quantity": 17.17
-      },
-      {
-        "date": "2018-01-05",
-        "quantity": 18.93
-      },
-      {
-        "date": "2018-01-06",
-        "quantity": 19.49
-      },
-      {
-        "date": "2018-01-07",
-        "quantity": 20.24
-      },
-      {
-        "date": "2018-01-08",
-        "quantity": 11.78
-      },
-      {
-        "date": "2018-01-09",
-        "quantity": 16.15
-      },
-      {
-        "date": "2018-01-10",
-        "quantity": 16.31
-      },
-      {
-        "date": "2018-01-11",
-        "quantity": 17.26
-      },
-      {
-        "date": "2018-01-12",
-        "quantity": 18.81
-      },
-      {
-        "date": "2018-01-13",
-        "quantity": 19.74
-      },
-      {
-        "date": "2018-01-14",
-        "quantity": 19.86
-      },
-      {
-        "date": "2018-01-15",
-        "quantity": 13.03
-      },
-      {
-        "date": "2018-01-16",
-        "quantity": 15.46
-      },
-      {
-        "date": "2018-01-17",
-        "quantity": 15.62
-      },
-      {
-        "date": "2018-01-18",
-        "quantity": 17.51
-      },
-      {
-        "date": "2018-01-19",
-        "quantity": 19.12
-      },
-      {
-        "date": "2018-01-20",
-        "quantity": 20.05
-      },
-      {
-        "date": "2018-01-21",
-        "quantity": 20.95
-      },
-      {
-        "date": "2018-01-22",
-        "quantity": 13.09
-      },
-      {
-        "date": "2018-01-23",
-        "quantity": 15.12
-      },
-      {
-        "date": "2018-01-24",
-        "quantity": 15.13
-      },
-      {
-        "date": "2018-01-25",
-        "quantity": 17.02
-      },
-      {
-        "date": "2018-01-26",
-        "quantity": 19.25
-      },
-      {
-        "date": "2018-01-27",
-        "quantity": 20.18
-      },
-      {
-        "date": "2018-01-28",
-        "quantity": 21.21
-      },
-      {
-        "date": "2018-01-29",
-        "quantity": 13.42
-      },
-      {
-        "date": "2018-01-30",
-        "quantity": 15.48
-      }
-    ],
-    "recommendation": {
-      "current_stock": 120,
-      "lead_time_days": 3,
-      "z_score": 1.65,
-      "average_daily_forecast": 17.14,
-      "safety_stock": 18.97,
-      "reorder_point": 70.39,
-      "target_inventory": 138.96,
-      "restock_needed": false,
-      "recommended_volume": 0
+      "recommended_volume": 300
     }
   },
   "28:3:1.65": {
@@ -5208,187 +4641,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 9.215,
-        "rmse": 11.827,
-        "mape": 10.5,
-        "r2": 0.725
+        "mae": 9.638,
+        "rmse": 12.334,
+        "mape": 12.655,
+        "r2": 0.708
       },
       "Holt-Winters": {
-        "mae": 23.953,
-        "rmse": 28.668,
-        "mape": 24.834,
-        "r2": -0.618
+        "mae": 25.493,
+        "rmse": 30.29,
+        "mape": 27.929,
+        "r2": -0.759
       },
       "Prophet": {
-        "mae": 17.345,
-        "rmse": 21.424,
-        "mape": 23.387,
-        "r2": 0.096
+        "mae": 16.863,
+        "rmse": 20.905,
+        "mape": 25.182,
+        "r2": 0.162
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Lag 7",
-        "importance": 50.26
+        "importance": 55.36
       },
       {
         "feature": "Rolling Mean 7",
-        "importance": 24.35
+        "importance": 21.45
       },
       {
         "feature": "Day Of Week",
-        "importance": 12.38
+        "importance": 11.03
       },
       {
         "feature": "Lag 1",
-        "importance": 8.1
+        "importance": 9.4
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 2.06
-      },
-      {
-        "feature": "Is Weekend",
-        "importance": 1.75
+        "importance": 2.1
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.1
+        "importance": 0.51
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.16
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 57.32
+        "date": "2026-10-19",
+        "quantity": 51.9
       },
       {
-        "date": "2018-01-02",
-        "quantity": 67.15
+        "date": "2026-10-20",
+        "quantity": 55.82
       },
       {
-        "date": "2018-01-03",
-        "quantity": 67.48
+        "date": "2026-10-21",
+        "quantity": 57.91
       },
       {
-        "date": "2018-01-04",
-        "quantity": 73.52
+        "date": "2026-10-22",
+        "quantity": 55.76
       },
       {
-        "date": "2018-01-05",
-        "quantity": 80.04
+        "date": "2026-10-23",
+        "quantity": 64.67
       },
       {
-        "date": "2018-01-06",
-        "quantity": 86.48
+        "date": "2026-10-24",
+        "quantity": 68.67
       },
       {
-        "date": "2018-01-07",
-        "quantity": 88.06
+        "date": "2026-10-25",
+        "quantity": 48.39
       },
       {
-        "date": "2018-01-08",
-        "quantity": 54.98
+        "date": "2026-10-26",
+        "quantity": 52.08
       },
       {
-        "date": "2018-01-09",
-        "quantity": 65.44
+        "date": "2026-10-27",
+        "quantity": 52.14
       },
       {
-        "date": "2018-01-10",
-        "quantity": 69.09
+        "date": "2026-10-28",
+        "quantity": 55.06
       },
       {
-        "date": "2018-01-11",
-        "quantity": 74.46
+        "date": "2026-10-29",
+        "quantity": 57.99
       },
       {
-        "date": "2018-01-12",
-        "quantity": 79.87
+        "date": "2026-10-30",
+        "quantity": 61.98
       },
       {
-        "date": "2018-01-13",
-        "quantity": 85.66
+        "date": "2026-10-31",
+        "quantity": 67.19
       },
       {
-        "date": "2018-01-14",
-        "quantity": 89.07
+        "date": "2026-11-01",
+        "quantity": 43.84
       },
       {
-        "date": "2018-01-15",
-        "quantity": 54.79
+        "date": "2026-11-02",
+        "quantity": 50.91
       },
       {
-        "date": "2018-01-16",
-        "quantity": 65.44
+        "date": "2026-11-03",
+        "quantity": 51.85
       },
       {
-        "date": "2018-01-17",
-        "quantity": 69.09
+        "date": "2026-11-04",
+        "quantity": 54.53
       },
       {
-        "date": "2018-01-18",
-        "quantity": 74.46
+        "date": "2026-11-05",
+        "quantity": 58.16
       },
       {
-        "date": "2018-01-19",
-        "quantity": 79.87
+        "date": "2026-11-06",
+        "quantity": 60.32
       },
       {
-        "date": "2018-01-20",
-        "quantity": 85.66
+        "date": "2026-11-07",
+        "quantity": 64.62
       },
       {
-        "date": "2018-01-21",
-        "quantity": 89.39
+        "date": "2026-11-08",
+        "quantity": 43.29
       },
       {
-        "date": "2018-01-22",
-        "quantity": 54.84
+        "date": "2026-11-09",
+        "quantity": 51.77
       },
       {
-        "date": "2018-01-23",
-        "quantity": 65.48
+        "date": "2026-11-10",
+        "quantity": 51.9
       },
       {
-        "date": "2018-01-24",
-        "quantity": 69.12
+        "date": "2026-11-11",
+        "quantity": 54.29
       },
       {
-        "date": "2018-01-25",
-        "quantity": 74.49
+        "date": "2026-11-12",
+        "quantity": 57.92
       },
       {
-        "date": "2018-01-26",
-        "quantity": 80.02
+        "date": "2026-11-13",
+        "quantity": 60.66
       },
       {
-        "date": "2018-01-27",
-        "quantity": 85.93
+        "date": "2026-11-14",
+        "quantity": 68.21
       },
       {
-        "date": "2018-01-28",
-        "quantity": 87.12
+        "date": "2026-11-15",
+        "quantity": 43.53
       },
       {
-        "date": "2018-01-29",
-        "quantity": 54.41
+        "date": "2026-11-16",
+        "quantity": 52.1
       },
       {
-        "date": "2018-01-30",
-        "quantity": 65.73
+        "date": "2026-11-17",
+        "quantity": 52.22
       }
     ],
     "recommendation": {
-      "current_stock": 140,
+      "current_stock": 105,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 73.15,
-      "safety_stock": 61.31,
-      "reorder_point": 280.76,
-      "target_inventory": 573.36,
+      "average_daily_forecast": 55.66,
+      "safety_stock": 61.47,
+      "reorder_point": 228.44,
+      "target_inventory": 451.06,
       "restock_needed": true,
-      "recommended_volume": 434
+      "recommended_volume": 347
     }
   },
   "29:3:1.65": {
@@ -5401,187 +4834,766 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 7.824,
-        "rmse": 10.0,
-        "mape": 11.383,
-        "r2": 0.667
+        "mae": 8.142,
+        "rmse": 10.409,
+        "mape": 14.36,
+        "r2": 0.649
       },
       "Holt-Winters": {
-        "mae": 19.588,
-        "rmse": 23.585,
-        "mape": 25.304,
-        "r2": -0.854
+        "mae": 20.237,
+        "rmse": 24.225,
+        "mape": 28.497,
+        "r2": -0.902
       },
       "Prophet": {
-        "mae": 12.664,
-        "rmse": 15.425,
-        "mape": 20.068,
-        "r2": 0.207
+        "mae": 12.645,
+        "rmse": 15.507,
+        "mape": 23.566,
+        "r2": 0.221
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Lag 7",
-        "importance": 40.48
+        "importance": 45.1
       },
       {
         "feature": "Rolling Mean 7",
-        "importance": 33.6
+        "importance": 30.32
       },
       {
         "feature": "Day Of Week",
-        "importance": 15.38
+        "importance": 13.2
       },
       {
         "feature": "Lag 1",
-        "importance": 5.89
+        "importance": 8.76
       },
       {
         "feature": "Rolling Std 7",
-        "importance": 1.93
+        "importance": 1.91
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.4
+        "importance": 0.71
       },
       {
         "feature": "Is Weekend",
-        "importance": 1.32
+        "importance": 0.0
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 42.43
+        "date": "2026-10-19",
+        "quantity": 44.8
       },
       {
-        "date": "2018-01-02",
-        "quantity": 49.76
+        "date": "2026-10-20",
+        "quantity": 50.73
       },
       {
-        "date": "2018-01-03",
-        "quantity": 51.44
+        "date": "2026-10-21",
+        "quantity": 48.16
       },
       {
-        "date": "2018-01-04",
-        "quantity": 55.61
+        "date": "2026-10-22",
+        "quantity": 48.74
       },
       {
-        "date": "2018-01-05",
-        "quantity": 59.72
+        "date": "2026-10-23",
+        "quantity": 51.26
       },
       {
-        "date": "2018-01-06",
-        "quantity": 66.8
+        "date": "2026-10-24",
+        "quantity": 53.88
       },
       {
-        "date": "2018-01-07",
-        "quantity": 62.35
+        "date": "2026-10-25",
+        "quantity": 40.5
       },
       {
-        "date": "2018-01-08",
-        "quantity": 41.77
+        "date": "2026-10-26",
+        "quantity": 42.92
       },
       {
-        "date": "2018-01-09",
-        "quantity": 49.33
+        "date": "2026-10-27",
+        "quantity": 46.37
       },
       {
-        "date": "2018-01-10",
-        "quantity": 50.49
+        "date": "2026-10-28",
+        "quantity": 51.04
       },
       {
-        "date": "2018-01-11",
-        "quantity": 54.69
+        "date": "2026-10-29",
+        "quantity": 54.87
       },
       {
-        "date": "2018-01-12",
-        "quantity": 55.92
+        "date": "2026-10-30",
+        "quantity": 57.32
       },
       {
-        "date": "2018-01-13",
-        "quantity": 60.58
+        "date": "2026-10-31",
+        "quantity": 63.13
       },
       {
-        "date": "2018-01-14",
-        "quantity": 61.6
+        "date": "2026-11-01",
+        "quantity": 40.52
       },
       {
-        "date": "2018-01-15",
-        "quantity": 41.77
+        "date": "2026-11-02",
+        "quantity": 48.34
       },
       {
-        "date": "2018-01-16",
-        "quantity": 49.33
+        "date": "2026-11-03",
+        "quantity": 47.81
       },
       {
-        "date": "2018-01-17",
-        "quantity": 50.21
+        "date": "2026-11-04",
+        "quantity": 50.86
       },
       {
-        "date": "2018-01-18",
-        "quantity": 53.98
+        "date": "2026-11-05",
+        "quantity": 53.4
       },
       {
-        "date": "2018-01-19",
-        "quantity": 56.04
+        "date": "2026-11-06",
+        "quantity": 58.24
       },
       {
-        "date": "2018-01-20",
-        "quantity": 61.49
+        "date": "2026-11-07",
+        "quantity": 61.15
       },
       {
-        "date": "2018-01-21",
-        "quantity": 61.66
+        "date": "2026-11-08",
+        "quantity": 41.56
       },
       {
-        "date": "2018-01-22",
-        "quantity": 42.31
+        "date": "2026-11-09",
+        "quantity": 47.77
       },
       {
-        "date": "2018-01-23",
-        "quantity": 49.33
+        "date": "2026-11-10",
+        "quantity": 48.45
       },
       {
-        "date": "2018-01-24",
-        "quantity": 50.21
+        "date": "2026-11-11",
+        "quantity": 49.47
       },
       {
-        "date": "2018-01-25",
-        "quantity": 54.04
+        "date": "2026-11-12",
+        "quantity": 50.91
       },
       {
-        "date": "2018-01-26",
-        "quantity": 56.39
+        "date": "2026-11-13",
+        "quantity": 56.67
       },
       {
-        "date": "2018-01-27",
-        "quantity": 61.5
+        "date": "2026-11-14",
+        "quantity": 62.67
       },
       {
-        "date": "2018-01-28",
-        "quantity": 60.87
+        "date": "2026-11-15",
+        "quantity": 40.77
       },
       {
-        "date": "2018-01-29",
-        "quantity": 42.66
+        "date": "2026-11-16",
+        "quantity": 47.93
       },
       {
-        "date": "2018-01-30",
-        "quantity": 49.68
+        "date": "2026-11-17",
+        "quantity": 48.11
       }
     ],
     "recommendation": {
-      "current_stock": 60,
+      "current_stock": 23,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 53.47,
-      "safety_stock": 49.36,
-      "reorder_point": 209.76,
-      "target_inventory": 423.63,
+      "average_daily_forecast": 50.28,
+      "safety_stock": 49.48,
+      "reorder_point": 200.32,
+      "target_inventory": 401.43,
       "restock_needed": true,
-      "recommended_volume": 364
+      "recommended_volume": 379
+    }
+  },
+  "1:3:1.65": {
+    "product_id": 1,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.114,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 4.29,
+        "rmse": 5.363,
+        "mape": 21.835,
+        "r2": 0.402
+      },
+      "Holt-Winters": {
+        "mae": 6.117,
+        "rmse": 7.687,
+        "mape": 26.543,
+        "r2": -0.229
+      },
+      "Prophet": {
+        "mae": 4.972,
+        "rmse": 6.252,
+        "mape": 28.127,
+        "r2": 0.187
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 55.5
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 20.7
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 14.01
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 4.64
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 2.9
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 2.02
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.24
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2026-10-19",
+        "quantity": 18.04
+      },
+      {
+        "date": "2026-10-20",
+        "quantity": 19.69
+      },
+      {
+        "date": "2026-10-21",
+        "quantity": 22.12
+      },
+      {
+        "date": "2026-10-22",
+        "quantity": 23.46
+      },
+      {
+        "date": "2026-10-23",
+        "quantity": 27.02
+      },
+      {
+        "date": "2026-10-24",
+        "quantity": 24.71
+      },
+      {
+        "date": "2026-10-25",
+        "quantity": 16.48
+      },
+      {
+        "date": "2026-10-26",
+        "quantity": 20.05
+      },
+      {
+        "date": "2026-10-27",
+        "quantity": 22.3
+      },
+      {
+        "date": "2026-10-28",
+        "quantity": 21.6
+      },
+      {
+        "date": "2026-10-29",
+        "quantity": 22.84
+      },
+      {
+        "date": "2026-10-30",
+        "quantity": 25.52
+      },
+      {
+        "date": "2026-10-31",
+        "quantity": 25.0
+      },
+      {
+        "date": "2026-11-01",
+        "quantity": 16.6
+      },
+      {
+        "date": "2026-11-02",
+        "quantity": 20.63
+      },
+      {
+        "date": "2026-11-03",
+        "quantity": 19.69
+      },
+      {
+        "date": "2026-11-04",
+        "quantity": 20.43
+      },
+      {
+        "date": "2026-11-05",
+        "quantity": 21.91
+      },
+      {
+        "date": "2026-11-06",
+        "quantity": 24.95
+      },
+      {
+        "date": "2026-11-07",
+        "quantity": 24.04
+      },
+      {
+        "date": "2026-11-08",
+        "quantity": 15.22
+      },
+      {
+        "date": "2026-11-09",
+        "quantity": 20.01
+      },
+      {
+        "date": "2026-11-10",
+        "quantity": 19.84
+      },
+      {
+        "date": "2026-11-11",
+        "quantity": 19.84
+      },
+      {
+        "date": "2026-11-12",
+        "quantity": 21.79
+      },
+      {
+        "date": "2026-11-13",
+        "quantity": 24.44
+      },
+      {
+        "date": "2026-11-14",
+        "quantity": 24.19
+      },
+      {
+        "date": "2026-11-15",
+        "quantity": 15.68
+      },
+      {
+        "date": "2026-11-16",
+        "quantity": 19.96
+      },
+      {
+        "date": "2026-11-17",
+        "quantity": 19.58
+      }
+    ],
+    "recommendation": {
+      "current_stock": 99,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 21.25,
+      "safety_stock": 19.27,
+      "reorder_point": 83.03,
+      "target_inventory": 168.05,
+      "restock_needed": false,
+      "recommended_volume": 0
+    }
+  },
+  "14:3:1.65": {
+    "product_id": 14,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.077,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 7.128,
+        "rmse": 9.25,
+        "mape": 12.968,
+        "r2": 0.644
+      },
+      "Holt-Winters": {
+        "mae": 48.344,
+        "rmse": 53.7,
+        "mape": 77.238,
+        "r2": -1.0
+      },
+      "Prophet": {
+        "mae": 11.347,
+        "rmse": 13.94,
+        "mape": 23.315,
+        "r2": 0.192
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 52.69
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 24.28
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 15.37
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 4.54
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.2
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 0.88
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.04
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2026-10-19",
+        "quantity": 42.33
+      },
+      {
+        "date": "2026-10-20",
+        "quantity": 43.48
+      },
+      {
+        "date": "2026-10-21",
+        "quantity": 45.79
+      },
+      {
+        "date": "2026-10-22",
+        "quantity": 48.66
+      },
+      {
+        "date": "2026-10-23",
+        "quantity": 55.15
+      },
+      {
+        "date": "2026-10-24",
+        "quantity": 54.78
+      },
+      {
+        "date": "2026-10-25",
+        "quantity": 33.39
+      },
+      {
+        "date": "2026-10-26",
+        "quantity": 41.85
+      },
+      {
+        "date": "2026-10-27",
+        "quantity": 42.69
+      },
+      {
+        "date": "2026-10-28",
+        "quantity": 45.51
+      },
+      {
+        "date": "2026-10-29",
+        "quantity": 49.6
+      },
+      {
+        "date": "2026-10-30",
+        "quantity": 55.44
+      },
+      {
+        "date": "2026-10-31",
+        "quantity": 56.9
+      },
+      {
+        "date": "2026-11-01",
+        "quantity": 37.13
+      },
+      {
+        "date": "2026-11-02",
+        "quantity": 42.46
+      },
+      {
+        "date": "2026-11-03",
+        "quantity": 43.12
+      },
+      {
+        "date": "2026-11-04",
+        "quantity": 45.94
+      },
+      {
+        "date": "2026-11-05",
+        "quantity": 52.59
+      },
+      {
+        "date": "2026-11-06",
+        "quantity": 57.11
+      },
+      {
+        "date": "2026-11-07",
+        "quantity": 59.03
+      },
+      {
+        "date": "2026-11-08",
+        "quantity": 40.54
+      },
+      {
+        "date": "2026-11-09",
+        "quantity": 44.95
+      },
+      {
+        "date": "2026-11-10",
+        "quantity": 46.35
+      },
+      {
+        "date": "2026-11-11",
+        "quantity": 48.66
+      },
+      {
+        "date": "2026-11-12",
+        "quantity": 52.83
+      },
+      {
+        "date": "2026-11-13",
+        "quantity": 57.72
+      },
+      {
+        "date": "2026-11-14",
+        "quantity": 59.96
+      },
+      {
+        "date": "2026-11-15",
+        "quantity": 40.13
+      },
+      {
+        "date": "2026-11-16",
+        "quantity": 45.87
+      },
+      {
+        "date": "2026-11-17",
+        "quantity": 47.25
+      }
+    ],
+    "recommendation": {
+      "current_stock": 301,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 47.91,
+      "safety_stock": 42.27,
+      "reorder_point": 185.99,
+      "target_inventory": 377.61,
+      "restock_needed": false,
+      "recommended_volume": 0
+    }
+  },
+  "27:3:1.65": {
+    "product_id": 27,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.11,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 4.251,
+        "rmse": 5.453,
+        "mape": 21.387,
+        "r2": 0.413
+      },
+      "Holt-Winters": {
+        "mae": 6.897,
+        "rmse": 8.486,
+        "mape": 29.594,
+        "r2": -0.421
+      },
+      "Prophet": {
+        "mae": 5.225,
+        "rmse": 6.495,
+        "mape": 29.046,
+        "r2": 0.167
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 52.92
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 26.95
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 6.54
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 6.45
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 3.52
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 2.77
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.85
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2026-10-19",
+        "quantity": 17.4
+      },
+      {
+        "date": "2026-10-20",
+        "quantity": 18.97
+      },
+      {
+        "date": "2026-10-21",
+        "quantity": 19.76
+      },
+      {
+        "date": "2026-10-22",
+        "quantity": 20.69
+      },
+      {
+        "date": "2026-10-23",
+        "quantity": 22.39
+      },
+      {
+        "date": "2026-10-24",
+        "quantity": 21.81
+      },
+      {
+        "date": "2026-10-25",
+        "quantity": 13.37
+      },
+      {
+        "date": "2026-10-26",
+        "quantity": 15.59
+      },
+      {
+        "date": "2026-10-27",
+        "quantity": 15.58
+      },
+      {
+        "date": "2026-10-28",
+        "quantity": 18.98
+      },
+      {
+        "date": "2026-10-29",
+        "quantity": 20.18
+      },
+      {
+        "date": "2026-10-30",
+        "quantity": 20.18
+      },
+      {
+        "date": "2026-10-31",
+        "quantity": 17.94
+      },
+      {
+        "date": "2026-11-01",
+        "quantity": 12.44
+      },
+      {
+        "date": "2026-11-02",
+        "quantity": 15.58
+      },
+      {
+        "date": "2026-11-03",
+        "quantity": 15.82
+      },
+      {
+        "date": "2026-11-04",
+        "quantity": 17.54
+      },
+      {
+        "date": "2026-11-05",
+        "quantity": 19.1
+      },
+      {
+        "date": "2026-11-06",
+        "quantity": 20.0
+      },
+      {
+        "date": "2026-11-07",
+        "quantity": 21.34
+      },
+      {
+        "date": "2026-11-08",
+        "quantity": 12.75
+      },
+      {
+        "date": "2026-11-09",
+        "quantity": 15.85
+      },
+      {
+        "date": "2026-11-10",
+        "quantity": 15.85
+      },
+      {
+        "date": "2026-11-11",
+        "quantity": 17.81
+      },
+      {
+        "date": "2026-11-12",
+        "quantity": 19.15
+      },
+      {
+        "date": "2026-11-13",
+        "quantity": 20.06
+      },
+      {
+        "date": "2026-11-14",
+        "quantity": 21.53
+      },
+      {
+        "date": "2026-11-15",
+        "quantity": 13.04
+      },
+      {
+        "date": "2026-11-16",
+        "quantity": 16.6
+      },
+      {
+        "date": "2026-11-17",
+        "quantity": 16.39
+      }
+    ],
+    "recommendation": {
+      "current_stock": 78,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 17.79,
+      "safety_stock": 19.0,
+      "reorder_point": 72.37,
+      "target_inventory": 143.53,
+      "restock_needed": false,
+      "recommended_volume": 0
     }
   },
   "30:3:1.65": {
@@ -5594,187 +5606,187 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 5.9,
-        "rmse": 7.406,
-        "mape": 14.619,
-        "r2": 0.586
+        "mae": 6.138,
+        "rmse": 7.752,
+        "mape": 16.043,
+        "r2": 0.551
       },
       "Holt-Winters": {
-        "mae": 12.987,
-        "rmse": 15.697,
-        "mape": 28.416,
-        "r2": -0.858
+        "mae": 12.471,
+        "rmse": 15.136,
+        "mape": 28.212,
+        "r2": -0.711
       },
       "Prophet": {
-        "mae": 8.382,
-        "rmse": 10.175,
-        "mape": 23.566,
-        "r2": 0.219
+        "mae": 8.323,
+        "rmse": 10.16,
+        "mape": 24.699,
+        "r2": 0.229
       }
     },
     "best_model": "Gradient Boosting ML",
     "feature_importance": [
       {
         "feature": "Rolling Mean 7",
-        "importance": 56.22
-      },
-      {
-        "feature": "Day Of Week",
-        "importance": 19.93
+        "importance": 49.43
       },
       {
         "feature": "Lag 7",
-        "importance": 11.99
+        "importance": 23.96
       },
       {
-        "feature": "Is Weekend",
-        "importance": 3.87
-      },
-      {
-        "feature": "Rolling Std 7",
-        "importance": 3.21
+        "feature": "Day Of Week",
+        "importance": 18.19
       },
       {
         "feature": "Lag 1",
-        "importance": 2.9
+        "importance": 4.51
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.49
       },
       {
         "feature": "Day Of Month",
-        "importance": 1.88
+        "importance": 1.35
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.08
       }
     ],
     "predictions": [
       {
-        "date": "2018-01-01",
-        "quantity": 24.28
+        "date": "2026-10-19",
+        "quantity": 28.87
       },
       {
-        "date": "2018-01-02",
-        "quantity": 26.94
+        "date": "2026-10-20",
+        "quantity": 29.69
       },
       {
-        "date": "2018-01-03",
-        "quantity": 27.71
+        "date": "2026-10-21",
+        "quantity": 32.28
       },
       {
-        "date": "2018-01-04",
-        "quantity": 30.28
+        "date": "2026-10-22",
+        "quantity": 31.59
       },
       {
-        "date": "2018-01-05",
-        "quantity": 31.94
+        "date": "2026-10-23",
+        "quantity": 35.14
       },
       {
-        "date": "2018-01-06",
-        "quantity": 36.65
+        "date": "2026-10-24",
+        "quantity": 33.84
       },
       {
-        "date": "2018-01-07",
-        "quantity": 37.16
+        "date": "2026-10-25",
+        "quantity": 22.08
       },
       {
-        "date": "2018-01-08",
-        "quantity": 24.54
-      },
-      {
-        "date": "2018-01-09",
-        "quantity": 27.89
-      },
-      {
-        "date": "2018-01-10",
-        "quantity": 29.23
-      },
-      {
-        "date": "2018-01-11",
-        "quantity": 31.56
-      },
-      {
-        "date": "2018-01-12",
-        "quantity": 32.19
-      },
-      {
-        "date": "2018-01-13",
-        "quantity": 36.03
-      },
-      {
-        "date": "2018-01-14",
-        "quantity": 36.19
-      },
-      {
-        "date": "2018-01-15",
-        "quantity": 25.29
-      },
-      {
-        "date": "2018-01-16",
-        "quantity": 28.37
-      },
-      {
-        "date": "2018-01-17",
-        "quantity": 29.47
-      },
-      {
-        "date": "2018-01-18",
-        "quantity": 31.61
-      },
-      {
-        "date": "2018-01-19",
-        "quantity": 32.5
-      },
-      {
-        "date": "2018-01-20",
-        "quantity": 36.34
-      },
-      {
-        "date": "2018-01-21",
-        "quantity": 37.68
-      },
-      {
-        "date": "2018-01-22",
-        "quantity": 24.54
-      },
-      {
-        "date": "2018-01-23",
-        "quantity": 28.49
-      },
-      {
-        "date": "2018-01-24",
+        "date": "2026-10-26",
         "quantity": 29.59
       },
       {
-        "date": "2018-01-25",
-        "quantity": 31.93
+        "date": "2026-10-27",
+        "quantity": 30.16
       },
       {
-        "date": "2018-01-26",
-        "quantity": 32.22
+        "date": "2026-10-28",
+        "quantity": 32.37
       },
       {
-        "date": "2018-01-27",
+        "date": "2026-10-29",
+        "quantity": 32.96
+      },
+      {
+        "date": "2026-10-30",
+        "quantity": 36.61
+      },
+      {
+        "date": "2026-10-31",
+        "quantity": 35.2
+      },
+      {
+        "date": "2026-11-01",
+        "quantity": 23.54
+      },
+      {
+        "date": "2026-11-02",
+        "quantity": 29.21
+      },
+      {
+        "date": "2026-11-03",
+        "quantity": 29.98
+      },
+      {
+        "date": "2026-11-04",
+        "quantity": 32.62
+      },
+      {
+        "date": "2026-11-05",
+        "quantity": 33.34
+      },
+      {
+        "date": "2026-11-06",
         "quantity": 36.05
       },
       {
-        "date": "2018-01-28",
-        "quantity": 37.19
+        "date": "2026-11-07",
+        "quantity": 38.51
       },
       {
-        "date": "2018-01-29",
-        "quantity": 25.02
+        "date": "2026-11-08",
+        "quantity": 24.12
       },
       {
-        "date": "2018-01-30",
-        "quantity": 28.49
+        "date": "2026-11-09",
+        "quantity": 28.5
+      },
+      {
+        "date": "2026-11-10",
+        "quantity": 29.49
+      },
+      {
+        "date": "2026-11-11",
+        "quantity": 32.19
+      },
+      {
+        "date": "2026-11-12",
+        "quantity": 32.86
+      },
+      {
+        "date": "2026-11-13",
+        "quantity": 36.48
+      },
+      {
+        "date": "2026-11-14",
+        "quantity": 38.77
+      },
+      {
+        "date": "2026-11-15",
+        "quantity": 24.12
+      },
+      {
+        "date": "2026-11-16",
+        "quantity": 28.87
+      },
+      {
+        "date": "2026-11-17",
+        "quantity": 29.63
       }
     ],
     "recommendation": {
-      "current_stock": 85,
+      "current_stock": 132,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 30.91,
-      "safety_stock": 31.25,
-      "reorder_point": 123.99,
-      "target_inventory": 247.63,
-      "restock_needed": true,
-      "recommended_volume": 163
+      "average_daily_forecast": 31.29,
+      "safety_stock": 31.29,
+      "reorder_point": 125.15,
+      "target_inventory": 250.3,
+      "restock_needed": false,
+      "recommended_volume": 0
     }
   }
 }

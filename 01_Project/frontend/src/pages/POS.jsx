@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Printer } from 'lucide-react';
 import api from '../api/axios';
+import ThermalReceiptModal from '../components/ThermalReceiptModal';
 
 const emptyItem = { product_id: '', quantity: 1 };
 
@@ -12,6 +14,7 @@ const POS = () => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [activeReceipt, setActiveReceipt] = useState(null);
   const navigate = useNavigate();
 
   const productMap = useMemo(() => {
@@ -88,7 +91,8 @@ const POS = () => {
     try {
       setSubmitting(true);
       const res = await api.post('/pos/bills', { items: payloadItems });
-      setMessage(`Bill #${res.data.id} created successfully. Total: $${Number(res.data.total_amount).toFixed(2)}`);
+      setMessage(`Bill #${res.data.id} created successfully. Total: Rs. ${Number(res.data.total_amount).toFixed(2)}`);
+      setActiveReceipt(res.data);
       setItems([{ ...emptyItem }]);
       fetchProducts();
       fetchRecentBills();
@@ -98,6 +102,15 @@ const POS = () => {
       console.error(err);
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleOpenReceipt = async (billId) => {
+    try {
+      const res = await api.get(`/pos/bills/${billId}`);
+      setActiveReceipt(res.data);
+    } catch (err) {
+      setError('Failed to load bill receipt.');
     }
   };
 
@@ -166,7 +179,7 @@ const POS = () => {
                   required
                 />
                 <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                  {product ? `$${Number(product.price).toFixed(2)}` : '-'}
+                  {product ? `Rs. ${Number(product.price).toFixed(2)}` : '-'}
                 </div>
                 <button type="button" className="btn btn-secondary" onClick={() => removeRow(index)}>Remove</button>
               </div>
@@ -174,7 +187,7 @@ const POS = () => {
           })}
 
           <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div style={{ fontWeight: 600 }}>Estimated Total: ${estimatedTotal.toFixed(2)}</div>
+            <div style={{ fontWeight: 600 }}>Estimated Total: Rs. {estimatedTotal.toFixed(2)}</div>
             <div style={{ display: 'flex', gap: '0.5rem' }}>
               <button type="button" className="btn btn-secondary" onClick={addRow}>Add Item</button>
               <button type="submit" className="btn btn-primary" disabled={submitting}>{submitting ? 'Creating...' : 'Create Bill'}</button>
@@ -214,10 +227,29 @@ const POS = () => {
               <tr key={bill.id}>
                 <td>#{bill.id}</td>
                 <td>{new Date(bill.created_at).toLocaleString()}</td>
-                <td>${Number(bill.total_amount).toFixed(2)}</td>
-                <td style={{ textAlign: 'right', display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
-                  <button className="btn btn-primary" onClick={() => navigate(`/invoice/${bill.id}`)}>Print</button>
-                  <button className="btn btn-secondary" onClick={() => downloadExcel(bill.id)}>Excel</button>
+                <td>Rs.{Number(bill.total_amount).toFixed(2)}</td>
+                <td style={{ textAlign: 'right', display: 'flex', gap: '0.4rem', justifyContent: 'flex-end', flexWrap: 'nowrap' }}>
+                  <button
+                    className="btn btn-primary"
+                    style={{ display: 'flex', alignItems: 'center', gap: '0.2rem', padding: '0.3rem 0.6rem', fontSize: '11px', whiteSpace: 'nowrap' }}
+                    onClick={() => handleOpenReceipt(bill.id)}
+                  >
+                    <Printer size={12} /> Thermal Slip
+                  </button>
+                  <button
+                    className="btn btn-secondary"
+                    style={{ padding: '0.3rem 0.6rem', fontSize: '11px', whiteSpace: 'nowrap' }}
+                    onClick={() => navigate(`/invoice/${bill.id}`)}
+                  >
+                    Invoice
+                  </button>
+                  <button
+                    className="btn btn-secondary"
+                    style={{ padding: '0.3rem 0.6rem', fontSize: '11px', whiteSpace: 'nowrap' }}
+                    onClick={() => downloadExcel(bill.id)}
+                  >
+                    Excel
+                  </button>
                 </td>
               </tr>
             ))}
@@ -231,6 +263,13 @@ const POS = () => {
           </tbody>
         </table>
       </div>
+
+      {activeReceipt && (
+        <ThermalReceiptModal
+          bill={activeReceipt}
+          onClose={() => setActiveReceipt(null)}
+        />
+      )}
     </div>
   );
 };

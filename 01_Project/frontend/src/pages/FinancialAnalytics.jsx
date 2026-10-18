@@ -60,7 +60,7 @@ const FinancialAnalytics = () => {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
         <div style={{ backgroundColor: 'white', padding: '1.2rem', borderRadius: '10px', border: '1px solid #E5E7EB', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
           <div style={{ fontSize: '12px', color: '#6B7280', fontWeight: '600' }}>Total Inventory Asset Value</div>
-          <div style={{ fontSize: '24px', fontWeight: '700', color: '#10B981', marginTop: '4px' }}>${totalAssetValue.toLocaleString('en-US', { minimumFractionDigits: 2 })}</div>
+          <div style={{ fontSize: '24px', fontWeight: '700', color: '#10B981', marginTop: '4px' }}>Rs. {totalAssetValue.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</div>
         </div>
         <div style={{ backgroundColor: 'white', padding: '1.2rem', borderRadius: '10px', border: '1px solid #E5E7EB', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
           <div style={{ fontSize: '12px', color: '#6B7280', fontWeight: '600' }}>Total Active Products</div>
@@ -72,7 +72,7 @@ const FinancialAnalytics = () => {
         </div>
         <div style={{ backgroundColor: 'white', padding: '1.2rem', borderRadius: '10px', border: '1px solid #E5E7EB', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
           <div style={{ fontSize: '12px', color: '#6B7280', fontWeight: '600' }}>Average Item Value</div>
-          <div style={{ fontSize: '24px', fontWeight: '700', color: '#F59E0B', marginTop: '4px' }}>${(products.length > 0 ? totalAssetValue / products.length : 0).toFixed(2)}</div>
+          <div style={{ fontSize: '24px', fontWeight: '700', color: '#F59E0B', marginTop: '4px' }}>Rs. {(products.length > 0 ? totalAssetValue / products.length : 0).toFixed(2)}</div>
         </div>
       </div>
 
@@ -80,7 +80,7 @@ const FinancialAnalytics = () => {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
         {/* Chart 1: Top Valued Inventory Items */}
         <div style={{ backgroundColor: 'white', padding: '1.2rem', borderRadius: '10px', border: '1px solid #E5E7EB' }}>
-          <h3 style={{ fontSize: '15px', fontWeight: '600', color: '#1F2937', marginBottom: '1rem' }}>Top 6 Highest Valuation Products ($)</h3>
+          <h3 style={{ fontSize: '15px', fontWeight: '600', color: '#1F2937', marginBottom: '1rem' }}>Top 6 Highest Valuation Products (Rs.)</h3>
           <div style={{ width: '100%', height: 300 }}>
             <ResponsiveContainer>
               <BarChart data={topValueProducts}>

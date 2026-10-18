@@ -29,6 +29,21 @@ const RecentFeedsPanel = () => {
     catch { return ''; }
   };
 
+  const [generating, setGenerating] = useState(false);
+
+  const handleAutoGeneratePOs = async () => {
+    setGenerating(true);
+    try {
+      const res = await api.post('/po/auto-generate-low-stock');
+      alert(res.data.message);
+      navigate('/po');
+    } catch (err) {
+      alert(err.response?.data?.detail || err.message);
+    } finally {
+      setGenerating(false);
+    }
+  };
+
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
       <div style={{ background: 'white', border: '1px solid #E5E7EB', borderRadius: '0.5rem', padding: '1.25rem' }}>
@@ -56,9 +71,25 @@ const RecentFeedsPanel = () => {
       </div>
 
       <div style={{ background: 'white', border: '1px solid #E5E7EB', borderRadius: '0.5rem', padding: '1.25rem' }}>
-        <h3 style={{ fontSize: '0.95rem', fontWeight: '600', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-          <AlertTriangle size={16} color="#EF4444" /> Low Stock Alerts
-        </h3>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+          <h3 style={{ fontSize: '0.95rem', fontWeight: '600', margin: 0, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <AlertTriangle size={16} color="#EF4444" /> Low Stock Alerts ({lowStock.length})
+          </h3>
+          {lowStock.length > 0 && (
+            <button
+              onClick={handleAutoGeneratePOs}
+              disabled={generating}
+              style={{
+                display: 'flex', alignItems: 'center', gap: '0.3rem',
+                padding: '4px 8px', fontSize: '11px', fontWeight: '600',
+                background: '#10B981', color: 'white', border: 'none', borderRadius: '4px',
+                cursor: generating ? 'not-allowed' : 'pointer'
+              }}
+            >
+              ⚡ Restock All (Generate POs)
+            </button>
+          )}
+        </div>
         {lowStock.length === 0 ? (
           <p style={{ color: '#10B981', fontSize: '0.85rem', textAlign: 'center', padding: '1.5rem 0', fontWeight: '500' }}>All stock levels healthy</p>
         ) : (

@@ -1,12 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Edit2, Trash2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Plus, Edit2, Trash2, ShoppingCart } from 'lucide-react';
 import api from '../api/axios';
 
 const Inventory = () => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({ name: '', category: '', price: 0, quantity_in_stock: 0, reorder_level: 10 });
   const [editingId, setEditingId] = useState(null);
+  const [generatingPOs, setGeneratingPOs] = useState(false);
+
+  const handleAutoGeneratePOs = async () => {
+    setGeneratingPOs(true);
+    try {
+      const res = await api.post('/po/auto-generate-low-stock');
+      alert(res.data.message);
+      navigate('/po');
+    } catch (err) {
+      alert(err.response?.data?.detail || err.message);
+    } finally {
+      setGeneratingPOs(false);
+    }
+  };
 
   const fetchProducts = async () => {
     try {
@@ -60,6 +76,18 @@ const Inventory = () => {
       <div className="action-bar">
         <h1>Inventory</h1>
         <div className="action-buttons">
+          <button
+            onClick={handleAutoGeneratePOs}
+            disabled={generatingPOs}
+            className="btn"
+            style={{
+              backgroundColor: '#10B981', color: 'white', display: 'flex', alignItems: 'center', gap: '0.4rem',
+              cursor: generatingPOs ? 'not-allowed' : 'pointer'
+            }}
+          >
+            <ShoppingCart size={16} />
+            {generatingPOs ? 'Generating...' : 'Auto-Generate Restock POs'}
+          </button>
           <button onClick={() => setShowModal(true)} className="btn btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <Plus size={16} /> Create
           </button>
@@ -83,7 +111,7 @@ const Inventory = () => {
               <tr key={p.id}>
                 <td style={{ fontWeight: '500' }}>{p.name}</td>
                 <td><span className="badge badge-light">{p.category}</span></td>
-                <td>${p.price.toFixed(2)}</td>
+                <td>Rs. {p.price.toFixed(2)}</td>
                 <td>{p.quantity_in_stock}</td>
                 <td>
                   {p.quantity_in_stock <= p.reorder_level ? 
@@ -124,8 +152,8 @@ const Inventory = () => {
                 <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem' }}>
                   <div style={{ flex: 1 }}><label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '12px', fontWeight: '600', color: 'var(--text-muted)' }}>Sales Price</label>
                     <div style={{ position: 'relative' }}>
-                      <span style={{ position: 'absolute', left: '0.75rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }}>$</span>
-                      <input type="number" step="0.01" value={formData.price} onChange={e => setFormData({...formData, price: parseFloat(e.target.value)})} required style={{ paddingLeft: '1.5rem' }} />
+                      <span style={{ position: 'absolute', left: '0.75rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', fontSize: '12px' }}>Rs.</span>
+                      <input type="number" step="0.01" value={formData.price} onChange={e => setFormData({...formData, price: parseFloat(e.target.value)})} required style={{ paddingLeft: '2.5rem' }} />
                     </div>
                   </div>
                   <div style={{ flex: 1 }}><label style={{ display: 'block', marginBottom: '0.25rem', fontSize: '12px', fontWeight: '600', color: 'var(--text-muted)' }}>Quantity On Hand</label><input type="number" value={formData.quantity_in_stock} onChange={e => setFormData({...formData, quantity_in_stock: parseInt(e.target.value)})} required /></div>

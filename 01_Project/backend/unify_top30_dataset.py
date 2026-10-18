@@ -13,38 +13,38 @@ import models
 DATASETS_DIR = Path(__file__).resolve().parent.parent.parent / "02_Datasets"
 MASTER_FILE = DATASETS_DIR / "master_grocery_top30.xlsx"
 
-# Top 30 Unified Grocery Catalog with realistic pricing, stock levels, and demand patterns
+# Top 30 Unified Grocery Catalog with realistic Indian supermarket brands, INR pricing, and stock levels
 UNIFIED_TOP30_CATALOG = [
-    (1, "Organic Whole Milk (1L)", "Dairy", 3.50, 150, 30),
-    (2, "Whole Wheat Bread", "Bakery", 2.80, 80, 20),
-    (3, "Basmati Rice (5kg)", "Grains & Pulses", 12.50, 60, 15),
-    (4, "Farm Fresh Eggs (12 pack)", "Dairy", 4.20, 100, 25),
-    (5, "Extra Virgin Olive Oil (1L)", "Oils & Condiments", 14.90, 45, 10),
-    (6, "Dark Roast Coffee Beans (500g)", "Beverages", 9.80, 50, 15),
-    (7, "Greek Plain Yogurt (500g)", "Dairy", 3.90, 70, 20),
-    (8, "Whole Grain Oats Cereal", "Breakfast", 4.50, 65, 15),
-    (9, "Dishwashing Liquid Soap (750ml)", "Household", 3.20, 90, 20),
-    (10, "Concentrated Laundry Detergent", "Household", 11.50, 40, 10),
-    (11, "Fresh Organic Vegetables", "Produce", 4.50, 120, 25),
-    (12, "Fresh Chicken Breast (1kg)", "Meat & Poultry", 8.90, 50, 15),
-    (13, "Atta Whole Wheat Flour (5kg)", "Grains & Pulses", 7.80, 75, 20),
-    (14, "Chocolate Chip Cookies", "Snacks", 2.50, 110, 30),
-    (15, "Nutritional Health Drink (500g)", "Beverages", 6.50, 40, 10),
-    (16, "Seasonal Fresh Fruits Pack", "Produce", 5.20, 90, 20),
-    (17, "Carbonated Soft Drink (1.5L)", "Beverages", 2.10, 130, 35),
-    (18, "Organic Pulses & Staples Pack", "Grains & Pulses", 9.50, 55, 15),
-    (19, "Instant Noodles (Pack of 4)", "Pantry", 1.80, 150, 40),
-    (20, "Cheddar Cheese Block (400g)", "Dairy", 5.60, 60, 15),
-    (21, "Unsalted Butter (250g)", "Dairy", 3.10, 85, 20),
-    (22, "Organic Green Tea (100 bags)", "Beverages", 6.40, 50, 10),
-    (23, "Italian Tomato Pasta Sauce", "Pantry", 2.90, 110, 25),
-    (24, "test-1", "Test Category", 5.20, 80, 20),
-    (25, "Raw Wildflower Honey (500g)", "Pantry", 8.70, 40, 10),
-    (26, "Fresh Orange Juice (1L)", "Beverages", 3.80, 75, 20),
-    (27, "70% Dark Chocolate Bar", "Snacks", 2.50, 120, 30),
-    (28, "Crispy Potato Chips (200g)", "Snacks", 1.95, 140, 35),
-    (29, "Unsweetened Almond Milk (1L)", "Dairy Alternatives", 3.60, 60, 15),
-    (30, "Paper Towels (Pack of 4)", "Household", 4.10, 85, 20)
+    (1, "Amul Taaza Toned Milk (1L)", "Dairy", 74.0, 150, 30),
+    (2, "Britannia 100% Whole Wheat Bread (400g)", "Bakery", 50.0, 80, 20),
+    (3, "India Gate Feast Rozzana Basmati Rice (5kg)", "Grains & Staples", 454.0, 60, 15),
+    (4, "Suguna Farm Fresh White Eggs (Pack of 12)", "Dairy & Eggs", 108.0, 100, 25),
+    (5, "Fortune Sunlite Refined Sunflower Oil (1L Pouch)", "Oils & Ghee", 145.0, 45, 10),
+    (6, "Nescafé Classic Instant Coffee Glass Jar (100g)", "Beverages", 380.0, 50, 15),
+    (7, "Epigamia Greek Plain Yogurt (400g)", "Dairy", 140.0, 70, 20),
+    (8, "Kellogg's Rolled Oats Pouch (1kg)", "Breakfast Cereals", 199.0, 65, 15),
+    (9, "Vim Dishwash Liquid Gel Lemon (750ml)", "Household Care", 160.0, 90, 20),
+    (10, "Surf Excel Matic Front Load Detergent Powder (1kg)", "Household Care", 245.0, 40, 10),
+    (11, "Fresh Hybrid Tomatoes & Red Onions (2kg Pack)", "Fresh Produce", 80.0, 120, 25),
+    (12, "Zorabian Fresh Chicken Breast Boneless (500g)", "Meat & Poultry", 265.0, 50, 15),
+    (13, "Aashirvaad Superior MP Shudh Chakki Atta (5kg)", "Grains & Staples", 270.0, 75, 20),
+    (14, "Parle Hide & Seek Choco Chip Biscuits (350g)", "Snacks & Confectionery", 75.0, 110, 30),
+    (15, "Horlicks Classic Malt Nutrition Drink (500g)", "Health & Nutrition", 295.0, 40, 10),
+    (16, "Kashmir Royal Delicious Red Apples (4 Pcs)", "Fresh Produce", 165.0, 90, 20),
+    (17, "Thums Up Charged Soft Drink Bottle (1.75L)", "Beverages", 90.0, 130, 35),
+    (18, "Tata Sampann Unpolished Toor Dal (1kg)", "Grains & Staples", 210.0, 55, 15),
+    (19, "Maggi 2-Minute Masala Instant Noodles (Pack of 4)", "Instant Foods", 56.0, 150, 40),
+    (20, "Amul Processed Cheese Block (400g)", "Dairy", 245.0, 60, 15),
+    (21, "Amul Pasteurised Salted Butter (500g)", "Dairy", 285.0, 85, 20),
+    (22, "Tetley Pure Green Tea Bags (Pack of 100)", "Beverages", 480.0, 50, 10),
+    (23, "Kissan Fresh Tomato Ketchup (950g Squeezo)", "Pantry & Sauces", 140.0, 110, 25),
+    (24, "Cadbury Dairy Milk Silk Chocolate Bar (150g)", "Chocolates & Sweets", 180.0, 80, 20),
+    (25, "Dabur 100% Pure Honey Glass Jar (500g)", "Pantry", 225.0, 40, 10),
+    (26, "Real Activ 100% Orange Fruit Juice (1L Tetra)", "Beverages", 145.0, 75, 20),
+    (27, "Cadbury Bournville 70% Dark Chocolate Bar (80g)", "Chocolates & Sweets", 115.0, 120, 30),
+    (28, "Lay's India's Magic Masala Potato Chips (115g)", "Snacks & Munchies", 50.0, 140, 35),
+    (29, "Raw Pressery Almond Milk Unsweetened (1L)", "Dairy Alternatives", 250.0, 60, 15),
+    (30, "Origami So Soft 2-Ply Kitchen Paper Towels (4 Rolls)", "Household Care", 185.0, 85, 20)
 ]
 
 def unify_datasets():
@@ -103,6 +103,15 @@ def unify_datasets():
 
     master_df = pd.concat(frames, ignore_index=True)
     master_df = master_df.sort_values(by='date').reset_index(drop=True)
+
+    # Shift historical timestamps forward so the dataset seamlessly ends yesterday
+    if not master_df.empty:
+        max_d = master_df['date'].max()
+        target_end = pd.to_datetime(datetime.now().date() - pd.Timedelta(days=1))
+        if max_d < target_end:
+            shift_days = (target_end - max_d).days
+            print(f"Shifting historical records by {shift_days} days to align ending date with {target_end.date()}...")
+            master_df['date'] = master_df['date'] + pd.Timedelta(days=shift_days)
 
     print(f"Exporting Unified Master Dataset to {MASTER_FILE}...")
     DATASETS_DIR.mkdir(parents=True, exist_ok=True)
