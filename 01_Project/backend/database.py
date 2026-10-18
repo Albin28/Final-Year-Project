@@ -9,7 +9,7 @@ DEFAULT_DB_PATH = BASE_DIR / "nexuserp.db"
 DB_PATH = Path(os.getenv("NEXUSERP_DB_PATH", str(DEFAULT_DB_PATH))).resolve()
 DATABASE_URL = f"sqlite:///{DB_PATH.as_posix()}"
 
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False, "timeout": 30})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 

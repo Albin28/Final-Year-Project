@@ -99,8 +99,6 @@ def update_po_status(po_id: int, body: POStatusUpdate, db: Session = Depends(get
     result = _po_to_dict(po)
     result["inventory_updated"] = inventory_updated
     if inventory_updated:
-        import forecasting_engine
-        forecasting_engine.clear_forecast_cache()
         product = db.query(models.Product).filter(models.Product.id == po.product_id).first()
         result["new_stock"] = product.quantity_in_stock if product else None
     return result

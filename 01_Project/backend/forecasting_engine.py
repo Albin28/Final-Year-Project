@@ -7,10 +7,32 @@ import models
 import time
 
 # ---------------------------------------------------------------------------
-# TTL Cache: avoids re-training ML models on repeated requests within 5 mins
+# Persistent Disk + In-Memory Cache: avoids re-training ML models on repeated requests
 # ---------------------------------------------------------------------------
+import os
+import json
+
+_CACHE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "forecast_cache.json")
 _forecast_cache: dict = {}
-_CACHE_TTL_SECONDS = 300  # 5 minutes
+_CACHE_TTL_SECONDS = 86400  # 24 hours in memory
+
+
+def _load_disk_cache() -> dict:
+    if os.path.exists(_CACHE_FILE):
+        try:
+            with open(_CACHE_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return {}
+    return {}
+
+
+def _save_disk_cache(cache_dict: dict):
+    try:
+        with open(_CACHE_FILE, "w", encoding="utf-8") as f:
+            json.dump(cache_dict, f, indent=2)
+    except Exception as e:
+        print(f"Error saving disk cache: {e}")
 
 
 def _cache_key(product_id: int, lead_time: int, z_score: float) -> str:
@@ -20,41 +42,56 @@ def _cache_key(product_id: int, lead_time: int, z_score: float) -> str:
 def clear_forecast_cache():
     """Invalidates all cached forecasts (called after self-train)."""
     _forecast_cache.clear()
+    if os.path.exists(_CACHE_FILE):
+        try:
+            os.remove(_CACHE_FILE)
+        except Exception:
+            pass
 
 
 def get_cached_forecast(db: Session, product_id: int, lead_time: int = 3, z_score: float = 1.65):
     """
-    Returns a cached forecast plan if available and fresh, otherwise
-    computes and caches a new one.
+    Returns a cached forecast plan from memory or persistent disk cache.
     Always updates recommendation with real-time inventory from the database.
     """
     key = _cache_key(product_id, lead_time, z_score)
     now = time.monotonic()
+    plan = None
+
     if key in _forecast_cache:
         ts, plan = _forecast_cache[key]
-        if now - ts < _CACHE_TTL_SECONDS:
-            # Refresh live stock recommendation from DB so changes appear immediately
-            product = db.query(models.Product).filter(models.Product.id == product_id).first()
-            current_stock = product.quantity_in_stock if product else 0
-            product_reorder_level = product.reorder_level if product else 0
+    else:
+        disk_data = _load_disk_cache()
+        if key in disk_data:
+            plan = disk_data[key]
+            _forecast_cache[key] = (now, plan)
 
-            rec = plan["recommendation"]
-            target_inventory = rec["target_inventory"]
-            reorder_point = rec["reorder_point"]
+    if plan:
+        # Refresh live stock recommendation from DB so changes appear immediately
+        product = db.query(models.Product).filter(models.Product.id == product_id).first()
+        current_stock = product.quantity_in_stock if product else 0
+        product_reorder_level = product.reorder_level if product else 0
 
-            restock_needed = (current_stock < target_inventory) and (current_stock <= max(reorder_point, product_reorder_level))
-            restock_volume = max(0, target_inventory - current_stock) if restock_needed else 0
+        rec = plan["recommendation"]
+        target_inventory = rec["target_inventory"]
+        reorder_point = rec["reorder_point"]
 
-            fresh_plan = dict(plan)
-            fresh_rec = dict(rec)
-            fresh_rec["current_stock"] = current_stock
-            fresh_rec["restock_needed"] = bool(restock_needed)
-            fresh_rec["recommended_volume"] = int(np.ceil(restock_volume))
-            fresh_plan["recommendation"] = fresh_rec
-            return fresh_plan
+        restock_needed = (current_stock < target_inventory) and (current_stock <= max(reorder_point, product_reorder_level))
+        restock_volume = max(0, target_inventory - current_stock) if restock_needed else 0
+
+        fresh_plan = dict(plan)
+        fresh_rec = dict(rec)
+        fresh_rec["current_stock"] = current_stock
+        fresh_rec["restock_needed"] = bool(restock_needed)
+        fresh_rec["recommended_volume"] = int(np.ceil(restock_volume))
+        fresh_plan["recommendation"] = fresh_rec
+        return fresh_plan
 
     plan = generate_forecast_and_inventory_plan(db, product_id, lead_time, z_score)
     _forecast_cache[key] = (now, plan)
+    disk_data = _load_disk_cache()
+    disk_data[key] = plan
+    _save_disk_cache(disk_data)
     return plan
 
 # Try imports, fallback gracefully if packages are still installing
@@ -65,9 +102,11 @@ except ImportError:
     SimpleExpSmoothing = None
 
 try:
-    from prophet import Prophet
     import logging
-    logging.getLogger('prophet').setLevel(logging.WARNING)
+    logging.getLogger('prophet').setLevel(logging.ERROR)
+    logging.getLogger('prophet.plot').setLevel(logging.CRITICAL)
+    logging.getLogger('cmdstanpy').setLevel(logging.ERROR)
+    from prophet import Prophet
 except ImportError:
     Prophet = None
 
@@ -205,9 +244,13 @@ def calculate_error_metrics(y_true, y_pred):
     }
 
 
-def train_and_evaluate(df: pd.DataFrame, test_size=0.2):
+def train_and_evaluate(df: pd.DataFrame, test_size=0.2, category: str = None):
     """
-    Trains Random Forest, Prophet, Holt-Winters, and Simple Exponential Smoothing models.
+    Trains candidate models selectively based on Syntetos-Boylan Classification (SBC):
+    - Regular demand: Gradient Boosting, Holt-Winters, Prophet (skips flat SES)
+    - Intermittent / Lumpy demand: SES and Random Forest (skips heavy Prophet / Holt-Winters)
+    - Erratic demand: Gradient Boosting, Random Forest, Prophet (skips flat SES)
+
     Returns error metrics, best model name, and feature importance for Explainable AI (XAI).
     """
     if len(df) < 15:
@@ -221,8 +264,22 @@ def train_and_evaluate(df: pd.DataFrame, test_size=0.2):
     forecasts = {}
     feature_importances = []
 
+    # Rule-Based MLOps: Smart Syntetos-Boylan Classification (SBC) Model Pruning
+    if category is None:
+        cls_info = classify_demand(df)
+        category = cls_info.get("category", "Regular")
+
+    if category in ["Intermittent", "Lumpy"]:
+        candidates = {"Random Forest ML", "Simple Exponential Smoothing"}
+    elif category == "Regular":
+        candidates = {"Gradient Boosting ML", "Holt-Winters", "Prophet"}
+    elif category == "Erratic":
+        candidates = {"Gradient Boosting ML", "Random Forest ML", "Prophet"}
+    else:
+        candidates = {"Gradient Boosting ML", "Random Forest ML", "Holt-Winters", "Prophet", "Simple Exponential Smoothing"}
+
     # --- 1. Random Forest Regressor (ML Feature Engineering) ---
-    if RandomForestRegressor is not None:
+    if "Random Forest ML" in candidates and RandomForestRegressor is not None:
         try:
             df_feat, feature_cols = prepare_lag_features(df)
             train_feat = df_feat.iloc[:max(1, split_idx - 7)].copy()
@@ -247,7 +304,7 @@ def train_and_evaluate(df: pd.DataFrame, test_size=0.2):
             metrics["Random Forest ML"] = {"mae": float('inf'), "rmse": float('inf'), "mape": float('inf'), "r2": 0.0, "error": str(e)}
 
     # --- 2. Gradient Boosting Regressor (ML Feature Engineering) ---
-    if GradientBoostingRegressor is not None:
+    if "Gradient Boosting ML" in candidates and GradientBoostingRegressor is not None:
         try:
             df_feat, feature_cols = prepare_lag_features(df)
             train_feat = df_feat.iloc[:max(1, split_idx - 7)].copy()
@@ -272,50 +329,58 @@ def train_and_evaluate(df: pd.DataFrame, test_size=0.2):
         except Exception as e:
             metrics["Gradient Boosting ML"] = {"mae": float('inf'), "rmse": float('inf'), "mape": float('inf'), "r2": 0.0, "error": str(e)}
 
-    # --- 2. Simple Exponential Smoothing (SES) ---
-    if SimpleExpSmoothing:
-        try:
-            ses_model = SimpleExpSmoothing(train_df['y']).fit(optimized=True)
-            ses_pred = ses_model.forecast(len(test_df))
-            metrics["Simple Exponential Smoothing"] = calculate_error_metrics(test_df['y'], ses_pred)
-            forecasts["Simple Exponential Smoothing"] = ses_pred
-        except Exception as e:
-            metrics["Simple Exponential Smoothing"] = {"mae": float('inf'), "rmse": float('inf'), "mape": float('inf'), "r2": 0.0, "error": str(e)}
-    else:
-        metrics["Simple Exponential Smoothing"] = {"error": "statsmodels missing"}
-
-    # --- 3. Holt-Winters ---
-    if ExponentialSmoothing:
-        try:
-            hw_model = ExponentialSmoothing(train_df['y'], trend='add', seasonal='add', seasonal_periods=7).fit()
-            hw_pred = hw_model.forecast(len(test_df))
-            metrics["Holt-Winters"] = calculate_error_metrics(test_df['y'], hw_pred)
-            forecasts["Holt-Winters"] = hw_pred
-        except Exception:
+    # --- 3. Simple Exponential Smoothing (SES) ---
+    if "Simple Exponential Smoothing" in candidates:
+        if SimpleExpSmoothing:
             try:
-                hw_model = ExponentialSmoothing(train_df['y'], trend='add', seasonal=None).fit()
+                ses_model = SimpleExpSmoothing(train_df['y']).fit(optimized=True)
+                ses_pred = ses_model.forecast(len(test_df))
+                metrics["Simple Exponential Smoothing"] = calculate_error_metrics(test_df['y'], ses_pred)
+                forecasts["Simple Exponential Smoothing"] = ses_pred
+            except Exception as e:
+                metrics["Simple Exponential Smoothing"] = {"mae": float('inf'), "rmse": float('inf'), "mape": float('inf'), "r2": 0.0, "error": str(e)}
+        else:
+            metrics["Simple Exponential Smoothing"] = {"error": "statsmodels missing"}
+
+    # --- 4. Holt-Winters ---
+    if "Holt-Winters" in candidates:
+        if ExponentialSmoothing:
+            try:
+                hw_model = ExponentialSmoothing(train_df['y'], trend='add', seasonal='add', seasonal_periods=7).fit()
                 hw_pred = hw_model.forecast(len(test_df))
                 metrics["Holt-Winters"] = calculate_error_metrics(test_df['y'], hw_pred)
                 forecasts["Holt-Winters"] = hw_pred
-            except Exception as e2:
-                metrics["Holt-Winters"] = {"mae": float('inf'), "rmse": float('inf'), "mape": float('inf'), "r2": 0.0, "error": str(e2)}
-    else:
-        metrics["Holt-Winters"] = {"error": "statsmodels missing"}
+            except Exception:
+                try:
+                    hw_model = ExponentialSmoothing(train_df['y'], trend='add', seasonal=None).fit()
+                    hw_pred = hw_model.forecast(len(test_df))
+                    metrics["Holt-Winters"] = calculate_error_metrics(test_df['y'], hw_pred)
+                    forecasts["Holt-Winters"] = hw_pred
+                except Exception as e2:
+                    metrics["Holt-Winters"] = {"mae": float('inf'), "rmse": float('inf'), "mape": float('inf'), "r2": 0.0, "error": str(e2)}
+        else:
+            metrics["Holt-Winters"] = {"error": "statsmodels missing"}
 
-    # --- 4. Prophet ---
-    if Prophet:
-        try:
-            p_model = Prophet(yearly_seasonality=False, daily_seasonality=False, weekly_seasonality=True)
-            p_model.fit(train_df)
-            future = p_model.make_future_dataframe(periods=len(test_df), include_history=False)
-            p_forecast = p_model.predict(future)
-            p_pred = p_forecast['yhat'].values
-            metrics["Prophet"] = calculate_error_metrics(test_df['y'], p_pred)
-            forecasts["Prophet"] = p_pred
-        except Exception as e:
-            metrics["Prophet"] = {"mae": float('inf'), "rmse": float('inf'), "mape": float('inf'), "r2": 0.0, "error": str(e)}
-    else:
-        metrics["Prophet"] = {"error": "Prophet missing"}
+    # --- 5. Prophet (Optimized fast point estimation) ---
+    if "Prophet" in candidates:
+        if Prophet:
+            try:
+                p_model = Prophet(
+                    yearly_seasonality=False,
+                    daily_seasonality=False,
+                    weekly_seasonality=True,
+                    uncertainty_samples=0
+                )
+                p_model.fit(train_df)
+                future = p_model.make_future_dataframe(periods=len(test_df), include_history=False)
+                p_forecast = p_model.predict(future)
+                p_pred = p_forecast['yhat'].values
+                metrics["Prophet"] = calculate_error_metrics(test_df['y'], p_pred)
+                forecasts["Prophet"] = p_pred
+            except Exception as e:
+                metrics["Prophet"] = {"mae": float('inf'), "rmse": float('inf'), "mape": float('inf'), "r2": 0.0, "error": str(e)}
+        else:
+            metrics["Prophet"] = {"error": "Prophet missing"}
 
     # Select best model (lowest MAE)
     best_model_name = None
@@ -326,7 +391,8 @@ def train_and_evaluate(df: pd.DataFrame, test_size=0.2):
             best_model_name = m_name
 
     if not best_model_name:
-        best_model_name = "Simple Exponential Smoothing"
+        valid_keys = [k for k, v in metrics.items() if "error" not in v]
+        best_model_name = valid_keys[0] if valid_keys else "Simple Exponential Smoothing"
 
     return metrics, best_model_name, feature_importances
 
@@ -354,7 +420,7 @@ def generate_forecast_and_inventory_plan(db: Session, product_id: int, lead_time
         }
 
     classification = classify_demand(df)
-    metrics, best_model, feature_importance = train_and_evaluate(df)
+    metrics, best_model, feature_importance = train_and_evaluate(df, category=classification.get("category"))
 
     predictions = []
 
@@ -401,7 +467,12 @@ def generate_forecast_and_inventory_plan(db: Session, product_id: int, lead_time
     # 2. Prophet forecasting
     if (best_model == "Prophet" or not predictions) and Prophet:
         try:
-            model = Prophet(yearly_seasonality=False, daily_seasonality=False, weekly_seasonality=True)
+            model = Prophet(
+                yearly_seasonality=False,
+                daily_seasonality=False,
+                weekly_seasonality=True,
+                uncertainty_samples=0
+            )
             model.fit(df)
             future = model.make_future_dataframe(periods=30, include_history=False)
             forecast = model.predict(future)
@@ -559,3 +630,100 @@ def detect_sales_anomalies(db: Session, product_id: int):
     ]
 
     return {"anomalies": results, "total_flagged": len(results)}
+
+
+# ---------------------------------------------------------------------------
+# Parallel Multi-Core Model Training & Inventory Planning
+# ---------------------------------------------------------------------------
+def train_single_product_worker(task):
+    """
+    Worker function executed in separate process for multi-core parallelism.
+    task is a tuple: (product_id, product_name, lead_time, z_score)
+    """
+    product_id, product_name, lead_time, z_score = task
+    t0 = time.time()
+    db = None
+    try:
+        import database
+        import logging
+        logging.getLogger('prophet').setLevel(logging.ERROR)
+        logging.getLogger('cmdstanpy').setLevel(logging.ERROR)
+        db = database.SessionLocal()
+        plan = generate_forecast_and_inventory_plan(db, product_id, lead_time=lead_time, z_score=z_score)
+        elapsed = time.time() - t0
+        best_model = plan.get("best_model", "N/A")
+        cat = plan.get("classification", {}).get("category", "N/A")
+        return {
+            "product_id": product_id,
+            "product_name": product_name,
+            "lead_time": lead_time,
+            "z_score": z_score,
+            "plan": plan,
+            "best_model": best_model,
+            "category": cat,
+            "elapsed": elapsed,
+            "error": None
+        }
+    except Exception as e:
+        elapsed = time.time() - t0
+        return {
+            "product_id": product_id,
+            "product_name": product_name,
+            "lead_time": lead_time,
+            "z_score": z_score,
+            "plan": None,
+            "best_model": "Error",
+            "category": "Error",
+            "elapsed": elapsed,
+            "error": str(e)
+        }
+    finally:
+        if db is not None:
+            try:
+                db.close()
+            except Exception:
+                pass
+
+
+def train_all_products_parallel(products, lead_time: int = 3, z_score: float = 1.65, max_workers: int = None, progress_callback=None):
+    """
+    Trains all products in parallel using ProcessPoolExecutor across multiple CPU cores.
+    Returns dict mapping cache_key -> plan.
+    """
+    import concurrent.futures
+    import os
+
+    if not products:
+        return {}
+
+    if max_workers is None:
+        cpu_cnt = os.cpu_count() or 4
+        # Utilize available cores (up to 12 cores)
+        max_workers = max(1, min(cpu_cnt, 12))
+
+    tasks = [(p.id, getattr(p, 'name', f'Product {p.id}'), lead_time, z_score) for p in products]
+    cache_data = {}
+    total = len(tasks)
+    completed_count = 0
+
+    with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
+        future_to_task = {executor.submit(train_single_product_worker, t): t for t in tasks}
+        for future in concurrent.futures.as_completed(future_to_task):
+            completed_count += 1
+            res = future.result()
+            p_id = res["product_id"]
+            if res["plan"]:
+                key = _cache_key(p_id, res["lead_time"], res["z_score"])
+                cache_data[key] = res["plan"]
+                _forecast_cache[key] = (time.monotonic(), res["plan"])
+
+            if progress_callback:
+                progress_callback(completed_count, total, res)
+
+    # Save all newly trained forecasts to disk cache
+    disk_data = _load_disk_cache()
+    disk_data.update(cache_data)
+    _save_disk_cache(disk_data)
+
+    return cache_data
+

@@ -55,7 +55,7 @@ def get_product_metrics(product_id: int, db: Session = Depends(get_db)):
     product = db.query(models.Product).filter(models.Product.id == product_id).first()
     if not product:
         raise HTTPException(status_code=404, detail="Product not found")
-    plan = forecasting_engine.generate_forecast_and_inventory_plan(db, product_id)
+    plan = forecasting_engine.get_cached_forecast(db, product_id)
     return {
         "product_name": product.name,
         "classification": plan["classification"],
@@ -75,7 +75,7 @@ def get_product_predictions(
     product = db.query(models.Product).filter(models.Product.id == product_id).first()
     if not product:
         raise HTTPException(status_code=404, detail="Product not found")
-    plan = forecasting_engine.generate_forecast_and_inventory_plan(
+    plan = forecasting_engine.get_cached_forecast(
         db, product_id, lead_time=lead_time, z_score=z_score
     )
     return {
@@ -180,24 +180,21 @@ def get_recent_bills(db: Session = Depends(get_db)):
 import threading
 
 @router.post("/train")
-def self_train_model(reset_dataset: bool = False, db: Session = Depends(get_db)):
+def self_train_model(reset_dataset: bool = False, force: bool = False, db: Session = Depends(get_db)):
     """
     Train AI forecasting models. If reset_dataset is True or DB is empty,
-    reseeds from Master Top 30 Dataset. Otherwise runs full retrain on existing data.
+    reseeds from Master Top 30 Dataset. Otherwise runs incremental dirty-flag retrain.
+    Set force=True to force retraining all products unconditionally.
     """
     try:
         import prediction_tracker
-        from datetime import datetime
 
         if reset_dataset or db.query(models.Product).count() == 0:
             import unify_top30_dataset
             unify_top30_dataset.unify_datasets()
+            prediction_tracker.run_full_retrain(db, force=True)
         else:
-            prediction_tracker.run_full_retrain(db)
-
-        forecasting_engine.clear_forecast_cache()
-        prediction_tracker.set_model_status(db, "active")
-        prediction_tracker.set_config(db, "last_trained_at", datetime.utcnow().isoformat())
+            prediction_tracker.run_full_retrain(db, force=force)
 
         products_count = db.query(models.Product).count()
         bills_count = db.query(models.Bill).count()

@@ -1,0 +1,5780 @@
+{
+  "1:3:1.65": {
+    "product_id": 1,
+    "classification": {
+      "adi": 2.758,
+      "cv2": 0.114,
+      "category": "Intermittent",
+      "description": "Sparsely occurring demand with consistent quantities."
+    },
+    "metrics": {
+      "Random Forest ML": {
+        "mae": 0.002,
+        "rmse": 0.063,
+        "mape": 100.0,
+        "r2": -0.001
+      },
+      "Simple Exponential Smoothing": {
+        "mae": 0.002,
+        "rmse": 0.063,
+        "mape": 100.0,
+        "r2": -0.001
+      }
+    },
+    "best_model": "Random Forest ML",
+    "feature_importance": [
+      {
+        "feature": "Lag 1",
+        "importance": 81.65
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 9.86
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 2.71
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.07
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 1.67
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.62
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.42
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2026-10-19",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-20",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-21",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-22",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-23",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-24",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-25",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-26",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-27",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-28",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-29",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-30",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-31",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-01",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-02",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-03",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-04",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-05",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-06",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-07",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-08",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-09",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-10",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-11",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-12",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-13",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-14",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-15",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-16",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-17",
+        "quantity": 0.0
+      }
+    ],
+    "recommendation": {
+      "current_stock": 150,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 0.0,
+      "safety_stock": 29.78,
+      "reorder_point": 29.78,
+      "target_inventory": 29.78,
+      "restock_needed": false,
+      "recommended_volume": 0
+    }
+  },
+  "2:3:1.65": {
+    "product_id": 2,
+    "classification": {
+      "adi": 2.758,
+      "cv2": 0.08,
+      "category": "Intermittent",
+      "description": "Sparsely occurring demand with consistent quantities."
+    },
+    "metrics": {
+      "Random Forest ML": {
+        "mae": 0.001,
+        "rmse": 0.031,
+        "mape": 100.0,
+        "r2": -0.001
+      },
+      "Simple Exponential Smoothing": {
+        "mae": 0.001,
+        "rmse": 0.031,
+        "mape": 100.0,
+        "r2": -0.001
+      }
+    },
+    "best_model": "Random Forest ML",
+    "feature_importance": [
+      {
+        "feature": "Lag 1",
+        "importance": 83.38
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 8.27
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 5.37
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 1.38
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 0.82
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 0.68
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.11
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2026-10-19",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-20",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-21",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-22",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-23",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-24",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-25",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-26",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-27",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-28",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-29",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-30",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-10-31",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-01",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-02",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-03",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-04",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-05",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-06",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-07",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-08",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-09",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-10",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-11",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-12",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-13",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-14",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-15",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-16",
+        "quantity": 0.0
+      },
+      {
+        "date": "2026-11-17",
+        "quantity": 0.0
+      }
+    ],
+    "recommendation": {
+      "current_stock": 80,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 0.0,
+      "safety_stock": 77.44,
+      "reorder_point": 77.44,
+      "target_inventory": 77.44,
+      "restock_needed": false,
+      "recommended_volume": 0
+    }
+  },
+  "3:3:1.65": {
+    "product_id": 3,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.092,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 5.585,
+        "rmse": 7.106,
+        "mape": 15.951,
+        "r2": 0.542
+      },
+      "Holt-Winters": {
+        "mae": 10.552,
+        "rmse": 13.081,
+        "mape": 26.056,
+        "r2": -0.553
+      },
+      "Prophet": {
+        "mae": 7.598,
+        "rmse": 9.503,
+        "mape": 23.521,
+        "r2": 0.181
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 59.17
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 22.69
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 4.87
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 4.58
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 3.4
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 3.05
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 2.24
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 23.1
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 23.49
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 25.13
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 26.38
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 30.28
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 29.0
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 31.28
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 22.04
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 24.23
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 25.03
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 26.25
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 29.43
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 30.07
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 31.78
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 21.92
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 24.4
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 25.32
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 26.53
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 29.71
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 30.35
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 31.2
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 22.11
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 24.59
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 25.27
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 26.12
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 29.36
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 29.79
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 30.45
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 19.64
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 24.32
+      }
+    ],
+    "recommendation": {
+      "current_stock": 60,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 26.62,
+      "safety_stock": 28.78,
+      "reorder_point": 108.63,
+      "target_inventory": 215.11,
+      "restock_needed": true,
+      "recommended_volume": 156
+    }
+  },
+  "4:3:1.65": {
+    "product_id": 4,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.111,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 4.231,
+        "rmse": 5.299,
+        "mape": 20.669,
+        "r2": 0.398
+      },
+      "Holt-Winters": {
+        "mae": 5.487,
+        "rmse": 6.969,
+        "mape": 24.782,
+        "r2": -0.041
+      },
+      "Prophet": {
+        "mae": 5.136,
+        "rmse": 6.38,
+        "mape": 28.372,
+        "r2": 0.127
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 56.61
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 19.92
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 6.2
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 5.95
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 5.36
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 3.21
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 2.75
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 14.28
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 16.63
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 17.13
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 18.29
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 18.19
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 20.43
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 20.72
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 15.23
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 17.18
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 17.58
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 19.1
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 19.19
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 21.67
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 22.93
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 15.38
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 17.3
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 17.7
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 19.08
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 19.29
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 21.68
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 22.66
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 14.77
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 17.81
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 17.7
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 18.9
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 18.99
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 21.5
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 22.23
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 15.12
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 14.52
+      }
+    ],
+    "recommendation": {
+      "current_stock": 100,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 18.44,
+      "safety_stock": 18.97,
+      "reorder_point": 74.29,
+      "target_inventory": 148.05,
+      "restock_needed": false,
+      "recommended_volume": 0
+    }
+  },
+  "5:3:1.65": {
+    "product_id": 5,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.117,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 3.51,
+        "rmse": 4.586,
+        "mape": 21.845,
+        "r2": 0.353
+      },
+      "Holt-Winters": {
+        "mae": 5.193,
+        "rmse": 6.377,
+        "mape": 27.998,
+        "r2": -0.252
+      },
+      "Prophet": {
+        "mae": 4.157,
+        "rmse": 5.261,
+        "mape": 29.484,
+        "r2": 0.148
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 59.77
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 22.36
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 6.29
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 4.25
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 3.62
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 2.46
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 1.25
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 13.47
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 14.28
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 15.07
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 15.97
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 16.18
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 17.83
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 19.62
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 12.9
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 14.66
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 14.95
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 16.05
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 16.26
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 18.01
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 18.77
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 11.95
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 14.82
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 15.03
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 16.13
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 16.34
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 18.05
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 18.96
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 13.01
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 14.54
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 14.68
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 16.69
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 16.48
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 17.99
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 18.95
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 12.12
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 13.79
+      }
+    ],
+    "recommendation": {
+      "current_stock": 45,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 15.79,
+      "safety_stock": 16.21,
+      "reorder_point": 63.56,
+      "target_inventory": 126.7,
+      "restock_needed": true,
+      "recommended_volume": 82
+    }
+  },
+  "6:3:1.65": {
+    "product_id": 6,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.078,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 7.055,
+        "rmse": 8.895,
+        "mape": 12.261,
+        "r2": 0.638
+      },
+      "Holt-Winters": {
+        "mae": 14.678,
+        "rmse": 17.806,
+        "mape": 22.975,
+        "r2": -0.45
+      },
+      "Prophet": {
+        "mae": 10.822,
+        "rmse": 13.38,
+        "mape": 21.509,
+        "r2": 0.181
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 52.61
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 20.95
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 17.46
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 3.07
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.61
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 1.81
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.5
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 37.47
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 44.45
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 43.67
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 47.21
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 53.35
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 55.19
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 57.78
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 37.37
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 44.39
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 44.59
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 47.28
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 52.56
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 55.19
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 57.61
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 37.37
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 44.39
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 44.88
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 47.28
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 52.56
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 55.37
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 57.61
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 37.55
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 44.56
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 45.06
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 47.46
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 52.73
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 54.82
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 57.59
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 36.84
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 44.56
+      }
+    ],
+    "recommendation": {
+      "current_stock": 50,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 47.96,
+      "safety_stock": 42.36,
+      "reorder_point": 186.24,
+      "target_inventory": 378.07,
+      "restock_needed": true,
+      "recommended_volume": 329
+    }
+  },
+  "7:3:1.65": {
+    "product_id": 7,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.082,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 7.282,
+        "rmse": 9.015,
+        "mape": 12.729,
+        "r2": 0.65
+      },
+      "Holt-Winters": {
+        "mae": 18.243,
+        "rmse": 21.616,
+        "mape": 28.495,
+        "r2": -1.0
+      },
+      "Prophet": {
+        "mae": 10.995,
+        "rmse": 13.685,
+        "mape": 21.856,
+        "r2": 0.193
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Lag 7",
+        "importance": 38.27
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 34.53
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 15.05
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 5.69
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 2.7
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.49
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.28
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 37.26
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 44.61
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 46.04
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 47.27
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 51.87
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 60.4
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 61.12
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 37.98
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 44.84
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 46.32
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 48.51
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 51.11
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 55.35
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 62.17
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 38.37
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 44.12
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 45.6
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 48.31
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 51.32
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 54.11
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 59.89
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 38.23
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 44.12
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 45.6
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 49.18
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 52.74
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 59.3
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 60.18
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 39.29
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 45.42
+      }
+    ],
+    "recommendation": {
+      "current_stock": 70,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 49.02,
+      "safety_stock": 43.07,
+      "reorder_point": 190.13,
+      "target_inventory": 386.22,
+      "restock_needed": true,
+      "recommended_volume": 317
+    }
+  },
+  "8:3:1.65": {
+    "product_id": 8,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.073,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 8.598,
+        "rmse": 10.842,
+        "mape": 11.362,
+        "r2": 0.695
+      },
+      "Holt-Winters": {
+        "mae": 20.316,
+        "rmse": 24.41,
+        "mape": 23.979,
+        "r2": -0.548
+      },
+      "Prophet": {
+        "mae": 13.956,
+        "rmse": 17.236,
+        "mape": 20.615,
+        "r2": 0.228
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Lag 7",
+        "importance": 43.93
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 30.99
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 14.21
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 6.87
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 1.58
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 1.32
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.1
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 53.03
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 59.74
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 62.17
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 62.57
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 66.04
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 72.04
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 72.31
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 49.71
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 59.04
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 59.77
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 62.81
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 68.39
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 72.05
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 75.37
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 49.93
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 59.26
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 60.17
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 63.45
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 68.46
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 72.05
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 75.51
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 50.15
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 59.26
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 60.02
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 63.3
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 67.54
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 71.14
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 74.41
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 49.72
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 58.35
+      }
+    ],
+    "recommendation": {
+      "current_stock": 65,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 63.26,
+      "safety_stock": 53.58,
+      "reorder_point": 243.35,
+      "target_inventory": 496.38,
+      "restock_needed": true,
+      "recommended_volume": 432
+    }
+  },
+  "9:3:1.65": {
+    "product_id": 9,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.081,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 6.744,
+        "rmse": 8.393,
+        "mape": 13.584,
+        "r2": 0.591
+      },
+      "Holt-Winters": {
+        "mae": 15.033,
+        "rmse": 17.913,
+        "mape": 26.866,
+        "r2": -0.862
+      },
+      "Prophet": {
+        "mae": 9.711,
+        "rmse": 12.091,
+        "mape": 22.139,
+        "r2": 0.152
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 50.69
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 19.43
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 17.94
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 4.43
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 3.48
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 2.79
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.24
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 35.57
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 35.91
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 36.14
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 39.3
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 42.68
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 45.69
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 48.74
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 33.1
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 36.76
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 36.93
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 40.69
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 43.53
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 45.28
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 48.26
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 32.51
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 37.15
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 37.15
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 40.75
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 43.59
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 45.5
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 48.37
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 33.63
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 37.32
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 37.32
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 40.84
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 43.68
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 45.6
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 48.94
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 34.19
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 37.02
+      }
+    ],
+    "recommendation": {
+      "current_stock": 90,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 40.41,
+      "safety_stock": 37.85,
+      "reorder_point": 159.07,
+      "target_inventory": 320.69,
+      "restock_needed": true,
+      "recommended_volume": 231
+    }
+  },
+  "10:3:1.65": {
+    "product_id": 10,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.076,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 8.177,
+        "rmse": 10.382,
+        "mape": 11.356,
+        "r2": 0.694
+      },
+      "Holt-Winters": {
+        "mae": 20.418,
+        "rmse": 24.539,
+        "mape": 24.943,
+        "r2": -0.711
+      },
+      "Prophet": {
+        "mae": 13.157,
+        "rmse": 15.998,
+        "mape": 19.631,
+        "r2": 0.273
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 46.96
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 25.13
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 17.63
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 4.53
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.81
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 1.92
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.02
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 47.49
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 55.47
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 57.12
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 59.79
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 63.22
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 66.08
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 69.4
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 45.73
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 53.06
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 54.91
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 57.91
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 60.53
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 64.98
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 70.41
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 44.2
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 52.42
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 54.17
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 57.91
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 59.79
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 64.2
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 69.66
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 44.2
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 51.95
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 54.17
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 57.3
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 58.96
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 62.28
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 65.52
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 45.1
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 53.05
+      }
+    ],
+    "recommendation": {
+      "current_stock": 40,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 57.37,
+      "safety_stock": 52.24,
+      "reorder_point": 224.33,
+      "target_inventory": 453.8,
+      "restock_needed": true,
+      "recommended_volume": 414
+    }
+  },
+  "11:3:1.65": {
+    "product_id": 11,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.074,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 7.653,
+        "rmse": 9.796,
+        "mape": 11.391,
+        "r2": 0.705
+      },
+      "Holt-Winters": {
+        "mae": 20.339,
+        "rmse": 24.245,
+        "mape": 26.166,
+        "r2": -0.807
+      },
+      "Prophet": {
+        "mae": 13.147,
+        "rmse": 16.362,
+        "mape": 22.123,
+        "r2": 0.177
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Lag 7",
+        "importance": 36.23
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 36.21
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 14.93
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 7.41
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 2.32
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 1.83
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.07
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 44.23
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 52.19
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 52.21
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 56.82
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 55.85
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 57.82
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 57.9
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 42.29
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 50.19
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 51.4
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 57.37
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 57.5
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 58.41
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 58.77
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 42.4
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 50.01
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 51.22
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 54.9
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 57.98
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 57.83
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 58.71
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 42.4
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 49.85
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 51.07
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 54.1
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 56.35
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 62.26
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 58.61
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 42.06
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 49.6
+      }
+    ],
+    "recommendation": {
+      "current_stock": 120,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 53.08,
+      "safety_stock": 49.23,
+      "reorder_point": 208.46,
+      "target_inventory": 420.77,
+      "restock_needed": true,
+      "recommended_volume": 301
+    }
+  },
+  "12:3:1.65": {
+    "product_id": 12,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.078,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 7.688,
+        "rmse": 9.621,
+        "mape": 11.048,
+        "r2": 0.727
+      },
+      "Holt-Winters": {
+        "mae": 21.299,
+        "rmse": 25.481,
+        "mape": 27.271,
+        "r2": -0.916
+      },
+      "Prophet": {
+        "mae": 13.713,
+        "rmse": 16.742,
+        "mape": 22.475,
+        "r2": 0.173
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Lag 7",
+        "importance": 41.11
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 35.2
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 14.65
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 4.03
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.86
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.26
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.88
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 47.08
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 52.06
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 48.62
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 51.54
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 57.6
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 57.57
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 62.01
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 43.62
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 50.68
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 51.86
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 55.95
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 59.96
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 64.22
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 67.73
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 44.63
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 53.18
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 55.23
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 59.89
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 64.78
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 65.31
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 69.78
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 44.71
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 54.2
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 56.65
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 60.08
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 64.97
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 67.36
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 72.33
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 46.14
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 56.39
+      }
+    ],
+    "recommendation": {
+      "current_stock": 50,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 56.87,
+      "safety_stock": 50.39,
+      "reorder_point": 221.0,
+      "target_inventory": 448.48,
+      "restock_needed": true,
+      "recommended_volume": 399
+    }
+  },
+  "13:3:1.65": {
+    "product_id": 13,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.072,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 8.672,
+        "rmse": 11.141,
+        "mape": 10.462,
+        "r2": 0.707
+      },
+      "Holt-Winters": {
+        "mae": 22.146,
+        "rmse": 26.539,
+        "mape": 23.81,
+        "r2": -0.665
+      },
+      "Prophet": {
+        "mae": 15.461,
+        "rmse": 18.983,
+        "mape": 21.466,
+        "r2": 0.148
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Lag 7",
+        "importance": 43.64
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 33.55
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 13.52
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 5.03
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.39
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 1.06
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 0.8
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 52.31
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 58.66
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 59.18
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 65.03
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 70.55
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 73.98
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 76.67
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 50.28
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 57.54
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 58.7
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 65.53
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 71.23
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 73.47
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 80.72
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 53.85
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 57.94
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 58.87
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 65.51
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 71.21
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 73.46
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 80.11
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 52.69
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 57.5
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 58.67
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 64.88
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 70.59
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 72.52
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 80.33
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 52.88
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 57.79
+      }
+    ],
+    "recommendation": {
+      "current_stock": 75,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 64.76,
+      "safety_stock": 58.21,
+      "reorder_point": 252.48,
+      "target_inventory": 511.5,
+      "restock_needed": true,
+      "recommended_volume": 437
+    }
+  },
+  "14:3:1.65": {
+    "product_id": 14,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.077,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 6.92,
+        "rmse": 8.92,
+        "mape": 11.743,
+        "r2": 0.664
+      },
+      "Holt-Winters": {
+        "mae": 15.854,
+        "rmse": 19.267,
+        "mape": 24.54,
+        "r2": -0.567
+      },
+      "Prophet": {
+        "mae": 11.67,
+        "rmse": 14.195,
+        "mape": 23.187,
+        "r2": 0.149
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 56.64
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 19.5
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 16.23
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 2.25
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 2.2
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 1.93
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.25
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 38.88
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 42.86
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 43.73
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 46.11
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 49.15
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 55.06
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 54.63
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 37.91
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 42.54
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 43.39
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 45.78
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 49.46
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 54.39
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 56.5
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 37.4
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 42.1
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 43.39
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 45.78
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 49.46
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 52.3
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 56.41
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 37.51
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 42.0
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 43.39
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 45.78
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 49.46
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 52.3
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 56.41
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 37.51
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 42.0
+      }
+    ],
+    "recommendation": {
+      "current_stock": 368,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 46.45,
+      "safety_stock": 42.2,
+      "reorder_point": 181.56,
+      "target_inventory": 367.38,
+      "restock_needed": false,
+      "recommended_volume": 0
+    }
+  },
+  "15:3:1.65": {
+    "product_id": 15,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.074,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 8.384,
+        "rmse": 11.018,
+        "mape": 9.722,
+        "r2": 0.726
+      },
+      "Holt-Winters": {
+        "mae": 24.045,
+        "rmse": 28.505,
+        "mape": 24.862,
+        "r2": -0.837
+      },
+      "Prophet": {
+        "mae": 14.607,
+        "rmse": 18.223,
+        "mape": 18.214,
+        "r2": 0.249
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Lag 7",
+        "importance": 40.58
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 33.11
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 15.6
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 6.87
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.38
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 0.89
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.56
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 52.39
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 64.2
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 66.37
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 67.69
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 72.0
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 79.3
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 85.03
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 52.96
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 64.11
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 65.59
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 69.89
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 73.98
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 80.28
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 90.52
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 56.34
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 65.6
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 65.6
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 69.74
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 73.55
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 80.28
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 90.31
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 56.05
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 65.6
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 65.6
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 69.67
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 73.55
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 78.89
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 90.4
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 52.9
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 62.34
+      }
+    ],
+    "recommendation": {
+      "current_stock": 40,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 70.02,
+      "safety_stock": 62.07,
+      "reorder_point": 272.15,
+      "target_inventory": 552.24,
+      "restock_needed": true,
+      "recommended_volume": 513
+    }
+  },
+  "16:3:1.65": {
+    "product_id": 16,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.106,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 4.777,
+        "rmse": 6.027,
+        "mape": 19.891,
+        "r2": 0.43
+      },
+      "Holt-Winters": {
+        "mae": 7.574,
+        "rmse": 9.357,
+        "mape": 27.239,
+        "r2": -0.374
+      },
+      "Prophet": {
+        "mae": 5.813,
+        "rmse": 7.147,
+        "mape": 26.872,
+        "r2": 0.199
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 61.1
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 23.11
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 5.53
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 3.17
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 2.69
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 2.26
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 2.15
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 14.36
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 20.43
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 20.4
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 20.93
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 21.53
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 27.12
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 26.97
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 17.42
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 20.84
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 20.84
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 21.73
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 23.16
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 28.74
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 28.64
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 19.72
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 22.8
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 23.0
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 25.65
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 26.8
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 27.25
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 28.2
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 19.91
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 22.16
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 21.33
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 24.25
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 24.41
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 26.34
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 29.15
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 18.98
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 20.66
+      }
+    ],
+    "recommendation": {
+      "current_stock": 90,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 23.12,
+      "safety_stock": 21.76,
+      "reorder_point": 91.13,
+      "target_inventory": 183.63,
+      "restock_needed": true,
+      "recommended_volume": 94
+    }
+  },
+  "17:3:1.65": {
+    "product_id": 17,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.092,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 5.094,
+        "rmse": 6.385,
+        "mape": 16.835,
+        "r2": 0.52
+      },
+      "Holt-Winters": {
+        "mae": 9.941,
+        "rmse": 11.983,
+        "mape": 27.886,
+        "r2": -0.689
+      },
+      "Prophet": {
+        "mae": 7.016,
+        "rmse": 8.738,
+        "mape": 26.646,
+        "r2": 0.102
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 61.84
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 21.49
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 5.72
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 3.29
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 3.05
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 2.35
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 2.27
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 20.13
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 24.1
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 24.21
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 24.46
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 28.99
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 30.73
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 32.37
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 21.93
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 23.87
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 24.76
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 25.77
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 28.85
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 29.33
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 31.89
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 22.77
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 24.1
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 25.14
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 25.83
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 29.23
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 29.9
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 31.47
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 22.9
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 24.1
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 25.14
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 25.83
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 29.23
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 28.57
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 29.68
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 21.02
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 22.51
+      }
+    ],
+    "recommendation": {
+      "current_stock": 130,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 26.29,
+      "safety_stock": 26.05,
+      "reorder_point": 104.93,
+      "target_inventory": 210.11,
+      "restock_needed": false,
+      "recommended_volume": 0
+    }
+  },
+  "18:3:1.65": {
+    "product_id": 18,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.076,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 8.999,
+        "rmse": 11.316,
+        "mape": 10.868,
+        "r2": 0.726
+      },
+      "Holt-Winters": {
+        "mae": 22.852,
+        "rmse": 27.451,
+        "mape": 24.695,
+        "r2": -0.614
+      },
+      "Prophet": {
+        "mae": 15.641,
+        "rmse": 19.15,
+        "mape": 21.314,
+        "r2": 0.214
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Lag 7",
+        "importance": 57.8
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 20.96
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 11.27
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 6.6
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 1.43
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.08
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.88
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 54.81
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 57.57
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 61.42
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 63.76
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 69.02
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 73.2
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 81.0
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 52.34
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 60.01
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 60.3
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 63.26
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 66.97
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 71.74
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 77.58
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 51.2
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 60.3
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 60.3
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 62.44
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 66.97
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 71.32
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 78.46
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 51.45
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 60.3
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 60.3
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 62.44
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 66.97
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 71.32
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 78.87
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 49.38
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 59.19
+      }
+    ],
+    "recommendation": {
+      "current_stock": 55,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 64.14,
+      "safety_stock": 60.15,
+      "reorder_point": 252.57,
+      "target_inventory": 509.13,
+      "restock_needed": true,
+      "recommended_volume": 455
+    }
+  },
+  "19:3:1.65": {
+    "product_id": 19,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.092,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 5.697,
+        "rmse": 7.27,
+        "mape": 14.328,
+        "r2": 0.579
+      },
+      "Holt-Winters": {
+        "mae": 10.273,
+        "rmse": 12.78,
+        "mape": 23.053,
+        "r2": -0.3
+      },
+      "Prophet": {
+        "mae": 8.482,
+        "rmse": 10.475,
+        "mape": 24.397,
+        "r2": 0.126
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 63.26
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 22.74
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 3.53
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 3.23
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 3.15
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 2.17
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.93
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 24.92
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 30.78
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 32.73
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 33.2
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 35.04
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 38.72
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 36.76
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 25.53
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 30.24
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 31.2
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 31.31
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 33.05
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 36.9
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 37.79
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 24.42
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 29.66
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 30.96
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 31.79
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 33.65
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 37.46
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 38.27
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 24.74
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 30.15
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 30.98
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 31.8
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 33.65
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 37.46
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 38.7
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 24.52
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 30.15
+      }
+    ],
+    "recommendation": {
+      "current_stock": 150,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 32.22,
+      "safety_stock": 31.72,
+      "reorder_point": 128.37,
+      "target_inventory": 257.24,
+      "restock_needed": false,
+      "recommended_volume": 0
+    }
+  },
+  "20:3:1.65": {
+    "product_id": 20,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.081,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 6.445,
+        "rmse": 8.418,
+        "mape": 13.838,
+        "r2": 0.547
+      },
+      "Holt-Winters": {
+        "mae": 37.779,
+        "rmse": 41.871,
+        "mape": 75.325,
+        "r2": -1.0
+      },
+      "Prophet": {
+        "mae": 8.984,
+        "rmse": 11.252,
+        "mape": 21.764,
+        "r2": 0.19
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 48.44
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 22.61
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 18.79
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.94
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 2.79
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 2.76
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.68
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 28.74
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 33.27
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 32.65
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 34.93
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 38.87
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 40.26
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 43.72
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 29.37
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 34.98
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 34.8
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 38.01
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 40.31
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 43.73
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 45.37
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 31.32
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 38.51
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 39.03
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 42.16
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 45.56
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 49.06
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 50.31
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 35.16
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 39.54
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 40.3
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 43.08
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 45.61
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 50.3
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 53.87
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 35.45
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 42.67
+      }
+    ],
+    "recommendation": {
+      "current_stock": 60,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 40.03,
+      "safety_stock": 34.8,
+      "reorder_point": 154.9,
+      "target_inventory": 315.02,
+      "restock_needed": true,
+      "recommended_volume": 256
+    }
+  },
+  "21:3:1.65": {
+    "product_id": 21,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.09,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 5.659,
+        "rmse": 7.369,
+        "mape": 15.077,
+        "r2": 0.592
+      },
+      "Holt-Winters": {
+        "mae": 11.366,
+        "rmse": 13.935,
+        "mape": 26.081,
+        "r2": -0.458
+      },
+      "Prophet": {
+        "mae": 8.156,
+        "rmse": 10.158,
+        "mape": 23.227,
+        "r2": 0.225
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 60.16
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 21.71
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 7.86
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 3.18
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 2.87
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 2.63
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.6
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 23.98
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 28.01
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 28.73
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 32.07
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 33.78
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 35.13
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 36.04
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 25.24
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 28.03
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 28.13
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 31.22
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 32.59
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 35.16
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 36.26
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 24.59
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 27.98
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 27.98
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 31.63
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 32.96
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 35.12
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 36.67
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 24.94
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 27.98
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 27.98
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 31.63
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 32.96
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 35.12
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 36.65
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 24.94
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 26.93
+      }
+    ],
+    "recommendation": {
+      "current_stock": 85,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 30.68,
+      "safety_stock": 30.97,
+      "reorder_point": 123.02,
+      "target_inventory": 245.75,
+      "restock_needed": true,
+      "recommended_volume": 161
+    }
+  },
+  "22:3:1.65": {
+    "product_id": 22,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.074,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 8.835,
+        "rmse": 11.524,
+        "mape": 11.114,
+        "r2": 0.69
+      },
+      "Holt-Winters": {
+        "mae": 17.178,
+        "rmse": 20.79,
+        "mape": 20.344,
+        "r2": -0.008
+      },
+      "Prophet": {
+        "mae": 15.303,
+        "rmse": 19.01,
+        "mape": 22.584,
+        "r2": 0.157
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Lag 7",
+        "importance": 39.49
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 33.63
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 14.25
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 7.63
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 1.91
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 1.9
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.19
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 55.21
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 59.03
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 57.12
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 65.08
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 69.21
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 71.35
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 80.44
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 51.64
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 59.7
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 61.66
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 67.33
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 72.3
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 77.49
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 86.34
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 51.03
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 61.4
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 64.69
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 69.66
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 72.46
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 76.77
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 83.92
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 50.85
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 61.89
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 64.69
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 70.17
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 72.46
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 76.77
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 86.49
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 50.99
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 62.38
+      }
+    ],
+    "recommendation": {
+      "current_stock": 50,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 67.02,
+      "safety_stock": 56.59,
+      "reorder_point": 257.65,
+      "target_inventory": 525.72,
+      "restock_needed": true,
+      "recommended_volume": 476
+    }
+  },
+  "23:3:1.65": {
+    "product_id": 23,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.102,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 4.999,
+        "rmse": 6.403,
+        "mape": 17.38,
+        "r2": 0.438
+      },
+      "Holt-Winters": {
+        "mae": 7.821,
+        "rmse": 9.744,
+        "mape": 24.179,
+        "r2": -0.301
+      },
+      "Prophet": {
+        "mae": 6.221,
+        "rmse": 7.654,
+        "mape": 23.517,
+        "r2": 0.197
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 50.54
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 21.88
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 12.04
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 6.02
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 3.81
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 2.89
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 2.81
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 18.42
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 22.28
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 21.51
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 22.52
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 25.39
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 26.85
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 28.32
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 19.07
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 21.42
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 21.58
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 22.5
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 24.05
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 25.15
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 29.74
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 18.11
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 22.17
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 22.26
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 23.21
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 24.67
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 26.16
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 28.86
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 16.62
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 22.37
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 22.36
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 23.39
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 24.94
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 26.59
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 28.84
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 17.4
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 19.92
+      }
+    ],
+    "recommendation": {
+      "current_stock": 110,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 23.22,
+      "safety_stock": 24.17,
+      "reorder_point": 93.84,
+      "target_inventory": 186.73,
+      "restock_needed": false,
+      "recommended_volume": 0
+    }
+  },
+  "24:3:1.65": {
+    "product_id": 24,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.282,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 9.493,
+        "rmse": 11.899,
+        "mape": 64.393,
+        "r2": 0.664
+      },
+      "Holt-Winters": {
+        "mae": 9.414,
+        "rmse": 11.677,
+        "mape": 68.414,
+        "r2": 0.677
+      },
+      "Prophet": {
+        "mae": 9.407,
+        "rmse": 11.671,
+        "mape": 68.23,
+        "r2": 0.677
+      }
+    },
+    "best_model": "Prophet",
+    "feature_importance": [
+      {
+        "feature": "Lag 7",
+        "importance": 55.99
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 32.18
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 3.96
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.64
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 2.39
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 1.94
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 0.9
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 20.12
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 39.11
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 57.08
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 60.91
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 49.45
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 26.81
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 15.82
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 20.12
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 39.11
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 57.07
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 60.91
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 49.45
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 26.81
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 15.82
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 20.12
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 39.11
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 57.07
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 60.91
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 49.45
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 26.81
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 15.82
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 20.12
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 39.11
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 57.07
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 60.91
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 49.45
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 26.81
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 15.82
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 20.12
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 39.11
+      }
+    ],
+    "recommendation": {
+      "current_stock": 80,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 37.88,
+      "safety_stock": 58.03,
+      "reorder_point": 171.67,
+      "target_inventory": 323.2,
+      "restock_needed": true,
+      "recommended_volume": 244
+    }
+  },
+  "25:3:1.65": {
+    "product_id": 25,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.074,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 8.224,
+        "rmse": 10.423,
+        "mape": 10.254,
+        "r2": 0.712
+      },
+      "Holt-Winters": {
+        "mae": 21.425,
+        "rmse": 25.712,
+        "mape": 24.238,
+        "r2": -0.751
+      },
+      "Prophet": {
+        "mae": 15.282,
+        "rmse": 18.659,
+        "mape": 22.145,
+        "r2": 0.078
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Lag 7",
+        "importance": 42.17
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 33.96
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 14.89
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 5.26
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 1.94
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 0.98
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.81
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 50.75
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 60.69
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 63.68
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 66.5
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 70.24
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 77.13
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 82.19
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 52.1
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 60.87
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 61.68
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 64.8
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 69.09
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 75.36
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 79.07
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 49.24
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 60.86
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 61.6
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 63.9
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 69.11
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 75.69
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 79.38
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 50.2
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 60.41
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 61.6
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 63.6
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 69.11
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 75.69
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 79.38
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 49.87
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 60.78
+      }
+    ],
+    "recommendation": {
+      "current_stock": 40,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 65.49,
+      "safety_stock": 56.57,
+      "reorder_point": 253.03,
+      "target_inventory": 514.97,
+      "restock_needed": true,
+      "recommended_volume": 475
+    }
+  },
+  "26:3:1.65": {
+    "product_id": 26,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.088,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 6.212,
+        "rmse": 7.723,
+        "mape": 13.6,
+        "r2": 0.653
+      },
+      "Holt-Winters": {
+        "mae": 18.107,
+        "rmse": 20.854,
+        "mape": 34.328,
+        "r2": -1.0
+      },
+      "Prophet": {
+        "mae": 9.207,
+        "rmse": 11.553,
+        "mape": 22.914,
+        "r2": 0.223
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 57.84
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 20.54
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 12.36
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 2.99
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.87
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 1.72
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.68
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 32.71
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 38.86
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 41.28
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 44.16
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 43.93
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 48.29
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 52.44
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 34.08
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 40.01
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 40.82
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 43.51
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 45.42
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 49.4
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 54.02
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 35.31
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 41.47
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 42.24
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 44.12
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 46.04
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 49.58
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 53.6
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 34.32
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 41.31
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 41.54
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 43.69
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 45.31
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 49.17
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 52.92
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 34.81
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 41.03
+      }
+    ],
+    "recommendation": {
+      "current_stock": 75,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 43.51,
+      "safety_stock": 36.71,
+      "reorder_point": 167.25,
+      "target_inventory": 341.3,
+      "restock_needed": true,
+      "recommended_volume": 267
+    }
+  },
+  "27:3:1.65": {
+    "product_id": 27,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.11,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 4.167,
+        "rmse": 5.386,
+        "mape": 20.233,
+        "r2": 0.421
+      },
+      "Holt-Winters": {
+        "mae": 6.861,
+        "rmse": 8.48,
+        "mape": 28.998,
+        "r2": -0.435
+      },
+      "Prophet": {
+        "mae": 5.26,
+        "rmse": 6.506,
+        "mape": 28.653,
+        "r2": 0.155
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 54.91
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 28.26
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 6.9
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 4.07
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 3.23
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 2.61
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 0.02
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 15.68
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 15.59
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 15.55
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 17.17
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 18.93
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 19.49
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 20.24
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 11.78
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 16.15
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 16.31
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 17.26
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 18.81
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 19.74
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 19.86
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 13.03
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 15.46
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 15.62
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 17.51
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 19.12
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 20.05
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 20.95
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 13.09
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 15.12
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 15.13
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 17.02
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 19.25
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 20.18
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 21.21
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 13.42
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 15.48
+      }
+    ],
+    "recommendation": {
+      "current_stock": 120,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 17.14,
+      "safety_stock": 18.97,
+      "reorder_point": 70.39,
+      "target_inventory": 138.96,
+      "restock_needed": false,
+      "recommended_volume": 0
+    }
+  },
+  "28:3:1.65": {
+    "product_id": 28,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.073,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 9.215,
+        "rmse": 11.827,
+        "mape": 10.5,
+        "r2": 0.725
+      },
+      "Holt-Winters": {
+        "mae": 23.953,
+        "rmse": 28.668,
+        "mape": 24.834,
+        "r2": -0.618
+      },
+      "Prophet": {
+        "mae": 17.345,
+        "rmse": 21.424,
+        "mape": 23.387,
+        "r2": 0.096
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Lag 7",
+        "importance": 50.26
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 24.35
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 12.38
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 8.1
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 2.06
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 1.75
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.1
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 57.32
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 67.15
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 67.48
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 73.52
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 80.04
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 86.48
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 88.06
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 54.98
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 65.44
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 69.09
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 74.46
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 79.87
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 85.66
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 89.07
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 54.79
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 65.44
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 69.09
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 74.46
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 79.87
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 85.66
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 89.39
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 54.84
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 65.48
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 69.12
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 74.49
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 80.02
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 85.93
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 87.12
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 54.41
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 65.73
+      }
+    ],
+    "recommendation": {
+      "current_stock": 140,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 73.15,
+      "safety_stock": 61.31,
+      "reorder_point": 280.76,
+      "target_inventory": 573.36,
+      "restock_needed": true,
+      "recommended_volume": 434
+    }
+  },
+  "29:3:1.65": {
+    "product_id": 29,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.075,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 7.824,
+        "rmse": 10.0,
+        "mape": 11.383,
+        "r2": 0.667
+      },
+      "Holt-Winters": {
+        "mae": 19.588,
+        "rmse": 23.585,
+        "mape": 25.304,
+        "r2": -0.854
+      },
+      "Prophet": {
+        "mae": 12.664,
+        "rmse": 15.425,
+        "mape": 20.068,
+        "r2": 0.207
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Lag 7",
+        "importance": 40.48
+      },
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 33.6
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 15.38
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 5.89
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 1.93
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.4
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 1.32
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 42.43
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 49.76
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 51.44
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 55.61
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 59.72
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 66.8
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 62.35
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 41.77
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 49.33
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 50.49
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 54.69
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 55.92
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 60.58
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 61.6
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 41.77
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 49.33
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 50.21
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 53.98
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 56.04
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 61.49
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 61.66
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 42.31
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 49.33
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 50.21
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 54.04
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 56.39
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 61.5
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 60.87
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 42.66
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 49.68
+      }
+    ],
+    "recommendation": {
+      "current_stock": 60,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 53.47,
+      "safety_stock": 49.36,
+      "reorder_point": 209.76,
+      "target_inventory": 423.63,
+      "restock_needed": true,
+      "recommended_volume": 364
+    }
+  },
+  "30:3:1.65": {
+    "product_id": 30,
+    "classification": {
+      "adi": 1.0,
+      "cv2": 0.091,
+      "category": "Regular",
+      "description": "Smooth, high-frequency demand with low variability."
+    },
+    "metrics": {
+      "Gradient Boosting ML": {
+        "mae": 5.9,
+        "rmse": 7.406,
+        "mape": 14.619,
+        "r2": 0.586
+      },
+      "Holt-Winters": {
+        "mae": 12.987,
+        "rmse": 15.697,
+        "mape": 28.416,
+        "r2": -0.858
+      },
+      "Prophet": {
+        "mae": 8.382,
+        "rmse": 10.175,
+        "mape": 23.566,
+        "r2": 0.219
+      }
+    },
+    "best_model": "Gradient Boosting ML",
+    "feature_importance": [
+      {
+        "feature": "Rolling Mean 7",
+        "importance": 56.22
+      },
+      {
+        "feature": "Day Of Week",
+        "importance": 19.93
+      },
+      {
+        "feature": "Lag 7",
+        "importance": 11.99
+      },
+      {
+        "feature": "Is Weekend",
+        "importance": 3.87
+      },
+      {
+        "feature": "Rolling Std 7",
+        "importance": 3.21
+      },
+      {
+        "feature": "Lag 1",
+        "importance": 2.9
+      },
+      {
+        "feature": "Day Of Month",
+        "importance": 1.88
+      }
+    ],
+    "predictions": [
+      {
+        "date": "2018-01-01",
+        "quantity": 24.28
+      },
+      {
+        "date": "2018-01-02",
+        "quantity": 26.94
+      },
+      {
+        "date": "2018-01-03",
+        "quantity": 27.71
+      },
+      {
+        "date": "2018-01-04",
+        "quantity": 30.28
+      },
+      {
+        "date": "2018-01-05",
+        "quantity": 31.94
+      },
+      {
+        "date": "2018-01-06",
+        "quantity": 36.65
+      },
+      {
+        "date": "2018-01-07",
+        "quantity": 37.16
+      },
+      {
+        "date": "2018-01-08",
+        "quantity": 24.54
+      },
+      {
+        "date": "2018-01-09",
+        "quantity": 27.89
+      },
+      {
+        "date": "2018-01-10",
+        "quantity": 29.23
+      },
+      {
+        "date": "2018-01-11",
+        "quantity": 31.56
+      },
+      {
+        "date": "2018-01-12",
+        "quantity": 32.19
+      },
+      {
+        "date": "2018-01-13",
+        "quantity": 36.03
+      },
+      {
+        "date": "2018-01-14",
+        "quantity": 36.19
+      },
+      {
+        "date": "2018-01-15",
+        "quantity": 25.29
+      },
+      {
+        "date": "2018-01-16",
+        "quantity": 28.37
+      },
+      {
+        "date": "2018-01-17",
+        "quantity": 29.47
+      },
+      {
+        "date": "2018-01-18",
+        "quantity": 31.61
+      },
+      {
+        "date": "2018-01-19",
+        "quantity": 32.5
+      },
+      {
+        "date": "2018-01-20",
+        "quantity": 36.34
+      },
+      {
+        "date": "2018-01-21",
+        "quantity": 37.68
+      },
+      {
+        "date": "2018-01-22",
+        "quantity": 24.54
+      },
+      {
+        "date": "2018-01-23",
+        "quantity": 28.49
+      },
+      {
+        "date": "2018-01-24",
+        "quantity": 29.59
+      },
+      {
+        "date": "2018-01-25",
+        "quantity": 31.93
+      },
+      {
+        "date": "2018-01-26",
+        "quantity": 32.22
+      },
+      {
+        "date": "2018-01-27",
+        "quantity": 36.05
+      },
+      {
+        "date": "2018-01-28",
+        "quantity": 37.19
+      },
+      {
+        "date": "2018-01-29",
+        "quantity": 25.02
+      },
+      {
+        "date": "2018-01-30",
+        "quantity": 28.49
+      }
+    ],
+    "recommendation": {
+      "current_stock": 85,
+      "lead_time_days": 3,
+      "z_score": 1.65,
+      "average_daily_forecast": 30.91,
+      "safety_stock": 31.25,
+      "reorder_point": 123.99,
+      "target_inventory": 247.63,
+      "restock_needed": true,
+      "recommended_volume": 163
+    }
+  }
+}

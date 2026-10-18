@@ -55,8 +55,6 @@ def update_product(product_id: int, product_update: schemas.ProductUpdate, db: S
 
     db.commit()
     db.refresh(db_product)
-    import forecasting_engine
-    forecasting_engine.clear_forecast_cache()
     return db_product
 
 

@@ -33,8 +33,16 @@ const ModelStatusLED = ({ onStatusChange }) => {
 
   const led = LED[status] || LED.untrained;
   const fmt = ts => {
-    try { return new Date(ts + 'Z').toLocaleString('en-IN', { dateStyle: 'short', timeStyle: 'short' }); }
-    catch { return null; }
+    if (!ts) return null;
+    try {
+      const str = String(ts);
+      const normalized = str.endsWith('Z') || str.includes('+') ? str : str + 'Z';
+      const d = new Date(normalized);
+      if (isNaN(d.getTime())) return str.slice(0, 16).replace('T', ' ');
+      return d.toLocaleString('en-IN', { dateStyle: 'short', timeStyle: 'short' });
+    } catch {
+      return null;
+    }
   };
 
   return (

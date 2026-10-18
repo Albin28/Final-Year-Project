@@ -131,27 +131,88 @@ def get_maturity_status(db: Session) -> dict:
     }
 
 
-# -- Core Retrain Logic -------------------------------------------------------
+# -- Core Retrain Logic & Incremental Dirty-Flag -----------------------------
 
-def run_full_retrain(db: Session):
+def get_dirty_product_ids(db: Session) -> set:
+    """
+    Identifies products whose sales data has changed since last_trained_at,
+    or products that are missing from the persistent forecast cache.
+    """
+    from datetime import timezone
+    last_trained_str = get_config(db, "last_trained_at")
+    all_products = db.query(models.Product).all()
+    all_product_ids = {p.id for p in all_products}
+
+    if not last_trained_str:
+        return all_product_ids
+
+    try:
+        last_trained = datetime.fromisoformat(last_trained_str)
+        if last_trained.tzinfo is not None:
+            last_trained = last_trained.astimezone(timezone.utc).replace(tzinfo=None)
+    except Exception:
+        return all_product_ids
+
+    # Find products with POS transactions recorded in bills since last_trained
+    dirty_from_bills = (
+        db.query(models.BillItem.product_id)
+        .join(models.Bill, models.Bill.id == models.BillItem.bill_id)
+        .filter(models.Bill.created_at >= last_trained)
+        .distinct()
+        .all()
+    )
+    dirty_ids = {row[0] for row in dirty_from_bills}
+
+    # Also check if any product is missing from the forecast cache
+    disk_cache = forecasting_engine._load_disk_cache()
+    for p_id in all_product_ids:
+        key = forecasting_engine._cache_key(p_id, 3, 1.65)
+        if key not in disk_cache:
+            dirty_ids.add(p_id)
+
+    return dirty_ids
+
+
+def run_full_retrain(db: Session, force: bool = False):
+    """
+    Retrains ML forecasting models.
+    - If force=False (default): performs Incremental Dirty-Flag Retraining,
+      retraining ONLY products with POS sales transactions since last_trained_at.
+    - If force=True: clears cache and retrains all products.
+    """
+    from datetime import timezone
     set_model_status(db, "training")
-    set_config(db, "training_started_at", datetime.utcnow().isoformat())
+    set_config(db, "training_started_at", datetime.now(timezone.utc).isoformat())
     db.commit()
 
     try:
-        forecasting_engine.clear_forecast_cache()
-        products = db.query(models.Product).all()
+        all_products = db.query(models.Product).all()
 
-        if not products:
+        if not all_products:
             logger.warning("No products found -- skipping retrain.")
             set_model_status(db, "untrained")
             return
 
-        _backfill_prediction_log(db, products)
-        _save_tomorrow_predictions(db, products)
+        if force:
+            forecasting_engine.clear_forecast_cache()
+            products_to_train = all_products
+            logger.info("Force retrain requested: retraining all %d products.", len(all_products))
+        else:
+            dirty_ids = get_dirty_product_ids(db)
+            products_to_train = [p for p in all_products if p.id in dirty_ids]
+            logger.info("Incremental dirty-flag retrain: %d / %d products modified since last training.", len(products_to_train), len(all_products))
+
+        if products_to_train:
+            forecasting_engine.train_all_products_parallel(products_to_train)
+            _backfill_prediction_log(db, products_to_train)
+        else:
+            logger.info("No dirty products detected. Existing cached forecasts are up-to-date.")
+
+        # Re-save tomorrow's predictions for all products using cached/refreshed models
+        _save_tomorrow_predictions(db, all_products)
 
         set_model_status(db, "active")
-        set_config(db, "last_trained_at", datetime.utcnow().isoformat())
+        set_config(db, "last_trained_at", datetime.now(timezone.utc).isoformat())
         logger.info("Retrain complete -- model is now active.")
 
     except Exception as e:
@@ -230,7 +291,7 @@ def _save_tomorrow_predictions(db: Session, products):
             continue
 
         try:
-            plan = forecasting_engine.generate_forecast_and_inventory_plan(db, product.id)
+            plan = forecasting_engine.get_cached_forecast(db, product.id)
             pred = plan["predictions"][0]["quantity"] if plan["predictions"] else float(df["y"].mean())
             best_model = plan.get("best_model", "unknown")
         except Exception:
