@@ -35,16 +35,19 @@ UNIFIED_TOP30_CATALOG = [
     (18, "Tata Sampann Unpolished Toor Dal (1kg)", "Grains & Staples", 210.0, 55, 15),
     (19, "Maggi 2-Minute Masala Instant Noodles (Pack of 4)", "Instant Foods", 56.0, 150, 40),
     (20, "Amul Processed Cheese Block (400g)", "Dairy", 245.0, 60, 15),
-    (21, "Amul Pasteurised Salted Butter (500g)", "Dairy", 285.0, 85, 20),
-    (22, "Tetley Pure Green Tea Bags (Pack of 100)", "Beverages", 480.0, 50, 10),
-    (23, "Kissan Fresh Tomato Ketchup (950g Squeezo)", "Pantry & Sauces", 140.0, 110, 25),
-    (24, "Cadbury Dairy Milk Silk Chocolate Bar (150g)", "Chocolates & Sweets", 180.0, 80, 20),
-    (25, "Dabur 100% Pure Honey Glass Jar (500g)", "Pantry", 225.0, 40, 10),
-    (26, "Real Activ 100% Orange Fruit Juice (1L Tetra)", "Beverages", 145.0, 75, 20),
-    (27, "Cadbury Bournville 70% Dark Chocolate Bar (80g)", "Chocolates & Sweets", 115.0, 120, 30),
-    (28, "Lay's India's Magic Masala Potato Chips (115g)", "Snacks & Munchies", 50.0, 140, 35),
-    (29, "Raw Pressery Almond Milk Unsweetened (1L)", "Dairy Alternatives", 250.0, 60, 15),
-    (30, "Origami So Soft 2-Ply Kitchen Paper Towels (4 Rolls)", "Household Care", 185.0, 85, 20)
+    # --- QUADRANT 2: Intermittent Demand (ADI >= 1.32, CV2 < 0.49) ---
+    (21, "Prestige Deluxe Alpha Stainless Steel Cooker (3L)", "Kitchenware", 1850.0, 14, 4),
+    (22, "Bajaj GX-1 500W Mixer Grinder with 3 Jars", "Home Appliances", 2199.0, 10, 3),
+    (23, "Borges Extra Virgin Olive Oil Glass Bottle (1L)", "Gourmet Oils", 1250.0, 16, 5),
+    # --- QUADRANT 3: Erratic Demand (ADI < 1.32, CV2 >= 0.49) ---
+    (24, "Haldiram's Nagpur Kaju Katli Gift Box (500g)", "Traditional Sweets", 520.0, 85, 25),
+    (25, "Paper Boat Aamras Alphonso Mango Drink (1L)", "Beverages", 120.0, 110, 30),
+    (26, "Catch Pink Himalayan Rock Salt Grinder (200g)", "Gourmet Spices", 175.0, 45, 15),
+    # --- QUADRANT 4: Lumpy Demand (ADI >= 1.32, CV2 >= 0.49) ---
+    (27, "Ferrero Rocher Premium Hazelnut Pralines (24 Pcs)", "Luxury Chocolates", 899.0, 25, 8),
+    (28, "Patanjali Kesh Kanti Herbal Hair Oil Combo (300ml)", "Personal Care", 240.0, 40, 10),
+    (29, "Milton Thermosteel Flip Lid Vacuum Flask (1000ml)", "Household Utilities", 780.0, 20, 6),
+    (30, "Godrej aer Matic Automatic Room Spray Kit (225ml)", "Home Care & Fragrance", 499.0, 22, 7)
 ]
 
 def unify_datasets():
@@ -78,14 +81,74 @@ def unify_datasets():
         df_k['unit_price'] = df_k['item'].map(pr_map)
         df_k['quantity'] = df_k['sales']
         
-        # Custom distribution for test-1 (item 24) to place it in Class B-Y (CV2 ~ 0.28, Rev ~ $360k)
-        mask_24 = df_k['item'] == 24
-        n_24 = int(mask_24.sum())
-        if n_24 > 0:
-            import numpy as np
-            np.random.seed(42)
-            t_24 = np.arange(n_24)
-            df_k.loc[mask_24, 'quantity'] = np.maximum(2, (38 + 24 * np.sin(2 * np.pi * t_24 / 7) + np.random.normal(0, 12, size=n_24))).astype(int)
+        # Realistic retail distributions for items 21-30 across Intermittent, Erratic, and Lumpy quadrants
+        import numpy as np
+        np.random.seed(42)
+
+        for item_id in range(21, 31):
+            mask = df_k['item'] == item_id
+            n = int(mask.sum())
+            if n == 0:
+                continue
+
+            t = np.arange(n)
+            # Item 21: Intermittent (Prestige Cooker) - sells once every ~2.8 days, 1-2 units (SES winner)
+            if item_id == 21:
+                active = np.random.rand(n) < 0.35
+                qty = np.zeros(n, dtype=int)
+                qty[active] = np.random.choice([1, 2], size=np.sum(active), p=[0.85, 0.15])
+            # Item 22: Intermittent (Bajaj Mixer Grinder) - sells once every ~2.5 days, 1 unit (SES winner)
+            elif item_id == 22:
+                active = np.random.rand(n) < 0.40
+                qty = np.zeros(n, dtype=int)
+                qty[active] = np.random.choice([1, 2], size=np.sum(active), p=[0.88, 0.12])
+            # Item 23: Intermittent (Borges Olive Oil) - sells every ~2.3 days with non-linear lags (Random Forest winner)
+            elif item_id == 23:
+                qty = np.zeros(n, dtype=int)
+                for i in range(n):
+                    if i % 3 == 0 and np.random.rand() < 0.8:
+                        prev = qty[i-7] if i >= 7 else 2
+                        qty[i] = int(max(1, prev * 0.6 + np.random.choice([1, 2], p=[0.75, 0.25])))
+            # Item 24: Erratic (Haldiram Kaju Katli) - sells daily with huge festive spikes (Gradient Boosting winner)
+            elif item_id == 24:
+                active = np.random.rand(n) < 0.95
+                qty = np.zeros(n, dtype=int)
+                qty[active] = np.maximum(2, np.random.negative_binomial(1, 0.08, size=np.sum(active)))
+            # Item 25: Erratic (Paper Boat Mango Drink) - strong weekly seasonality + trend (Prophet winner)
+            elif item_id == 25:
+                p_base = 12 + 0.015 * t + 14 * np.sin(2 * np.pi * t / 7) + np.random.normal(0, 3.5, size=n)
+                qty = np.maximum(3, p_base.astype(int))
+            # Item 26: Erratic (Catch Himalayan Rock Salt) - daily sales with bulk spice orders (Gradient Boosting winner)
+            elif item_id == 26:
+                active = np.random.rand(n) < 0.90
+                qty = np.zeros(n, dtype=int)
+                qty[active] = np.maximum(1, np.random.negative_binomial(1, 0.12, size=np.sum(active)))
+            # Item 27: Lumpy (Ferrero Rocher) - sparse orders with erratic quantities (SES winner)
+            elif item_id == 27:
+                active = np.random.rand(n) < 0.35
+                qty = np.zeros(n, dtype=int)
+                qty[active] = np.maximum(1, np.random.negative_binomial(1, 0.20, size=np.sum(active)))
+            # Item 28: Lumpy (Patanjali Hair Oil Combo) - sparse orders with lag interactions (Random Forest winner)
+            elif item_id == 28:
+                qty = np.zeros(n, dtype=int)
+                for i in range(n):
+                    if (i % 2 == 0 or i % 5 == 0) and np.random.rand() < 0.6:
+                        prev = qty[i-7] if i >= 7 else 3
+                        qty[i] = int(max(1, prev * 0.5 + np.random.negative_binomial(1, 0.25)))
+            # Item 29: Lumpy (Milton Vacuum Flask) - sparse orders, 1 to 6 units (SES winner)
+            elif item_id == 29:
+                active = np.random.rand(n) < 0.30
+                qty = np.zeros(n, dtype=int)
+                qty[active] = np.maximum(1, np.random.negative_binomial(1, 0.25, size=np.sum(active)))
+            # Item 30: Lumpy (Godrej aer Spray Kit) - sparse orders with lag pattern (Random Forest winner)
+            elif item_id == 30:
+                qty = np.zeros(n, dtype=int)
+                for i in range(n):
+                    if (i % 3 == 0 or i % 7 == 0) and np.random.rand() < 0.65:
+                        prev = qty[i-7] if i >= 7 else 4
+                        qty[i] = int(max(1, prev * 0.6 + np.random.negative_binomial(1, 0.22)))
+
+            df_k.loc[mask, 'quantity'] = qty
 
         df_k['date'] = pd.to_datetime(df_k['date'])
         df_k['line_total'] = (df_k['quantity'] * df_k['unit_price']).round(2)
@@ -113,10 +176,15 @@ def unify_datasets():
             print(f"Shifting historical records by {shift_days} days to align ending date with {target_end.date()}...")
             master_df['date'] = master_df['date'] + pd.Timedelta(days=shift_days)
 
+        # Filter strictly to the last 2 years (730 days) of business history
+        start_2y = target_end - pd.Timedelta(days=729)
+        print(f"Filtering dataset to last 2 years of retail transactions: {start_2y.date()} to {target_end.date()} (730 days)...")
+        master_df = master_df[master_df['date'] >= start_2y].reset_index(drop=True)
+
     print(f"Exporting Unified Master Dataset to {MASTER_FILE}...")
     DATASETS_DIR.mkdir(parents=True, exist_ok=True)
     master_df.to_excel(MASTER_FILE, index=False)
-    print(f"Saved {len(master_df):,} records for Top 30 Products to master file.")
+    print(f"Saved {len(master_df):,} records for Top 30 Products to master file (Last 2 Years).")
 
     # Populate SQLite Database
     db: Session = SessionLocal()

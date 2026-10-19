@@ -54,6 +54,16 @@ VENDOR_MAP = {
     "Lay's": "PepsiCo India Holdings",
     "Raw Pressery": "Rakyan Beverages Supply",
     "Origami": "Origami Paper Products Ltd.",
+    "Prestige": "TTK Prestige Consumer Goods Depot",
+    "Bajaj": "Bajaj Electricals Distribution Depot",
+    "Borges": "Borges Mediterranean India Logistics",
+    "Haldiram": "Haldiram Snacks & Sweets Pvt. Ltd.",
+    "Paper Boat": "Hector Beverages Distribution Hub",
+    "Catch": "DS Group Catch Spices Network",
+    "Ferrero": "Ferrero India Luxury Depot",
+    "Patanjali": "Patanjali Ayurved Supply Chain",
+    "Milton": "Hamilton Housewares (Milton) Depot",
+    "Godrej": "Godrej Consumer Products Hub",
 }
 
 def get_vendor_for_product(product_name: str, category: str) -> str:
