@@ -395,21 +395,21 @@
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 4.241,
-        "rmse": 5.374,
-        "mape": 22.318,
-        "r2": 0.202
+        "mae": 4.234,
+        "rmse": 5.367,
+        "mape": 22.112,
+        "r2": 0.2
       },
       "Holt-Winters": {
-        "mae": 4.921,
-        "rmse": 6.053,
-        "mape": 28.693,
-        "r2": -0.012
+        "mae": 4.914,
+        "rmse": 6.041,
+        "mape": 28.41,
+        "r2": -0.014
       },
       "Prophet": {
-        "mae": 12.296,
-        "rmse": 13.949,
-        "mape": 71.793,
+        "mae": 12.289,
+        "rmse": 13.936,
+        "mape": 71.253,
         "r2": -1.0
       }
     },
@@ -447,35 +447,35 @@
     "predictions": [
       {
         "date": "2026-10-20",
-        "quantity": 14.4
+        "quantity": 14.62
       },
       {
         "date": "2026-10-21",
-        "quantity": 16.15
+        "quantity": 16.11
       },
       {
         "date": "2026-10-22",
-        "quantity": 17.14
+        "quantity": 17.11
       },
       {
         "date": "2026-10-23",
-        "quantity": 19.41
+        "quantity": 19.26
       },
       {
         "date": "2026-10-24",
-        "quantity": 20.81
+        "quantity": 19.32
       },
       {
         "date": "2026-10-25",
-        "quantity": 19.15
+        "quantity": 18.53
       },
       {
         "date": "2026-10-26",
-        "quantity": 14.46
+        "quantity": 13.2
       },
       {
         "date": "2026-10-27",
-        "quantity": 17.35
+        "quantity": 17.38
       },
       {
         "date": "2026-10-28",
@@ -483,97 +483,97 @@
       },
       {
         "date": "2026-10-29",
-        "quantity": 22.24
+        "quantity": 20.32
       },
       {
         "date": "2026-10-30",
-        "quantity": 21.15
+        "quantity": 22.13
       },
       {
         "date": "2026-10-31",
-        "quantity": 23.73
+        "quantity": 19.45
       },
       {
         "date": "2026-11-01",
-        "quantity": 22.46
+        "quantity": 19.46
       },
       {
         "date": "2026-11-02",
-        "quantity": 17.2
+        "quantity": 14.44
       },
       {
         "date": "2026-11-03",
-        "quantity": 23.07
+        "quantity": 20.32
       },
       {
         "date": "2026-11-04",
-        "quantity": 22.74
+        "quantity": 22.18
       },
       {
         "date": "2026-11-05",
-        "quantity": 26.02
-      },
-      {
-        "date": "2026-11-06",
-        "quantity": 25.95
-      },
-      {
-        "date": "2026-11-07",
-        "quantity": 28.49
-      },
-      {
-        "date": "2026-11-08",
-        "quantity": 27.19
-      },
-      {
-        "date": "2026-11-09",
-        "quantity": 19.21
-      },
-      {
-        "date": "2026-11-10",
-        "quantity": 22.7
-      },
-      {
-        "date": "2026-11-11",
-        "quantity": 22.7
-      },
-      {
-        "date": "2026-11-12",
         "quantity": 24.2
       },
       {
+        "date": "2026-11-06",
+        "quantity": 22.88
+      },
+      {
+        "date": "2026-11-07",
+        "quantity": 23.63
+      },
+      {
+        "date": "2026-11-08",
+        "quantity": 24.6
+      },
+      {
+        "date": "2026-11-09",
+        "quantity": 18.93
+      },
+      {
+        "date": "2026-11-10",
+        "quantity": 24.97
+      },
+      {
+        "date": "2026-11-11",
+        "quantity": 24.11
+      },
+      {
+        "date": "2026-11-12",
+        "quantity": 25.68
+      },
+      {
         "date": "2026-11-13",
-        "quantity": 23.6
+        "quantity": 25.44
       },
       {
         "date": "2026-11-14",
-        "quantity": 26.13
+        "quantity": 30.11
       },
       {
         "date": "2026-11-15",
-        "quantity": 30.27
+        "quantity": 28.67
       },
       {
         "date": "2026-11-16",
-        "quantity": 19.25
+        "quantity": 20.18
       },
       {
         "date": "2026-11-17",
-        "quantity": 21.34
+        "quantity": 22.34
       },
       {
         "date": "2026-11-18",
-        "quantity": 21.34
+        "quantity": 22.62
       }
     ],
     "recommendation": {
-      "current_stock": 94,
+      "current_stock": 93,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 21.63,
-      "safety_stock": 19.13,
-      "reorder_point": 84.04,
-      "target_inventory": 170.57,
+      "average_daily_forecast": 21.04,
+      "safety_stock": 19.12,
+      "reorder_point": 82.26,
+      "target_inventory": 166.44,
       "restock_needed": false,
       "recommended_volume": 0
     }
@@ -2126,27 +2126,27 @@
     "product_id": 13,
     "classification": {
       "adi": 1.0,
-      "cv2": 0.056,
+      "cv2": 0.057,
       "category": "Regular",
       "description": "Smooth, high-frequency demand with low variability."
     },
     "metrics": {
       "Gradient Boosting ML": {
-        "mae": 9.467,
-        "rmse": 11.786,
-        "mape": 12.082,
-        "r2": 0.536
+        "mae": 9.74,
+        "rmse": 12.438,
+        "mape": 45.742,
+        "r2": 0.551
       },
       "Holt-Winters": {
-        "mae": 25.488,
-        "rmse": 30.18,
-        "mape": 35.341,
+        "mae": 25.982,
+        "rmse": 31.147,
+        "mape": 101.861,
         "r2": -1.0
       },
       "Prophet": {
-        "mae": 48.308,
-        "rmse": 53.416,
-        "mape": 64.831,
+        "mae": 48.891,
+        "rmse": 54.369,
+        "mape": 155.559,
         "r2": -1.0
       }
     },
@@ -2183,136 +2183,136 @@
     ],
     "predictions": [
       {
-        "date": "2026-10-19",
-        "quantity": 49.45
-      },
-      {
         "date": "2026-10-20",
-        "quantity": 58.44
+        "quantity": 46.39
       },
       {
         "date": "2026-10-21",
-        "quantity": 58.87
+        "quantity": 52.55
       },
       {
         "date": "2026-10-22",
-        "quantity": 66.72
+        "quantity": 56.43
       },
       {
         "date": "2026-10-23",
-        "quantity": 70.58
+        "quantity": 59.01
       },
       {
         "date": "2026-10-24",
-        "quantity": 70.52
+        "quantity": 59.67
       },
       {
         "date": "2026-10-25",
-        "quantity": 73.59
+        "quantity": 58.74
       },
       {
         "date": "2026-10-26",
-        "quantity": 50.81
+        "quantity": 40.9
       },
       {
         "date": "2026-10-27",
-        "quantity": 57.08
+        "quantity": 54.2
       },
       {
         "date": "2026-10-28",
-        "quantity": 56.63
+        "quantity": 50.8
       },
       {
         "date": "2026-10-29",
-        "quantity": 63.32
+        "quantity": 58.33
       },
       {
         "date": "2026-10-30",
-        "quantity": 71.85
+        "quantity": 63.66
       },
       {
         "date": "2026-10-31",
-        "quantity": 72.33
+        "quantity": 67.23
       },
       {
         "date": "2026-11-01",
-        "quantity": 72.49
+        "quantity": 66.52
       },
       {
         "date": "2026-11-02",
-        "quantity": 51.85
+        "quantity": 45.56
       },
       {
         "date": "2026-11-03",
-        "quantity": 60.17
+        "quantity": 58.58
       },
       {
         "date": "2026-11-04",
-        "quantity": 62.78
+        "quantity": 58.14
       },
       {
         "date": "2026-11-05",
-        "quantity": 63.94
+        "quantity": 62.87
       },
       {
         "date": "2026-11-06",
-        "quantity": 69.16
+        "quantity": 69.55
       },
       {
         "date": "2026-11-07",
-        "quantity": 73.23
+        "quantity": 70.6
       },
       {
         "date": "2026-11-08",
-        "quantity": 67.65
+        "quantity": 69.03
       },
       {
         "date": "2026-11-09",
-        "quantity": 45.59
+        "quantity": 46.07
       },
       {
         "date": "2026-11-10",
-        "quantity": 57.65
+        "quantity": 54.12
       },
       {
         "date": "2026-11-11",
-        "quantity": 54.49
+        "quantity": 53.77
       },
       {
         "date": "2026-11-12",
-        "quantity": 61.76
+        "quantity": 61.81
       },
       {
         "date": "2026-11-13",
-        "quantity": 66.44
+        "quantity": 65.41
       },
       {
         "date": "2026-11-14",
-        "quantity": 67.13
+        "quantity": 66.8
       },
       {
         "date": "2026-11-15",
-        "quantity": 71.93
+        "quantity": 71.82
       },
       {
         "date": "2026-11-16",
-        "quantity": 49.25
+        "quantity": 46.92
       },
       {
         "date": "2026-11-17",
-        "quantity": 57.83
+        "quantity": 56.84
+      },
+      {
+        "date": "2026-11-18",
+        "quantity": 55.87
       }
     ],
     "recommendation": {
-      "current_stock": 75,
+      "current_stock": 374,
       "lead_time_days": 3,
       "z_score": 1.65,
-      "average_daily_forecast": 62.45,
-      "safety_stock": 56.97,
-      "reorder_point": 244.32,
-      "target_inventory": 494.12,
-      "restock_needed": true,
-      "recommended_volume": 420
+      "average_daily_forecast": 58.27,
+      "safety_stock": 57.6,
+      "reorder_point": 232.42,
+      "target_inventory": 465.51,
+      "restock_needed": false,
+      "recommended_volume": 0
     }
   },
   "15:3:1.65": {
@@ -3076,7 +3076,7 @@
       }
     ],
     "recommendation": {
-      "current_stock": 47,
+      "current_stock": 147,
       "lead_time_days": 3,
       "z_score": 1.65,
       "average_daily_forecast": 73.94,
@@ -3084,7 +3084,7 @@
       "reorder_point": 283.53,
       "target_inventory": 579.31,
       "restock_needed": true,
-      "recommended_volume": 533
+      "recommended_volume": 433
     }
   },
   "19:3:1.65": {
@@ -3836,15 +3836,15 @@
       }
     ],
     "recommendation": {
-      "current_stock": 4,
+      "current_stock": 104,
       "lead_time_days": 3,
       "z_score": 1.65,
       "average_daily_forecast": 0.48,
       "safety_stock": 1.8,
       "reorder_point": 3.25,
       "target_inventory": 5.18,
-      "restock_needed": true,
-      "recommended_volume": 2
+      "restock_needed": false,
+      "recommended_volume": 0
     }
   },
   "23:3:1.65": {

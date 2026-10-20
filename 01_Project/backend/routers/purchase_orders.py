@@ -16,7 +16,7 @@ from database import get_db
 
 router = APIRouter(prefix="/api/po", tags=["Purchase Orders"])
 
-STATUS_FLOW = ["Generated", "Approved", "Pending Delivery", "Delivered"]
+STATUS_FLOW = ["Generated", "Approved", "Pending Delivery", "Delivered", "Cancelled"]
 
 
 class POCreate(BaseModel):
@@ -213,6 +213,9 @@ def update_po_status(po_id: int, body: POStatusUpdate, db: Session = Depends(get
 
     if po.status == "Delivered":
         raise HTTPException(status_code=400, detail="Delivered orders cannot be changed.")
+
+    if po.status == "Cancelled":
+        raise HTTPException(status_code=400, detail="Cancelled orders cannot be changed.")
 
     new_status = body.status
     if new_status not in STATUS_FLOW:

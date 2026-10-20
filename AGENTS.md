@@ -19,7 +19,7 @@
 - **Change Proposal Report**: Generate a 10-point report (File Path, Action Type, Purpose, Reason, Risk Level, Expected Impact, Exact Changes, Why Required, Alternatives, Confidence Score) before performing any modification.
 - **Candidate Tables**: Mandatory candidate tables for any proposed file deletions or dependency removals.
 - **Pre-Execution Summary**: Display summary block (counts, risks, benefits) and stop to await explicit user approval.
-- **Code Generation Rules**: Show BEFORE and AFTER code with highlighted modified lines, rationale, and performance/security estimates.
+- **Post-Execution Output**: After approved execution of tasks, provide a standard, concise confirmation of the outcome. Do not output redundant before/after code snippets or boilerplate explanations unless explicitly requested.
 
 ## Final-Year Engineering Project Guidelines
 - **Context**: B.Tech Final Year Engineering Project.

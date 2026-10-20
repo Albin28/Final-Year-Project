@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 
-const STATUS_FLOW = ['Generated', 'Approved', 'Pending Delivery', 'Delivered'];
+const STATUS_FLOW = ['Generated', 'Approved', 'Pending Delivery', 'Delivered', 'Cancelled'];
 
 const STATUS_STYLE = {
   'Generated':         { bg: '#F3F4F6', color: '#374151' },
   'Approved':          { bg: '#DBEAFE', color: '#1D4ED8' },
   'Pending Delivery':  { bg: '#FEF3C7', color: '#92400E' },
   'Delivered':         { bg: '#D1FAE5', color: '#065F46' },
+  'Cancelled':         { bg: '#FEE2E2', color: '#991B1B' },
 };
 
 const PurchaseOrders = () => {
@@ -23,6 +24,7 @@ const PurchaseOrders = () => {
   const [loading, setLoading] = useState(true);
   const [updatingId, setUpdatingId] = useState(null);
   const [toast, setToast] = useState(null);
+  const [showAllPOs, setShowAllPOs] = useState(false);
 
   const showToast = (msg, type = 'success') => {
     setToast({ msg, type });
@@ -71,7 +73,7 @@ const PurchaseOrders = () => {
   };
 
   const handleStatusChange = async (po, newStatus) => {
-    if (po.status === 'Delivered') return;
+    if (po.status === 'Delivered' || po.status === 'Cancelled') return;
     setUpdatingId(po.id);
     try {
       const res = await api.patch('/po/' + po.id + '/status', { status: newStatus });
@@ -186,6 +188,29 @@ const PurchaseOrders = () => {
       </div>
 
       <div style={{ backgroundColor: 'white', borderRadius: '10px', border: '1px solid #E5E7EB', overflow: 'hidden' }}>
+        <div style={{ padding: '0.85rem 1.25rem', borderBottom: '1px solid #E5E7EB', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#F9FAFB' }}>
+          <h3 style={{ margin: 0, fontSize: '14px', fontWeight: '700', color: '#374151' }}>
+            📋 Purchase Orders {poList.length > 0 && `(${showAllPOs ? poList.length : Math.min(5, poList.length)} of ${poList.length})`}
+          </h3>
+          {poList.length > 5 && (
+            <button
+              onClick={() => setShowAllPOs(!showAllPOs)}
+              style={{
+                background: 'none',
+                border: '1px solid #D1D5DB',
+                borderRadius: '5px',
+                padding: '3px 10px',
+                fontSize: '12px',
+                fontWeight: '600',
+                color: '#4B5563',
+                cursor: 'pointer'
+              }}
+            >
+              {showAllPOs ? 'Show Latest 5 Only' : `View All (${poList.length})`}
+            </button>
+          )}
+        </div>
+
         {loading ? (
           <p style={{ padding: '2rem', textAlign: 'center', color: '#6B7280' }}>Loading orders...</p>
         ) : poList.length === 0 ? (
@@ -205,11 +230,10 @@ const PurchaseOrders = () => {
               </tr>
             </thead>
             <tbody>
-              {poList.map(po => {
+              {(showAllPOs ? poList : poList.slice(0, 5)).map(po => {
                 const style = STATUS_STYLE[po.status] || STATUS_STYLE['Generated'];
-                const isLocked = po.status === 'Delivered';
+                const isLocked = po.status === 'Delivered' || po.status === 'Cancelled';
                 const isUpdating = updatingId === po.id;
-                const nextStatuses = STATUS_FLOW.filter(s => s !== po.status);
                 return (
                   <tr key={po.id} style={{ opacity: isUpdating ? 0.6 : 1 }}>
                     <td style={{ fontWeight: '700', color: '#714B67' }}>{po.po_number}</td>
@@ -228,55 +252,164 @@ const PurchaseOrders = () => {
                       </span>
                     </td>
                     <td style={{ textAlign: 'center' }}>
-                      {isLocked ? (
+                      {po.status === 'Delivered' && (
                         <span style={{ fontSize: '11px', color: '#10B981', fontWeight: '700', display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
                           ✓ Fulfilled & Restocked
                         </span>
-                      ) : (
+                      )}
+                      {po.status === 'Cancelled' && (
+                        <span style={{ fontSize: '11px', color: '#DC2626', fontWeight: '700', display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
+                          ✕ Order Cancelled
+                        </span>
+                      )}
+                      {!isLocked && (
                         <div style={{ display: 'flex', gap: '5px', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
-                          {po.status === 'Pending Delivery' ? (
-                            <button
-                              onClick={() => handleStatusChange(po, 'Delivered')}
-                              disabled={isUpdating}
-                              style={{
-                                padding: '4px 10px',
-                                fontSize: '11px',
-                                fontWeight: '700',
-                                borderRadius: '5px',
-                                border: 'none',
-                                background: '#10B981',
-                                color: 'white',
-                                cursor: isUpdating ? 'not-allowed' : 'pointer',
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: '0.3rem',
-                                boxShadow: '0 2px 4px rgba(16, 185, 129, 0.25)',
-                                whiteSpace: 'nowrap'
-                              }}
-                            >
-                              📦 Receive Stock (+{po.quantity})
-                            </button>
-                          ) : (
-                            nextStatuses.map(ns => (
+                          {po.status === 'Generated' && (
+                            <>
                               <button
-                                key={ns}
-                                onClick={() => handleStatusChange(po, ns)}
+                                onClick={() => handleStatusChange(po, 'Approved')}
                                 disabled={isUpdating}
                                 style={{
-                                  padding: '3px 8px',
-                                  fontSize: '10px',
-                                  fontWeight: '600',
-                                  borderRadius: '4px',
-                                  border: '1px solid ' + (STATUS_STYLE[ns]?.color || '#D1D5DB'),
-                                  background: STATUS_STYLE[ns]?.bg || '#F9FAFB',
-                                  color: STATUS_STYLE[ns]?.color || '#374151',
+                                  padding: '4px 10px',
+                                  fontSize: '11px',
+                                  fontWeight: '700',
+                                  borderRadius: '5px',
+                                  border: '1px solid #2563EB',
+                                  background: '#EFF6FF',
+                                  color: '#1D4ED8',
                                   cursor: isUpdating ? 'not-allowed' : 'pointer',
                                   whiteSpace: 'nowrap'
                                 }}
                               >
-                                {ns === 'Delivered' ? '📦 Receive' : ns}
+                                ✓ Approve
                               </button>
-                            ))
+                              <button
+                                onClick={() => {
+                                  if (window.confirm(`Are you sure you want to cancel order ${po.po_number}?`)) {
+                                    handleStatusChange(po, 'Cancelled');
+                                  }
+                                }}
+                                disabled={isUpdating}
+                                style={{
+                                  padding: '4px 10px',
+                                  fontSize: '11px',
+                                  fontWeight: '700',
+                                  borderRadius: '5px',
+                                  border: '1px solid #FCA5A5',
+                                  background: '#FEF2F2',
+                                  color: '#DC2626',
+                                  cursor: isUpdating ? 'not-allowed' : 'pointer',
+                                  whiteSpace: 'nowrap'
+                                }}
+                              >
+                                ✕ Cancel
+                              </button>
+                            </>
+                          )}
+                          {po.status === 'Approved' && (
+                            <>
+                              <button
+                                onClick={() => handleStatusChange(po, 'Pending Delivery')}
+                                disabled={isUpdating}
+                                style={{
+                                  padding: '4px 10px',
+                                  fontSize: '11px',
+                                  fontWeight: '700',
+                                  borderRadius: '5px',
+                                  border: '1px solid #F59E0B',
+                                  background: '#FFFBEB',
+                                  color: '#B45309',
+                                  cursor: isUpdating ? 'not-allowed' : 'pointer',
+                                  whiteSpace: 'nowrap'
+                                }}
+                              >
+                                🚚 Pending Delivery
+                              </button>
+                              <button
+                                onClick={() => handleStatusChange(po, 'Delivered')}
+                                disabled={isUpdating}
+                                style={{
+                                  padding: '4px 10px',
+                                  fontSize: '11px',
+                                  fontWeight: '700',
+                                  borderRadius: '5px',
+                                  border: '1px solid #10B981',
+                                  background: '#ECFDF5',
+                                  color: '#047857',
+                                  cursor: isUpdating ? 'not-allowed' : 'pointer',
+                                  whiteSpace: 'nowrap'
+                                }}
+                              >
+                                📦 Receive
+                              </button>
+                              <button
+                                onClick={() => {
+                                  if (window.confirm(`Are you sure you want to cancel order ${po.po_number}?`)) {
+                                    handleStatusChange(po, 'Cancelled');
+                                  }
+                                }}
+                                disabled={isUpdating}
+                                style={{
+                                  padding: '4px 8px',
+                                  fontSize: '11px',
+                                  fontWeight: '600',
+                                  borderRadius: '5px',
+                                  border: '1px solid #FCA5A5',
+                                  background: '#FEF2F2',
+                                  color: '#DC2626',
+                                  cursor: isUpdating ? 'not-allowed' : 'pointer',
+                                  whiteSpace: 'nowrap'
+                                }}
+                              >
+                                ✕ Cancel
+                              </button>
+                            </>
+                          )}
+                          {po.status === 'Pending Delivery' && (
+                            <>
+                              <button
+                                onClick={() => handleStatusChange(po, 'Delivered')}
+                                disabled={isUpdating}
+                                style={{
+                                  padding: '4px 10px',
+                                  fontSize: '11px',
+                                  fontWeight: '700',
+                                  borderRadius: '5px',
+                                  border: 'none',
+                                  background: '#10B981',
+                                  color: 'white',
+                                  cursor: isUpdating ? 'not-allowed' : 'pointer',
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  gap: '0.3rem',
+                                  boxShadow: '0 2px 4px rgba(16, 185, 129, 0.25)',
+                                  whiteSpace: 'nowrap'
+                                }}
+                              >
+                                📦 Receive Stock (+{po.quantity})
+                              </button>
+                              <button
+                                onClick={() => {
+                                  if (window.confirm(`Are you sure you want to cancel order ${po.po_number}?`)) {
+                                    handleStatusChange(po, 'Cancelled');
+                                  }
+                                }}
+                                disabled={isUpdating}
+                                style={{
+                                  padding: '4px 8px',
+                                  fontSize: '11px',
+                                  fontWeight: '600',
+                                  borderRadius: '5px',
+                                  border: '1px solid #FCA5A5',
+                                  background: '#FEF2F2',
+                                  color: '#DC2626',
+                                  cursor: isUpdating ? 'not-allowed' : 'pointer',
+                                  whiteSpace: 'nowrap'
+                                }}
+                              >
+                                ✕ Cancel
+                              </button>
+                            </>
                           )}
                         </div>
                       )}

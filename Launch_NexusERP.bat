@@ -11,7 +11,7 @@ echo                     NEXUSERP - FULL SYSTEM LAUNCHER
 echo =====================================================================
 echo.
 echo  [1/3] Starting Backend API (FastAPI) on port 8000...
-start "NexusERP Backend (FastAPI)" cmd /k "cd /d "%ROOT_DIR%01_Project\backend" && "%PYTHON_EXE%" -m uvicorn main:app --host 127.0.0.1 --port 8000"
+start "NexusERP Backend (FastAPI)" cmd /k "cd /d "%ROOT_DIR%01_Project\backend" && "%PYTHON_EXE%" -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload"
 
 echo  [2/3] Starting Frontend Web App (Vite React) on port 5173...
 start "NexusERP Frontend (Vite)" cmd /k "cd /d "%ROOT_DIR%01_Project\frontend" && npm run dev"
