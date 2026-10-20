@@ -1,0 +1,26 @@
+NexusERP – Seminar & Academic Alignment Master Note
+Last Updated: 20 October 2026
+
+1. Project Theme: AI-Assisted Inventory & Demand Forecasting System for Small Business ERP Management (NexusERP).
+2. Implementation Progress: Exceeded 85% Phase 1 requirement. Fully operational 3-tier architecture (React 19 + FastAPI + SQLite + ML Engine).
+3. Core AI Engine: Multi-model tournament featuring Facebook Prophet, Holt-Winters, Simple Exponential Smoothing, Random Forest, and Gradient Boosting with engineered lag features and Syntetos-Boylan demand categorization (ADI & CV^2).
+4. Supply Chain Workflows: Point-of-Sale (POS) with 80mm ESC/POS thermal receipt printing, real-time stock deduction, closed-loop $(s, S)$ reorder to Purchase Order generation, and live inventory sync.
+5. Monitoring & Performance: Continuous prediction accuracy tracker (MAE/MAPE/drift), asynchronous offline pretraining cache (<40ms response latency), and header Model Health LED indicator.
+6. Documentation & Submission: IEEE extended research paper (04_Resources/EXTENDED_PROJECT_PAPER.md) and Final Report draft ready for soft binding on 26 October 2026. Review 2 completed; Final Review scheduled for 27–28 October 2026.
+
+--- Execution Commands ---
+
+Option A: One-Click Windows Batch Launchers (Recommended)
+- Start complete ERP system (Backend + Frontend): Double click `Launch_NexusERP.bat`
+- Run offline model pretraining: Double click `Train_NexusERP_Models.bat`
+
+Option B: Manual Command Line
+-- Backend (FastAPI on Port 8000) --
+From workspace root:
+.venv\Scripts\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8000 --app-dir 01_Project\backend
+
+-- Frontend (Vite on Port 5173) --
+cd 01_Project\frontend
+npm run dev
+
+Credentials: admin / admin123

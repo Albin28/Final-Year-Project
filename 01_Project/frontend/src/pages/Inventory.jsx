@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Edit2, Trash2, ShoppingCart } from 'lucide-react';
+import { Plus, Edit2, Trash2, ShoppingCart, Grid, Package } from 'lucide-react';
 import api from '../api/axios';
+import ABCXYZMatrix from '../components/ABCXYZMatrix';
 
 const Inventory = () => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const Inventory = () => {
   const [formData, setFormData] = useState({ name: '', category: '', price: 0, quantity_in_stock: 0, reorder_level: 10 });
   const [editingId, setEditingId] = useState(null);
   const [generatingPOs, setGeneratingPOs] = useState(false);
+  const [activeTab, setActiveTab] = useState('catalog');
 
   const handleAutoGeneratePOs = async () => {
     setGeneratingPOs(true);
@@ -94,45 +96,91 @@ const Inventory = () => {
         </div>
       </div>
 
-      <div className="table-container" style={{ flex: 1 }}>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Price</th>
-              <th>Stock</th>
-              <th>Status</th>
-              <th style={{ width: '80px', textAlign: 'right' }}>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map(p => (
-              <tr key={p.id}>
-                <td style={{ fontWeight: '500' }}>{p.name}</td>
-                <td><span className="badge badge-light">{p.category}</span></td>
-                <td>Rs. {p.price.toFixed(2)}</td>
-                <td>{p.quantity_in_stock}</td>
-                <td>
-                  {p.quantity_in_stock <= p.reorder_level ? 
-                    <span className="badge badge-danger">Low Stock</span> : 
-                    <span className="badge badge-success">In Stock</span>
-                  }
-                </td>
-                <td style={{ textAlign: 'right' }}>
-                  <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
-                    <button onClick={(e) => { e.stopPropagation(); editProduct(p); }} style={{ background: 'none', border: 'none', color: 'var(--primary-color)', cursor: 'pointer', padding: '0.25rem' }}><Edit2 size={16} /></button>
-                    <button onClick={(e) => { e.stopPropagation(); deleteProduct(p.id); }} style={{ background: 'none', border: 'none', color: 'var(--danger-color)', cursor: 'pointer', padding: '0.25rem' }}><Trash2 size={16} /></button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-            {products.length === 0 && (
-              <tr><td colSpan="6" style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>No products found. Click "Create" to add some.</td></tr>
-            )}
-          </tbody>
-        </table>
+      {/* View Switcher Tabs */}
+      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+        <button
+          onClick={() => setActiveTab('catalog')}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            padding: '0.5rem 1rem',
+            borderRadius: '6px',
+            border: activeTab === 'catalog' ? '1px solid var(--primary-color)' : '1px solid var(--border-color)',
+            background: activeTab === 'catalog' ? 'var(--primary-color)' : 'white',
+            color: activeTab === 'catalog' ? 'white' : 'var(--text-color)',
+            fontWeight: '600',
+            cursor: 'pointer',
+            fontSize: '0.85rem'
+          }}
+        >
+          <Package size={16} /> Products Catalog ({products.length})
+        </button>
+        <button
+          onClick={() => setActiveTab('abcxyz')}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            padding: '0.5rem 1rem',
+            borderRadius: '6px',
+            border: activeTab === 'abcxyz' ? '1px solid var(--primary-color)' : '1px solid var(--border-color)',
+            background: activeTab === 'abcxyz' ? 'var(--primary-color)' : 'white',
+            color: activeTab === 'abcxyz' ? 'white' : 'var(--text-color)',
+            fontWeight: '600',
+            cursor: 'pointer',
+            fontSize: '0.85rem'
+          }}
+        >
+          <Grid size={16} /> Strategic ABC-XYZ Portfolio
+        </button>
       </div>
+
+      {activeTab === 'abcxyz' ? (
+        <div style={{ flex: 1, overflowY: 'auto' }}>
+          <ABCXYZMatrix />
+        </div>
+      ) : (
+        <div className="table-container" style={{ flex: 1 }}>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th style={{ width: '80px', textAlign: 'right' }}>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr key={p.id}>
+                  <td style={{ fontWeight: '500' }}>{p.name}</td>
+                  <td><span className="badge badge-light">{p.category}</span></td>
+                  <td>Rs. {p.price.toFixed(2)}</td>
+                  <td>{p.quantity_in_stock}</td>
+                  <td>
+                    {p.quantity_in_stock <= p.reorder_level ? 
+                      <span className="badge badge-danger">Low Stock</span> : 
+                      <span className="badge badge-success">In Stock</span>
+                    }
+                  </td>
+                  <td style={{ textAlign: 'right' }}>
+                    <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
+                      <button onClick={(e) => { e.stopPropagation(); editProduct(p); }} style={{ background: 'none', border: 'none', color: 'var(--primary-color)', cursor: 'pointer', padding: '0.25rem' }}><Edit2 size={16} /></button>
+                      <button onClick={(e) => { e.stopPropagation(); deleteProduct(p.id); }} style={{ background: 'none', border: 'none', color: 'var(--danger-color)', cursor: 'pointer', padding: '0.25rem' }}><Trash2 size={16} /></button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+              {products.length === 0 && (
+                <tr><td colSpan="6" style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>No products found. Click "Create" to add some.</td></tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      )}
 
       {/* Modal */}
       {showModal && (

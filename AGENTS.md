@@ -13,3 +13,21 @@
 
 ## Credentials
 - `admin` / `admin123`
+
+## Strict Change Proposal Protocol
+- **Zero Automatic Changes**: Never modify, delete, rename, or create code/files without prior review.
+- **Change Proposal Report**: Generate a 10-point report (File Path, Action Type, Purpose, Reason, Risk Level, Expected Impact, Exact Changes, Why Required, Alternatives, Confidence Score) before performing any modification.
+- **Candidate Tables**: Mandatory candidate tables for any proposed file deletions or dependency removals.
+- **Pre-Execution Summary**: Display summary block (counts, risks, benefits) and stop to await explicit user approval.
+- **Code Generation Rules**: Show BEFORE and AFTER code with highlighted modified lines, rationale, and performance/security estimates.
+
+## Final-Year Engineering Project Guidelines
+- **Context**: B.Tech Final Year Engineering Project.
+- **Feature Preservation**: Never recommend deleting any feature solely because it is experimental.
+- **Demo Value**: Prioritize preserving project functionality and demonstration value over aggressive optimization.
+- **Classification Schema**:
+  - `Critical Before GitHub`
+  - `Recommended Before GitHub`
+  - `Optional Enhancement`
+  - `Future Improvement`
+

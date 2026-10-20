@@ -688,11 +688,18 @@ Automated regression tests are encapsulated in `test_all_modules.py`, executing 
 | **TEST-05** | Anomaly Detection | Contamination factor = 0.05 | Flag abnormal sales spikes | 32 Spikes Flagged | **PASS** |
 | **TEST-06** | ABC-XYZ Portfolio Matrix | 30 product revenue/predictability | Populate 3x3 classification grid | 30 items slotted across 9 cells | **PASS** |
 
-### 8.4 Visual Dashboards & Verification Captions
-* **[Figure 1: High-Performance Demand Forecast View]:** Displays the 30-day forward prediction curve plotted via Recharts SVG primitives, visualizing weekly 7-day cyclical oscillations, weekend crests, and month-end pay-day plateaus.
-* **[Figure 2: Real-Time Supply Chain Simulator Panel]:** Illustrates the live interactive $(s, S)$ restocking widget, showcasing real-time parameter tuning of lead times ($L=1\dots14$ days) and service level $Z$-scores ($90\%, 95\%, 99\%$) with dynamic reorder point calculation.
-* **[Figure 3: ABC-XYZ Strategic Inventory Grid]:** Illustrates the 3x3 strategic portfolio distribution categorizing inventory capital across revenue Pareto boundaries (A, B, C) and demand predictability tiers (X, Y, Z).
-* **[Figure 4: Thermal Receipt Invoicing Modal]:** Displays the 80mm ESC/POS layout rendering line-item subtotals, tax distributions, and customer checkout metadata.
+### 8.4 Visual Dashboards & Verification Figures
+* **Figure 1: High-Performance Multi-Tier System Architecture & Inference Pipeline**  
+  ![Figure 1: Multi-Tier System Architecture](file:///c:/Projects/Final-Year-Project/04_Resources/Figure_1_System_Architecture.png)  
+  *Detailed multi-tier architecture diagram showing React 19 presentation components, FastAPI ASGI routing controllers, core ML tournament models, and thread-safe persistence to SQLite and persistent JSON cache.*
+
+* **Figure 2: Syntetos-Boylan Demand Classification (SBC) & Tournament Winner Mapping**  
+  ![Figure 2: Demand Classification Matrix](file:///c:/Projects/Final-Year-Project/04_Resources/Figure_2_Demand_Classification_Matrix.png)  
+  *Quadrant plot partitioning inventory SKUs across Average Demand Interval ($ADI$) and Squared Coefficient of Variation ($CV^2$), highlighting product distributions and winning models across all four demand regimes.*
+
+* **Figure 3: Periodic Review (s, S) Replenishment Dynamics & Lead-Time Depletion**  
+  ![Figure 3: Replenishment Dynamics](file:///c:/Projects/Final-Year-Project/04_Resources/Figure_3_Replenishment_Dynamics.png)  
+  *Depletion and restocking curve illustrating physical on-hand inventory, 3-day lead-time demand, statistical safety stock ($SS$), reorder point ($ROP = 82.46$), and target inventory replenishment ($S = 162.78$).*
 
 ---
 

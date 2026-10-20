@@ -1,6 +1,6 @@
 # NexusERP – Decision Log
 # AI-Based Inventory & Sales Forecasting System for Small Business ERP Management
-# Last Updated: 18 August 2026
+# Last Updated: 20 October 2026
 
 ---
 
@@ -143,9 +143,70 @@
 
 ---
 
+## Decision #18 – Advanced ML Benchmarking (Tree Regressors), Feature Importance & ABC-XYZ Inventory Matrix
+- **Date:** 18 September 2026 – 19 September 2026
+- **Decision:** Elevate the AI core beyond basic time-series models by introducing:
+  1. **Tree-Based ML Regressors (Random Forest & Gradient Boosting)** with engineered lag features (`t-1`, `t-7`, 30-day rolling mean/std, day-of-week, seasonality).
+  2. **Explainable AI (XAI) & Feature Importance**: Quantify and chart feature contributions for model explainability during academic evaluation.
+  3. **Dedicated ML Model Leaderboard Dashboard**: Live model comparison (Random Forest vs Gradient Boosting vs Prophet vs Holt-Winters vs SES) with $R^2$, MAE, RMSE, MAPE metrics.
+  4. **ABC-XYZ Inventory Matrix & Anomaly Detection**: K-Means clustering for inventory velocity/predictability categorization + Isolation Forest for stock anomaly detection.
+- **Rationale:** Addresses academic evaluation requirements for model explainability, feature engineering rigor, and defensible ML methodologies while reinforcing ERP supply chain intelligence.
+- **Status:** ✅ IMPLEMENTED & VERIFIED
+
+---
+
+## Decision #19 – Continuous Prediction Tracking & Real-Time Drift Monitoring Engine
+- **Date:** 18 October 2026
+- **Decision:** Implemented an automated background tracking engine (`prediction_tracker.py`, `scheduler.py`) that matches daily forecasted sales with actual POS transaction checkout figures. Visualized continuous error progression in the frontend (`AccuracyTrendChart.jsx`) calculating running MAE, MAPE, and directional bias.
+- **Rationale:** Ensures machine learning models do not operate in a black-box silo. Evaluators can verify model reliability over time and detect data drift or forecast degradation before inventory runs short.
+- **Status:** ✅ IMPLEMENTED & VERIFIED
+
+---
+
+## Decision #20 – Offline Pretraining Engine, Persistent Forecast Cache & Live Health Telemetry
+- **Date:** 18 October 2026
+- **Decision:** Engineered an offline pretraining service (`pretrain_all_products.py`) that fits tournament models for all 30 grocery SKUs and serializes 30-day forecasts, metrics, and winning model assignments into `forecast_cache.json`. Added a real-time status LED component (`ModelStatusLED.jsx`) in the header nav to communicate model health, training timestamp, and cache status to the user. Packaged one-click execution via `Launch_NexusERP.bat` and `Train_NexusERP_Models.bat`.
+- **Rationale:** Solves cold-start latency (reducing dashboard SKU load times from >5s per model fit to <40ms), ensuring buttery smooth evaluator demos while providing visual confirmation of model health.
+- **Status:** ✅ IMPLEMENTED & VERIFIED
+
+---
+
+## Decision #21 – Closed-Loop Purchase Order Lifecycle & Dynamic Restocking Workflow
+- **Date:** 18 October 2026
+- **Decision:** Built a complete purchase order lifecycle module (`routers/purchase_orders.py`, `PurchaseOrders.jsx`) that turns AI $(s, S)$ reorder recommendations directly into active purchase orders. Supported state machine transitions (Draft -> Submitted -> Approved -> Received) and automatic physical stock incrementation upon order receipt.
+- **Rationale:** Closes the loop from predictive forecasting to operational ERP replenishment, demonstrating practical business utility beyond passive reporting.
+- **Status:** ✅ IMPLEMENTED & VERIFIED
+
+---
+
+## Decision #22 – 80mm ESC/POS Thermal Receipt Invoicing Modal & Real-Time POS Cart Polish
+- **Date:** 18 October 2026
+- **Decision:** Implemented a full-fidelity 80mm ESC/POS thermal receipt modal (`ThermalReceiptModal.jsx`) integrated directly into the POS billing checkout flow. Formatted with store header, bill serial ID, cashier info, line-item tax breakups, totals in INR (₹), and native print/PDF export hooks. Enforced real-time cart stock deduction safeguards.
+- **Rationale:** Fulfills retail point-of-sale operational realism for evaluation demos, ensuring clean customer invoicing and instant stock synchronization.
+- **Status:** ✅ IMPLEMENTED & VERIFIED
+
+---
+
+## Decision #23 – Indian Retail FMCG Catalog Curation & Top 30 High-Velocity SKU Standardization
+- **Date:** 18–19 October 2026
+- **Decision:** Standardized the core 30-product retail inventory catalog to authentic Indian grocery items (Amul Butter, Aashirvaad Atta, Tata Salt, Fortune Sunflower Oil, Parle-G, Maggi Noodles, etc.) with INR unit pricing and realistic SKU metrics (`update_indian_products.py`). Re-aligned historical transactional databases (`nexuserp.db`, `master_grocery_top30.xlsx`, `all_bills.xlsx`) across 54,780 records.
+- **Rationale:** Eliminates abstract numerical placeholders and foreign datasets in favor of an immediately recognizable Indian supermarket catalog for college faculty evaluators.
+- **Status:** ✅ IMPLEMENTED & VERIFIED
+
+---
+
+## Decision #24 – Milestone 5 Final Review Readiness & Comprehensive Research Documentation
+- **Date:** 20 October 2026
+- **Decision:** Successfully completed >85% system implementation ahead of the Milestone 5 Final Review (scheduled for 27–28 October 2026, soft-bound report deadline 26 October 2026). Authored comprehensive 11-section IEEE-format academic paper (`04_Resources/EXTENDED_PROJECT_PAPER.md`), updated slide presentation decks, verified 100% test suite pass rate (`test_all_modules.py`), and finalized the live presentation demo workflow.
+- **Rationale:** Meets and exceeds the Department of Computer Science & Engineering 80% Phase 1 evaluation requirement, locking in all academic and technical deliverables for final grading.
+- **Status:** ✅ COMPLETED & REVIEW READY
+
+---
+
 # Notes
-- Project decisions are tracked to keep the implementation aligned with the final-year review milestones.
-- The architecture remains intended for future AI forecasting expansion, and the current codebase is now validated around inventory + POS integration.
+- Project decisions are tracked chronologically to align engineering execution with Phase 1 academic milestones.
+- System is validated end-to-end: POS checkout -> Stock deduction -> Demand forecast tournament -> PO generation -> Real-time model health telemetry.
+- All technical deliverables exceed the 80% completion requirement for Phase 1 Final Review.
 
 
 
