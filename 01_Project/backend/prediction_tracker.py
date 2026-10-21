@@ -414,8 +414,12 @@ def simulate_store_sales(db: Session, days: int = 1, fill_today: bool = True) ->
     total_revenue_created = 0.0
     items_created = 0
 
+    # Retail weighting: fast-moving daily staples (IDs 1-20) represent primary supermarket footfall
+    prod_weights = np.array([1.0 if p.id <= 20 else 0.08 for p in products], dtype=float)
+    prod_weights /= prod_weights.sum()
+
     for sim_date in target_dates:
-        num_customers = random.randint(18, 28)
+        num_customers = random.randint(70, 90)
 
         for _ in range(num_customers):
             hour = random.randint(9, 21)
@@ -423,14 +427,18 @@ def simulate_store_sales(db: Session, days: int = 1, fill_today: bool = True) ->
             second = random.randint(0, 59)
             bill_time = datetime(sim_date.year, sim_date.month, sim_date.day, hour, minute, second)
 
-            basket_size = min(len(products), random.choices([1, 2, 3, 4, 5], weights=[0.2, 0.35, 0.25, 0.15, 0.05])[0])
-            basket_products = random.sample(products, basket_size)
+            basket_size = min(len(products), random.choices([3, 4, 5, 6, 8], weights=[0.20, 0.35, 0.25, 0.15, 0.05])[0])
+            basket_indices = np.random.choice(len(products), size=basket_size, replace=False, p=prod_weights)
+            basket_products = [products[i] for i in basket_indices]
 
             bill_items_data = []
             bill_total = 0.0
 
             for prod in basket_products:
-                qty = random.choices([1, 2, 3, 4], weights=[0.55, 0.25, 0.15, 0.05])[0]
+                if prod.id <= 20:
+                    qty = random.choices([1, 2, 3, 4], weights=[0.35, 0.40, 0.20, 0.05])[0]
+                else:
+                    qty = 1
                 line_total = round(qty * prod.price, 2)
                 bill_total += line_total
                 bill_items_data.append({

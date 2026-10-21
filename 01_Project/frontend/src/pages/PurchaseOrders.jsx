@@ -47,6 +47,9 @@ const PurchaseOrders = () => {
         } else if (prodRes.data.length > 0) {
           setSelectedProductId(String(prodRes.data[0].id));
         }
+        if (location.state?.recommendedQty) {
+          setQuantity(location.state.recommendedQty);
+        }
       } catch (err) {
         console.error('Failed to load PO data', err);
       } finally {

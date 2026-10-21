@@ -42,7 +42,7 @@ const TodaySummaryWidgets = () => {
         value={topProduct !== '--' ? topProduct.split(' ').slice(0, 2).join(' ') : '--'}
         sub={topProduct !== '--' ? topProduct : 'No sales yet'} color="#F59E0B" />
       <StatCard icon={<Clock size={22} />} label="Pending POs"
-        value={pendingPOs} sub={pendingPOs === 0 ? 'All fulfilled' : 'awaiting delivery'}
+        value={pendingPOs} sub={pendingPOs === 0 ? 'All reviewed' : 'awaiting decision'}
         color={pendingPOs > 0 ? '#EF4444' : '#10B981'} />
     </div>
   );

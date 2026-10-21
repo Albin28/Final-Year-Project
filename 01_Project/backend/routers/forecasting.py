@@ -162,7 +162,7 @@ def get_today_summary(db: Session = Depends(get_db)):
     import prediction_tracker
     summary = prediction_tracker.get_today_summary(db)
     pending_pos = db.query(models.PurchaseOrder).filter(
-        models.PurchaseOrder.status != "Delivered"
+        models.PurchaseOrder.status == "Generated"
     ).count() if hasattr(models, "PurchaseOrder") else 0
     summary["pending_purchase_orders"] = pending_pos
     return summary

@@ -248,7 +248,7 @@ def update_po_status(po_id: int, body: POStatusUpdate, db: Session = Depends(get
 @router.get("/pending-count")
 def get_pending_count(db: Session = Depends(get_db)):
     count = db.query(models.PurchaseOrder).filter(
-        models.PurchaseOrder.status != "Delivered"
+        models.PurchaseOrder.status == "Generated"
     ).count()
     return {"pending_count": count}
 
