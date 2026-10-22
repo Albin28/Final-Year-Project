@@ -207,9 +207,7 @@ def unify_datasets():
     print("Seeding default demo users into database...")
     import utils
     demo_users = [
-        ("admin", "admin@nexuserp.local", "admin123"),
-        ("manager", "manager@nexuserp.local", "manager123"),
-        ("cashier", "cashier@nexuserp.local", "cashier123")
+        ("admin", "admin@nexuserp.local", "admin123")
     ]
     for username, email, pwd in demo_users:
         u = models.User(

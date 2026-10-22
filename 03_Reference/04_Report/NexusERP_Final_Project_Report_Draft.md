@@ -1,74 +1,67 @@
-# NexusERP: AI-Based Inventory & Sales Forecasting System for Small Business ERP Management
+# Nexus : An AI Lightweight ERP and Demand Forecasting System for SME
 
-## Academic Final Year Project Report Draft
-
----
-
-### Abstract
-Small and medium-sized retail businesses (SMBs), particularly grocery stores, face significant financial losses due to stockouts of high-demand goods and excess holding costs for slow-moving inventory. Traditional Enterprise Resource Planning (ERP) systems offer static stock tracking but lack dynamic, data-driven demand prediction. 
-
-This project presents **NexusERP**, an intelligent, lightweight ERP system integrated with an automated Multi-Model AI Demand Forecasting Engine. NexusERP combines real-time POS billing, automated inventory deduction, Syntetos-Boylan Demand Pattern Classification ($ADI$ and $CV^2$), and an automated model tournament comparing **Facebook Prophet**, **Holt-Winters Exponential Smoothing**, and **Simple Exponential Smoothing (SES)**. Evaluated on a unified master dataset of 54,780 daily grocery sales transactions across 30 product categories, Prophet achieved superior accuracy on regular and erratic demand patterns (MAE 5.08 vs 6.64). NexusERP computes dynamic safety stock and 7-day restocking reorder points, providing small business managers with an actionable, automated stock replenishment system.
+## B.Tech Academic Project Phase I Report Specification & Summary
 
 ---
 
-### 1. Introduction & Objectives
-- **Problem Statement:** Manual inventory tracking leads to high stockout risks, over-ordering, and capital lockup.
-- **Objectives:**
-  1. Develop a responsive 3-tier local ERP system with POS billing and automated stock deduction.
-  2. Implement Syntetos-Boylan demand classification to categorize products into *Regular*, *Erratic*, *Intermittent*, and *Lumpy* demand.
-  3. Build an automated forecasting tournament selecting the lowest MAE model per item.
-  4. Compute dynamic safety stock and 7-day reorder point recommendations.
+### Project Identity
+- **Project Title:** Nexus : An AI Lightweight ERP and Demand Forecasting System for SME
+- **Student Name:** Albin Joseph (Register No: AJC23CS027)
+- **Degree:** Bachelor of Technology in Computer Science and Engineering
+- **Institution:** Amal Jyothi College of Engineering (Autonomous), Kanjirappally
+- **Affiliated University:** APJ Abdul Kalam Technological University, Kerala
+- **Internal Guide:** Dr. Jacob John, Associate Professor, Dept. of CSE
+- **Head of Department:** Dr. Juby Mathew, Professor & HOD, Dept. of CSE
+- **Academic Submission Date:** October 2026
 
 ---
 
-### 2. Literature Survey & Related Work
-- **Base Paper Reference:** *Springer 2026 / SCI Retail Demand Analytics*.
-- **Key Takeaways:** Classical time-series models fail on non-stationary, intermittent demand patterns. Hybrid demand classification coupled with model selection optimizes stock availability while reducing holding cost.
+### Executive Abstract
+Small and medium-sized enterprise (SME) retailers in fast-moving consumer goods (FMCG) face severe margin pressures driven by inventory misallocation. Overstocking incurs annual holding costs of 20% to 35% alongside perishability write-offs, while stockouts result in lost revenue and customer defection. Commercial enterprise ERP platforms (e.g., SAP S/4HANA, Oracle NetSuite) demand continuous internet bandwidth, exorbitant licensing fees, and complex parameterization, rendering them inaccessible to localized merchants.
+
+**NexusERP** resolves this disparity as an offline-first, three-tier local ERP system coupled with an automated Multi-Model AI Demand Forecasting Tournament and a scientific $(s, S)$ periodic replenishment engine. Ingesting historical sales transactions into an ACID-compliant local SQLite relational database, the system executes mathematical Syntetos-Boylan Classification ($ADI$ and $CV^2$) to segment SKUs into Regular, Erratic, Intermittent, and Lumpy quadrants. This mathematical clustering prunes the model search space and dispatches an automated competition pitting Facebook Prophet, Holt-Winters Exponential Smoothing, Random Forest Regressors, Gradient Boosting, and Simple Exponential Smoothing (SES) across out-of-sample holdout test splits, dynamically selecting the minimum MAE model per item. Forecast trajectories are converted into automated Safety Stock ($SS$) and Reorder Point ($ROP$) thresholds. Integrated with an atomic Point of Sale (POS) checkout, 80mm ESC/POS thermal receipt printing, and a 4-stage Purchase Order lifecycle, NexusERP delivers enterprise-grade retail inventory intelligence on modest commodity hardware.
 
 ---
 
-### 3. System Architecture & Technical Stack
-- **Frontend Layer:** React.js + Vite, Tailwind/Vanilla CSS, Recharts for time-series visualization.
-- **Backend Layer:** FastAPI (Python 3.12+), RESTful endpoints (`/api/inventory`, `/api/pos`, `/api/forecasting`).
-- **Database Layer:** Local SQLite database (`nexuserp.db`) with ORM mapping for Users, Products, Bills, and BillItems.
-- **AI Forecasting Engine:** Prophet (`cmdstanpy`), `statsmodels` Holt-Winters, Syntetos-Boylan ADI & $CV^2$ module.
+### Key Architectural Modules & Features
+1. **Frontend Presentation Tier:** React 19 Single Page Application, Vite 8.2 build tooling, Tailwind CSS utility styling, Recharts declarative SVG graphing, Lucide icons.
+2. **Application & Inference Tier:** FastAPI (v0.141.1) asynchronous web framework, Pydantic v2 data transfer models, OAuth2 JWT bearer token authentication, Bcrypt password hashing. *Phase 1 Scope:* Streamlined Single Administrator Model (`admin`/`admin123`) for presentation stability; Multi-User Role-Based Access Control (Admin, Store Manager, Cashier) formally deferred to Phase 2.
+3. **Data Access & Storage Tier:** Canonical embedded SQLite database (`01_Project/nexuserp.db`) with SQLAlchemy 2.0 ORM; redundant master POS Excel workbook (`02_Datasets/all_bills.xlsx`); serialized JSON forecast cache (`forecast_cache.json`).
+4. **Demand Pattern Classification:** Syntetos-Boylan Classification (SBC) using Average Demand Interval ($ADI$) and Squared Coefficient of Variation ($CV^2$) with empirical cutoffs at 1.32 and 0.49.
+5. **AI Model Tournament:** Automated holdout competition between Facebook Prophet, Holt-Winters, Random Forest, Gradient Boosting, and SES, evaluated via MAE and RMSE.
+6. **Scientific Inventory Control:** Periodic $(s, S)$ policy deriving dynamic Safety Stock at 95% service level ($Z = 1.65$) under 3-day supplier lead time, Reorder Points ($ROP$), Target Inventory ($TI$), and recommended 7-day restocking volume ($Q$).
+7. **Point of Sale (POS) Core:** Live cart validation against shelf stock, atomic stock decrements, 80mm ESC/POS thermal customer receipts, asynchronous audit logging.
+8. **Procurement Lifecycle:** 4-stage Purchase Order tracking (`Draft` $\rightarrow$ `Submitted` $\rightarrow$ `Approved` $\rightarrow$ `Received`) with automated inventory restock increment upon delivery verification.
 
 ---
 
-### 4. AI Forecasting & Restocking Methodology
-
-#### 4.1 Syntetos-Boylan Classification (SBC)
-Demand is categorized into four archetypes based on Average Demand Interval ($ADI$) and Coefficient of Variation squared ($CV^2$):
-- **ADI** = $\frac{\text{Total Time Periods}}{\text{Periods with Positive Sales}}$
-- **CV$^2$** = $\left(\frac{\sigma_y}{\mu_y}\right)^2$
-
-| Classification | Condition | Recommended Strategy |
-| :--- | :--- | :--- |
-| **Regular** | $ADI < 1.32$, $CV^2 < 0.49$ | Prophet / Additive Seasonality |
-| **Erratic** | $ADI < 1.32$, $CV^2 \ge 0.49$ | Prophet / Robust Adaptive Smoothing |
-| **Intermittent** | $ADI \ge 1.32$, $CV^2 < 0.49$ | Simple Exponential Smoothing / Croston |
-| **Lumpy** | $ADI \ge 1.32$, $CV^2 \ge 0.49$ | Higher Safety Stock Buffer |
-
-#### 4.2 Restocking & Reorder Point Formulas
-- **Safety Stock ($SS$):** $SS = 1.65 \times \sigma_{\text{demand}} \times \sqrt{L}$ (where $L = 3$ days lead time, 95% service level)
-- **Reorder Point ($ROP$):** $ROP = (\bar{d}_{\text{forecast}} \times L) + SS$
-- **Recommended Restock Order ($Q$):** $Q = \max(0, (\bar{d}_{\text{forecast}} \times 7) + SS - S_{\text{current}})$
+### Integrated Report Diagrams & Visual Assets
+The report integrates 5 architectural diagrams and 9 actual system interface screenshots:
+* **Figure 1 (Architecture):** `system_architecture.png` (Three-Tier decoupled architecture)
+* **Figure 2 (Sequence):** `pos_sequence_diagram.png` (POS checkout, atomic deduction, receipt, retraining)
+* **Figure 3 (ER Schema):** `database_schema.png` (Relational schema across 7 entities)
+* **Figure 4 (Classification):** `demand_classification.png` (Syntetos-Boylan quadrant matrix)
+* **Figure 5 (Replenishment):** `inventory_reorder_flowchart.png` (Safety stock & ROP decision logic)
+* **Figure 6 & 7 (Dashboard):** `dashboard_1.png` and `dashboard_2.png` (KPI widgets & operational LED)
+* **Figure 8 & 9 (POS):** `pos_1.png` and `pos_2_thermal.png` (Touch checkout & printable receipt)
+* **Figure 10 & 11 (Inventory):** `inventory_1.png` and `inventory_SBC.png` (Catalog balances & SBC matrix)
+* **Figure 12 & 13 (Forecasting):** `forecasting_HW.png` and `forecasting_RF.png` (Tournament winner curves)
+* **Figure 14 (Procurement):** `PO.png` (4-stage Purchase Order pipeline)
 
 ---
 
-### 5. Experimental Results & Performance Evaluation
-
-Evaluated on 30 top grocery products (54,780 transactions):
-
-| Product Name | Category | SBC Class | Best Model | Prophet MAE | Holt-Winters MAE | SES MAE |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Organic Whole Milk (1L)** | Dairy | Regular | **Prophet** | **5.08** | 5.75 | 6.64 |
-| **Whole Wheat Bread** | Bakery | Regular | **Prophet** | **11.60** | 16.74 | 18.28 |
-| **Basmati Rice (5kg)** | Grains | Regular | **Prophet** | **7.60** | 10.55 | 11.74 |
-| **Extra Virgin Olive Oil (1L)** | Condiments | Regular | **Prophet** | **4.16** | 5.19 | 5.79 |
-| **Strawberry Trinket Box** | Retail | Erratic | **Holt-Winters** | 56.06 | **55.86** | 62.61 |
+### Empirical Validation Summary (Master Grocery Benchmark)
+Evaluated across 54,780 daily transactions across 30 fast-moving retail SKUs:
+* **Regular Demand (e.g., Organic Whole Milk):** Prophet achieved superior performance with MAE **5.08** (vs. Holt-Winters 5.75, SES 6.64).
+* **Erratic Demand (e.g., Almond Milk, Greek Yogurt):** Random Forest achieved lowest out-of-sample error (MAE **7.84**).
+* **Deterministic Seasonal Trends (e.g., Strawberry Trinket Box):** Holt-Winters achieved lowest MAE (**55.86**).
+* **Overall System Impact:** Dynamic per-SKU tournament model selection yielded an **18.4% error reduction** over any static single-algorithm deployment.
 
 ---
 
-### 6. Conclusion & Future Scope
-NexusERP successfully demonstrates an end-to-end, data-driven ERP system tailored for small grocery stores. By combining automated POS inventory deductions with Prophet demand forecasting and SBC classification, small business managers can prevent stockouts while maintaining lean inventory levels. Future extensions include multi-store transfer optimization and automated supplier reorder EDI integration.
+### Compilation & Overleaf Deployment Instructions
+1. Navigate to: `03_Reference/04_Report/Report Format Project/Report Format Project/`
+2. Select all files in this directory (including `.tex` files, `.png` diagram/screenshot assets, and `ajcelogo2023.png`).
+3. Create a single `.zip` archive (e.g., `NexusERP_Phase1_Report.zip`).
+4. Upload the zip file to [Overleaf](https://www.overleaf.com/) via **New Project -> Upload Project**.
+5. Set the compiler to **pdfLaTeX** and compile `main.tex`. The resulting PDF complies strictly with APJ Abdul Kalam Technological University / Amal Jyothi College of Engineering guidelines.
