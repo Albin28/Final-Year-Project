@@ -15,8 +15,8 @@ router = APIRouter(
     tags=["POS"]
 )
 
-# Master Excel file for all bills — lives in 02_Datasets
-DATASETS_DIR = Path(__file__).resolve().parent.parent.parent.parent / "02_Datasets"
+# Master Excel file for all bills — lives in dataset
+DATASETS_DIR = Path(__file__).resolve().parent.parent.parent.parent / "dataset"
 MASTER_EXCEL = DATASETS_DIR / "all_bills.xlsx"
 
 EXCEL_HEADERS = [

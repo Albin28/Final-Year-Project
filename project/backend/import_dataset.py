@@ -282,7 +282,7 @@ if __name__ == "__main__":
         else:
             import_kaggle_store_item_demand(target)
     else:
-        excel_online = Path(__file__).resolve().parent.parent.parent / "02_Datasets" / "online_retail_II.xlsx"
+        excel_online = Path(__file__).resolve().parent.parent.parent / "dataset" / "online_retail_II.xlsx"
         if excel_online.exists():
             import_excel_dataset(str(excel_online))
         else:

@@ -5,7 +5,7 @@ cls
 
 set "ROOT_DIR=%~dp0"
 set "PYTHON_EXE=%ROOT_DIR%.venv\Scripts\python.exe"
-set "SCRIPT=%ROOT_DIR%01_Project\backend\pretrain_all_products.py"
+set "SCRIPT=%ROOT_DIR%project\backend\pretrain_all_products.py"
 
 echo =====================================================================
 echo                NEXUSERP - AI MODEL TRAINING AND CACHING

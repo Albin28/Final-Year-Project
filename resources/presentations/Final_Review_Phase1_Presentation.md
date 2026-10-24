@@ -54,7 +54,7 @@ marp: true
 - **Institutional Emblem:** Amal Jyothi College of Engineering (Autonomous), Affiliated to APJ Abdul Kalam Technological University
 - **Slide Badges:**
   - `Offline-First Edge Runtime` | `ACID Relational Core` | `Syntetos-Boylan Demand Classifier` | `Multi-Model Tournament` | `Closed-Loop Procurement`
-- **Visual Asset:** `04_Resources/ajcelogo2023.png`
+- **Visual Asset:** `resources/media/ajcelogo2023.png`
 - **Speaker Script (45 Seconds):**
   > "Good morning respected Head of the Department, project coordinator, and internal guide. I am Albin Joseph, presenting the Phase 1 Final Review for NexusERP: An Edge-First, Self-Learning ERP and Automated Multi-Model Demand Forecasting System for SME Retail. While large retail conglomerates employ multi-million dollar supply-chain systems, independent retail merchants remain trapped in manual guesswork. NexusERP bridges this gap by embedding modern time-series machine learning into a lightweight, 100% offline edge ERP. For today's final review, where the syllabus mandates an 80% implementation threshold, NexusERP has achieved over 85% completion across all core modules, which I will present and demonstrate today."
 
@@ -141,7 +141,7 @@ marp: true
   - **FastAPI (Python 3.11+):** Asynchronous ASGI performance, automatic OpenAPI documentation, native integration with SciPy/Pandas/Prophet.
   - **React 19 + Vite 6:** Modern component-driven reactivity, ultra-fast Hot Module Replacement, sub-second client updates.
   - **SQLite (WAL Mode):** Write-Ahead Logging allows concurrent readers while atomic writes occur, completely eliminating server maintenance.
-- **Visual Asset:** `04_Resources/system_architecture.png`
+- **Visual Asset:** `resources/media/system_architecture.png`
 - **Speaker Script (60 Seconds):**
   > "The system is structured as a decoupled 3-tier architecture. The presentation tier is built with React 19 and Vite 6, utilizing modular styling and Recharts for interactive forecast inspection. The application tier runs on FastAPI over Uvicorn, handling REST requests, token security, and orchestrating the AI forecasting engine. Data persistence relies on a canonical SQLite database configured with Write-Ahead Logging. This allows rapid concurrent reads from the dashboard while POS checkout writes commit atomically. To eliminate cold-start delays during evaluation, winning forecast trajectories are pre-cached into a persistent JSON cache, serving prediction curves in under 40 milliseconds."
 
@@ -161,7 +161,7 @@ marp: true
   - **Pre-Commit Stock Validation:** Verifies requested cart quantity $\le$ physical shelf stock before transaction processing.
   - **Atomic Decrement:** Inventory decrement and bill line-item creation execute within a single atomic SQLAlchemy transaction block (`session.commit()`).
   - **Redundant Register:** Transactions are committed to SQLite and asynchronously mirrored to `all_bills.xlsx`.
-- **Visual Asset:** `04_Resources/database_schema.png`
+- **Visual Asset:** `resources/media/database_schema.png`
 - **Speaker Script (45 Seconds):**
   > "Our database schema consists of seven normalized relational tables managed via SQLAlchemy 2.0 with strict foreign-key integrity. During point-of-sale checkout, the backend validates available shelf stock. If stock is sufficient, the system decrements inventory balances, generates line items, and commits the bill record within a single atomic transaction. If any item is unavailable, an HTTP 409 conflict is raised, preventing database corruption or negative inventory balances."
 
@@ -183,7 +183,7 @@ marp: true
 | **Intermittent**<br>($ADI \ge 1.32, CV^2 < 0.49$) | Sporadic purchase arrivals, stable individual order sizes | Specialty Spices, Kitchen Cookware | Simple Exponential Smoothing (SES), Random Forest |
 | **Lumpy**<br>($ADI \ge 1.32, CV^2 \ge 0.49$) | Sporadic purchase arrivals combined with highly volatile batch sizes | Premium Chocolates, Luxury Gift Boxes | Simple Exponential Smoothing (SES) |
 
-- **Visual Asset:** `04_Resources/demand_classification.png`
+- **Visual Asset:** `resources/media/demand_classification.png`
 - **Speaker Script (50 Seconds):**
   > "Before fitting any forecasting algorithm, NexusERP analyzes the historical sales distribution using the Syntetos-Boylan framework. We compute two non-parametric metrics: Average Demand Interval, which measures transaction frequency, and $CV^2$, which measures demand size variability. Products are mapped across empirical thresholds of 1.32 and 0.49 into four distinct quadrants: Regular, Erratic, Intermittent, and Lumpy. This categorization informs the candidate algorithm pool, preventing the misapplication of seasonal models to sparse items."
 
@@ -207,7 +207,7 @@ marp: true
   - Out-of-sample holdout evaluation on MAE, RMSE, and MAPE.
   - The algorithm minimizing holdout MAE is designated as tournament winner for that SKU.
 - **Explainable AI (XAI):** Gini feature importance exposes top sales drivers directly in the frontend UI.
-- **Visual Asset:** `04_Resources/forecasting_RF.png`
+- **Visual Asset:** `resources/media/forecasting_RF.png`
 - **Speaker Script (60 Seconds):**
   > "Rather than enforcing a static forecasting algorithm across the entire store, NexusERP executes an automated tournament. For tree-based models like Random Forest and Gradient Boosting, we construct tabular features including lag-1, lag-7, 7-day rolling statistics, and day-of-week indicators. The system chronologically splits historical data into an 80% training window and a 20% holdout test window. It trains Prophet, Holt-Winters, Random Forest, Gradient Boosting, and SES, and computes out-of-sample MAE and RMSE. The algorithm achieving the lowest holdout error is dynamically selected as the active model, refit across all data, and projected forward 30 days."
 
@@ -229,7 +229,7 @@ marp: true
     $$Q = \begin{cases} \lceil TI - I_{\text{curr}} \rceil, & \text{if Restock Trigger is True} \\ 0, & \text{otherwise} \end{cases}$$
 - **Retail Practicality:**
   - Traditional textbook EOQ formulas produce multi-thousand bulk warehouse numbers. Our 7-day cyclical formulation generates clean, sensible 2-to-3 digit replenishment quantities (e.g., order 65 units).
-- **Visual Asset:** `04_Resources/inventory_reorder_flowchart.png`
+- **Visual Asset:** `resources/media/inventory_reorder_flowchart.png`
 - **Speaker Script (50 Seconds):**
   > "A forecast is only valuable if it produces a concrete procurement decision. NexusERP feeds forecasted daily demand directly into dynamic inventory equations. We calculate Safety Stock using a 95% service level factor and a 3-day supplier lead time. When current shelf stock drops below the Reorder Point, the system calculates the exact target order quantity required to safely cover the next 7-day retail review cycle. This prevents both dangerous stockouts and excessive cash lockup."
 
@@ -265,7 +265,7 @@ marp: true
 - **Operational Integration:**
   - Fully closed-loop: Clicking "Create PO" on any AI forecast card instantly populates the Purchase Order screen.
   - Transitioning status to `Received` automatically updates `products.quantity_in_stock` in SQLite, closing the supply-chain loop.
-- **Visual Asset:** `04_Resources/PO.png`
+- **Visual Asset:** `resources/media/PO.png`
 - **Speaker Script (45 Seconds):**
   > "NexusERP provides a complete closed-loop procurement lifecycle. When the forecasting engine detects that an item requires restocking, the store manager can convert that recommendation into an active Purchase Order with one click. The PO progresses through a four-stage state machine: Draft, Submitted, Approved, and Received. Crucially, when physical goods arrive at the store and the manager marks the PO as Received, the system automatically increments the inventory balance in the database."
 
@@ -308,7 +308,7 @@ marp: true
 - **Key Takeaways:**
   - Automated tournament model selection yields an **18.4% aggregate error reduction** over any static single-algorithm deployment.
   - Validates the base paper's central hypothesis: decomposition models capture regular seasonality, tree ensembles capture non-linear erratic sales, and SES prevents overfitting on sparse series.
-- **Visual Asset:** `04_Resources/forecasting_HW.png`
+- **Visual Asset:** `resources/media/forecasting_HW.png`
 - **Speaker Script (60 Seconds):**
   > "Here are our empirical tournament results evaluated on out-of-sample test splits. On regular staple items like Bread and Rice, Gradient Boosting and Prophet achieved superior accuracy, reducing MAE by over 35% compared to baseline smoothing. On seasonal beverages like Mango Drink, Holt-Winters won with an MAE of 2.91 and a MAPE of 8.58%. Conversely, for intermittent cookware items, complex models overfit on zero-demand days, and Simple Exponential Smoothing achieved the lowest error. Across all 30 SKUs, dynamically selecting the best model per item delivers an 18.4% error reduction over any static single-model deployment."
 
@@ -369,7 +369,7 @@ marp: true
   - Click 'Generate Purchase Order': auto-populates PO in Draft state.
   - Progress PO to 'Approved' -> Transition to 'Received': demonstrate physical stock auto-increment!
   ```
-- **Visual Asset:** `04_Resources/pos_sequence_diagram.png`
+- **Visual Asset:** `resources/media/pos_sequence_diagram.png`
 - **Speaker Script (45 Seconds):**
   > "For the live demonstration, we will follow a structured 5-step operational flow. We begin at the executive dashboard and verify model readiness via our green status LED. We execute a live POS transaction and print an 80mm thermal receipt, verifying atomic stock decrement. Then, we transition to the forecasting panel to inspect the multi-model tournament leaderboard and XAI drivers. Finally, we convert an AI restocking recommendation into an active Purchase Order and demonstrate automatic inventory replenishment upon receipt."
 

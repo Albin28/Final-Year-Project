@@ -10,7 +10,7 @@ sys.path.append(str(Path(__file__).resolve().parent))
 from database import SessionLocal, engine, Base
 import models
 
-DATASETS_DIR = Path(__file__).resolve().parent.parent.parent / "02_Datasets"
+DATASETS_DIR = Path(__file__).resolve().parent.parent.parent / "dataset"
 MASTER_FILE = DATASETS_DIR / "master_grocery_top30.xlsx"
 
 # Top 30 Unified Grocery Catalog with realistic Indian supermarket brands, INR pricing, and stock levels

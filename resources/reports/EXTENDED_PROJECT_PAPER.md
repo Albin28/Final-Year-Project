@@ -256,13 +256,13 @@ POS billing operations enforce strict ACID constraints:
 
 ## 5. Complete Visual Assets & Image Catalogue
 
-This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI interface screenshots) included in the project documentation and compiled LaTeX report. All image files are located directly in [`04_Resources/`](file:///c:/Projects/Final-Year-Project/04_Resources/) and [`03_Reference/04_Report/Report Format Project/Report Format Project/`](file:///c:/Projects/Final-Year-Project/03_Reference/04_Report/Report%20Format%20Project/Report%20Format%20Project/).
+This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI interface screenshots) included in the project documentation and compiled LaTeX report. All image files are located directly in [`resources/media/`](file:///c:/Projects/Final-Year-Project/resources/media/) and [`03_Reference/04_Report/Report Format Project/Report Format Project/`](file:///c:/Projects/Final-Year-Project/03_Reference/04_Report/Report%20Format%20Project/Report%20Format%20Project/).
 
 ### 5.1 Architectural & Methodological Diagrams
 
 #### Figure 1: Three-Tier System Architecture and Data Pipeline
 - **File Name:** `system_architecture.png`
-- **File Path:** [`04_Resources/system_architecture.png`](file:///c:/Projects/Final-Year-Project/04_Resources/system_architecture.png)
+- **File Path:** [`resources/media/system_architecture.png`](file:///c:/Projects/Final-Year-Project/resources/media/system_architecture.png)
 - **Description:** Complete architectural block diagram illustrating the Presentation Tier (React 19 SPA), Application and Inference Tier (FastAPI Gateway with CORS, JWT Auth, and AI Demand Forecasting Tournament Core), and Data Access Tier (SQLite 3 relational persistence and persistent JSON forecast cache).
 - **Report Section:** Chapter 3 (System Design and Architecture).
 - **Markdown Embed:**
@@ -281,7 +281,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Figure 2: UML Sequence Diagram: POS Billing & Retraining Lifecycle
 - **File Name:** `pos_sequence_diagram.png`
-- **File Path:** [`04_Resources/pos_sequence_diagram.png`](file:///c:/Projects/Final-Year-Project/04_Resources/pos_sequence_diagram.png)
+- **File Path:** [`resources/media/pos_sequence_diagram.png`](file:///c:/Projects/Final-Year-Project/resources/media/pos_sequence_diagram.png)
 - **Description:** Detailed sequence diagram tracing cashier interactions: barcode scanning, cart state validation, atomic stock deduction in SQLite, 80mm ESC/POS thermal receipt rendering, Excel ledger backup, and dirty-flag background model retraining.
 - **Report Section:** Chapter 3 (Component Interaction and Workflow Sequence).
 - **Markdown Embed:**
@@ -300,7 +300,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Figure 3: Relational Entity-Relationship (ER) Schema
 - **File Name:** `database_schema.png`
-- **File Path:** [`04_Resources/database_schema.png`](file:///c:/Projects/Final-Year-Project/04_Resources/database_schema.png)
+- **File Path:** [`resources/media/database_schema.png`](file:///c:/Projects/Final-Year-Project/resources/media/database_schema.png)
 - **Description:** Entity-relationship schema showing all seven relational tables (`users`, `products`, `bills`, `bill_items`, `purchase_orders`, `prediction_log`, `system_config`), primary keys, foreign-key relationships, and cardinality constraints.
 - **Report Section:** Chapter 3 (Database Schema and Entity-Relationship Model).
 - **Markdown Embed:**
@@ -319,7 +319,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Figure 4: Syntetos-Boylan Demand Categorization Matrix
 - **File Name:** `demand_classification.png`
-- **File Path:** [`04_Resources/demand_classification.png`](file:///c:/Projects/Final-Year-Project/04_Resources/demand_classification.png)
+- **File Path:** [`resources/media/demand_classification.png`](file:///c:/Projects/Final-Year-Project/resources/media/demand_classification.png)
 - **Description:** Two-dimensional quadrant matrix plotting Average Demand Interval ($ADI$) against Squared Coefficient of Variation ($CV^2$) with cutoffs at 1.32 and 0.49, defining Regular, Erratic, Intermittent, and Lumpy product quadrants.
 - **Report Section:** Chapter 4 (Demand Pattern Categorization via Syntetos-Boylan Classification).
 - **Markdown Embed:**
@@ -338,7 +338,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Figure 5: Inventory Reorder Decision Flowchart
 - **File Name:** `inventory_reorder_flowchart.png`
-- **File Path:** [`04_Resources/inventory_reorder_flowchart.png`](file:///c:/Projects/Final-Year-Project/04_Resources/inventory_reorder_flowchart.png)
+- **File Path:** [`resources/media/inventory_reorder_flowchart.png`](file:///c:/Projects/Final-Year-Project/resources/media/inventory_reorder_flowchart.png)
 - **Description:** Algorithmic logic flowchart detailing how forecasted daily demand is transformed into dynamic Safety Stock ($SS$), Reorder Point ($ROP$), Target Inventory ($TI$), and recommended replenishment order quantities ($Q$).
 - **Report Section:** Chapter 4 (Scientific Periodic Replenishment Logic).
 - **Markdown Embed:**
@@ -361,7 +361,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Figure 6: Executive Dashboard: KPI Metrics & Reorder Notifications
 - **File Name:** `dashboard_1.png`
-- **File Path:** [`04_Resources/dashboard_1.png`](file:///c:/Projects/Final-Year-Project/04_Resources/dashboard_1.png)
+- **File Path:** [`resources/media/dashboard_1.png`](file:///c:/Projects/Final-Year-Project/resources/media/dashboard_1.png)
 - **Description:** Executive dashboard landing view showing today's revenue, order counts, critical stock warning banners, and reorder notifications.
 - **Report Section:** Chapter 5 (Executive Dashboard and Operational Metrics).
 - **Markdown Embed:**
@@ -380,7 +380,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Figure 7: Dashboard Analytics & Operational Status Indicator
 - **File Name:** `dashboard_2.png`
-- **File Path:** [`04_Resources/dashboard_2.png`](file:///c:/Projects/Final-Year-Project/04_Resources/dashboard_2.png)
+- **File Path:** [`resources/media/dashboard_2.png`](file:///c:/Projects/Final-Year-Project/resources/media/dashboard_2.png)
 - **Description:** Lower section of the executive dashboard featuring sales trend curves, category sales distribution, and the operational LED status badge confirming database health and model readiness.
 - **Report Section:** Chapter 5 (Executive Dashboard and Operational Metrics).
 - **Markdown Embed:**
@@ -399,7 +399,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Figure 8: Point of Sale (POS) Billing Terminal
 - **File Name:** `pos_1.png`
-- **File Path:** [`04_Resources/pos_1.png`](file:///c:/Projects/Final-Year-Project/04_Resources/pos_1.png)
+- **File Path:** [`resources/media/pos_1.png`](file:///c:/Projects/Final-Year-Project/resources/media/pos_1.png)
 - **Description:** POS terminal screen showing the interactive catalog tile grid, search bar, active customer cart, real-time stock availability validation, tax calculations, and payment trigger buttons.
 - **Report Section:** Chapter 5 (Point of Sale Billing and Thermal Receipt Generation).
 - **Markdown Embed:**
@@ -418,7 +418,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Figure 9: Generated ESC/POS 80mm Thermal Receipt
 - **File Name:** `pos_2_thermal.png`
-- **File Path:** [`04_Resources/pos_2_thermal.png`](file:///c:/Projects/Final-Year-Project/04_Resources/pos_2_thermal.png)
+- **File Path:** [`resources/media/pos_2_thermal.png`](file:///c:/Projects/Final-Year-Project/resources/media/pos_2_thermal.png)
 - **Description:** Printable customer thermal receipt modal rendered after atomic checkout, formatted for 80mm ESC/POS thermal printers with store header, invoice number, itemized quantities, taxes, and transaction timestamp.
 - **Report Section:** Chapter 5 (Point of Sale Billing and Thermal Receipt Generation).
 - **Markdown Embed:**
@@ -437,7 +437,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Figure 10: Inventory Catalog & Stock Balances
 - **File Name:** `inventory_1.png`
-- **File Path:** [`04_Resources/inventory_1.png`](file:///c:/Projects/Final-Year-Project/04_Resources/inventory_1.png)
+- **File Path:** [`resources/media/inventory_1.png`](file:///c:/Projects/Final-Year-Project/resources/media/inventory_1.png)
 - **Description:** Inventory management view showing master SKU balances, unit pricing, cost valuation, low-stock threshold badges, and edit modals.
 - **Report Section:** Chapter 5 (Inventory Management and Syntetos-Boylan Categorization).
 - **Markdown Embed:**
@@ -456,7 +456,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Figure 11: Syntetos-Boylan Classification Grid & ABC-XYZ Portfolio Matrix
 - **File Name:** `inventory_SBC.png`
-- **File Path:** [`04_Resources/inventory_SBC.png`](file:///c:/Projects/Final-Year-Project/04_Resources/inventory_SBC.png)
+- **File Path:** [`resources/media/inventory_SBC.png`](file:///c:/Projects/Final-Year-Project/resources/media/inventory_SBC.png)
 - **Description:** Inventory categorization view displaying the Syntetos-Boylan demand quadrant matrix alongside the 3x3 ABC-XYZ portfolio matrix, showing SKU distributions across revenue value and predictability tiers.
 - **Report Section:** Chapter 5 (Inventory Management and Syntetos-Boylan Categorization).
 - **Markdown Embed:**
@@ -475,7 +475,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Figure 12: Demand Forecasting Module: Holt-Winters Tournament Winner Fit
 - **File Name:** `forecasting_HW.png`
-- **File Path:** [`04_Resources/forecasting_HW.png`](file:///c:/Projects/Final-Year-Project/04_Resources/forecasting_HW.png)
+- **File Path:** [`resources/media/forecasting_HW.png`](file:///c:/Projects/Final-Year-Project/resources/media/forecasting_HW.png)
 - **Description:** Interactive forecasting screen for an SKU where Holt-Winters won the tournament, displaying historical sales, the 30-day forecast trajectory, MAE/RMSE metrics, safety stock buffer, and reorder point recommendation.
 - **Report Section:** Chapter 5 (Multi-Model Demand Forecasting Engine Walkthrough).
 - **Markdown Embed:**
@@ -494,7 +494,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Figure 13: Demand Forecasting Module: Random Forest Tournament Winner
 - **File Name:** `forecasting_RF.png`
-- **File Path:** [`04_Resources/forecasting_RF.png`](file:///c:/Projects/Final-Year-Project/04_Resources/forecasting_RF.png)
+- **File Path:** [`resources/media/forecasting_RF.png`](file:///c:/Projects/Final-Year-Project/resources/media/forecasting_RF.png)
 - **Description:** Forecasting interface for an SKU where Random Forest Regressor outperformed candidate models, rendering forecast curves, confidence bands, lag feature importances, and restocking order quantities.
 - **Report Section:** Chapter 5 (Multi-Model Demand Forecasting Engine Walkthrough).
 - **Markdown Embed:**
@@ -513,7 +513,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Figure 14: Four-Stage Purchase Order Lifecycle Management
 - **File Name:** `PO.png`
-- **File Path:** [`04_Resources/PO.png`](file:///c:/Projects/Final-Year-Project/04_Resources/PO.png)
+- **File Path:** [`resources/media/PO.png`](file:///c:/Projects/Final-Year-Project/resources/media/PO.png)
 - **Description:** Purchase order management interface illustrating the 4-stage PO lifecycle (`Generated` $\rightarrow$ `Approved` $\rightarrow$ `Pending Delivery` $\rightarrow$ `Delivered`), vendor routing, order amounts, and automatic inventory stock incrementing upon delivery.
 - **Report Section:** Chapter 5 (Procurement and Purchase Order Lifecycle Management).
 - **Markdown Embed:**
@@ -532,7 +532,7 @@ This catalogue details all 14 visual assets (5 architectural diagrams and 9 UI i
 
 #### Institutional Emblem: Amal Jyothi College of Engineering Official Logo
 - **File Name:** `ajcelogo2023.png`
-- **File Path:** [`04_Resources/ajcelogo2023.png`](file:///c:/Projects/Final-Year-Project/04_Resources/ajcelogo2023.png)
+- **File Path:** [`resources/media/ajcelogo2023.png`](file:///c:/Projects/Final-Year-Project/resources/media/ajcelogo2023.png)
 - **Description:** Official college crest of Amal Jyothi College of Engineering (Autonomous), Kanjirappally, incorporated on academic title pages and certificate documentation.
 - **LaTeX Embed Code:**
   ```latex
